@@ -1,7 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-	
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
-	
-<AnchorPane xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.SampleController">
-	<!-- TODO Add Nodes -->
+
+
+<AnchorPane prefHeight="500.0" prefWidth="900.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="application.SampleController">
+   <children>
+      <Button layoutX="400.0" layoutY="408.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="102.0" text="INGRESAR" />
+      <TextField layoutX="377.0" layoutY="172.0" />
+      <TextField layoutX="376.0" layoutY="281.0" />
+      <Label layoutX="396.0" layoutY="155.0" prefHeight="17.0" prefWidth="112.0" text="Nombre de Usuario" />
+      <Label layoutX="420.0" layoutY="264.0" prefHeight="17.0" prefWidth="64.0" text="Contraseña" />
+   </children>
 </AnchorPane>
