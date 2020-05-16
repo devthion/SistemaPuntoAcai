@@ -1,4 +1,4 @@
-package Clientes;
+package ModelosClientes;
 
 public class Cliente {
 	

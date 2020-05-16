@@ -3,8 +3,8 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
-import Clientes.Cliente;
-import Clientes.Direccion;
+import ModelosClientes.Cliente;
+import ModelosClientes.Direccion;
 
 public class TestClientes {
 	

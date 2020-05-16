@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 
 
-<AnchorPane prefHeight="500.0" prefWidth="900.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="application.SampleController">
+<AnchorPane prefHeight="500.0" prefWidth="900.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="application.IngresoController">
    <children>
       <Button fx:id="btnIngresar" layoutX="400.0" layoutY="408.0" mnemonicParsing="false" onAction="#onIngresarClick" prefHeight="35.0" prefWidth="102.0" text="INGRESAR" />
       <TextField fx:id="etNombreUsuario" layoutX="377.0" layoutY="172.0" />

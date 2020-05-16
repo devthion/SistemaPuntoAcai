@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane prefHeight="629.0" prefWidth="1307.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="application.MenuPrincipalControler">
+   <children>
+      <Button fx:id="btnVerClientes" layoutX="14.0" layoutY="124.0" mnemonicParsing="false" onAction="#verClientes" prefHeight="71.0" prefWidth="157.0" text="Ver Clientes" />
+   </children>
+</AnchorPane>
