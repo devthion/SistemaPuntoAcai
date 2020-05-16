@@ -10,7 +10,9 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
@@ -18,6 +20,9 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 
 public class VerClientesController implements Initializable {
 	
@@ -70,6 +75,7 @@ public class VerClientesController implements Initializable {
 	
 	@FXML
     void agregarPersona(ActionEvent event) {
+		/*
 		Direccion direccion = new Direccion("asd", 545, "asdasd", 5456);
 		Cliente cliente = new Cliente(41666987, txtNombre.getText(), "Cabrera", 41665, "asdasd", direccion, true, "Instagram");
 		
@@ -82,6 +88,21 @@ public class VerClientesController implements Initializable {
 			alert.setTitle("Error");
 			alert.setContentText("El cliente ingresado ya existe en la base de datos");
 			alert.showAndWait();
+		}*/
+		
+		try {
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(getClass().getResource("AgregarCliente.fxml"));
+			AnchorPane root = (AnchorPane) loader.load();
+			Scene scene = new Scene(root,1300,650);
+			//scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+			Stage stage = new Stage();
+			stage.setScene(scene);
+			stage.initModality(Modality.APPLICATION_MODAL);
+			stage.setTitle("Nuevo Cliente");
+			stage.show();
+		} catch(Exception e) {
+			e.printStackTrace();
 		}
 			
     }
