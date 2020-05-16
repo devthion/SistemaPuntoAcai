@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane prefHeight="650.0" prefWidth="1300.0" style="-fx-background-color: #7424A9;" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8">
+   <children>
+      <Label layoutX="80.0" layoutY="162.0" prefHeight="40.0" prefWidth="150.0" text="Nombre" textFill="WHITE">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <TextField layoutX="230.0" layoutY="162.0" prefHeight="40.0" prefWidth="250.0" promptText="Nombre" style="-fx-background-color: #7424A9; -fx-border-radius: 20; -fx-border-color: #481862; -fx-region-background: #1E88E5;" />
+      <Label layoutX="80.0" layoutY="234.0" prefHeight="40.0" prefWidth="150.0" text="Apellido" textFill="WHITE">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="80.0" layoutY="309.0" prefHeight="40.0" prefWidth="150.0" text="DNI" textFill="#f8f8f8">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="80.0" layoutY="379.0" prefHeight="40.0" prefWidth="150.0" text="Telefono" textFill="WHITE">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="29.0" layoutY="449.0" prefHeight="40.0" prefWidth="201.0" text="Correo Electronico" textFill="WHITE">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="580.0" layoutY="162.0" prefHeight="40.0" prefWidth="150.0" text="Calle" textFill="WHITE">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="580.0" layoutY="234.0" prefHeight="40.0" prefWidth="150.0" text="Barrio" textFill="WHITE">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="1013.0" layoutY="162.0" prefHeight="40.0" prefWidth="150.0" text="Numero" textFill="WHITE">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <TextField layoutX="1143.0" layoutY="162.0" prefHeight="40.0" prefWidth="100.0" />
+      <Label layoutX="580.0" layoutY="309.0" prefHeight="40.0" prefWidth="150.0" text="Como Llego" textFill="WHITE">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="1013.0" layoutY="234.0" prefHeight="40.0" prefWidth="150.0" text="Cod. Postal" textFill="WHITE">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <SplitMenuButton layoutX="745.0" layoutY="387.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="250.0" text="SplitMenuButton">
+        <items>
+          <MenuItem mnemonicParsing="false" text="Action 1" />
+          <MenuItem mnemonicParsing="false" text="Action 2" />
+        </items>
+      </SplitMenuButton>
+      <Label layoutX="580.0" layoutY="379.0" prefHeight="40.0" prefWidth="165.0" text="Tipo de Cliente" textFill="WHITE">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Separator layoutX="170.0" layoutY="76.0" prefWidth="1000.0" />
+      <Separator layoutX="170.0" layoutY="561.0" prefWidth="1000.0" />
+   </children>
+</AnchorPane>
