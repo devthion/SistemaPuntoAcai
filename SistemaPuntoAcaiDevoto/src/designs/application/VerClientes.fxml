@@ -5,20 +5,20 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="650.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.VerClientesController">
+<AnchorPane prefHeight="650.0" prefWidth="1300.0" style="-fx-background-color: #7424A9;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.VerClientesController">
    <children>
-      <TableView fx:id="tblClientes" layoutX="27.0" layoutY="124.0" prefHeight="402.0" prefWidth="623.0">
+      <TableView fx:id="tblClientes" layoutX="32.0" layoutY="124.0" prefHeight="402.0" prefWidth="1236.0" style="-fx-background-color: #7424A9; -fx-border-color: #481862;">
         <columns>
-          <TableColumn fx:id="colNombre" prefWidth="75.0" text="Nombre" />
-          <TableColumn fx:id="colApellido" prefWidth="75.0" text="Apellido" />
-            <TableColumn fx:id="colDni" text="DNI" />
-            <TableColumn fx:id="colTelefono" prefWidth="97.0" text="Telefono" />
-            <TableColumn fx:id="colEmail" prefWidth="75.0" text="Email" />
-            <TableColumn fx:id="ColTipoCliente" prefWidth="105.0" text="Tipo Cliente" />
-            <TableColumn fx:id="colIngresos" prefWidth="115.0" text="Ingresos Generados" />
+          <TableColumn fx:id="colNombre" prefWidth="111.0" text="Nombre" />
+          <TableColumn fx:id="colApellido" prefWidth="92.0" text="Apellido" />
+            <TableColumn fx:id="colDni" prefWidth="90.0" text="DNI" />
+            <TableColumn fx:id="colTelefono" prefWidth="107.0" text="Telefono" />
+            <TableColumn fx:id="colEmail" prefWidth="102.0" text="Email" />
+            <TableColumn fx:id="ColTipoCliente" prefWidth="130.0" text="Tipo Cliente" />
+            <TableColumn fx:id="colIngresos" prefWidth="134.0" text="Ingresos Generados" />
         </columns>
       </TableView>
-      <Button fx:id="btnAgregarPersona" layoutX="911.0" layoutY="313.0" mnemonicParsing="false" onAction="#agregarPersona" prefHeight="41.0" prefWidth="134.0" text="Button" />
-      <TextField fx:id="txtNombre" layoutX="904.0" layoutY="156.0" style="-fx-text-fill: #FFFFFF;" />
+      <Button fx:id="btnAgregarPersona" layoutX="43.0" layoutY="47.0" mnemonicParsing="false" onAction="#agregarPersona" prefHeight="41.0" prefWidth="134.0" text="Button" />
+      <TextField fx:id="txtNombre" layoutX="513.0" layoutY="55.0" style="-fx-text-fill: #FFFFFF;" />
    </children>
 </AnchorPane>
