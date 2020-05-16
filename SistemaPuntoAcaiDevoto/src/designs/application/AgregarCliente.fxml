@@ -7,6 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 
 
+
 <AnchorPane prefHeight="650.0" prefWidth="1300.0" style="-fx-background-color: #7424A9;" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8">
    <children>
       <Label layoutX="80.0" layoutY="162.0" prefHeight="40.0" prefWidth="150.0" text="Nombre" textFill="WHITE">
@@ -14,7 +15,6 @@
             <Font size="24.0" />
          </font>
       </Label>
-      <TextField layoutX="230.0" layoutY="162.0" prefHeight="40.0" prefWidth="250.0" promptText="Nombre" style="-fx-background-color: #7424A9; -fx-border-radius: 20; -fx-border-color: #481862; -fx-region-background: #1E88E5;" />
       <Label layoutX="80.0" layoutY="234.0" prefHeight="40.0" prefWidth="150.0" text="Apellido" textFill="WHITE">
          <font>
             <Font size="24.0" />
