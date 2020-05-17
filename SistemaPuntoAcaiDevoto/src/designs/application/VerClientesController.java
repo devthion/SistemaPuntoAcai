@@ -3,6 +3,7 @@ package application;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import Alertas.Alerta;
 import ModelosClientes.Cliente;
 import ModelosClientes.Direccion;
 import javafx.collections.FXCollections;
@@ -131,11 +132,7 @@ public class VerClientesController implements Initializable {
 			this.clientes.add(cliente);
 			this.tblClientes.setItems(clientes);
 		}else {
-			Alert alert = new Alert(Alert.AlertType.ERROR);
-			alert.setHeaderText("Cliente Repetido");
-			alert.setTitle("Error");
-			alert.setContentText("El cliente ingresado ya existe en la base de datos");
-			alert.showAndWait();
+			Alerta.errorAlert("El cliente ingresado ya existe en la base de datos", "Cliente Repetido");
 		}
 		
 		
