@@ -1,17 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
 <?import javafx.scene.control.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane prefHeight="500.0" prefWidth="900.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="application.IngresoController">
+<AnchorPane prefHeight="650.0" prefWidth="1300.0" style="-fx-background-color: #7424A9;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.IngresoController">
    <children>
-      <Button fx:id="btnIngresar" layoutX="400.0" layoutY="408.0" mnemonicParsing="false" onAction="#onIngresarClick" prefHeight="35.0" prefWidth="102.0" text="INGRESAR" />
-      <TextField fx:id="etNombreUsuario" layoutX="377.0" layoutY="172.0" />
-      <TextField fx:id="etClave" layoutX="376.0" layoutY="281.0" />
-      <Label fx:id="txtNombreUsuario" layoutX="396.0" layoutY="155.0" prefHeight="17.0" prefWidth="112.0" text="Nombre de Usuario" />
-      <Label fx:id="txtClave" layoutX="420.0" layoutY="264.0" prefHeight="17.0" prefWidth="64.0" text="Contraseña" />
+      <Button fx:id="btnIngresar" layoutX="533.0" layoutY="508.0" mnemonicParsing="false" onAction="#onIngresarClick" prefHeight="52.0" prefWidth="238.0" style="-fx-background-color: #481862; -fx-background-radius: 20;" text="INGRESAR" textFill="WHITE">
+         <font>
+            <Font size="24.0" />
+         </font></Button>
+      <TextField fx:id="etNombreUsuario" layoutX="527.0" layoutY="206.0" prefHeight="40.0" prefWidth="250.0" style="-fx-background-color: #7424A9; -fx-border-radius: 20; -fx-border-color: #481862; -fx-text-fill: #FFFFFF;" />
+      <TextField fx:id="etClave" layoutX="527.0" layoutY="313.0" prefHeight="40.0" prefWidth="250.0" style="-fx-background-color: #7424A9; -fx-border-color: #481862; -fx-border-radius: 20; -fx-text-fill: #FFFFFF;" />
+      <Label fx:id="txtNombreUsuario" layoutX="544.0" layoutY="153.0" prefHeight="35.0" prefWidth="214.0" text="Nombre de Usuario" textFill="WHITE">
+         <font>
+            <Font size="24.0" />
+         </font></Label>
+      <Label fx:id="txtClave" layoutX="592.0" layoutY="269.0" prefHeight="35.0" prefWidth="121.0" text="Contraseña" textFill="WHITE">
+         <font>
+            <Font size="24.0" />
+         </font></Label>
+      <Separator layoutX="150.0" layoutY="84.0" opacity="0.32" prefWidth="1000.0" style="-fx-border-color: #481862;" />
+      <Separator layoutX="150.0" layoutY="432.0" opacity="0.32" prefWidth="1000.0" style="-fx-border-color: #481862;" />
    </children>
 </AnchorPane>
