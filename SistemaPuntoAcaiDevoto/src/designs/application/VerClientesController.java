@@ -77,16 +77,26 @@ public class VerClientesController implements Initializable {
     @FXML
     void agregarPersona(ActionEvent event) {
     	try {
-			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(getClass().getResource("AgregarCliente.fxml"));
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("AgregarCliente.fxml"));
 			AnchorPane root = (AnchorPane) loader.load();
+			
+			AgregarCliente controller = loader.getController();
+			controller.initAtributos(clientes);
+			
 			Scene scene = new Scene(root,1300,650);
-			//scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			Stage stage = new Stage();
 			stage.setScene(scene);
 			stage.initModality(Modality.APPLICATION_MODAL);
 			stage.setTitle("Nuevo Cliente");
-			stage.show();
+			stage.showAndWait();
+			
+			Cliente c = controller.getCliente();
+			if (c != null) {
+				this.clientes.add(c);
+				System.out.println("entro");
+				this.tblClientes.refresh();
+			}
+			
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
@@ -105,6 +115,7 @@ public class VerClientesController implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		clientes = FXCollections.observableArrayList();
+		this.tblClientes.setItems(clientes);
 		
 		this.colNombre.setCellValueFactory(new PropertyValueFactory("nombre"));
 		this.colApellido.setCellValueFactory(new PropertyValueFactory("apellido"));
@@ -112,10 +123,11 @@ public class VerClientesController implements Initializable {
 		this.colTelefono.setCellValueFactory(new PropertyValueFactory("telefono"));
 		this.colEmail.setCellValueFactory(new PropertyValueFactory("email"));
 		
+		//DATOS DE PRUEBA
 		Direccion direccion = new Direccion("asd", 545, "asdasd", 5456);
-		Cliente cliente = new Cliente(41666987, txtBusqueda.getText(), "Cabrera", 41665, "asdasd", direccion, true, "Instagram");
-		
-		if(!this.clientes.contains(cliente)) {
+    	Cliente cliente = new Cliente(54564, "adsa", "asdsad", 41, "ads", direccion, true, "WPP");
+    	
+    	if(!this.clientes.contains(cliente)) {
 			this.clientes.add(cliente);
 			this.tblClientes.setItems(clientes);
 		}else {
@@ -125,6 +137,7 @@ public class VerClientesController implements Initializable {
 			alert.setContentText("El cliente ingresado ya existe en la base de datos");
 			alert.showAndWait();
 		}
+		
 		
 	}
 
