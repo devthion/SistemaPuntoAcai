@@ -5,6 +5,8 @@ import java.sql.DriverManager;
 import java.sql.Statement;
 
 public class CrearTabla {
+	
+	public String usuarioBd;
 
 	public static void main(String[]args) {
 		try 
