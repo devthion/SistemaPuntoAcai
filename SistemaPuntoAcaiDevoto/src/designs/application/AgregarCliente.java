@@ -60,7 +60,6 @@ public class AgregarCliente {
     void onGuardarClienteClick(ActionEvent event) {	
     	Cliente cliente = generarCliente();
 	
-    	
     	if(!clientes.contains(cliente)) {
     		cliente.almacenarCliente();
     		Alerta.informationAlert("Se ha añadido correctamente", "Informacion");
@@ -70,7 +69,6 @@ public class AgregarCliente {
     		Alerta.errorAlert("El cliente ingresado ya existe en la base de datos", "Cliente Repetido");
     	}
     	
-
     }
     
     public void initAtributos(ObservableList<Cliente> clientes) {
@@ -92,7 +90,6 @@ public class AgregarCliente {
     	
     	Direccion direccion = new Direccion(calle, numero, barrio, codPostal);
     	return new Cliente(dni, nombre, apellido, telefono, email, direccion, tipo, comoLlego, 0);
-    	
     }
     
     @FXML

@@ -92,11 +92,7 @@ public class VerClientesController implements Initializable {
 			stage.setTitle("Nuevo Cliente");
 			stage.showAndWait();
 			
-			Cliente c = controller.getCliente();
-			if (c != null) {
-				this.clientes.add(c);
-				this.tblClientes.refresh();
-			}
+			
 			
 		} catch(Exception e) {
 			e.printStackTrace();
@@ -106,8 +102,7 @@ public class VerClientesController implements Initializable {
     @FXML
     void editarCliente(ActionEvent event) {
     	
-    	
-
+   
     }
 
     @FXML
@@ -128,10 +123,6 @@ public class VerClientesController implements Initializable {
 		clientes = FXCollections.observableArrayList();
 		clientes = obtenerDatos.obtenerClientes();
 		
-		//DATOS DE PRUEBA
-		Direccion direccion = new Direccion("asd", 545, "asdasd", 5456);
-		Cliente cliente = new Cliente(54564, "adsa", "asdsad", 41, "ads", direccion, "asdasd", "WPP", 456);
-		
 		
 		this.tblClientes.setItems(clientes);
 		
@@ -140,14 +131,11 @@ public class VerClientesController implements Initializable {
 		this.colDni.setCellValueFactory(new PropertyValueFactory("dni"));
 		this.colTelefono.setCellValueFactory(new PropertyValueFactory("telefono"));
 		this.colEmail.setCellValueFactory(new PropertyValueFactory("email"));
-		
-		
-    	if(!this.clientes.contains(cliente)) {
-			this.clientes.add(cliente);
-			this.tblClientes.setItems(clientes);
-		}else {
-			Alerta.errorAlert("El cliente ingresado ya existe en la base de datos", "Cliente Repetido");
-		}
+		this.colCalle.setCellValueFactory(new PropertyValueFactory("calle"));
+		this.colNumero.setCellValueFactory(new PropertyValueFactory("numero"));
+		this.colBarrio.setCellValueFactory(new PropertyValueFactory("barrio"));
+		this.colCodPostal.setCellValueFactory(new PropertyValueFactory("codPostal"));
+		this.ColTipoCliente.setCellValueFactory(new PropertyValueFactory("tipo"));
 		
 		
 	}
