@@ -94,7 +94,6 @@ public class VerClientesController implements Initializable {
 			Cliente c = controller.getCliente();
 			if (c != null) {
 				this.clientes.add(c);
-				System.out.println("entro");
 				this.tblClientes.refresh();
 			}
 			
@@ -105,12 +104,21 @@ public class VerClientesController implements Initializable {
 
     @FXML
     void editarCliente(ActionEvent event) {
+    	
+    	
 
     }
 
     @FXML
     void eliminarCliente(ActionEvent event) {
-
+    	Cliente cliente = this.tblClientes.getSelectionModel().getSelectedItem();
+    	
+    	if(cliente==null) {
+    		Alerta.errorAlert("Debe seleccionar un Cliente", "Eliminar Cliente");
+    	}else {
+    		this.clientes.remove(cliente);
+    		Alerta.informationAlert("El Cliente se ha eliminado de la Base de Datos", "Eliminar Cliente");
+    	}
     }
 
 	@Override
