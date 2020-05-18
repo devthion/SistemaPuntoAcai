@@ -27,10 +27,10 @@ import javafx.stage.Stage;
 public class VerClientesController implements Initializable {
 
     @FXML
-    private TableColumn<?, ?> colDni;
+    private TableColumn<Cliente, Integer> colDni;
 
     @FXML
-    private TableColumn<?, ?> colBarrio;
+    private TableColumn<Direccion, String> colBarrio;
 
     @FXML
     private TableColumn<?, ?> colNumero;
@@ -124,7 +124,6 @@ public class VerClientesController implements Initializable {
 		clientes = FXCollections.observableArrayList();
 		clientes = obtenerDatos.obtenerClientes();
 		
-		
 		this.tblClientes.setItems(clientes);
 		
 		this.colNombre.setCellValueFactory(new PropertyValueFactory("nombre"));
@@ -132,9 +131,9 @@ public class VerClientesController implements Initializable {
 		this.colDni.setCellValueFactory(new PropertyValueFactory("dni"));
 		this.colTelefono.setCellValueFactory(new PropertyValueFactory("telefono"));
 		this.colEmail.setCellValueFactory(new PropertyValueFactory("email"));
-		this.colCalle.setCellValueFactory(new PropertyValueFactory("calle"));
+		this.colCalle.setCellValueFactory(new PropertyValueFactory("direccion"));
 		this.colNumero.setCellValueFactory(new PropertyValueFactory("numero"));
-		this.colBarrio.setCellValueFactory(new PropertyValueFactory("barrio"));
+		this.colBarrio.setCellValueFactory(new PropertyValueFactory<Direccion, String>("barrio"));
 		this.colCodPostal.setCellValueFactory(new PropertyValueFactory("codPostal"));
 		this.ColTipoCliente.setCellValueFactory(new PropertyValueFactory("tipo"));
 		
