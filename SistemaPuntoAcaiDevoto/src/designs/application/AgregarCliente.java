@@ -49,6 +49,9 @@ public class AgregarCliente {
     @FXML
     private SplitMenuButton slipTipoCliente;
     
+    @FXML
+    private SplitMenuButton slipComoLlego;
+    
     private Cliente cliente;
     private ObservableList<Cliente> clientes;
 
@@ -59,7 +62,6 @@ public class AgregarCliente {
 	
     	
     	if(!clientes.contains(cliente)) {
-    		/*this.cliente = c;*/
     		cliente.almacenarCliente();
     		Alerta.informationAlert("Se ha añadido correctamente", "Informacion");
 			Stage stage = (Stage) btnGuardarCliente.getScene().getWindow();
@@ -86,7 +88,7 @@ public class AgregarCliente {
     	String email=this.txtEmail.getText();
     	int telefono=Integer.parseInt(txtTelefono.getText());
     	String tipo = slipTipoCliente.getText();
-    	String comoLlego = txtComoLlego.getText();
+    	String comoLlego = slipComoLlego.getText();
     	
     	Direccion direccion = new Direccion(calle, numero, barrio, codPostal);
     	return new Cliente(dni, nombre, apellido, telefono, email, direccion, tipo, comoLlego, 0);
@@ -101,6 +103,26 @@ public class AgregarCliente {
     @FXML
     void onMayorista(ActionEvent event) {
     	this.slipTipoCliente.setText("MAYORISTA");
+    }
+    
+    @FXML
+    void onInstagram(ActionEvent event) {
+    	this.slipComoLlego.setText("Instagram");
+    }
+
+    @FXML
+    void onUnConocido(ActionEvent event) {
+    	this.slipComoLlego.setText("Un Conocido");
+    }
+
+    @FXML
+    void onFolleto(ActionEvent event) {
+    	this.slipComoLlego.setText("Folleto");
+    }
+
+    @FXML
+    void onOtro(ActionEvent event) {
+    	this.slipComoLlego.setText("Otro");
     }
 
 

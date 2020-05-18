@@ -64,6 +64,14 @@
             <Font size="24.0" />
          </font>
       </Label>
+      <SplitMenuButton fx:id="slipComoLlego" layoutX="752.0" layoutY="271.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="250.0" style="-fx-background-color: #7424A9; -fx-border-radius: 20; -fx-border-color: #481862;" textFill="#481862">
+         <items>
+            <MenuItem mnemonicParsing="false" onAction="#onInstagram" text="Instagram" />
+            <MenuItem mnemonicParsing="false" onAction="#onUnConocido" text="Un Conocido" />
+            <MenuItem mnemonicParsing="false" onAction="#onFolleto" text="Folleto" />
+            <MenuItem mnemonicParsing="false" onAction="#onOtro" text="Otro" />
+         </items>
+      </SplitMenuButton>
       <SplitMenuButton fx:id="slipTipoCliente" layoutX="752.0" layoutY="342.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="250.0" style="-fx-background-color: #7424A9; -fx-border-radius: 20; -fx-border-color: #481862;" textFill="#481862">
         <items>
           <MenuItem mnemonicParsing="false" onAction="#onConsumidorFinal" text="Consumidor Final" />
@@ -85,7 +93,6 @@
       <TextField fx:id="txtNumero" layoutX="1157.0" layoutY="117.0" prefHeight="40.0" prefWidth="108.0" style="-fx-border-radius: 20; -fx-background-color: #7424A9; -fx-border-color: #481862; -fx-text-fill: #FFFFFF;" />
       <TextField fx:id="txtBarrio" layoutX="752.0" layoutY="189.0" prefHeight="40.0" prefWidth="250.0" style="-fx-border-radius: 20; -fx-background-color: #7424A9; -fx-border-color: #481862; -fx-text-fill: #FFFFFF;" />
       <TextField fx:id="txtCodigoPostal" layoutX="1157.0" layoutY="189.0" prefHeight="40.0" prefWidth="108.0" style="-fx-border-radius: 20; -fx-background-color: #7424A9; -fx-border-color: #481862; -fx-text-fill: #FFFFFF;" />
-      <TextField fx:id="txtComoLlego" layoutX="752.0" layoutY="264.0" prefHeight="40.0" prefWidth="250.0" style="-fx-border-radius: 20; -fx-background-color: #7424A9; -fx-border-color: #481862; -fx-text-fill: #FFFFFF;" />
       <Button fx:id="btnGuardarCliente" layoutX="530.0" layoutY="548.0" mnemonicParsing="false" onAction="#onGuardarClienteClick" prefHeight="63.0" prefWidth="240.0" style="-fx-background-color: #481862; -fx-background-radius: 20;" text="GUARDAR CLIENTE" textFill="WHITE">
          <font>
             <Font size="24.0" />
