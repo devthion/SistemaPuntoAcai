@@ -66,8 +66,8 @@
       </Label>
       <SplitMenuButton fx:id="slipTipoCliente" layoutX="752.0" layoutY="342.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="250.0" style="-fx-background-color: #7424A9; -fx-border-radius: 20; -fx-border-color: #481862;" textFill="#481862">
         <items>
-          <MenuItem mnemonicParsing="false" text="Action 1" />
-          <MenuItem mnemonicParsing="false" text="Action 2" />
+          <MenuItem mnemonicParsing="false" onAction="#onConsumidorFinal" text="Consumidor Final" />
+          <MenuItem mnemonicParsing="false" onAction="#onMayorista" text="Mayorista" />
         </items>
       </SplitMenuButton>
       <Label layoutX="587.0" layoutY="334.0" prefHeight="40.0" prefWidth="165.0" text="Tipo de Cliente" textFill="WHITE">

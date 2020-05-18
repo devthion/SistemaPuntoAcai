@@ -54,21 +54,11 @@ public class AgregarCliente {
 
 
     @FXML
-    void onGuardarClienteClick(ActionEvent event) {
-    	
-    	
-    	
+    void onGuardarClienteClick(ActionEvent event) {	
     	Cliente cliente = generarCliente();
+	
     	
-    	
-    	
-    	//EJEMPLOS DE PRUEBA
-    	Direccion direccion = new Direccion("asd", 545, "asdasd", 5456);
-    	Cliente c = new Cliente(dni, nombre, apellido, 41, "ads", direccion, "CONSUMIDROFINAL", "WPP", 4854);
-    	
-    	cliente=new Cliente(dni, nombre, apellido, telefono, mail, direccion, "CONSUMIDORFINAL", "wpp", 0);
-    	
-    	if(!clientes.contains(c)) {
+    	if(!clientes.contains(cliente)) {
     		/*this.cliente = c;*/
     		cliente.almacenarCliente();
     		Alerta.informationAlert("Se ha añadido correctamente", "Informacion");
@@ -95,12 +85,22 @@ public class AgregarCliente {
     	int codPostal = Integer.parseInt(this.txtCodigoPostal.getText());
     	String email=this.txtEmail.getText();
     	int telefono=Integer.parseInt(txtTelefono.getText());
-    	
-    	
+    	String tipo = slipTipoCliente.getText();
+    	String comoLlego = txtComoLlego.getText();
     	
     	Direccion direccion = new Direccion(calle, numero, barrio, codPostal);
     	return new Cliente(dni, nombre, apellido, telefono, email, direccion, tipo, comoLlego, 0);
     	
+    }
+    
+    @FXML
+    void onConsumidorFinal(ActionEvent event) {
+    	this.slipTipoCliente.setText("CONSUMIDOR FINAL");
+    }
+
+    @FXML
+    void onMayorista(ActionEvent event) {
+    	this.slipTipoCliente.setText("MAYORISTA");
     }
 
 
