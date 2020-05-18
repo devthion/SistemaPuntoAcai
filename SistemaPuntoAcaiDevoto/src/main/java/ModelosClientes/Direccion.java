@@ -14,4 +14,27 @@ public class Direccion {
 		this.codPostal = codPostal;
 	}
 
+	public String getCalle() {
+		return calle;
+	}
+
+
+	public int getNumero() {
+		return numero;
+	}
+
+
+	public String getBarrio() {
+		return barrio;
+	}
+
+
+	public int getCodPostal() {
+		return codPostal;
+	}
+
+	
+	
+	
+
 }

@@ -1,5 +1,7 @@
 package ModelosClientes;
 
+import ConexionBD.InsertarDatos;
+
 public class Cliente {
 	
 	private int dni;
@@ -26,7 +28,8 @@ public class Cliente {
 	}
 	
 	public void almacenarCliente() {
-		
+		InsertarDatos insertarDatos = new InsertarDatos();
+		insertarDatos.insertarCliente(this);
 	}
 	
 	public boolean esConsumidorFinal() {

@@ -5,12 +5,8 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
-public class ObtenerDatos extends RealizarConsulta {
+public class ObtenerDatos {
 
-
-	public ObtenerDatos(String sqlQuery) {
-		super(sqlQuery);
-	}
 
 	public ResultSet ejecutarConsulta(){
 		ResultSet rs = null;
@@ -19,7 +15,7 @@ public class ObtenerDatos extends RealizarConsulta {
 			Connection con = DriverManager.getConnection("jdbc:h2:"+"./Database/my", "root", "devthion");
 			Statement stmt= con.createStatement();
 			//String sql = "select * from CLIENTE";
-			rs = stmt.executeQuery(sqlQuery);
+			rs = stmt.executeQuery(sql);
 			/*while(rs.next()) {
 				System.out.println(rs.getInt(1) + " " + rs.getString(2) + " " + rs.getString(3));
 			}*/

@@ -64,8 +64,11 @@ public class AgregarCliente {
     	Direccion direccion = new Direccion("asd", 545, "asdasd", 5456);
     	Cliente c = new Cliente(dni, nombre, apellido, 41, "ads", direccion, true, "WPP", 4854);
     	
+    	cliente=new Cliente(dni, nombre, apellido, 1166932298, "diegovivonaotmail.com", direccion, true, "wpp", 0);
+    	
     	if(!clientes.contains(c)) {
-    		this.cliente = c;
+    		/*this.cliente = c;*/
+    		cliente.almacenarCliente();
     		Alerta.informationAlert("Se ha añadido correctamente", "Informacion");
 			Stage stage = (Stage) btnGuardarCliente.getScene().getWindow();
 	    	stage.close();
