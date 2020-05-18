@@ -32,6 +32,19 @@ public class Cliente {
 		insertarDatos.insertarCliente(this);
 	}
 	
+	public String getCalle() {
+		return direccion.getCalle();
+	}
+	public int getNumero() {
+		return direccion.getNumero();
+	}
+	public String getBarrio() {
+		return direccion.getBarrio();
+	}
+	public int getCodPostal() {
+		return direccion.getCodPostal();
+	}
+	
 	public String getTipo() {
 		return tipo;
 	}
