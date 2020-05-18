@@ -62,7 +62,7 @@ public class AgregarCliente {
     	
     	//EJEMPLOS DE PRUEBA
     	Direccion direccion = new Direccion("asd", 545, "asdasd", 5456);
-    	Cliente c = new Cliente(dni, nombre, apellido, 41, "ads", direccion, true, "WPP");
+    	Cliente c = new Cliente(dni, nombre, apellido, 41, "ads", direccion, true, "WPP", 4854);
     	
     	if(!clientes.contains(c)) {
     		this.cliente = c;

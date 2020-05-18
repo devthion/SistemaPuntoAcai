@@ -10,9 +10,9 @@ public class Cliente {
 	private Direccion direccion;
 	private boolean esMayorista;
 	private String comoLlego;
-	
-	
-	public Cliente(int dni, String nombre, String apellido, int telefono, String email, Direccion direccion, boolean esMayorista, String comoLlego) {
+	private double ingresos;
+
+	public Cliente(int dni, String nombre, String apellido, int telefono, String email, Direccion direccion, boolean esMayorista, String comoLlego, double ingresos) {
 		this.dni = dni;
 		this.nombre = nombre;
 		this.apellido = apellido;
@@ -21,6 +21,8 @@ public class Cliente {
 		this.direccion = direccion;
 		this.esMayorista = esMayorista;
 		this.comoLlego = comoLlego;
+		this.ingresos = ingresos;
+		
 	}
 	
 	public void almacenarCliente() {
@@ -93,5 +95,13 @@ public class Cliente {
 
 	public void setComoLlego(String comoLlego) {
 		this.comoLlego = comoLlego;
+	}
+	
+	public double getIngresos() {
+		return ingresos;
+	}
+
+	public void setIngresos(double ingresos) {
+		this.ingresos = ingresos;
 	}
 }
