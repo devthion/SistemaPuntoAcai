@@ -13,7 +13,7 @@ public class CrearTabla {
 			Statement stmt= con.createStatement();
 			String sql = "CREATE TABLE IF NOT EXISTS CLIENTE" 
 				+ "(clie_id INTEGER auto_increment,"
-				+"clie_tipo BOOLEAN,"
+				+"clie_tipo VARCHAR(40),"
 				+"clie_nombre VARCHAR(40),"
 				+"clie_apellido VARCHAR(40),"
 				+"clie_dni INTEGER(10),"

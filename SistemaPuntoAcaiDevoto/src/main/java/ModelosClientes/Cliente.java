@@ -10,18 +10,18 @@ public class Cliente {
 	private int telefono;
 	private String email;
 	private Direccion direccion;
-	private boolean esMayorista;
+	private String tipo;
 	private String comoLlego;
 	private double ingresos;
 
-	public Cliente(int dni, String nombre, String apellido, int telefono, String email, Direccion direccion, boolean esMayorista, String comoLlego, double ingresos) {
+	public Cliente(int dni, String nombre, String apellido, int telefono, String email, Direccion direccion, String tipo, String comoLlego, double ingresos) {
 		this.dni = dni;
 		this.nombre = nombre;
 		this.apellido = apellido;
 		this.telefono = telefono;
 		this.email = email;
 		this.direccion = direccion;
-		this.esMayorista = esMayorista;
+		this.tipo = tipo;
 		this.comoLlego = comoLlego;
 		this.ingresos = ingresos;
 		
@@ -32,8 +32,8 @@ public class Cliente {
 		insertarDatos.insertarCliente(this);
 	}
 	
-	public boolean esConsumidorFinal() {
-		return (!this.esMayorista);
+	public String getTipo() {
+		return tipo;
 	}
 	
 	public int getDni() {
@@ -82,14 +82,6 @@ public class Cliente {
 
 	public void setDireccion(Direccion direccion) {
 		this.direccion = direccion;
-	}
-
-	public boolean isEsMayorista() {
-		return esMayorista;
-	}
-
-	public void setEsMayorista(boolean esMayorista) {
-		this.esMayorista = esMayorista;
 	}
 
 	public String getComoLlego() {
