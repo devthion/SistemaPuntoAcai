@@ -4,6 +4,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import Alertas.Alerta;
+import ConexionBD.ObtenerDatos;
 import ModelosClientes.Cliente;
 import ModelosClientes.Direccion;
 import javafx.collections.FXCollections;
@@ -123,7 +124,15 @@ public class VerClientesController implements Initializable {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		ObtenerDatos obtenerDatos = new ObtenerDatos();
 		clientes = FXCollections.observableArrayList();
+		clientes = obtenerDatos.obtenerClientes();
+		
+		//DATOS DE PRUEBA
+		Direccion direccion = new Direccion("asd", 545, "asdasd", 5456);
+		Cliente cliente = new Cliente(54564, "adsa", "asdsad", 41, "ads", direccion, "asdasd", "WPP", 456);
+		
+		
 		this.tblClientes.setItems(clientes);
 		
 		this.colNombre.setCellValueFactory(new PropertyValueFactory("nombre"));
@@ -132,10 +141,7 @@ public class VerClientesController implements Initializable {
 		this.colTelefono.setCellValueFactory(new PropertyValueFactory("telefono"));
 		this.colEmail.setCellValueFactory(new PropertyValueFactory("email"));
 		
-		//DATOS DE PRUEBA
-		Direccion direccion = new Direccion("asd", 545, "asdasd", 5456);
-    	Cliente cliente = new Cliente(54564, "adsa", "asdsad", 41, "ads", direccion, "asdasd", "WPP", 456);
-    	
+		
     	if(!this.clientes.contains(cliente)) {
 			this.clientes.add(cliente);
 			this.tblClientes.setItems(clientes);
