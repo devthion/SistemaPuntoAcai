@@ -73,8 +73,6 @@ public class AgregarCliente {
     		Alerta.errorAlert("El cliente ingresado ya existe en la base de datos", "Cliente Repetido");
     	}
     	
-    	
-    	
 
     }
     
