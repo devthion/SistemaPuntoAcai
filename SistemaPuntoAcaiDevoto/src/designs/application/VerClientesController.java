@@ -92,7 +92,8 @@ public class VerClientesController implements Initializable {
 			stage.setTitle("Nuevo Cliente");
 			stage.showAndWait();
 			
-			
+			this.clientes.add(controller.getNuevoCliente());
+			this.tblClientes.refresh();
 			
 		} catch(Exception e) {
 			e.printStackTrace();

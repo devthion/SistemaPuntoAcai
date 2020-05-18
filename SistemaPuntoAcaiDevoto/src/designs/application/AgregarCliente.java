@@ -52,7 +52,7 @@ public class AgregarCliente {
     @FXML
     private SplitMenuButton slipComoLlego;
     
-    private Cliente cliente;
+    private Cliente nuevoCliente;
     private ObservableList<Cliente> clientes;
 
 
@@ -61,6 +61,7 @@ public class AgregarCliente {
     	Cliente cliente = generarCliente();
 	
     	if(!clientes.contains(cliente)) {
+    		this.nuevoCliente = cliente;
     		cliente.almacenarCliente();
     		Alerta.informationAlert("Se ha añadido correctamente", "Informacion");
 			Stage stage = (Stage) btnGuardarCliente.getScene().getWindow();
@@ -123,8 +124,8 @@ public class AgregarCliente {
     }
 
 
-	public Cliente getCliente() {
-		return cliente;
+	public Cliente getNuevoCliente() {
+		return nuevoCliente;
 	}
     
 
