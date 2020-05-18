@@ -126,7 +126,7 @@ public class VerClientesController implements Initializable {
 		
 		//DATOS DE PRUEBA
 		Direccion direccion = new Direccion("asd", 545, "asdasd", 5456);
-    	Cliente cliente = new Cliente(54564, "adsa", "asdsad", 41, "ads", direccion, true, "WPP", 456);
+    	Cliente cliente = new Cliente(54564, "adsa", "asdsad", 41, "ads", direccion, "asdasd", "WPP", 456);
     	
     	if(!this.clientes.contains(cliente)) {
 			this.clientes.add(cliente);
