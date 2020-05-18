@@ -49,27 +49,19 @@ public class AgregarCliente {
     @FXML
     private SplitMenuButton slipTipoCliente;
     
+    @FXML
+    private SplitMenuButton slipComoLlego;
+    
     private Cliente cliente;
     private ObservableList<Cliente> clientes;
 
 
     @FXML
-    void onGuardarClienteClick(ActionEvent event) {
-    	
-    	
-    	
+    void onGuardarClienteClick(ActionEvent event) {	
     	Cliente cliente = generarCliente();
+	
     	
-    	
-    	
-    	//EJEMPLOS DE PRUEBA
-    	Direccion direccion = new Direccion("asd", 545, "asdasd", 5456);
-    	Cliente c = new Cliente(dni, nombre, apellido, 41, "ads", direccion, "CONSUMIDROFINAL", "WPP", 4854);
-    	
-    	cliente=new Cliente(dni, nombre, apellido, telefono, mail, direccion, "CONSUMIDORFINAL", "wpp", 0);
-    	
-    	if(!clientes.contains(c)) {
-    		/*this.cliente = c;*/
+    	if(!clientes.contains(cliente)) {
     		cliente.almacenarCliente();
     		Alerta.informationAlert("Se ha añadido correctamente", "Informacion");
 			Stage stage = (Stage) btnGuardarCliente.getScene().getWindow();
@@ -95,12 +87,42 @@ public class AgregarCliente {
     	int codPostal = Integer.parseInt(this.txtCodigoPostal.getText());
     	String email=this.txtEmail.getText();
     	int telefono=Integer.parseInt(txtTelefono.getText());
-    	
-    	
+    	String tipo = slipTipoCliente.getText();
+    	String comoLlego = slipComoLlego.getText();
     	
     	Direccion direccion = new Direccion(calle, numero, barrio, codPostal);
     	return new Cliente(dni, nombre, apellido, telefono, email, direccion, tipo, comoLlego, 0);
     	
+    }
+    
+    @FXML
+    void onConsumidorFinal(ActionEvent event) {
+    	this.slipTipoCliente.setText("CONSUMIDOR FINAL");
+    }
+
+    @FXML
+    void onMayorista(ActionEvent event) {
+    	this.slipTipoCliente.setText("MAYORISTA");
+    }
+    
+    @FXML
+    void onInstagram(ActionEvent event) {
+    	this.slipComoLlego.setText("Instagram");
+    }
+
+    @FXML
+    void onUnConocido(ActionEvent event) {
+    	this.slipComoLlego.setText("Un Conocido");
+    }
+
+    @FXML
+    void onFolleto(ActionEvent event) {
+    	this.slipComoLlego.setText("Folleto");
+    }
+
+    @FXML
+    void onOtro(ActionEvent event) {
+    	this.slipComoLlego.setText("Otro");
     }
 
 
