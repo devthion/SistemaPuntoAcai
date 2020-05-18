@@ -56,12 +56,9 @@ public class AgregarCliente {
     @FXML
     void onGuardarClienteClick(ActionEvent event) {
     	
-    	String nombre = this.txtNombre.getText();
-    	String apellido = this.txtApellido.getText();
-    	int dni = Integer.parseInt(txtDni.getText());
-    	int direNumero = Integer.parseInt(txtNumero.getText());
-    	String mail=this.txtEmail.getText();
-    	int telefono=Integer.parseInt(txtTelefono.getText());
+    	
+    	
+    	Cliente cliente = generarCliente();
     	
     	
     	
@@ -86,6 +83,24 @@ public class AgregarCliente {
     
     public void initAtributos(ObservableList<Cliente> clientes) {
     	this.clientes = clientes;
+    }
+    
+    public Cliente generarCliente() {
+    	String nombre = this.txtNombre.getText();
+    	String apellido = this.txtApellido.getText();
+    	int dni = Integer.parseInt(txtDni.getText());
+    	int numero = Integer.parseInt(txtNumero.getText());
+    	String calle = this.txtCalle.getText();
+    	String barrio = this.txtBarrio.getText();
+    	int codPostal = Integer.parseInt(this.txtCodigoPostal.getText());
+    	String email=this.txtEmail.getText();
+    	int telefono=Integer.parseInt(txtTelefono.getText());
+    	
+    	
+    	
+    	Direccion direccion = new Direccion(calle, numero, barrio, codPostal);
+    	return new Cliente(dni, nombre, apellido, telefono, email, direccion, tipo, comoLlego, 0);
+    	
     }
 
 
