@@ -59,14 +59,17 @@ public class AgregarCliente {
     	String nombre = this.txtNombre.getText();
     	String apellido = this.txtApellido.getText();
     	int dni = Integer.parseInt(txtDni.getText());
-    	int numero = Integer.parseInt(txtNumero.getText());
+    	int direNumero = Integer.parseInt(txtNumero.getText());
     	String mail=this.txtEmail.getText();
+    	int telefono=Integer.parseInt(txtTelefono.getText());
+    	
+    	
     	
     	//EJEMPLOS DE PRUEBA
     	Direccion direccion = new Direccion("asd", 545, "asdasd", 5456);
     	Cliente c = new Cliente(dni, nombre, apellido, 41, "ads", direccion, "CONSUMIDROFINAL", "WPP", 4854);
     	
-    	cliente=new Cliente(dni, nombre, apellido, numero, mail, direccion, "CONSUMIDORFINAL", "wpp", 0);
+    	cliente=new Cliente(dni, nombre, apellido, telefono, mail, direccion, "CONSUMIDORFINAL", "wpp", 0);
     	
     	if(!clientes.contains(c)) {
     		/*this.cliente = c;*/
