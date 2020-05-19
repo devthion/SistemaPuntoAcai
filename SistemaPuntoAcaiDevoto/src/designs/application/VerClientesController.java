@@ -102,8 +102,12 @@ public class VerClientesController implements Initializable {
 
     @FXML
     void editarCliente(ActionEvent event) {
+    	Cliente cliente = this.tblClientes.getSelectionModel().getSelectedItem();
     	
-   
+    	Direccion nuevaDire = new Direccion("unacalle", 1234, "unBarrio", 1416);
+    	Cliente nuevoCliente = new Cliente(41614980, "Diego", "v", 12345, "mail@gmail.com", nuevaDire, "mayorista", "wpp", cliente.getIngresos());
+    	cliente.modificarCliente(nuevoCliente);
+    	System.out.println("se edito un cliente");
     }
 
     @FXML

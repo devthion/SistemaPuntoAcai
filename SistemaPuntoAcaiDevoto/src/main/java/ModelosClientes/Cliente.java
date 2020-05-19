@@ -1,6 +1,7 @@
 package ModelosClientes;
 
 import ConexionBD.InsertarDatos;
+import ConexionBD.ModificarDatos;
 
 public class Cliente {
 	
@@ -30,6 +31,11 @@ public class Cliente {
 	public void almacenarCliente() {
 		InsertarDatos insertarDatos = new InsertarDatos();
 		insertarDatos.insertarCliente(this);
+	}
+	
+	public void modificarCliente(Cliente clienteEditado) {
+		ModificarDatos modificarDatos = new ModificarDatos();
+		modificarDatos.editarCliente(this.dni, clienteEditado);
 	}
 	
 	public String getCalle() {
