@@ -28,7 +28,7 @@
             <Font size="24.0" />
          </font></Button>
       <TextField fx:id="txtBusqueda" layoutX="550.0" layoutY="43.0" prefHeight="40.0" prefWidth="200.0" style="-fx-text-fill: #FFFFFF; -fx-background-color: #7424A9; -fx-border-radius: 20; -fx-border-color: #481862;" />
-      <Button fx:id="btnEditarCliente" layoutX="488.0" layoutY="555.0" mnemonicParsing="false" onAction="#editarCliente" prefHeight="51.0" prefWidth="340.0" style="-fx-background-color: #481862; -fx-background-radius: 20;" stylesheets="@../Styles/Style.css" text="EDITAR CLIENTE" textFill="WHITE">
+      <Button fx:id="btnEditarCliente" layoutX="488.0" layoutY="555.0" mnemonicParsing="false" onAction="#editarCliente" prefHeight="51.0" prefWidth="340.0" stylesheets="@../Styles/Style.css" text="EDITAR CLIENTE" textFill="WHITE">
          <font>
             <Font size="24.0" />
          </font>
