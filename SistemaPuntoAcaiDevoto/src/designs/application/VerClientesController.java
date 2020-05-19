@@ -77,7 +77,7 @@ public class VerClientesController implements Initializable {
     private ObservableList<Cliente> clientes;
 
     @FXML
-    void agregarPersona(ActionEvent event) {
+    void agregarCliente(ActionEvent event) {
     	try {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("AgregarCliente.fxml"));
 			AnchorPane root = (AnchorPane) loader.load();

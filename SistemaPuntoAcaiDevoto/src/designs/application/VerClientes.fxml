@@ -23,7 +23,7 @@
             <TableColumn fx:id="colIngresos" prefWidth="178.0" text="Ingresos Generados" />
         </columns>
       </TableView>
-      <Button fx:id="btnAgregarPersona" layoutX="32.0" layoutY="555.0" mnemonicParsing="false" onAction="#agregarPersona" prefHeight="40.0" prefWidth="325.0" style="-fx-background-color: #481862; -fx-background-radius: 20;" text="AGREGAR NUEVO CLIENTE" textFill="WHITE">
+      <Button fx:id="btnAgregarPersona" layoutX="32.0" layoutY="555.0" mnemonicParsing="false" onAction="#agregarCliente" prefHeight="40.0" prefWidth="325.0" style="-fx-background-color: #481862; -fx-background-radius: 20;" text="AGREGAR NUEVO CLIENTE" textFill="WHITE">
          <font>
             <Font size="24.0" />
          </font></Button>

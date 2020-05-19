@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="650.0" prefWidth="1300.0" style="-fx-background-color: #7424A9;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.AgregarCliente">
+<AnchorPane prefHeight="650.0" prefWidth="1300.0" style="-fx-background-color: #7424A9;" stylesheets="@../Styles/Style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.AgregarCliente">
    <children>
       <Label layoutX="87.0" layoutY="117.0" prefHeight="40.0" prefWidth="150.0" text="Nombre" textFill="WHITE">
          <font>
@@ -93,7 +93,7 @@
       <TextField fx:id="txtNumero" layoutX="1157.0" layoutY="117.0" prefHeight="40.0" prefWidth="108.0" style="-fx-border-radius: 20; -fx-background-color: #7424A9; -fx-border-color: #481862; -fx-text-fill: #FFFFFF;" />
       <TextField fx:id="txtBarrio" layoutX="752.0" layoutY="189.0" prefHeight="40.0" prefWidth="250.0" style="-fx-border-radius: 20; -fx-background-color: #7424A9; -fx-border-color: #481862; -fx-text-fill: #FFFFFF;" />
       <TextField fx:id="txtCodigoPostal" layoutX="1157.0" layoutY="189.0" prefHeight="40.0" prefWidth="108.0" style="-fx-border-radius: 20; -fx-background-color: #7424A9; -fx-border-color: #481862; -fx-text-fill: #FFFFFF;" />
-      <Button fx:id="btnGuardarCliente" layoutX="530.0" layoutY="548.0" mnemonicParsing="false" onAction="#onGuardarClienteClick" prefHeight="63.0" prefWidth="240.0" style="-fx-background-color: #481862; -fx-background-radius: 20;" text="GUARDAR CLIENTE" textFill="WHITE">
+      <Button fx:id="btnGuardarCliente" layoutX="530.0" layoutY="548.0" mnemonicParsing="false" onAction="#onGuardarClienteClick" prefHeight="63.0" prefWidth="240.0" stylesheets="@../Styles/Style.css" text="GUARDAR CLIENTE" textFill="WHITE">
          <font>
             <Font size="24.0" />
          </font>

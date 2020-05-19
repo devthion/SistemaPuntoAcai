@@ -1,0 +1,32 @@
+.Button {
+	-fx-font-weight: bold;
+	-fx-background-color: #42A5F5;
+	-fx-background-radius: 22;
+	-fx-font-size: 16;
+	-fx-text-fill: white;
+	
+}
+
+.Button:hover{
+	-fx-font-weight: bold;
+	-fx-background-color: #FFFFFF;
+	-fx-background-radius: 22;
+	-fx-font-size: 16;
+	-fx-text-fill: #42A5F5;
+	-fx-border-color : #42A5F5;
+	-fx-border-radius:22;
+	-fx-border-width: 3;
+		
+}
+
+.Button:preced {
+	-fx-font-weight: bold;
+	-fx-background-color: #FFFFFF;
+	-fx-background-radius: 22;
+	-fx-font-size: 16;
+	-fx-text-fill: #42A5F5;
+	-fx-border-color : #42A5F5;
+	-fx-border-radius:22;
+	-fx-border-width: 3;
+	-fx-rotate: 10;	
+}
