@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="650.0" prefWidth="1300.0" style="-fx-background-color: #7424A9;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.VerClientesController">
+<AnchorPane prefHeight="650.0" prefWidth="1300.0" style="-fx-background-color: #7424A9;" stylesheets="@../Styles/Style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.VerClientesController">
    <children>
       <TableView fx:id="tblClientes" layoutX="32.0" layoutY="124.0" prefHeight="402.0" prefWidth="1236.0" style="-fx-background-color: #7424A9; -fx-border-color: #481862;">
         <columns>
@@ -33,7 +33,7 @@
             <Font size="24.0" />
          </font>
       </Button>
-      <Button fx:id="btnEliminarCliente" layoutX="928.0" layoutY="555.0" mnemonicParsing="false" onAction="#eliminarCliente" prefHeight="51.0" prefWidth="340.0" style="-fx-background-color: #481862; -fx-background-radius: 20;" text="ELIMINAR CLIENTE" textFill="WHITE">
+      <Button fx:id="btnEliminarCliente" layoutX="928.0" layoutY="555.0" mnemonicParsing="false" onAction="#eliminarCliente" prefHeight="51.0" prefWidth="340.0" text="ELIMINAR CLIENTE" textFill="WHITE">
          <font>
             <Font size="24.0" />
          </font>

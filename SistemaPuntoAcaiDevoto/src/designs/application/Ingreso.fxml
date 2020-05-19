@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="650.0" prefWidth="1300.0" style="-fx-background-color: #7424A9;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.IngresoController">
+<AnchorPane prefHeight="650.0" prefWidth="1300.0" style="-fx-background-color: #7424A9;" stylesheets="@../Styles/Style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.IngresoController">
    <children>
       <Button fx:id="btnIngresar" layoutX="533.0" layoutY="508.0" mnemonicParsing="false" onAction="#onIngresarClick" prefHeight="52.0" prefWidth="238.0" style="-fx-background-color: #481862; -fx-background-radius: 20;" text="INGRESAR" textFill="WHITE">
          <font>
