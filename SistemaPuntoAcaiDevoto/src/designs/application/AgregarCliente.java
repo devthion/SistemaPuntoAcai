@@ -55,6 +55,7 @@ public class AgregarCliente {
     private Cliente nuevoCliente;
     private ObservableList<Cliente> clientes;
 
+    
 
     @FXML
     void onGuardarClienteClick(ActionEvent event) {	
