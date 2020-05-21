@@ -1,8 +1,10 @@
 package application;
 
 import Alertas.Alerta;
+import ConexionBD.ObtenerDatos;
 import ModelosClientes.Cliente;
 import ModelosClientes.Direccion;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -57,34 +59,43 @@ public class AgregarCliente {
     
     private Cliente nuevoCliente;
     private ObservableList<Cliente> clientes;
+    
+    
+    public boolean existeElUsuarioEnLaBd() {
+    	ObtenerDatos obtenerDatos = new ObtenerDatos();
+		clientes = FXCollections.observableArrayList();
+		clientes = obtenerDatos.obtenerClientes();
+    	return clientes.stream().anyMatch(unCliente -> unCliente.tieneElMismoDni(Integer.parseInt(txtDni.getText())));
+    }
 
     @FXML
-    void onGuardarClienteClick(ActionEvent event) {	
-    	Cliente cliente = generarCliente();
-	
-    	//if(!clientes.contains(cliente)) {
+    void onGuardarClienteClick(ActionEvent event) {
+    	if(!existeElUsuarioEnLaBd()) {
+    		Cliente cliente = generarCliente();
     		this.nuevoCliente = cliente;
     		cliente.almacenarCliente();
     		Alerta.informationAlert("Se ha añadido correctamente", "Informacion");
 			Stage stage = (Stage) btnGuardarCliente.getScene().getWindow();
 	    	stage.close();
-    	//}else {
-    		//Alerta.errorAlert("El cliente ingresado ya existe en la base de datos", "Cliente Repetido");
-    	//}
+    	}else {
+    		Alerta.errorAlert("El cliente ingresado ya existe en la base de datos", "Cliente Repetido");
+    	}
     	
     }
     
     @FXML
     void editarCliente(ActionEvent event) {
     	Cliente cliente = generarCliente();
-    	nuevoCliente.modificarCliente(cliente);
-    	Alerta.informationAlert("Se ha editado el cliente", "Informacion");
-	
-    	Stage stage = (Stage) btnGuardarCliente.getScene().getWindow();
-    	stage.close();
-    	
-
+    	if(!existeElUsuarioEnLaBd()||(cliente.getDni()==nuevoCliente.getDni())) {
+        	nuevoCliente.modificarCliente(cliente);
+        	Alerta.informationAlert("Se ha editado el cliente", "Informacion");
+        	Stage stage = (Stage) btnGuardarCliente.getScene().getWindow();
+        	stage.close();
+    	}else {
+    		Alerta.errorAlert("Asigno un dni que ya existe en la base de datos", "Error en la modificacion");
+    	}
     }
+    
     
     public void initEditar(Cliente clienteEditable) {
     	

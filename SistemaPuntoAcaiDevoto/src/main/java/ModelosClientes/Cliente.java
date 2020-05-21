@@ -118,4 +118,9 @@ public class Cliente {
 	public void setIngresos(double ingresos) {
 		this.ingresos = ingresos;
 	}
+
+	public boolean tieneElMismoDni(int unDni) {
+		// TODO Auto-generated method stub
+		return this.getDni()==unDni;
+	}
 }
