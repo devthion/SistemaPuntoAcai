@@ -116,6 +116,8 @@ public class VerClientesController implements Initializable {
 			stage.initModality(Modality.APPLICATION_MODAL);
 			stage.setTitle("Editar Cliente");
 			stage.showAndWait();
+			
+			
 			this.tblClientes.refresh();
 			
 		} catch(Exception e) {

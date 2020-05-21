@@ -62,15 +62,15 @@ public class AgregarCliente {
     void onGuardarClienteClick(ActionEvent event) {	
     	Cliente cliente = generarCliente();
 	
-    	//if(!clientes.contains(cliente)) {
+    	if((cliente!=null) && !clientes.contains(cliente)) {
     		this.nuevoCliente = cliente;
     		cliente.almacenarCliente();
     		Alerta.informationAlert("Se ha añadido correctamente", "Informacion");
 			Stage stage = (Stage) btnGuardarCliente.getScene().getWindow();
 	    	stage.close();
-    	//}else {
-    		//Alerta.errorAlert("El cliente ingresado ya existe en la base de datos", "Cliente Repetido");
-    	//}
+    	}else {
+    		Alerta.errorAlert("El cliente ingresado ya existe en la base de datos", "Cliente Repetido");
+    	}
     	
     }
     
@@ -80,7 +80,7 @@ public class AgregarCliente {
     	nuevoCliente.modificarCliente(cliente);
     	Alerta.informationAlert("Se ha editado el cliente", "Informacion");
 	
-    	Stage stage = (Stage) btnGuardarCliente.getScene().getWindow();
+    	Stage stage = (Stage) btnEditarCliente.getScene().getWindow();
     	stage.close();
     	
 
