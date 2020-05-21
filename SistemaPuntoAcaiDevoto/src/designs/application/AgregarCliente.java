@@ -39,6 +39,9 @@ public class AgregarCliente {
 
     @FXML
     private Button btnGuardarCliente;
+    
+    @FXML
+    private Button btnEditarCliente;
 
     @FXML
     private TextField txtNumero;
@@ -55,30 +58,61 @@ public class AgregarCliente {
     private Cliente nuevoCliente;
     private ObservableList<Cliente> clientes;
 
-    
-
     @FXML
     void onGuardarClienteClick(ActionEvent event) {	
     	Cliente cliente = generarCliente();
 	
-    	if(!clientes.contains(cliente)) {
+    	//if(!clientes.contains(cliente)) {
     		this.nuevoCliente = cliente;
     		cliente.almacenarCliente();
     		Alerta.informationAlert("Se ha añadido correctamente", "Informacion");
 			Stage stage = (Stage) btnGuardarCliente.getScene().getWindow();
 	    	stage.close();
-    	}else {
-    		Alerta.errorAlert("El cliente ingresado ya existe en la base de datos", "Cliente Repetido");
-    	}
+    	//}else {
+    		//Alerta.errorAlert("El cliente ingresado ya existe en la base de datos", "Cliente Repetido");
+    	//}
     	
     }
     
-    public void initAtributos(ObservableList<Cliente> clientes) {
-    	this.clientes = clientes;
+    @FXML
+    void editarCliente(ActionEvent event) {
+    	Cliente cliente = generarCliente();
+    	nuevoCliente.modificarCliente(cliente);
+    	Alerta.informationAlert("Se ha editado el cliente", "Informacion");
+	
+    	Stage stage = (Stage) btnGuardarCliente.getScene().getWindow();
+    	stage.close();
+    	
+
+    }
+    
+    public void initEditar(Cliente clienteEditable) {
+    	
+    	btnGuardarCliente.setVisible(false);
+    	
+    	this.txtNombre.setText(clienteEditable.getNombre());
+    	this.txtApellido.setText(clienteEditable.getApellido());
+    	this.txtDni.setText((""+clienteEditable.getDni()));
+    	this.txtNumero.setText(""+clienteEditable.getNumero());
+    	this.txtCalle.setText(clienteEditable.getCalle());
+    	this.txtBarrio.setText(clienteEditable.getBarrio());
+    	this.txtCodigoPostal.setText(""+clienteEditable.getCodPostal());
+    	this.txtEmail.setText(clienteEditable.getEmail());
+    	this.txtTelefono.setText(""+clienteEditable.getTelefono());
+    	this.slipTipoCliente.setText(clienteEditable.getTipo());
+    	this.slipComoLlego.setText(clienteEditable.getComoLlego());
+    	
+    	nuevoCliente = clienteEditable;
+    	
+    	
+    }
+    
+    public void initAgregar() {
+    	btnEditarCliente.setVisible(false);
     }
     
     public Cliente generarCliente() {
-    	String nombre = this.txtNombre.getText();
+    	String nombre = this.txtNombre.getText().toString();
     	String apellido = this.txtApellido.getText();
     	int dni = Integer.parseInt(txtDni.getText());
     	int numero = Integer.parseInt(txtNumero.getText());

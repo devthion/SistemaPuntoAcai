@@ -14,7 +14,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -83,7 +82,7 @@ public class VerClientesController implements Initializable {
 			AnchorPane root = (AnchorPane) loader.load();
 			
 			AgregarCliente controller = loader.getController();
-			controller.initAtributos(clientes);
+			controller.initAgregar();
 			
 			Scene scene = new Scene(root,1300,650);
 			Stage stage = new Stage();
@@ -104,10 +103,24 @@ public class VerClientesController implements Initializable {
     void editarCliente(ActionEvent event) {
     	Cliente cliente = this.tblClientes.getSelectionModel().getSelectedItem();
     	
-    	Direccion nuevaDire = new Direccion("unacalle", 1234, "unBarrio", 1416);
-    	Cliente nuevoCliente = new Cliente(41614980, "Diego", "v", 12345, "mail@gmail.com", nuevaDire, "mayorista", "wpp", cliente.getIngresos());
-    	cliente.modificarCliente(nuevoCliente);
-    	System.out.println("se edito un cliente");
+    	try {
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("AgregarCliente.fxml"));
+			AnchorPane root = (AnchorPane) loader.load();
+			
+			AgregarCliente controller = loader.getController();
+			controller.initEditar(cliente);
+			
+			Scene scene = new Scene(root,1300,650);
+			Stage stage = new Stage();
+			stage.setScene(scene);
+			stage.initModality(Modality.APPLICATION_MODAL);
+			stage.setTitle("Editar Cliente");
+			stage.showAndWait();
+			this.tblClientes.refresh();
+			
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
     	
     }
 
