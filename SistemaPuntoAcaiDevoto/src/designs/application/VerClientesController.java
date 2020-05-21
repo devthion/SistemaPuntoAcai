@@ -44,7 +44,7 @@ public class VerClientesController implements Initializable {
     private TableColumn<?, ?> ColTipoCliente;
 
     @FXML
-    private TableColumn<?, ?> colNombre;
+    private TableColumn<Cliente, String> colNombre;
 
     @FXML
     private TableView<Cliente> tblClientes;
@@ -117,7 +117,11 @@ public class VerClientesController implements Initializable {
 			stage.setTitle("Editar Cliente");
 			stage.showAndWait();
 			
+			ObtenerDatos obtenerDatos = new ObtenerDatos();
+			clientes = FXCollections.observableArrayList();
+			clientes = obtenerDatos.obtenerClientes();
 			
+			this.tblClientes.setItems(clientes);
 			this.tblClientes.refresh();
 			
 		} catch(Exception e) {
@@ -146,7 +150,7 @@ public class VerClientesController implements Initializable {
 		
 		this.tblClientes.setItems(clientes);
 		
-		this.colNombre.setCellValueFactory(new PropertyValueFactory("nombre"));
+		this.colNombre.setCellValueFactory(new PropertyValueFactory<Cliente, String>("nombre"));
 		this.colApellido.setCellValueFactory(new PropertyValueFactory("apellido"));
 		this.colDni.setCellValueFactory(new PropertyValueFactory("dni"));
 		this.colTelefono.setCellValueFactory(new PropertyValueFactory("telefono"));
