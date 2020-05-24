@@ -145,6 +145,8 @@ public class VerClientesController implements Initializable {
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
+    	Stage stage = (Stage) btnVolver.getScene().getWindow();
+    	stage.close();
     }
 
 	@Override
