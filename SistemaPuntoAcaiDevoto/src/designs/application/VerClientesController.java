@@ -167,6 +167,7 @@ public class VerClientesController implements Initializable {
 		this.colBarrio.setCellValueFactory(new PropertyValueFactory("barrio"));
 		this.colCodPostal.setCellValueFactory(new PropertyValueFactory("codPostal"));
 		this.ColTipoCliente.setCellValueFactory(new PropertyValueFactory("tipo"));
+		this.colIngresos.setCellValueFactory(new PropertyValueFactory("ingresos"));
 		
 		
 	}

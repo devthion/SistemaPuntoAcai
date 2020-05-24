@@ -39,7 +39,6 @@ public class MenuPrincipalControler {
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
-    	
     	Stage stage = (Stage) btnVerProductos.getScene().getWindow();
     	stage.close();
     }
