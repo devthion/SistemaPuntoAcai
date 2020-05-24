@@ -26,7 +26,22 @@ public class MenuPrincipalControler {
     
     @FXML
     void onVerProductosClick(ActionEvent event) {
-
+    	try {
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(getClass().getResource("VerProductos.fxml"));
+			AnchorPane root = (AnchorPane) loader.load();
+			Scene scene = new Scene(root,1300,650);
+			Stage stage = new Stage();
+			stage.setScene(scene);
+			stage.initModality(Modality.APPLICATION_MODAL);
+			stage.setTitle("Producto");
+			stage.show();
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+    	
+    	Stage stage = (Stage) btnVerProductos.getScene().getWindow();
+    	stage.close();
     }
     
     public void verStageClientes() {
