@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="650.0" prefWidth="1300.0" style="-fx-background-color: #7424A9;" stylesheets="@../Styles/Style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.AgregarCliente">
+<AnchorPane prefHeight="650.0" prefWidth="1300.0" style="-fx-background-color: #FFFFFF;" stylesheets="@../Styles/Style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.AgregarCliente">
    <children>
       <Label layoutX="87.0" layoutY="117.0" prefHeight="40.0" prefWidth="150.0" text="Nombre" textFill="WHITE">
          <font>
@@ -64,7 +64,7 @@
             <Font size="24.0" />
          </font>
       </Label>
-      <SplitMenuButton fx:id="slipComoLlego" layoutX="752.0" layoutY="271.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="250.0" style="-fx-background-color: #7424A9; -fx-border-radius: 20; -fx-border-color: #481862;" textFill="#481862">
+      <SplitMenuButton fx:id="slipComoLlego" layoutX="752.0" layoutY="261.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="250.0" style="-fx-background-color: #7424A9; -fx-border-radius: 20; -fx-border-color: #481862;" textFill="#481862">
          <items>
             <MenuItem mnemonicParsing="false" onAction="#onInstagram" text="Instagram" />
             <MenuItem mnemonicParsing="false" onAction="#onUnConocido" text="Un Conocido" />
@@ -72,7 +72,7 @@
             <MenuItem mnemonicParsing="false" onAction="#onOtro" text="Otro" />
          </items>
       </SplitMenuButton>
-      <SplitMenuButton fx:id="slipTipoCliente" layoutX="752.0" layoutY="342.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="250.0" style="-fx-background-color: #7424A9; -fx-border-radius: 20; -fx-border-color: #481862;" textFill="#481862">
+      <SplitMenuButton fx:id="slipTipoCliente" layoutX="752.0" layoutY="331.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="250.0" style="-fx-background-color: #7424A9; -fx-border-radius: 20; -fx-border-color: #481862;" textFill="#481862">
         <items>
           <MenuItem mnemonicParsing="false" onAction="#onConsumidorFinal" text="Consumidor Final" />
           <MenuItem mnemonicParsing="false" onAction="#onMayorista" text="Mayorista" />
@@ -83,22 +83,22 @@
             <Font size="24.0" />
          </font>
       </Label>
-      <Separator layoutX="150.0" layoutY="53.0" opacity="0.32" prefWidth="1000.0" />
-      <TextField fx:id="txtNombre" layoutX="237.0" layoutY="117.0" prefHeight="40.0" prefWidth="250.0" style="-fx-border-radius: 20; -fx-background-color: #7424A9; -fx-border-color: #481862; -fx-text-fill: #FFFFFF;" />
-      <TextField fx:id="txtApellido" layoutX="237.0" layoutY="189.0" prefHeight="40.0" prefWidth="250.0" style="-fx-border-radius: 20; -fx-background-color: #7424A9; -fx-border-color: #481862; -fx-text-fill: #FFFFFF;" />
-      <TextField fx:id="txtDni" layoutX="237.0" layoutY="264.0" prefHeight="40.0" prefWidth="250.0" style="-fx-border-radius: 20; -fx-background-color: #7424A9; -fx-border-color: #481862; -fx-text-fill: #FFFFFF;" />
-      <TextField fx:id="txtTelefono" layoutX="237.0" layoutY="336.0" prefHeight="40.0" prefWidth="250.0" style="-fx-border-radius: 20; -fx-background-color: #7424A9; -fx-border-color: #481862; -fx-text-fill: #FFFFFF;" />
-      <TextField fx:id="txtEmail" layoutX="237.0" layoutY="404.0" prefHeight="40.0" prefWidth="250.0" style="-fx-border-radius: 20; -fx-background-color: #7424A9; -fx-border-color: #481862; -fx-text-fill: #FFFFFF;" />
-      <TextField fx:id="txtCalle" layoutX="752.0" layoutY="117.0" prefHeight="40.0" prefWidth="250.0" style="-fx-border-radius: 20; -fx-background-color: #7424A9; -fx-border-color: #481862; -fx-text-fill: #FFFFFF;" />
-      <TextField fx:id="txtNumero" layoutX="1157.0" layoutY="117.0" prefHeight="40.0" prefWidth="108.0" style="-fx-border-radius: 20; -fx-background-color: #7424A9; -fx-border-color: #481862; -fx-text-fill: #FFFFFF;" />
-      <TextField fx:id="txtBarrio" layoutX="752.0" layoutY="189.0" prefHeight="40.0" prefWidth="250.0" style="-fx-border-radius: 20; -fx-background-color: #7424A9; -fx-border-color: #481862; -fx-text-fill: #FFFFFF;" />
-      <TextField fx:id="txtCodigoPostal" layoutX="1157.0" layoutY="189.0" prefHeight="40.0" prefWidth="108.0" style="-fx-border-radius: 20; -fx-background-color: #7424A9; -fx-border-color: #481862; -fx-text-fill: #FFFFFF;" />
+      <Separator layoutX="150.0" layoutY="53.0" prefWidth="1000.0" />
+      <TextField fx:id="txtNombre" layoutX="237.0" layoutY="117.0" prefHeight="40.0" prefWidth="250.0" />
+      <TextField fx:id="txtApellido" layoutX="237.0" layoutY="189.0" prefHeight="40.0" prefWidth="250.0" />
+      <TextField fx:id="txtDni" layoutX="237.0" layoutY="264.0" prefHeight="40.0" prefWidth="250.0" />
+      <TextField fx:id="txtTelefono" layoutX="237.0" layoutY="336.0" prefHeight="40.0" prefWidth="250.0" />
+      <TextField fx:id="txtEmail" layoutX="237.0" layoutY="404.0" prefHeight="40.0" prefWidth="250.0" />
+      <TextField fx:id="txtCalle" layoutX="752.0" layoutY="117.0" prefHeight="40.0" prefWidth="250.0" />
+      <TextField fx:id="txtNumero" layoutX="1157.0" layoutY="117.0" prefHeight="40.0" prefWidth="108.0" />
+      <TextField fx:id="txtBarrio" layoutX="752.0" layoutY="189.0" prefHeight="40.0" prefWidth="250.0" />
+      <TextField fx:id="txtCodigoPostal" layoutX="1157.0" layoutY="189.0" prefHeight="40.0" prefWidth="108.0" />
       <Button fx:id="btnGuardarCliente" layoutX="515.0" layoutY="548.0" mnemonicParsing="false" onAction="#onGuardarClienteClick" prefHeight="63.0" prefWidth="271.0" stylesheets="@../Styles/Style.css" text="REGISTRAR" textFill="WHITE">
          <font>
             <Font size="24.0" />
          </font>
       </Button>
-      <Separator layoutX="130.0" layoutY="512.0" opacity="0.32" prefWidth="1000.0" />
+      <Separator layoutX="130.0" layoutY="512.0" prefWidth="1000.0" />
       <Button fx:id="btnEditarCliente" layoutX="515.0" layoutY="548.0" mnemonicParsing="false" onAction="#editarCliente" prefHeight="63.0" prefWidth="271.0" stylesheets="@../Styles/Style.css" text="EDITAR CLIENTE" textFill="WHITE">
          <font>
             <Font size="24.0" />

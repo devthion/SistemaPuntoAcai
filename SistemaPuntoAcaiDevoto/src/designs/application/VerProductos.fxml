@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane prefHeight="650.0" prefWidth="1300.0" stylesheets="@../Styles/Style.css" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="application.VerProductosController">
+   <children>
+      <TableView layoutX="47.0" layoutY="155.0" prefHeight="341.0" prefWidth="525.0">
+        <columns>
+          <TableColumn prefWidth="75.0" text="C1" />
+          <TableColumn prefWidth="75.0" text="C2" />
+        </columns>
+      </TableView>
+      <Button fx:id="btnAgregarNuevoProducto" layoutX="130.0" layoutY="554.0" mnemonicParsing="false" onAction="#onAgregarNuevoProductoClick" text="AGREGAR NUEVO PRODUCTO" />
+      <Button fx:id="btnActualizarStock" layoutX="657.0" layoutY="554.0" mnemonicParsing="false" onAction="#onActualizarStockClick" text="ACTUALIZAR STOCK" />
+   </children>
+</AnchorPane>

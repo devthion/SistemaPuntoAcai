@@ -1,19 +1,52 @@
+.background {
+    -fx-background-color: #1d1d1d;
+}
+
+.root {
+    -fx-background-color: #FFFFFF;
+}
+
+
+.label {
+    -fx-font-size: 20px;
+    -fx-text-fill: #481862;
+}
+
+.label-header {
+    -fx-font-size: 32pt;
+    -fx-text-fill: white;
+    -fx-opacity: 1;
+}
+
+.text-field{
+   -fx-font-size: 18;
+   -fx-padding: 1,1,1,1;
+   -fx-border-color:  #481862;
+   -fx-border-width: 2;
+   -fx-border-radius: 20;
+   -fx-background-color: transparent;
+   -fx-text-fill:  #481862;
+}
+
 .button {
     -fx-padding: 5 22 5 22;   
-    -fx-border-color: #FFFFFF;
+    -fx-border-color: #481862;
     -fx-border-width: 2;
     -fx-border-radius: 20;
     -fx-background-radius: 20;
-    -fx-background-color: #481862;
-    -fx-text-fill: #FFFFFF;
+    -fx-background-color: #FFFFFF;
+    -fx-text-fill: #481862;
     -fx-background-insets: 0 0 0 0, 0, 1, 2;
+    -fx-font-size: 18pt;
 }
 
 .button:hover {
-    -fx-background-color: #7424A9;
+    -fx-background-color: #481862;
+    -fx-text-fill: #FFFFFF;
 }
 
-.button:pressed, .button:default:hover:pressed {
-  -fx-background-color: #FFFFFF;
-  -fx-text-fill: #FFFFFF;
+
+.separator{
+    -fx-background-color: #481862;
+    -fx-background-radius: 2;
 }

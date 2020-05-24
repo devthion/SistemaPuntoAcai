@@ -13,12 +13,20 @@ public class MenuPrincipalControler {
 
     @FXML
     private Button btnVerClientes;
+    
+    @FXML
+    private Button btnVerProductos;
 
     @FXML
     void verClientes(ActionEvent event) {
     	verStageClientes();
     	Stage stage = (Stage) btnVerClientes.getScene().getWindow();
     	stage.close();
+    }
+    
+    @FXML
+    void onVerProductosClick(ActionEvent event) {
+
     }
     
     public void verStageClientes() {

@@ -6,19 +6,19 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="650.0" prefWidth="1300.0" style="-fx-background-color: #7424A9;" stylesheets="@../Styles/Style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.IngresoController">
+<AnchorPane prefHeight="650.0" prefWidth="1300.0" stylesheets="@../Styles/Style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.IngresoController">
    <children>
-      <Button fx:id="btnIngresar" layoutX="533.0" layoutY="508.0" mnemonicParsing="false" onAction="#onIngresarClick" prefHeight="52.0" prefWidth="238.0" style="-fx-background-color: #481862; -fx-background-radius: 20;" text="INGRESAR" textFill="WHITE">
+      <Button fx:id="btnIngresar" layoutX="533.0" layoutY="508.0" mnemonicParsing="false" onAction="#onIngresarClick" prefHeight="52.0" prefWidth="238.0" text="INGRESAR" textFill="WHITE">
          <font>
             <Font size="24.0" />
          </font></Button>
-      <TextField fx:id="etNombreUsuario" layoutX="527.0" layoutY="206.0" prefHeight="40.0" prefWidth="250.0" style="-fx-background-color: #7424A9; -fx-border-radius: 20; -fx-border-color: #481862; -fx-text-fill: #FFFFFF;" />
-      <TextField fx:id="etClave" layoutX="527.0" layoutY="313.0" prefHeight="40.0" prefWidth="250.0" style="-fx-background-color: #7424A9; -fx-border-color: #481862; -fx-border-radius: 20; -fx-text-fill: #FFFFFF;" />
-      <Label fx:id="txtNombreUsuario" layoutX="544.0" layoutY="153.0" prefHeight="35.0" prefWidth="214.0" text="Nombre de Usuario" textFill="WHITE">
+      <TextField fx:id="etNombreUsuario" layoutX="527.0" layoutY="206.0" prefHeight="40.0" prefWidth="250.0" />
+      <TextField fx:id="etClave" layoutX="527.0" layoutY="313.0" prefHeight="40.0" prefWidth="250.0" />
+      <Label fx:id="txtNombreUsuario" layoutX="564.0" layoutY="153.0" prefHeight="35.0" prefWidth="178.0" text="Nombre de Usuario" textFill="WHITE">
          <font>
             <Font size="24.0" />
          </font></Label>
-      <Label fx:id="txtClave" layoutX="592.0" layoutY="269.0" prefHeight="35.0" prefWidth="121.0" text="Contraseña" textFill="WHITE">
+      <Label fx:id="txtClave" layoutX="601.0" layoutY="269.0" prefHeight="35.0" prefWidth="104.0" text="Contraseña" textFill="WHITE">
          <font>
             <Font size="24.0" />
          </font></Label>

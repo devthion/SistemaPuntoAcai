@@ -65,7 +65,7 @@ public class VerClientesController implements Initializable {
     private Button btnEditarCliente;
 
     @FXML
-    private Button btnEliminarCliente;
+    private Button btnVolver;
 
     @FXML
     private TableColumn<?, ?> colCalle;
@@ -131,15 +131,20 @@ public class VerClientesController implements Initializable {
     }
 
     @FXML
-    void eliminarCliente(ActionEvent event) {
-    	Cliente cliente = this.tblClientes.getSelectionModel().getSelectedItem();
-    	
-    	if(cliente==null) {
-    		Alerta.errorAlert("Debe seleccionar un Cliente", "Eliminar Cliente");
-    	}else {
-    		this.clientes.remove(cliente);
-    		Alerta.informationAlert("El Cliente se ha eliminado de la Base de Datos", "Eliminar Cliente");
-    	}
+    void onVolverClick(ActionEvent event) {
+    	try {
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(getClass().getResource("MenuPrincipal.fxml"));
+			AnchorPane root = (AnchorPane) loader.load();
+			Scene scene = new Scene(root,1300,650);
+			Stage stage = new Stage();
+			stage.setScene(scene);
+			stage.initModality(Modality.APPLICATION_MODAL);
+			stage.setTitle("Menu Principal");
+			stage.show();
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
     }
 
 	@Override
