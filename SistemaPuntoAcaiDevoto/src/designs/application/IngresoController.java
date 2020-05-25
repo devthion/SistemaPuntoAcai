@@ -16,7 +16,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
-public class IngresoController implements Initializable {
+public class IngresoController {
 	
     @FXML
     private TextField etClave;
@@ -42,12 +42,6 @@ public class IngresoController implements Initializable {
     	stage.close();
     	
     }
-
-	@Override
-	public void initialize(URL location, ResourceBundle resources) {
-		// TODO Auto-generated method stub
-		
-	}
 	
 	public void verMenuPrincipal() {
 		try {
@@ -65,6 +59,11 @@ public class IngresoController implements Initializable {
 			e.printStackTrace();
 		}
 	}
+	
+    @FXML
+    void onSalirClick(ActionEvent event) {
+    	System.exit(0);
+    }
 
 
 }
