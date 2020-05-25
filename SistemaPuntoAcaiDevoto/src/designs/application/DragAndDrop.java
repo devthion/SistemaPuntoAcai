@@ -2,8 +2,11 @@ package application;
 
 
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+
+import ImportarArchivos.ImportarExcel;
 import javafx.application.Application;
 import javafx.event.EventHandler;
 import javafx.scene.Group;
@@ -24,6 +27,10 @@ import javafx.scene.shape.RectangleBuilder;
 import javafx.stage.Stage;
 
 public class DragAndDrop extends Application {
+	
+	ImportarExcel importarExcel = new ImportarExcel();
+	
+	
    public static void main(String[] args) {
        Application.launch(args);
    }
@@ -55,7 +62,13 @@ public class DragAndDrop extends Application {
                    String filePath = null;
                    for (File file:db.getFiles()) {
                        filePath = file.getAbsolutePath();
-                       System.out.println(filePath);
+                       //System.out.println(filePath);
+                       try {
+						importarExcel.leerExcel(filePath);
+                       	}catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+						}
                    }
                }
                event.setDropCompleted(success);
