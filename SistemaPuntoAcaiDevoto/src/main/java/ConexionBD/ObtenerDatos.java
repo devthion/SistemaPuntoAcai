@@ -49,9 +49,13 @@ public class ObtenerDatos extends ConexionBd{
 		rs=ejecutarQuery(sql);
 		while(rs.next()) {
 			Producto unProducto = new Producto(rs.getString(2),rs.getDouble(3),rs.getInt(4),rs.getDouble(5),rs.getDouble(6),rs.getDouble(7), rs.getInt(8));
+			unProducto.setProd_id(rs.getInt(1));
 			productos.add(unProducto);
 		}
 		return productos;
 		
 	}
+	
+	
+	public obtener
 }

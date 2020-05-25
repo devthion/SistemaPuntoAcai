@@ -1,15 +1,8 @@
 package ConexionBD;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
-
 import ModelosClientes.Cliente;
-import ModelosClientes.Direccion;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
+
 
 public class ModificarDatos extends ConexionBd {
 	
@@ -33,6 +26,24 @@ public class ModificarDatos extends ConexionBd {
 					+ "clie_dni = '"+clienteEditado.getDni()+"'"
 							+ "WHERE clie_dni = '"+dniCliente+"'";
 			ejecutarUpdate(sql, "cliente editado");
+	}
+	
+	
+	public void actualizarStock(int prod_id, int cantidad) {
+		String sql ="UPDATE PRODUCTO SET"
+				+"prod_stock= '"+cantidad+"'"
+				+" WHERE prod_id= '"+prod_id+"'";
+		ejecutarUpdate(sql, "stock actualizado para: " +prod_id);
+	}
+	
+	
+	public void actualizarPrecios(double precioUnitario, double precioMayor, double costo, int prod_id) {
+		String sql="UPDATE PRODUCTO SET"
+				+"prod_precio= '"+precioUnitario+"',"
+				+"prod_precio_mayor='"+precioMayor+"',"
+				+"prod_costo= '"+costo+"'"
+				+" WHERE prod_id= '"+prod_id+"'";
+		ejecutarUpdate(sql, "Producto actualizado");
 	}
 
 }

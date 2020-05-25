@@ -3,6 +3,7 @@ package Productos;
 import java.sql.SQLException;
 
 import ConexionBD.InsertarDatos;
+import ConexionBD.ModificarDatos;
 
 public class Producto {
 	
@@ -14,6 +15,7 @@ public class Producto {
 	private double costo;
 	private int cantidadPorMayor;
 	private int cantidadVendidos;
+	private int prod_id;
 	
 	public Producto(String nombre, double kilos, int stock, double precioUnitario, double precioMayor, double costo, int cantidadPorMayor) {
 		this.nombre = nombre;
@@ -28,6 +30,21 @@ public class Producto {
 	public void almacenarProducto() throws SQLException {
 		InsertarDatos insertarDatos = new InsertarDatos();
 		insertarDatos.insertarProducto(this);
+	}
+	
+	public void actualizarStock(int unaCantidad) throws SQLException {
+		ModificarDatos modificarDatos = new ModificarDatos();
+		modificarDatos.actualizarStock(prod_id, stock+unaCantidad);
+	}
+	
+	
+	
+	public int getProd_id() {
+		return prod_id;
+	}
+
+	public void setProd_id(int prod_id) {
+		this.prod_id = prod_id;
 	}
 
 	public int getStock() {

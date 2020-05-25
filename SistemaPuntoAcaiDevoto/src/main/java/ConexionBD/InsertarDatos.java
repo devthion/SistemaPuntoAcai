@@ -1,9 +1,8 @@
 package ConexionBD;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
+
 import java.sql.SQLException;
-import java.sql.Statement;
+
 
 import ModelosClientes.Cliente;
 import Productos.Producto;
