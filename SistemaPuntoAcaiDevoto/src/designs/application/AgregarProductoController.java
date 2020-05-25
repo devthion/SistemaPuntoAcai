@@ -1,5 +1,7 @@
 package application;
 
+import ModelosClientes.Cliente;
+import ModelosClientes.Direccion;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -38,7 +40,7 @@ public class AgregarProductoController {
 
     @FXML
     void onAgregarProductoClick(ActionEvent event) {
-
+    	
     }
 
     @FXML
@@ -58,6 +60,19 @@ public class AgregarProductoController {
 		}
     	Stage stage = (Stage) btnVolver.getScene().getWindow();
     	stage.close();
+    }
+    
+    public void generarProducto() {
+    	
+    	String nombre = this.txtNombre.getText().toString();
+    	String kilos = this.txtKilos.getText();
+    	double costo = Integer.parseInt(txtCosto.getText());
+    	double precioUnitario = Integer.parseInt(txtPrecioUnitario.getText());
+    	double precioMayor = Integer.parseInt(this.txtPrecioMayor.getText());
+    	int cantidadMayor = Integer.parseInt(this.txtCantidadMayor.getText());
+    	
+    	//return new Producto()
+    	//return new Cliente(dni, nombre, apellido, telefono, email, direccion, tipo, comoLlego, 0);
     }
 
 }

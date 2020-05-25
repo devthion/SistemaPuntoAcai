@@ -103,30 +103,37 @@ public class VerClientesController implements Initializable {
     void editarCliente(ActionEvent event) {
     	Cliente cliente = this.tblClientes.getSelectionModel().getSelectedItem();
     	
-    	try {
-			FXMLLoader loader = new FXMLLoader(getClass().getResource("AgregarCliente.fxml"));
-			AnchorPane root = (AnchorPane) loader.load();
-			
-			AgregarCliente controller = loader.getController();
-			controller.initEditar(cliente);
-			
-			Scene scene = new Scene(root,1300,650);
-			Stage stage = new Stage();
-			stage.setScene(scene);
-			stage.initModality(Modality.APPLICATION_MODAL);
-			stage.setTitle("Editar Cliente");
-			stage.showAndWait();
-			
-			ObtenerDatos obtenerDatos = new ObtenerDatos();
-			clientes = FXCollections.observableArrayList();
-			clientes = obtenerDatos.obtenerClientes();
-			
-			this.tblClientes.setItems(clientes);
-			this.tblClientes.refresh();
-			
-		} catch(Exception e) {
-			e.printStackTrace();
-		}
+    	if(cliente==null) {
+    		Alerta.errorAlert("Debe seleccionar un cliente", "Editar Cliente");
+    	}else {
+    		try {
+    			FXMLLoader loader = new FXMLLoader(getClass().getResource("AgregarCliente.fxml"));
+    			AnchorPane root = (AnchorPane) loader.load();
+    			
+    			AgregarCliente controller = loader.getController();
+    			controller.initEditar(cliente);
+    			
+    			Scene scene = new Scene(root,1300,650);
+    			Stage stage = new Stage();
+    			stage.setScene(scene);
+    			stage.initModality(Modality.APPLICATION_MODAL);
+    			stage.setTitle("Editar Cliente");
+    			stage.showAndWait();
+    			
+    			ObtenerDatos obtenerDatos = new ObtenerDatos();
+    			clientes = FXCollections.observableArrayList();
+    			clientes = obtenerDatos.obtenerClientes();
+    			
+    			this.tblClientes.setItems(clientes);
+    			this.tblClientes.refresh();
+    			
+    		} catch(Exception e) {
+    			e.printStackTrace();
+    		}
+    	}
+    	
+    	
+    	
     	
     }
 

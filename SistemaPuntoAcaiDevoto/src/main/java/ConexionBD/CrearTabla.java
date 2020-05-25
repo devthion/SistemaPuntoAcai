@@ -8,6 +8,7 @@ public class CrearTabla {
 
 	public static void main(String[]args) {
 		crearTablaProductos();
+		crearTablaClientes();
 	}
 	
 	public static void crearTablaClientes() {
