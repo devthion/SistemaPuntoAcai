@@ -1,5 +1,7 @@
 package application;
 
+import java.sql.SQLException;
+
 import Alertas.Alerta;
 import ConexionBD.ObtenerDatos;
 import ModelosClientes.Cliente;
@@ -8,13 +10,11 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
+
 import javafx.scene.control.Button;
 import javafx.scene.control.SplitMenuButton;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.AnchorPane;
-import javafx.stage.Modality;
+
 import javafx.stage.Stage;
 
 public class AgregarCliente {
@@ -76,7 +76,7 @@ public class AgregarCliente {
     }
 
     @FXML
-    void onGuardarClienteClick(ActionEvent event) {
+    void onGuardarClienteClick(ActionEvent event) throws SQLException {
     	if(!existeElUsuarioEnLaBd()) {
     		Cliente cliente = generarCliente();
     		this.nuevoCliente = cliente;

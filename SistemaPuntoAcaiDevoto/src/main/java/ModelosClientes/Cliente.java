@@ -1,5 +1,7 @@
 package ModelosClientes;
 
+import java.sql.SQLException;
+
 import ConexionBD.InsertarDatos;
 import ConexionBD.ModificarDatos;
 
@@ -28,7 +30,7 @@ public class Cliente {
 		
 	}
 	
-	public void almacenarCliente() {
+	public void almacenarCliente() throws SQLException {
 		InsertarDatos insertarDatos = new InsertarDatos();
 		insertarDatos.insertarCliente(this);
 	}
