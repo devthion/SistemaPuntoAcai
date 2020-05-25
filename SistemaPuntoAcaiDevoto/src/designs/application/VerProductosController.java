@@ -42,8 +42,6 @@ public class VerProductosController implements Initializable {
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
-    	Stage stage = (Stage) btnAgregarNuevoProducto.getScene().getWindow();
-    	stage.close();
     }
 
     @FXML

@@ -20,6 +20,10 @@ public class Producto {
 		this.costo = costo;
 		this.cantidadPorMayor = cantidadPorMayor;
 	}
+	
+	public void almacenarProducto() {
+		//ALMACENA PRODUCTO EN LA BD
+	}
 
 	public int getStock() {
 		return stock;

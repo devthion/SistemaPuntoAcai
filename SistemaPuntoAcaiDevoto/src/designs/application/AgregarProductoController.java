@@ -1,7 +1,7 @@
 package application;
 
+import Alertas.Alerta;
 import ModelosClientes.Cliente;
-import ModelosClientes.Direccion;
 import Productos.Producto;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -38,10 +38,18 @@ public class AgregarProductoController {
 
     @FXML
     private TextField txtPrecioUnitario;
+    
+    private Producto nuevoProducto;
 
     @FXML
     void onAgregarProductoClick(ActionEvent event) {
     	Producto producto = generarProducto();
+    	
+    	this.nuevoProducto = producto;
+		producto.almacenarProducto();
+		Alerta.informationAlert("Se ha añadido correctamente", "Informacion");
+		Stage stage = (Stage) btnAgregarProducto.getScene().getWindow();
+    	stage.close();
     }
 
     @FXML
