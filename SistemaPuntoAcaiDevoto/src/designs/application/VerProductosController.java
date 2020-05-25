@@ -63,12 +63,18 @@ public class VerProductosController implements Initializable {
 			FXMLLoader loader = new FXMLLoader();
 			loader.setLocation(getClass().getResource("AgregarProducto.fxml"));
 			AnchorPane root = (AnchorPane) loader.load();
+			
+			AgregarProductoController controller = loader.getController();
+			
 			Scene scene = new Scene(root,1300,650);
 			Stage stage = new Stage();
 			stage.setScene(scene);
 			stage.initModality(Modality.APPLICATION_MODAL);
 			stage.setTitle("Nuevo Producto");
-			stage.show();
+			stage.showAndWait();
+			
+			this.productos.add(controller.getNuevoProducto());
+			this.tblProductos.refresh();
 		} catch(Exception e) {
 			e.printStackTrace();
 		}

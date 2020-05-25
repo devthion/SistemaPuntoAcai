@@ -43,7 +43,8 @@ public class AgregarProductoController {
     
     private Producto nuevoProducto;
 
-    @FXML
+
+	@FXML
     void onAgregarProductoClick(ActionEvent event) throws SQLException {
     	Producto producto = generarProducto();
     	
@@ -72,5 +73,9 @@ public class AgregarProductoController {
     	return new Producto(nombre, kilos, 0, precioUnitario, precioMayor, costo, cantidadMayor);
     
     }
+    
+    public Producto getNuevoProducto() {
+		return nuevoProducto;
+	}
 
 }
