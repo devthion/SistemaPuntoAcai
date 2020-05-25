@@ -7,6 +7,10 @@ import java.sql.Statement;
 public class CrearTabla {
 
 	public static void main(String[]args) {
+		crearTablaProductos();
+	}
+	
+	public static void crearTablaClientes() {
 		try 
 		{
 			Connection con = DriverManager.getConnection("jdbc:h2:"+"./Database/my", "root", "devthion");
@@ -26,7 +30,30 @@ public class CrearTabla {
 				+"clie_como_llego VARCHAR(40),"
 				+"PRIMARY KEY (clie_id))";
 			stmt.executeUpdate(sql);
-			System.out.println("Tabla creada");
+			System.out.println("Tabla CLIENTE creada");
+		}
+		catch(Exception e) {
+			System.err.println(e.getMessage());
+		}
+	}
+	
+	
+	public static void crearTablaProductos() {
+		try 
+		{
+			Connection con = DriverManager.getConnection("jdbc:h2:"+"./Database/my", "root", "devthion");
+			Statement stmt= con.createStatement();
+			String sql = "CREATE TABLE IF NOT EXISTS PRODUCTO" 
+				+ "(prod_id INTEGER auto_increment,"
+				+"prod_nombre VARCHAR(255),"
+				+"prod_kilos FLOAT(10),"
+				+"prod_stoc INTEGER(10),"
+				+"prod_precio FLOAT(10),"
+				+"prod_precio_mayor FLOAT(10),"
+				+"prod_costo FLOAT(10),"
+				+"PRIMARY KEY (prod_id))";
+			stmt.executeUpdate(sql);
+			System.out.println("Tabla PRODUCTO creada");
 		}
 		catch(Exception e) {
 			System.err.println(e.getMessage());

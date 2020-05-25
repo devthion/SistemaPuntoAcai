@@ -1,5 +1,7 @@
 package application;
 
+import java.sql.SQLException;
+
 import Alertas.Alerta;
 import ConexionBD.ObtenerDatos;
 import ModelosClientes.Cliente;
@@ -69,7 +71,7 @@ public class AgregarCliente {
     }
 
     @FXML
-    void onGuardarClienteClick(ActionEvent event) {
+    void onGuardarClienteClick(ActionEvent event) throws SQLException {
     	if(!existeElUsuarioEnLaBd()) {
     		Cliente cliente = generarCliente();
     		this.nuevoCliente = cliente;
