@@ -1,5 +1,7 @@
 package application;
 
+import java.sql.SQLException;
+
 import Alertas.Alerta;
 import ModelosClientes.Cliente;
 import Productos.Producto;
@@ -42,7 +44,7 @@ public class AgregarProductoController {
     private Producto nuevoProducto;
 
     @FXML
-    void onAgregarProductoClick(ActionEvent event) {
+    void onAgregarProductoClick(ActionEvent event) throws SQLException {
     	Producto producto = generarProducto();
     	
     	this.nuevoProducto = producto;
