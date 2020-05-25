@@ -68,7 +68,7 @@ public class AgregarCliente {
     private ObservableList<Cliente> clientes;
     
     
-    public boolean existeElUsuarioEnLaBd() {
+    public boolean existeElUsuarioEnLaBd() throws SQLException {
     	ObtenerDatos obtenerDatos = new ObtenerDatos();
 		clientes = FXCollections.observableArrayList();
 		clientes = obtenerDatos.obtenerClientes();
@@ -91,7 +91,7 @@ public class AgregarCliente {
     }
     
     @FXML
-    void editarCliente(ActionEvent event) {
+    void editarCliente(ActionEvent event) throws SQLException {
     	Cliente cliente = generarCliente();
     	if(!existeElUsuarioEnLaBd()||(cliente.getDni()==nuevoCliente.getDni())) {
         	nuevoCliente.modificarCliente(cliente);

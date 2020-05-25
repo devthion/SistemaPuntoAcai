@@ -1,6 +1,7 @@
 package application;
 
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 import Alertas.Alerta;
@@ -158,9 +159,16 @@ public class VerClientesController implements Initializable {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		ObtenerDatos obtenerDatos = new ObtenerDatos();
-		clientes = FXCollections.observableArrayList();
-		clientes = obtenerDatos.obtenerClientes();
+		ObtenerDatos obtenerDatos;
+		try {
+			obtenerDatos = new ObtenerDatos();
+			clientes = FXCollections.observableArrayList();
+			clientes = obtenerDatos.obtenerClientes();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		
 		this.tblClientes.setItems(clientes);
 		

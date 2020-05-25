@@ -35,7 +35,7 @@ public class Cliente {
 		insertarDatos.insertarCliente(this);
 	}
 	
-	public void modificarCliente(Cliente clienteEditado) {
+	public void modificarCliente(Cliente clienteEditado) throws SQLException {
 		ModificarDatos modificarDatos = new ModificarDatos();
 		modificarDatos.editarCliente(this.dni, clienteEditado);
 	}
