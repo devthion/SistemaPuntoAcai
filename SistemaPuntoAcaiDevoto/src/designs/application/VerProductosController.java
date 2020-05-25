@@ -1,14 +1,23 @@
 package application;
 
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
+import ConexionBD.ObtenerDatos;
+import ModelosClientes.Cliente;
+import Productos.Producto;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -26,6 +35,27 @@ public class VerProductosController implements Initializable {
     
     @FXML
     private Button btnVolver;
+    
+    @FXML
+    private TableView<Producto> tblProductos;
+
+    @FXML
+    private TableColumn<Producto, Double> colCosto;
+
+    @FXML
+    private TableColumn<Producto, Double> colPrecioMayor;
+
+    @FXML
+    private TableColumn<Producto, String> colNombre;
+
+    @FXML
+    private TableColumn<Producto, Double> colPrecioUnitario;
+
+    @FXML
+    private TableColumn<Producto, Integer> colTotalVendidos;
+    
+    private ObservableList<Producto> productos;
+
     
     @FXML
     void onAgregarNuevoProductoClick(ActionEvent event) {
@@ -76,6 +106,24 @@ public class VerProductosController implements Initializable {
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		//OBTENER LOS DATOS DE LOS PRODUCTOS
+		ObtenerDatos obtenerDatos;
+		try {
+			obtenerDatos = new ObtenerDatos();
+			productos = FXCollections.observableArrayList();
+			productos = obtenerDatos.obtenerProductos();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		this.tblProductos.setItems(productos);
+		
+		this.colNombre.setCellValueFactory(new PropertyValueFactory<Producto, String>("nombre"));
+		this.colCosto.setCellValueFactory(new PropertyValueFactory<Producto, Double>("costo"));
+		this.colPrecioMayor.setCellValueFactory(new PropertyValueFactory<Producto, Double>("precioMayor"));
+		this.colPrecioUnitario.setCellValueFactory(new PropertyValueFactory<Producto, String>("telefono"));
+		this.colTotalVendidos.setCellValueFactory(new PropertyValueFactory<Producto, String>("email"));
 		
 	}
 
