@@ -8,7 +8,8 @@
 <AnchorPane prefHeight="650.0" prefWidth="1300.0" stylesheets="@../Styles/Style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MenuPrincipalControler">
    <children>
       <Button fx:id="btnVerClientes" layoutX="14.0" layoutY="124.0" mnemonicParsing="false" onAction="#verClientes" prefHeight="71.0" prefWidth="234.0" style="-fx-background-radius: 20;" text="CLIENTES" />
-      <Label layoutX="571.0" layoutY="57.0" text="Menu Principal" />
+      <Label layoutX="572.0" layoutY="30.0" text="MENU PRINCIPAL" />
       <Button fx:id="btnVerProductos" layoutX="289.0" layoutY="124.0" mnemonicParsing="false" onAction="#onVerProductosClick" prefHeight="71.0" prefWidth="234.0" style="-fx-background-radius: 20;" text="PRODUCTOS" />
+      <Separator layoutX="151.0" layoutY="71.0" prefWidth="1000.0" />
    </children>
 </AnchorPane>

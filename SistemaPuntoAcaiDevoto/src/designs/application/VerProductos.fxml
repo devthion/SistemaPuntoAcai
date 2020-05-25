@@ -7,7 +7,7 @@
 
 <AnchorPane prefHeight="650.0" prefWidth="1300.0" stylesheets="@../Styles/Style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.VerProductosController">
    <children>
-      <TableView layoutX="247.0" layoutY="127.0" prefHeight="342.0" prefWidth="807.0">
+      <TableView layoutX="248.0" layoutY="117.0" prefHeight="342.0" prefWidth="807.0">
         <columns>
           <TableColumn prefWidth="116.0" text="NOMBRE" />
           <TableColumn prefWidth="183.0" text="PRECIO UNITARIO" />
@@ -16,10 +16,11 @@
             <TableColumn prefWidth="217.0" text="TOTAL VENDIDOS" />
         </columns>
       </TableView>
-      <Button fx:id="btnAgregarNuevoProducto" layoutX="14.0" layoutY="554.0" mnemonicParsing="false" onAction="#onAgregarNuevoProductoClick" prefHeight="49.0" prefWidth="293.0" text="AGREGAR PRODUCTO" />
-      <Button fx:id="btnActualizarStock" layoutX="337.0" layoutY="554.0" mnemonicParsing="false" onAction="#onActualizarStockClick" prefHeight="49.0" prefWidth="293.0" text="ACTUALIZAR STOCK" />
-      <Button fx:id="btnActualizarPrecio" layoutX="664.0" layoutY="554.0" mnemonicParsing="false" onAction="#onActualizarPrecioClick" prefHeight="49.0" prefWidth="293.0" text="ACTUALIZAR PRECIO" />
-      <Label layoutX="593.0" layoutY="45.0" text="PRODUCTOS" />
-      <Button fx:id="btnVolver" layoutX="993.0" layoutY="554.0" mnemonicParsing="false" onAction="#onVolverClick" prefHeight="49.0" prefWidth="293.0" text="VOLVER" />
+      <Button fx:id="btnAgregarNuevoProducto" layoutX="101.0" layoutY="519.0" mnemonicParsing="false" onAction="#onAgregarNuevoProductoClick" prefHeight="49.0" prefWidth="293.0" text="AGREGAR PRODUCTO" />
+      <Button fx:id="btnActualizarStock" layoutX="504.0" layoutY="519.0" mnemonicParsing="false" onAction="#onActualizarStockClick" prefHeight="49.0" prefWidth="293.0" text="ACTUALIZAR STOCK" />
+      <Button fx:id="btnActualizarPrecio" layoutX="908.0" layoutY="519.0" mnemonicParsing="false" onAction="#onActualizarPrecioClick" prefHeight="49.0" prefWidth="293.0" text="ACTUALIZAR PRECIO" />
+      <Label layoutX="593.0" layoutY="30.0" text="PRODUCTOS" />
+      <Button fx:id="btnVolver" layoutX="1152.0" layoutY="587.0" mnemonicParsing="false" onAction="#onVolverClick" prefHeight="49.0" prefWidth="134.0" text="VOLVER" />
+      <Separator layoutX="151.0" layoutY="71.0" prefWidth="1000.0" />
    </children>
 </AnchorPane>

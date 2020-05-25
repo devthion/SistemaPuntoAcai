@@ -6,17 +6,23 @@
 <?import javafx.scene.layout.AnchorPane?>
 
 
-<AnchorPane prefHeight="650.0" prefWidth="1300.0" stylesheets="@../Styles/Style.css" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8">
+<AnchorPane prefHeight="650.0" prefWidth="1300.0" stylesheets="@../Styles/Style.css" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="application.AgregarProductoController">
    <children>
-      <Label layoutX="733.0" layoutY="413.0" text="NOMBRE" />
-      <Label layoutX="747.0" layoutY="468.0" text="KILOS" />
-      <Label layoutX="560.0" layoutY="492.0" text="PRECIO UNITARIO" />
-      <Label layoutX="757.0" layoutY="544.0" text="PRECIO POR MAYOR" />
-      <Label layoutX="690.0" layoutY="535.0" text="COSTO" />
-      <Label layoutX="533.0" layoutY="565.0" text="CANTIDAD POR MAYOR" />
-      <TextField layoutX="280.0" layoutY="121.0" prefHeight="30.0" prefWidth="216.0" promptText="Nombre" />
-      <TextField layoutX="280.0" layoutY="224.0" prefHeight="30.0" prefWidth="216.0" />
-      <TextField layoutX="800.0" layoutY="224.0" prefHeight="30.0" prefWidth="216.0" />
-      <TextField layoutX="800.0" layoutY="121.0" prefHeight="30.0" prefWidth="216.0" />
+      <Label layoutX="350.0" layoutY="122.0" text="NOMBRE" />
+      <Label layoutX="365.0" layoutY="222.0" text="KILOS" />
+      <Label layoutX="360.0" layoutY="322.0" text="COSTO" />
+      <Label layoutX="830.0" layoutY="122.0" text="PRECIO UNITARIO" />
+      <Label layoutX="819.0" layoutY="222.0" text="PRECIO POR MAYOR" />
+      <Label layoutX="804.0" layoutY="322.0" text="CANTIDAD POR MAYOR" />
+      <TextField fx:id="txtNombre" layoutX="283.0" layoutY="152.0" prefHeight="30.0" prefWidth="216.0" />
+      <TextField fx:id="txtKilos" layoutX="283.0" layoutY="252.0" prefHeight="30.0" prefWidth="216.0" />
+      <TextField fx:id="txtCosto" layoutX="284.0" layoutY="352.0" prefHeight="30.0" prefWidth="216.0" />
+      <TextField fx:id="txtPrecioUnitario" layoutX="803.0" layoutY="152.0" prefHeight="30.0" prefWidth="216.0" />
+      <TextField fx:id="txtPrecioMayor" layoutX="804.0" layoutY="252.0" prefHeight="30.0" prefWidth="216.0" />
+      <TextField fx:id="txtCantidadMayor" layoutX="803.0" layoutY="352.0" prefHeight="30.0" prefWidth="216.0" />
+      <Button fx:id="btnAgregarProducto" layoutX="508.0" layoutY="519.0" mnemonicParsing="false" onAction="#onAgregarProductoClick" text="AGREGAR PRODUCTO" />
+      <Button fx:id="btnVolver" layoutX="1152.0" layoutY="587.0" mnemonicParsing="false" onAction="#onVolverClick" text="VOLVER" />
+      <Label layoutX="563.0" layoutY="30.0" text="NUEVO PRODUCTO" />
+      <Separator layoutX="151.0" layoutY="71.0" prefWidth="1000.0" />
    </children>
 </AnchorPane>

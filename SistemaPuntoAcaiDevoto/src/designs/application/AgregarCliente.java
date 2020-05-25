@@ -8,9 +8,13 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.SplitMenuButton;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 public class AgregarCliente {
@@ -56,6 +60,9 @@ public class AgregarCliente {
     
     @FXML
     private SplitMenuButton slipComoLlego;
+    
+    @FXML
+    private Button btnVolver;
     
     private Cliente nuevoCliente;
     private ObservableList<Cliente> clientes;
@@ -138,6 +145,12 @@ public class AgregarCliente {
     	
     	Direccion direccion = new Direccion(calle, numero, barrio, codPostal);
     	return new Cliente(dni, nombre, apellido, telefono, email, direccion, tipo, comoLlego, 0);
+    }
+    
+    @FXML
+    void onVolverClick(ActionEvent event) {
+    	Stage stage = (Stage) btnVolver.getScene().getWindow();
+    	stage.close();
     }
     
     @FXML

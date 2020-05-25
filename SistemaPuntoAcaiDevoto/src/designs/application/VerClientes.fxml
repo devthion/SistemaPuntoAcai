@@ -8,7 +8,7 @@
 
 <AnchorPane prefHeight="650.0" prefWidth="1300.0" stylesheets="@../Styles/Style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.VerClientesController">
    <children>
-      <TableView fx:id="tblClientes" layoutX="32.0" layoutY="124.0" prefHeight="402.0" prefWidth="1236.0">
+      <TableView fx:id="tblClientes" layoutX="32.0" layoutY="100.0" prefHeight="402.0" prefWidth="1236.0">
         <columns>
           <TableColumn fx:id="colNombre" prefWidth="119.0" text="Nombre" />
           <TableColumn fx:id="colApellido" prefWidth="100.0" text="Apellido" />
@@ -23,20 +23,21 @@
             <TableColumn fx:id="colIngresos" prefWidth="178.0" text="Ingresos Generados" />
         </columns>
       </TableView>
-      <Button fx:id="btnAgregarPersona" layoutX="32.0" layoutY="555.0" mnemonicParsing="false" onAction="#agregarCliente" prefHeight="49.0" prefWidth="340.0" stylesheets="@../Styles/Style.css" text="AGREGAR NUEVO CLIENTE" textFill="WHITE">
+      <Button fx:id="btnAgregarPersona" layoutX="222.0" layoutY="525.0" mnemonicParsing="false" onAction="#agregarCliente" prefHeight="49.0" prefWidth="340.0" stylesheets="@../Styles/Style.css" text="AGREGAR NUEVO CLIENTE" textFill="WHITE">
          <font>
             <Font size="24.0" />
          </font></Button>
-      <TextField fx:id="txtBusqueda" layoutX="550.0" layoutY="43.0" prefHeight="40.0" prefWidth="200.0" />
-      <Button fx:id="btnEditarCliente" layoutX="488.0" layoutY="555.0" mnemonicParsing="false" onAction="#editarCliente" prefHeight="51.0" prefWidth="340.0" stylesheets="@../Styles/Style.css" text="EDITAR CLIENTE" textFill="WHITE">
+      <Button fx:id="btnEditarCliente" layoutX="739.0" layoutY="524.0" mnemonicParsing="false" onAction="#editarCliente" prefHeight="51.0" prefWidth="340.0" stylesheets="@../Styles/Style.css" text="EDITAR CLIENTE" textFill="WHITE">
          <font>
             <Font size="24.0" />
          </font>
       </Button>
-      <Button fx:id="btnVolver" layoutX="928.0" layoutY="555.0" mnemonicParsing="false" onAction="#onVolverClick" prefHeight="51.0" prefWidth="340.0" text="VOLVER" textFill="WHITE">
+      <Button fx:id="btnVolver" layoutX="1148.0" layoutY="585.0" mnemonicParsing="false" onAction="#onVolverClick" prefHeight="51.0" prefWidth="138.0" text="VOLVER" textFill="WHITE">
          <font>
             <Font size="24.0" />
          </font>
       </Button>
+      <Label layoutX="608.0" layoutY="30.0" text="CLIENTES" />
+      <Separator layoutX="150.0" layoutY="71.0" prefWidth="1000.0" />
    </children>
 </AnchorPane>
