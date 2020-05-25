@@ -49,9 +49,10 @@ public class CrearTabla {
 				+"prod_nombre VARCHAR(255),"
 				+"prod_kilos DOUBLE(10),"
 				+"prod_stock INTEGER(10),"
-				+"prod_precio FLOAT(10),"
-				+"prod_precio_mayor FLOAT(10),"
-				+"prod_costo FLOAT(10),"
+				+"prod_precio DOUBLE(10),"
+				+"prod_precio_mayor DOUBLE(10),"
+				+"prod_costo DOUBLE(10),"
+				+"prod_cantidad_mayor int(10),"
 				+"PRIMARY KEY (prod_id))";
 			stmt.executeUpdate(sql);
 			System.out.println("Tabla PRODUCTO creada");
