@@ -29,7 +29,8 @@ public class ModificarDatos extends ConexionBd {
 					+ "dire_barrio= '"+clienteEditado.getBarrio()+"',"
 					+ "dire_numero = '"+clienteEditado.getNumero()+"',"
 					+ "dire_calle= '"+clienteEditado.getCalle()+"',"
-					+ "clie_como_llego = '"+clienteEditado.getComoLlego()+"'"
+					+ "clie_como_llego = '"+clienteEditado.getComoLlego()+"',"
+					+ "clie_dni = '"+clienteEditado.getDni()+"'"
 							+ "WHERE clie_dni = '"+dniCliente+"'";
 			ejecutarUpdate(sql, "cliente editado");
 	}
