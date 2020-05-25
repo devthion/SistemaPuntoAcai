@@ -4,6 +4,7 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
+import Alertas.Alerta;
 import ConexionBD.ObtenerDatos;
 import ModelosClientes.Cliente;
 import Productos.Producto;
@@ -82,6 +83,36 @@ public class VerProductosController implements Initializable {
 
     @FXML
     void onActualizarStockClick(ActionEvent event) {
+    	Producto producto = this.tblProductos.getSelectionModel().getSelectedItem();
+    	
+    	if(producto==null) {
+    		Alerta.errorAlert("Debe seleccionar un Producto", "Editar Producto");
+    	}else {
+    		try {
+    			FXMLLoader loader = new FXMLLoader(getClass().getResource("ActualizarStock.fxml"));
+    			AnchorPane root = (AnchorPane) loader.load();
+    			
+    			ActualizarStock controller = loader.getController();
+    			controller.initActualizar(producto.getNombre());
+    			
+    			Scene scene = new Scene(root,700,300);
+    			Stage stage = new Stage();
+    			stage.setScene(scene);
+    			stage.initModality(Modality.APPLICATION_MODAL);
+    			stage.setTitle("Editar Cliente");
+    			stage.showAndWait();
+    			
+    			ObtenerDatos obtenerDatos = new ObtenerDatos();
+    			productos = FXCollections.observableArrayList();
+    			productos = obtenerDatos.obtenerProductos();
+    			
+    			this.tblProductos.setItems(productos);
+    			this.tblProductos.refresh();
+    			
+    		} catch(Exception e) {
+    			e.printStackTrace();
+    		}
+    	}
 
     }
     
