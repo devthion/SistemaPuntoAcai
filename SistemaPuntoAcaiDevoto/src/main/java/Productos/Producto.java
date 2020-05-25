@@ -67,6 +67,7 @@ public class Producto {
 	}
 
 	public int getCantidadVendidos() {
+		//TIENE QUE RETORNAR LA CONSULTA
 		return cantidadVendidos;
 	}
 	
