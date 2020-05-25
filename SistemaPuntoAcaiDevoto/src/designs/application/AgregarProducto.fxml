@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane prefHeight="650.0" prefWidth="1300.0" stylesheets="@../Styles/Style.css" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8">
+   <children>
+      <Label layoutX="733.0" layoutY="413.0" text="NOMBRE" />
+      <Label layoutX="747.0" layoutY="468.0" text="KILOS" />
+      <Label layoutX="560.0" layoutY="492.0" text="PRECIO UNITARIO" />
+      <Label layoutX="757.0" layoutY="544.0" text="PRECIO POR MAYOR" />
+      <Label layoutX="690.0" layoutY="535.0" text="COSTO" />
+      <Label layoutX="533.0" layoutY="565.0" text="CANTIDAD POR MAYOR" />
+      <TextField layoutX="280.0" layoutY="121.0" prefHeight="30.0" prefWidth="216.0" promptText="Nombre" />
+      <TextField layoutX="280.0" layoutY="224.0" prefHeight="30.0" prefWidth="216.0" />
+      <TextField layoutX="800.0" layoutY="224.0" prefHeight="30.0" prefWidth="216.0" />
+      <TextField layoutX="800.0" layoutY="121.0" prefHeight="30.0" prefWidth="216.0" />
+   </children>
+</AnchorPane>
