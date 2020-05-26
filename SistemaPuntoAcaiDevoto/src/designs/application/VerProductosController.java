@@ -94,6 +94,7 @@ public class VerProductosController implements Initializable {
     			
     			ActualizarStock controller = loader.getController();
     			controller.initActualizar(producto.getNombre());
+    			controller.setProductoActualizar(producto);
     			
     			Scene scene = new Scene(root,700,300);
     			Stage stage = new Stage();
