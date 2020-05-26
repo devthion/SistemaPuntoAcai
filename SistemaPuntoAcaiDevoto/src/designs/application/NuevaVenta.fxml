@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
 <?import javafx.scene.control.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
 
-<AnchorPane prefHeight="650.0" prefWidth="1300.0" stylesheets="@../Styles/Style.css" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8">
+<AnchorPane prefHeight="650.0" prefWidth="1300.0" stylesheets="@../Styles/Style.css" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="application.NuevaVenta">
    <children>
       <Button layoutX="1007.0" layoutY="236.0" mnemonicParsing="false" text="AGREGAR AL CARRITO" />
       <Button layoutX="389.0" layoutY="441.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="227.0" text="NUEVO CLIENTE" />
@@ -31,5 +32,19 @@
       </TableView>
       <Separator layoutX="161.0" layoutY="81.0" prefWidth="1000.0" />
       <Label layoutX="595.0" layoutY="40.0" text="NUEVA VENTA" />
+      <Button fx:id="btnMenos" layoutX="1209.0" layoutY="139.0" mnemonicParsing="false" onAction="#onMenosClick" prefHeight="50.0" prefWidth="71.0" text="-" />
+      <Button fx:id="btnMas" layoutX="1132.0" layoutY="139.0" mnemonicParsing="false" onAction="#onMasClick" prefHeight="50.0" prefWidth="71.0" text="+" />
+      <Label fx:id="lblStock" alignment="CENTER" layoutX="1022.0" layoutY="149.0" prefHeight="30.0" prefWidth="71.0" text="1" textAlignment="CENTER" />
+      <Label layoutX="1013.0" layoutY="109.0" text="CANTIDAD" />
+      <TableView layoutX="668.0" layoutY="302.0" prefHeight="188.0" prefWidth="322.0">
+        <columns>
+          <TableColumn prefWidth="126.0" text="PRODUCTO" />
+          <TableColumn prefWidth="194.0" text="PRECIO TOTAL" />
+        </columns>
+      </TableView>
+      <TextField layoutX="1057.0" layoutY="457.0" />
+      <Label layoutX="1099.0" layoutY="414.0" text="TOTAL VENTA" />
+      <Button layoutX="535.0" layoutY="545.0" mnemonicParsing="false" text="REALIZAR VENTA" />
+      <Button layoutX="1152.0" layoutY="587.0" mnemonicParsing="false" text="VOLVER" />
    </children>
 </AnchorPane>
