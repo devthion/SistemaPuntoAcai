@@ -86,7 +86,7 @@ public class VerProductosController implements Initializable {
     	Producto producto = this.tblProductos.getSelectionModel().getSelectedItem();
     	
     	if(producto==null) {
-    		Alerta.errorAlert("Debe seleccionar un Producto", "Editar Producto");
+    		Alerta.errorAlert("Debe seleccionar un Producto", "Actualizar Stock");
     	}else {
     		try {
     			FXMLLoader loader = new FXMLLoader(getClass().getResource("ActualizarStock.fxml"));
@@ -94,6 +94,41 @@ public class VerProductosController implements Initializable {
     			
     			ActualizarStock controller = loader.getController();
     			controller.initActualizar(producto.getNombre());
+    			
+    			Scene scene = new Scene(root,700,300);
+    			Stage stage = new Stage();
+    			stage.setScene(scene);
+    			stage.initModality(Modality.APPLICATION_MODAL);
+    			stage.setTitle("Productos");
+    			stage.showAndWait();
+    			
+    			ObtenerDatos obtenerDatos = new ObtenerDatos();
+    			productos = FXCollections.observableArrayList();
+    			productos = obtenerDatos.obtenerProductos();
+    			
+    			this.tblProductos.setItems(productos);
+    			this.tblProductos.refresh();
+    			
+    		} catch(Exception e) {
+    			e.printStackTrace();
+    		}
+    	}
+
+    }
+    
+    @FXML
+    void onActualizarPrecioClick(ActionEvent event) {
+    	Producto producto = this.tblProductos.getSelectionModel().getSelectedItem();
+    	
+    	if(producto==null) {
+    		Alerta.errorAlert("Debe seleccionar un Producto", "Actualizar Precio");
+    	}else {
+    		try {
+    			FXMLLoader loader = new FXMLLoader(getClass().getResource("ActualizarPrecio.fxml"));
+    			AnchorPane root = (AnchorPane) loader.load();
+    			
+    			ActualizarPrecio controller = loader.getController();
+    			controller.setProductoActualizar(producto);;
     			
     			Scene scene = new Scene(root,700,300);
     			Stage stage = new Stage();
@@ -113,12 +148,6 @@ public class VerProductosController implements Initializable {
     			e.printStackTrace();
     		}
     	}
-
-    }
-    
-    @FXML
-    void onActualizarPrecioClick(ActionEvent event) {
-
     }
 
     @FXML

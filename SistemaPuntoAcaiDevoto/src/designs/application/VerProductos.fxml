@@ -13,7 +13,7 @@
           <TableColumn fx:id="colPrecioUnitario" prefWidth="183.0" text="PRECIO UNITARIO" />
             <TableColumn fx:id="colPrecioMayor" prefWidth="179.0" text="PRECIO MAYOR" />
             <TableColumn fx:id="colCosto" prefWidth="111.0" text="COSTO" />
-            <TableColumn fx:id="colTotalVendidos" prefWidth="217.0" text="TOTAL VENDIDOS" />
+            <TableColumn fx:id="colTotalVendidos" prefWidth="215.0" text="TOTAL VENDIDOS" />
         </columns>
       </TableView>
       <Button fx:id="btnAgregarNuevoProducto" layoutX="101.0" layoutY="519.0" mnemonicParsing="false" onAction="#onAgregarNuevoProductoClick" prefHeight="49.0" prefWidth="293.0" text="AGREGAR PRODUCTO" />
