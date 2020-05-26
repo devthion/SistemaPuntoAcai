@@ -68,8 +68,6 @@ public class VerProductosController implements Initializable {
 			loader.setLocation(getClass().getResource("AgregarProducto.fxml"));
 			AnchorPane root = (AnchorPane) loader.load();
 			
-			AgregarProductoController controller = loader.getController();
-			
 			Scene scene = new Scene(root,1300,650);
 			Stage stage = new Stage();
 			stage.setScene(scene);
@@ -77,7 +75,11 @@ public class VerProductosController implements Initializable {
 			stage.setTitle("Nuevo Producto");
 			stage.showAndWait();
 			
-			this.productos.add(controller.getNuevoProducto());
+			ObtenerDatos obtenerDatos = new ObtenerDatos();
+			productos = FXCollections.observableArrayList();
+			productos = obtenerDatos.obtenerProductos();
+			
+			this.tblProductos.setItems(productos);
 			this.tblProductos.refresh();
 		} catch(Exception e) {
 			e.printStackTrace();
