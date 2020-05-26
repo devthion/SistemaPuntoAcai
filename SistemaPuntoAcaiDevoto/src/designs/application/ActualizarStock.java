@@ -1,8 +1,10 @@
 package application;
 
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
+import Alertas.Alerta;
 import Productos.Producto;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -49,8 +51,9 @@ public class ActualizarStock implements Initializable{
     }
 
     @FXML
-    void onActualizarClick(ActionEvent event) {
-    	
+    void onActualizarClick(ActionEvent event) throws SQLException {
+    	productoActualizar.actualizarStock(contador);
+    
     }
 
     @FXML

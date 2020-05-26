@@ -30,7 +30,7 @@ public class ModificarDatos extends ConexionBd {
 	
 	
 	public void actualizarStock(int prod_id, int cantidad) {
-		String sql ="UPDATE PRODUCTO SET"
+		String sql ="UPDATE PRODUCTO SET "
 				+"prod_stock= '"+cantidad+"'"
 				+" WHERE prod_id= '"+prod_id+"'";
 		ejecutarUpdate(sql, "stock actualizado para: " +prod_id);
@@ -38,7 +38,7 @@ public class ModificarDatos extends ConexionBd {
 	
 	
 	public void actualizarPrecios(double precioUnitario, double precioMayor, double costo, int prod_id) {
-		String sql="UPDATE PRODUCTO SET"
+		String sql="UPDATE PRODUCTO SET "
 				+"prod_precio= '"+precioUnitario+"',"
 				+"prod_precio_mayor='"+precioMayor+"',"
 				+"prod_costo= '"+costo+"'"
