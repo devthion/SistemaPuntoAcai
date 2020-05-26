@@ -2,6 +2,7 @@ package application;
 
 import java.sql.SQLException;
 
+import Alertas.Alerta;
 import Productos.Producto;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -37,6 +38,10 @@ public class ActualizarPrecio {
 		double precioMayor = Double.parseDouble(txtPrecioPorMayor.getText());
 		
 		productoActualizar.actualizarPrecios(precioUnitario, precioMayor, costo);
+		Alerta.informationAlert("Se ha actualizado el preio del producto", "Actualizar Precio");
+		
+		Stage stage = (Stage) btnActualizarPrecio.getScene().getWindow();
+    	stage.close();
     }
 
     @FXML
