@@ -29,8 +29,8 @@ public class ObtenerDatos extends ConexionBd{
 		sql = "select * from CLIENTE";
 		rs = ejecutarQuery(sql);
 		while(rs.next()) {
-			Direccion unaDireccion= new Direccion(rs.getString(11),rs.getInt(10),rs.getString(9),rs.getInt(8));
-			Cliente unCliente = new Cliente(rs.getInt(5),rs.getString(3),rs.getString(4),rs.getInt(6),rs.getString(7),unaDireccion,rs.getString(2),rs.getString(12),ingresosGeneradosPor(rs.getInt(1)));
+			Direccion unaDireccion= new Direccion(rs.getString(10),rs.getInt(9),rs.getString(8),rs.getInt(7));
+			Cliente unCliente = new Cliente(rs.getInt(4),rs.getString(2),rs.getString(3),rs.getInt(5),rs.getString(6),unaDireccion,rs.getString(1),rs.getString(11),ingresosGeneradosPor(rs.getInt(4)));
 			clientes.add(unCliente);
 		}
 		
@@ -38,7 +38,7 @@ public class ObtenerDatos extends ConexionBd{
 	}
 	
 	
-	public double ingresosGeneradosPor(int unId) {
+	public double ingresosGeneradosPor(int clie_dni) {
 		return 1;
 	}
 	
@@ -57,5 +57,8 @@ public class ObtenerDatos extends ConexionBd{
 	}
 	
 	
-	public obtener
+	/*public double obtenerGastosTotalesDe(int clie_dni) {
+		sql="SELECT SUM(venta_precioTotal) FROM VENTA WHERE venta_cliente='"+clie_id+"'";
+		
+	}*/
 }
