@@ -53,6 +53,9 @@ public class ActualizarStock implements Initializable{
     @FXML
     void onActualizarClick(ActionEvent event) throws SQLException {
     	productoActualizar.actualizarStock(contador);
+    	Alerta.informationAlert("Se ha actualizado el stock", "Actualizar Stock");
+    	Stage stage = (Stage) btnVolver.getScene().getWindow();
+    	stage.close();
     
     }
 

@@ -42,6 +42,9 @@ public class VerProductosController implements Initializable {
 
     @FXML
     private TableColumn<Producto, Double> colCosto;
+    
+    @FXML
+    private TableColumn<Producto, Integer> colStock;
 
     @FXML
     private TableColumn<Producto, Double> colPrecioMayor;
@@ -191,6 +194,7 @@ public class VerProductosController implements Initializable {
 		this.colPrecioMayor.setCellValueFactory(new PropertyValueFactory<Producto, Double>("precioMayor"));
 		this.colPrecioUnitario.setCellValueFactory(new PropertyValueFactory<Producto, Double>("precioUnitario"));
 		this.colTotalVendidos.setCellValueFactory(new PropertyValueFactory<Producto, Integer>("cantidadVendidos"));
+		this.colStock.setCellValueFactory(new PropertyValueFactory<Producto, Integer>("stock"));
 		
 	}
 
