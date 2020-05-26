@@ -7,13 +7,14 @@
 
 <AnchorPane prefHeight="650.0" prefWidth="1300.0" stylesheets="@../Styles/Style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.VerProductosController">
    <children>
-      <TableView fx:id="tblProductos" layoutX="248.0" layoutY="117.0" prefHeight="342.0" prefWidth="807.0">
+      <TableView fx:id="tblProductos" layoutX="174.0" layoutY="118.0" prefHeight="342.0" prefWidth="955.0">
         <columns>
-          <TableColumn fx:id="colNombre" prefWidth="116.0" text="NOMBRE" />
-          <TableColumn fx:id="colPrecioUnitario" prefWidth="183.0" text="PRECIO UNITARIO" />
-            <TableColumn fx:id="colPrecioMayor" prefWidth="179.0" text="PRECIO MAYOR" />
-            <TableColumn fx:id="colCosto" prefWidth="111.0" text="COSTO" />
-            <TableColumn fx:id="colTotalVendidos" prefWidth="215.0" text="TOTAL VENDIDOS" />
+          <TableColumn fx:id="colNombre" prefWidth="130.0" text="NOMBRE" />
+          <TableColumn fx:id="colPrecioUnitario" prefWidth="186.0" text="PRECIO UNITARIO" />
+            <TableColumn fx:id="colPrecioMayor" prefWidth="177.0" text="PRECIO MAYOR" />
+            <TableColumn fx:id="colCosto" prefWidth="128.0" text="COSTO" />
+            <TableColumn fx:id="colTotalVendidos" prefWidth="179.0" text="TOTAL VENDIDOS" />
+            <TableColumn fx:id="colStock" prefWidth="152.0" text="STOCK" />
         </columns>
       </TableView>
       <Button fx:id="btnAgregarNuevoProducto" layoutX="101.0" layoutY="519.0" mnemonicParsing="false" onAction="#onAgregarNuevoProductoClick" prefHeight="49.0" prefWidth="293.0" text="AGREGAR PRODUCTO" />
