@@ -43,7 +43,7 @@ public class ModificarDatos extends ConexionBd {
 				+"prod_precio_mayor='"+precioMayor+"',"
 				+"prod_costo= '"+costo+"'"
 				+" WHERE prod_id= '"+prod_id+"'";
-		ejecutarUpdate(sql, "Producto actualizado");
+		ejecutarUpdate(sql, "Precios actualizados");
 	}
 
 }

@@ -16,6 +16,7 @@ public class Producto {
 	private int cantidadPorMayor;
 	private int cantidadVendidos;
 	private int prod_id;
+	ModificarDatos modificarDatos;
 	
 	public Producto(String nombre, double kilos, int stock, double precioUnitario, double precioMayor, double costo, int cantidadPorMayor) {
 		this.nombre = nombre;
@@ -33,11 +34,14 @@ public class Producto {
 	}
 	
 	public void actualizarStock(int unaCantidad) throws SQLException {
-		ModificarDatos modificarDatos = new ModificarDatos();
+		modificarDatos = new ModificarDatos();
 		modificarDatos.actualizarStock(prod_id, stock+unaCantidad);
 	}
 	
-	
+	public void actualizarPrecios(double precioUnitario, double precioMayor, double costo) throws SQLException {
+		modificarDatos = new ModificarDatos();
+		modificarDatos.actualizarPrecios(precioUnitario, precioMayor, costo, prod_id);
+	}
 	
 	public int getProd_id() {
 		return prod_id;

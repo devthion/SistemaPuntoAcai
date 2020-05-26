@@ -1,5 +1,7 @@
 package application;
 
+import java.sql.SQLException;
+
 import Productos.Producto;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -29,10 +31,12 @@ public class ActualizarPrecio {
 
 
 	@FXML
-    void onActualizarPrecioClick(ActionEvent event) {
+    void onActualizarPrecioClick(ActionEvent event) throws SQLException {
 		double costo = Double.parseDouble(txtCosto.getText());
 		double precioUnitario = Double.parseDouble(txtPrecioUnitario.getText());
-		double precioPorMayor = Double.parseDouble(txtPrecioPorMayor.getText());
+		double precioMayor = Double.parseDouble(txtPrecioPorMayor.getText());
+		
+		productoActualizar.actualizarPrecios(precioUnitario, precioMayor, costo);
     }
 
     @FXML

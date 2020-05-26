@@ -83,5 +83,26 @@ public class CrearTabla {
 		}
 	}
 	
+	public static void crearTablaItemVenta() {
+		try 
+		{
+			Connection con = DriverManager.getConnection("jdbc:h2:"+"./Database/my", "root", "devthion");
+			Statement stmt= con.createStatement();
+			String sql = "CREATE TABLE IF NOT EXISTS VENTA" 
+				+"(venta_id INTEGER auto_increment,"
+				+"venta_cliente INTEGER(10),"
+				+"venta_fecha DATE,"
+				+"venta_precioTotal DOUBLE(10),"
+				+"venta_ganancia DOUBLE(10),"
+				+"PRIMARY KEY (venta_id),"
+				+"FOREIGN KEY (venta_cliente) REFERENCES CLIENTE(clie_dni))";
+			stmt.executeUpdate(sql);
+			System.out.println("Tabla ItemVenta creada");
+		}
+		catch(Exception e) {
+			System.err.println(e.getMessage());
+		}
+	}
+	
 	
 }
