@@ -57,8 +57,9 @@ public class ObtenerDatos extends ConexionBd{
 	}
 	
 	
-	/*public double obtenerGastosTotalesDe(int clie_dni) {
-		sql="SELECT SUM(venta_precioTotal) FROM VENTA WHERE venta_cliente='"+clie_id+"'";
+	/*public double obtenerGastosTotalesDe(int clie_dni) throws SQLException {
+		sql="SELECT SUM(venta_precioTotal) FROM VENTA WHERE venta_cliente='"+clie_dni+"'";
+		return ejecutarQuery(sql).getDouble(1);
 		
 	}*/
 }
