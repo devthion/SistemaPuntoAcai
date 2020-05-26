@@ -41,32 +41,5 @@ public class InsertarDatos extends ConexionBd{
 		
 	}
 	
-	/*
-	public void insertarVenta() {
-		try 
-		{
-			Connection con = DriverManager.getConnection("jdbc:h2:"+"./Database/my", "root", "devthion");
-			Statement stmt= con.createStatement();
-			//String sql = "insert into CLIENTE(nombre, apellido) values('Diego', 'vivona')"; 
-			stmt.executeUpdate(sqlQuery);
-			System.out.println("Datos ingresados");
-		}
-		catch(Exception e) {
-			System.err.println(e.getMessage());
-		}
-	}
-	
-	public void insertarItemVenta() {
-		try 
-		{
-			Connection con = DriverManager.getConnection("jdbc:h2:"+"./Database/my", "root", "devthion");
-			Statement stmt= con.createStatement();
-			//String sql = "insert into CLIENTE(nombre, apellido) values('Diego', 'vivona')"; 
-			stmt.executeUpdate(sqlQuery);
-			System.out.println("Datos ingresados");
-		}
-		catch(Exception e) {
-			System.err.println(e.getMessage());
-		}
-	}*/
+
 }

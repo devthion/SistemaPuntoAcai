@@ -73,6 +73,7 @@ public class VerClientesController implements Initializable {
 
     @FXML
     private TableColumn<?, ?> colTelefono;
+
     
     private ObservableList<Cliente> clientes;
 

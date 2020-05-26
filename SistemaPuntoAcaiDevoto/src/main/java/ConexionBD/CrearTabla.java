@@ -7,8 +7,8 @@ import java.sql.Statement;
 public class CrearTabla {
 
 	public static void main(String[]args) {
-		crearTablaProductos();
-		crearTablaClientes();
+		crearTablaProducto();
+		crearTablaCliente();
 		crearTablaVenta();
 		crearTablaItem_Venta();
 	}
@@ -34,7 +34,7 @@ public class CrearTabla {
 		}
 	}
 	
-	public static void crearTablaClientes() {
+	public static void crearTablaCliente() {
 		try 
 		{
 			Connection con = DriverManager.getConnection("jdbc:h2:"+"./Database/my", "root", "devthion");
@@ -61,7 +61,7 @@ public class CrearTabla {
 	}
 	
 	
-	public static void crearTablaProductos() {
+	public static void crearTablaProducto() {
 		try 
 		{
 			Connection con = DriverManager.getConnection("jdbc:h2:"+"./Database/my", "root", "devthion");

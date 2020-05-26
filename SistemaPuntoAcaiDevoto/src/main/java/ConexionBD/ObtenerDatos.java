@@ -10,6 +10,7 @@ import java.util.List;
 
 import ModelosClientes.Cliente;
 import ModelosClientes.Direccion;
+import ModelosGraficos.ClientesPorBarrio;
 import Productos.Producto;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -57,9 +58,18 @@ public class ObtenerDatos extends ConexionBd{
 	}
 	
 	
-	/*public double obtenerGastosTotalesDe(int clie_dni) throws SQLException {
-		sql="SELECT SUM(venta_precioTotal) FROM VENTA WHERE venta_cliente='"+clie_dni+"'";
-		return ejecutarQuery(sql).getDouble(1);
-		
-	}*/
+	public List<ClientesPorBarrio> obtenerClientesPorBarrio() throws SQLException{
+		List<ClientesPorBarrio> clientesPorBarrioList = new ArrayList<ClientesPorBarrio>();
+		sql="SELECT dire_barrio,COUNT(dire_barrio) FROM CLIENTE "
+				+ "GROUP BY dire_barrio";
+		rs=ejecutarQuery(sql);
+		while(rs.next()) {
+			ClientesPorBarrio clientesPorBarrio = new ClientesPorBarrio(rs.getString(1), rs.getInt(2));
+			clientesPorBarrioList.add(clientesPorBarrio);
+		}
+	
+		return clientesPorBarrioList;
+	}
+	
+	
 }
