@@ -16,10 +16,28 @@ public class MenuPrincipalControler {
     
     @FXML
     private Button btnVerProductos;
+    
+    @FXML
+    private Button btnVerVentas;
+
+    @FXML
+    private Button btnNuevaVenta;
 
     @FXML
     void verClientes(ActionEvent event) {
-    	verStageClientes();
+    	try {
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(getClass().getResource("VerClientes.fxml"));
+			AnchorPane root = (AnchorPane) loader.load();
+			Scene scene = new Scene(root,1300,650);
+			Stage stage = new Stage();
+			stage.setScene(scene);
+			stage.initModality(Modality.APPLICATION_MODAL);
+			stage.setTitle("Clientes");
+			stage.show();
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
     	Stage stage = (Stage) btnVerClientes.getScene().getWindow();
     	stage.close();
     }
@@ -43,19 +61,13 @@ public class MenuPrincipalControler {
     	stage.close();
     }
     
-    public void verStageClientes() {
-    	try {
-			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(getClass().getResource("VerClientes.fxml"));
-			AnchorPane root = (AnchorPane) loader.load();
-			Scene scene = new Scene(root,1300,650);
-			Stage stage = new Stage();
-			stage.setScene(scene);
-			stage.initModality(Modality.APPLICATION_MODAL);
-			stage.setTitle("Clientes");
-			stage.show();
-		} catch(Exception e) {
-			e.printStackTrace();
-		}
+    @FXML
+    void onVerVentasClick(ActionEvent event) {
+
+    }
+
+    @FXML
+    void onNuevaVentaClick(ActionEvent event) {
+
     }
 }
