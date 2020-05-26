@@ -10,6 +10,7 @@ public class CrearTabla {
 		crearTablaProductos();
 		crearTablaClientes();
 		crearTablaVenta();
+		crearTablaItem_Venta();
 	}
 	
 	public static void crearTablaVenta() {
@@ -83,21 +84,21 @@ public class CrearTabla {
 		}
 	}
 	
-	public static void crearTablaItemVenta() {
+	public static void crearTablaItem_Venta() {
 		try 
 		{
 			Connection con = DriverManager.getConnection("jdbc:h2:"+"./Database/my", "root", "devthion");
 			Statement stmt= con.createStatement();
-			String sql = "CREATE TABLE IF NOT EXISTS VENTA" 
-				+"(venta_id INTEGER auto_increment,"
-				+"venta_cliente INTEGER(10),"
-				+"venta_fecha DATE,"
-				+"venta_precioTotal DOUBLE(10),"
-				+"venta_ganancia DOUBLE(10),"
-				+"PRIMARY KEY (venta_id),"
-				+"FOREIGN KEY (venta_cliente) REFERENCES CLIENTE(clie_dni))";
+			String sql = "CREATE TABLE IF NOT EXISTS ITEM_VENTA " 
+				+"(item_producto INTEGER(10) NOT NULL,"
+				+"item_venta INTEGER(10) NOT NULL,"
+				+"item_cantidad INTEGER(10),"
+				+"item_precio DOUBLE(10),"
+				+"PRIMARY KEY (item_producto, item_venta),"
+				+ "FOREIGN KEY (item_producto) REFERENCES PRODUCTO(prod_id),"
+				+ "FOREIGN KEY (item_venta) REFERENCES VENTA(venta_id))";
 			stmt.executeUpdate(sql);
-			System.out.println("Tabla ItemVenta creada");
+			System.out.println("Tabla ITEM_VENTA creada");
 		}
 		catch(Exception e) {
 			System.err.println(e.getMessage());
