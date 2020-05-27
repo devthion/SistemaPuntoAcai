@@ -106,7 +106,8 @@ public class NuevaVentaController implements Initializable {
     private int contadorCantidad;
     private ObservableList<Producto> productos;
     private ObservableList<Cliente> clientes;
-    private ObservableList<Producto> productosAVender= FXCollections.observableArrayList();;
+    private ObservableList<Producto> productosAVender= FXCollections.observableArrayList();
+    private double precioTotal=0;
 
     @FXML
     void onAgregarAlCarritoClick(ActionEvent event) {
@@ -119,6 +120,9 @@ public class NuevaVentaController implements Initializable {
     		productosAVender.add(producto);
     		tblProductosVenta.setItems(productosAVender);
     		this.tblProductosVenta.refresh();
+    		
+    		
+    		txtPrecioTotal.setText(""+precioTotal);
     	}
     }
 
