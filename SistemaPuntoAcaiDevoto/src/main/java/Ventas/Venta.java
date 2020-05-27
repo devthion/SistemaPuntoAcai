@@ -1,6 +1,5 @@
 package Ventas;
 
-import java.awt.List;
 import java.time.LocalDate;
 import java.util.ArrayList;
 

@@ -15,9 +15,8 @@ import ModelosClientes.Cliente;
 import Productos.Producto;
 import Ventas.Item;
 import Ventas.Venta;
-import javafx.beans.InvalidationListener;
+import Ventas.VentasBuilder;
 import javafx.collections.FXCollections;
-import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -111,6 +110,7 @@ public class NuevaVentaController implements Initializable {
     private ObservableList<Item> itemsAVender= FXCollections.observableArrayList();
     private double precioTotal=0;
     private Venta nuevaVenta;
+    private VentasBuilder ventaBorrador; 
 
     @FXML
     void onAgregarAlCarritoClick(ActionEvent event) {
@@ -126,9 +126,10 @@ public class NuevaVentaController implements Initializable {
     		tblProductosVenta.setItems(itemsAVender);
     		this.tblProductosVenta.refresh();
     		
+    		ventaBorrador.setNuevoItem(item);
+    		precioTotal += item.getPrecioFinal();
     		
-    		
-    		txtPrecioTotal.setText("Aca va el precio : "+precioTotal);
+    		txtPrecioTotal.setText(""+precioTotal);
     	}
     }
 
@@ -213,6 +214,7 @@ public class NuevaVentaController implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		contadorCantidad = 1;
+		ventaBorrador = new VentasBuilder();
 		ObtenerDatos obtenerDatos;
 		try {
 			obtenerDatos = new ObtenerDatos();
@@ -245,9 +247,6 @@ public class NuevaVentaController implements Initializable {
 		this.colProdVentaNombre.setCellValueFactory(new PropertyValueFactory<Item, String>("nombreProducto"));
 		this.colProdVentaCantidad.setCellValueFactory(new PropertyValueFactory<Item, Integer>("cantidad"));
 		this.colProdVentaPrecioTotal.setCellValueFactory(new PropertyValueFactory<Item, Double>("precioFinal"));
-		
-		
-		
 		
 	}
 

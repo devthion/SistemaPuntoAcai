@@ -10,6 +10,7 @@
 .label {
     -fx-font-size: 20px;
     -fx-text-fill: #481862;
+    -fx-alignment: center ;
 }
 
 .label-header {
@@ -26,6 +27,7 @@
    -fx-border-radius: 20;
    -fx-background-color: transparent;
    -fx-text-fill:  #481862;
+   -fx-alignment: center ;
 }
 
 .button {
@@ -38,6 +40,7 @@
     -fx-text-fill: #481862;
     -fx-background-insets: 0 0 0 0, 0, 1, 2;
     -fx-font-size: 18pt;
+    -fx-alignment: center ;
 }
 
 .button:hover {
