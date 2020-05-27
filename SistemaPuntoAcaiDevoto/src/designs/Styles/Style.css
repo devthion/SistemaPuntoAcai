@@ -46,10 +46,61 @@
 .button:hover {
     -fx-background-color: #481862;
     -fx-text-fill: #FFFFFF;
+    
 }
 
 
 .separator{
     -fx-background-color: #481862;
     -fx-background-radius: 2;
+}
+
+.table-cell {     
+    -fx-padding: 0.5em 0.5em 0.1em 0.3em;
+    -fx-border-color: -fx-box-border -fx-box-border transparent transparent;  
+    -fx-font: 15px "Segoe UI";    
+    -fx-border-insets: 0;
+    -fx-alignment: CENTER;
+}
+.table-row-cell:empty, .table-cell:empty:hover {
+    -fx-background-color: whitesmoke;
+}
+
+.table-view:row-selection .table-row-cell:filled:hover { 
+    -fx-background-color: #7424A9;
+}
+
+.table-view:row-selection .table-row-cell:filled:selected { 
+    -fx-background-color: #C378EA;
+    -fx-text-fill: #FFFFFF;
+}
+.table-view .column-header .label{
+    -fx-text-fill: #481862;
+    -fx-alignment: CENTER;
+    -fx-font: 18px "Segoe UI";
+}
+
+.table-view .column-header, .table-view .filler {
+    -fx-border-color: #C5C5C5;
+    -fx-border-insets: 0;
+    -fx-background-color:#481862;
+}
+.table-view .column-header-background .label{
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+}
+.table-view{
+   -fx-background-color: transparent;
+   -fx-border-color: #481862;
+}
+.table-row-cell{
+    -fx-background-color: -fx-table-cell-border-color, #FFFFFF;
+    -fx-background-insets: 0, 0 0 1 0;
+    -fx-padding: 0.0em; /* 0 */
+}
+
+.table-row-cell:odd{
+    -fx-background-color: -fx-table-cell-border-color, #E2E2E2;
+    -fx-background-insets: 0, 0 0 1 0;
+    -fx-padding: 0.0em; /* 0 */  
 }
