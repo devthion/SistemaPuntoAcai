@@ -79,7 +79,7 @@ public class ObtenerDatos extends ConexionBd{
 	public int obtenerIdUltimaVentaIngresada() throws SQLException {
 		sql="SELECT top 1 venta_id FROM VENTA ORDER BY venta_id desc";
 		rs=ejecutarQuery(sql);
-		return rs.getFetchSize();
+		return rs.getRow();
 		//return rs.getInt(1);
 	}
 	

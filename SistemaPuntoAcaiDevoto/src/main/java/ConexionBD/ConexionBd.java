@@ -29,6 +29,8 @@ public class ConexionBd {
 		return stmt.executeQuery(sql);
 	}
 	
+	
+	
 	public void cerrarConexion() throws SQLException {
 		con.close();
 	}

@@ -54,13 +54,13 @@ public class InsertarDatos extends ConexionBd{
 		ejecutarUpdate(sql, "Venta ingresada");
 		
 		System.out.println(new ObtenerDatos().obtenerIdUltimaVentaIngresada());
-		unaVenta.getItems().stream().forEach(unItem-> {
+		/*unaVenta.getItems().stream().forEach(unItem-> {
 			try {
-				unItem.almacenarItemVenta(new ObtenerDatos().obtenerIdUltimaVentaIngresada());
+				unItem.almacenarItemVenta(1);
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
-		});
+		});*/
 	}
 	
 	public void insertarItemVenta(Item unItem,int venta_id) {
