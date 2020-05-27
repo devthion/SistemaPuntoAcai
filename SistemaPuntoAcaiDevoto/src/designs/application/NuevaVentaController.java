@@ -1,14 +1,22 @@
 package application;
 
+import java.awt.List;
 import java.net.URL;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.ListIterator;
 import java.util.ResourceBundle;
 
 import Alertas.Alerta;
 import ConexionBD.ObtenerDatos;
 import ModelosClientes.Cliente;
 import Productos.Producto;
+import Ventas.Item;
+import javafx.beans.InvalidationListener;
 import javafx.collections.FXCollections;
+import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -40,7 +48,7 @@ public class NuevaVentaController implements Initializable {
     private Button btnNuevoCliente;
 
     @FXML
-    private TableView<Producto> tblProductosVenta;
+    private TableView<Item> tblProductosVenta;
 
     @FXML
     private Button btnBuscarCliente;
@@ -52,7 +60,7 @@ public class NuevaVentaController implements Initializable {
     private TableColumn<Cliente, String> colClieApellido;
 
     @FXML
-    private TableColumn<Integer, Integer> colProdVentaCantidad;
+    private TableColumn<Item, Integer> colProdVentaCantidad;
 
     @FXML
     private TableColumn<Cliente, Integer> colClieDni;
@@ -61,7 +69,7 @@ public class NuevaVentaController implements Initializable {
     private TableColumn<Producto, Integer> colProdKilos;
 
     @FXML
-    private TableColumn<Producto, Double> colProdVentaPrecioTotal;
+    private TableColumn<Item, Double> colProdVentaPrecioTotal;
 
     @FXML
     private TextField txtNombreABuscar;
@@ -82,7 +90,7 @@ public class NuevaVentaController implements Initializable {
     private TableColumn<Producto, String> colProdNombre;
 
     @FXML
-    private TableColumn<Producto, String> colProdVentaNombre;
+    private TableColumn<Item, String> colProdVentaNombre;
 
     @FXML
     private Button btnAgregarAlCarrito;
@@ -99,17 +107,25 @@ public class NuevaVentaController implements Initializable {
     private int contadorCantidad;
     private ObservableList<Producto> productos;
     private ObservableList<Cliente> clientes;
-    private ObservableList<Producto> productosAVender;
+    private ObservableList<Item> itemsAVender= FXCollections.observableArrayList();
+    private double precioTotal=0;
 
     @FXML
     void onAgregarAlCarritoClick(ActionEvent event) {
     	Producto producto = this.tblProductos.getSelectionModel().getSelectedItem();
     	
+    	
     	if(producto==null) {
     		Alerta.errorAlert("Debe seleccionar un Producto", "Actualizar Stock");
     	}else {
-    		productosAVender.add(producto);
-    		tblProductosVenta.setItems(productosAVender);
+    		Item item = new Item(producto, contadorCantidad);
+    		contadorCantidad = 1;
+    		itemsAVender.add(item);
+    		tblProductosVenta.setItems(itemsAVender);
+    		this.tblProductosVenta.refresh();
+    		
+    		
+    		txtPrecioTotal.setText("Aca va el precio : "+precioTotal);
     	}
     }
 
@@ -143,7 +159,8 @@ public class NuevaVentaController implements Initializable {
 
     @FXML
     void onBuscarClienteClick(ActionEvent event) {
-    	
+    	String nombreABuscarString = txtNombreABuscar.getText();
+    	//buscarEnClien
     }
 
     @FXML
@@ -222,9 +239,9 @@ public class NuevaVentaController implements Initializable {
 		this.colClieDni.setCellValueFactory(new PropertyValueFactory<Cliente, Integer>("dni"));
 		this.colClieDireccion.setCellValueFactory(new PropertyValueFactory<Cliente, String>("direccionCompleta"));
 		
-		this.colProdVentaNombre.setCellValueFactory(new PropertyValueFactory<Producto, String>("nombre"));
-		this.colProdVentaCantidad.setCellValueFactory(new PropertyValueFactory<Integer, Integer>("cantidad"));
-		this.colProdStock.setCellValueFactory(new PropertyValueFactory<Producto, Integer>("stock"));
+		this.colProdVentaNombre.setCellValueFactory(new PropertyValueFactory<Item, String>("nombreProducto"));
+		this.colProdVentaCantidad.setCellValueFactory(new PropertyValueFactory<Item, Integer>("cantidad"));
+		this.colProdVentaPrecioTotal.setCellValueFactory(new PropertyValueFactory<Item, Double>("precioFinal"));
 		
 		
 		
