@@ -10,7 +10,13 @@ public class Venta {
 	private LocalDate fecha;
 	private Item items;
 	
-	
+	public Venta(Cliente cliente, LocalDate fecha, Item items) {
+		super();
+		this.cliente = cliente;
+		this.fecha = fecha;
+		this.items = items;
+	}
+
 	public double getPrecioTotal() {
 		
 		return 1;
