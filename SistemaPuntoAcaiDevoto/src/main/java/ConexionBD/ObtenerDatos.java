@@ -31,7 +31,7 @@ public class ObtenerDatos extends ConexionBd{
 		rs = ejecutarQuery(sql);
 		while(rs.next()) {
 			Direccion unaDireccion= new Direccion(rs.getString(10),rs.getInt(9),rs.getString(8),rs.getInt(7));
-			Cliente unCliente = new Cliente(rs.getInt(4),rs.getString(2),rs.getString(3),rs.getInt(5),rs.getString(6),unaDireccion,rs.getString(1),rs.getString(11),ingresosGeneradosPor(rs.getInt(4)));
+			Cliente unCliente = new Cliente(rs.getInt(4),rs.getString(2),rs.getString(3),rs.getInt(5),rs.getString(6),unaDireccion,rs.getString(1),rs.getString(11));
 			clientes.add(unCliente);
 		}
 		
@@ -40,12 +40,19 @@ public class ObtenerDatos extends ConexionBd{
 	
 	
 	public double ingresosGeneradosPor(int clie_dni) throws SQLException {
+		int ingresos= 0;
+		 sql = "SELECT CASE WHEN '"+clie_dni+"' IN (SELECT venta_cliente FROM VENTA) THEN "
+				+ "(SELECT SUM(venta_precioTotal)FROM VENTA WHERE venta_cliente = '"+clie_dni+"') "
+				+ "ELSE 0 END";
+		rs=ejecutarQuery(sql);
 		
-		/*sql = "SELECT isnull(SUM(venta_precioTotal),0) FROM VENTA "
-				+ "WHERE venta_cliente = '"+clie_dni+"'";
-		rs=ejecutarQuery(sql);*/
+		while(rs.next()) {
+			ingresos=rs.getInt(1);
+		}
 		
-		return 1;
+			return ingresos;
+		
+		
 	}
 	
 	public ObservableList<Producto> obtenerProductos() throws SQLException{
@@ -77,11 +84,17 @@ public class ObtenerDatos extends ConexionBd{
 	}
 	
 	public int obtenerIdUltimaVentaIngresada() throws SQLException {
+		int id = 0;
 		sql="SELECT top 1 venta_id FROM VENTA ORDER BY venta_id desc";
 		rs=ejecutarQuery(sql);
-		return rs.getRow();
-		//return rs.getInt(1);
+		while(rs.next()) {
+			id=rs.getInt(1);
+		}
+		return id;
 	}
+	
+	
+	//public List<Venta>
 	
 	
 }

@@ -4,6 +4,7 @@ import java.sql.SQLException;
 
 import ConexionBD.InsertarDatos;
 import ConexionBD.ModificarDatos;
+import ConexionBD.ObtenerDatos;
 
 public class Cliente {
 	
@@ -15,9 +16,8 @@ public class Cliente {
 	private Direccion direccion;
 	private String tipo;
 	private String comoLlego;
-	private double ingresos;
 
-	public Cliente(int dni, String nombre, String apellido, int telefono, String email, Direccion direccion, String tipo, String comoLlego, double ingresos) {
+	public Cliente(int dni, String nombre, String apellido, int telefono, String email, Direccion direccion, String tipo, String comoLlego) {
 		this.dni = dni;
 		this.nombre = nombre;
 		this.apellido = apellido;
@@ -26,7 +26,6 @@ public class Cliente {
 		this.direccion = direccion;
 		this.tipo = tipo;
 		this.comoLlego = comoLlego;
-		this.ingresos = ingresos;
 		
 	}
 	
@@ -117,12 +116,9 @@ public class Cliente {
 		this.comoLlego = comoLlego;
 	}
 	
-	public double getIngresos() {
-		return ingresos;
-	}
-
-	public void setIngresos(double ingresos) {
-		this.ingresos = ingresos;
+	public double getIngresos() throws SQLException {
+		ObtenerDatos obtenerDatos = new ObtenerDatos();
+		return obtenerDatos.ingresosGeneradosPor(dni);
 	}
 
 	public boolean tieneElMismoDni(int unDni) {

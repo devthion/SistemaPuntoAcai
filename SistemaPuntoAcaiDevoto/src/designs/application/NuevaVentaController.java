@@ -102,6 +102,9 @@ public class NuevaVentaController implements Initializable {
     @FXML
     private TableColumn<Producto, Integer> colProdStock;
     
+    @FXML
+    private Button btnSacarDelCarrito;
+    
     private int contadorCantidad;
     private ObservableList<Producto> productos;
     private ObservableList<Cliente> clientes;
@@ -282,6 +285,11 @@ public class NuevaVentaController implements Initializable {
 		this.colProdVentaPrecioTotal.setCellValueFactory(new PropertyValueFactory<Item, Double>("precioFinal"));
 		
 		
+	}
+	
+	@FXML
+	void onSacarDelCarritoClick(ActionEvent event) {
+
 	}
 
 }

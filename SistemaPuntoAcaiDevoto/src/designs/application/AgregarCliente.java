@@ -144,7 +144,7 @@ public class AgregarCliente {
     	String comoLlego = slipComoLlego.getText();
     	
     	Direccion direccion = new Direccion(calle, numero, barrio, codPostal);
-    	return new Cliente(dni, nombre, apellido, telefono, email, direccion, tipo, comoLlego, 0);
+    	return new Cliente(dni, nombre, apellido, telefono, email, direccion, tipo, comoLlego);
     }
     
     @FXML

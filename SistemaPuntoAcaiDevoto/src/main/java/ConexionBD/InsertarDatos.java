@@ -52,15 +52,15 @@ public class InsertarDatos extends ConexionBd{
 				+ "venta_ganancia)"
 				+ "values('"+unaVenta.getCliente().getDni()+"','"+unaVenta.getFecha()+"','"+unaVenta.getPrecioTotal()+"','"+unaVenta.getGanancia()+"')";
 		ejecutarUpdate(sql, "Venta ingresada");
-		
-		System.out.println(new ObtenerDatos().obtenerIdUltimaVentaIngresada());
-		/*unaVenta.getItems().stream().forEach(unItem-> {
+		cerrarConexion();
+
+		unaVenta.getItems().stream().forEach(unItem-> {
 			try {
-				unItem.almacenarItemVenta(1);
+				unItem.almacenarItemVenta(new ObtenerDatos().obtenerIdUltimaVentaIngresada());
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
-		});*/
+		});
 	}
 	
 	public void insertarItemVenta(Item unItem,int venta_id) {
