@@ -7,7 +7,6 @@ import java.util.ResourceBundle;
 import Alertas.Alerta;
 import ConexionBD.ObtenerDatos;
 import ModelosClientes.Cliente;
-import ModelosClientes.Direccion;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -30,19 +29,19 @@ public class VerClientesController implements Initializable {
     private TableColumn<Cliente, Integer> colDni;
 
     @FXML
-    private TableColumn<Direccion, String> colBarrio;
+    private TableColumn<Cliente, String> colBarrio;
 
     @FXML
-    private TableColumn<?, ?> colNumero;
+    private TableColumn<Cliente, Integer> colNumero;
 
     @FXML
-    private TableColumn<?, ?> colIngresos;
+    private TableColumn<Cliente, Double> colIngresos;
 
     @FXML
     private Button btnAgregarPersona;
 
     @FXML
-    private TableColumn<?, ?> ColTipoCliente;
+    private TableColumn<Cliente, String> ColTipoCliente;
 
     @FXML
     private TableColumn<Cliente, String> colNombre;
@@ -51,16 +50,16 @@ public class VerClientesController implements Initializable {
     private TableView<Cliente> tblClientes;
 
     @FXML
-    private TableColumn<?, ?> colCodPostal;
+    private TableColumn<Cliente, Integer> colCodPostal;
 
     @FXML
     private TextField txtBusqueda;
 
     @FXML
-    private TableColumn<?, ?> colEmail;
+    private TableColumn<Cliente, String> colEmail;
 
     @FXML
-    private TableColumn<?, ?> colApellido;
+    private TableColumn<Cliente, String> colApellido;
 
     @FXML
     private Button btnEditarCliente;
@@ -69,10 +68,10 @@ public class VerClientesController implements Initializable {
     private Button btnVolver;
 
     @FXML
-    private TableColumn<?, ?> colCalle;
+    private TableColumn<Cliente, String> colCalle;
 
     @FXML
-    private TableColumn<?, ?> colTelefono;
+    private TableColumn<Cliente, Integer> colTelefono;
 
     
     private ObservableList<Cliente> clientes;
@@ -178,16 +177,16 @@ public class VerClientesController implements Initializable {
 		this.tblClientes.setItems(clientes);
 		
 		this.colNombre.setCellValueFactory(new PropertyValueFactory<Cliente, String>("nombre"));
-		this.colApellido.setCellValueFactory(new PropertyValueFactory("apellido"));
-		this.colDni.setCellValueFactory(new PropertyValueFactory("dni"));
-		this.colTelefono.setCellValueFactory(new PropertyValueFactory("telefono"));
-		this.colEmail.setCellValueFactory(new PropertyValueFactory("email"));
-		this.colCalle.setCellValueFactory(new PropertyValueFactory("calle"));
-		this.colNumero.setCellValueFactory(new PropertyValueFactory("numero"));
-		this.colBarrio.setCellValueFactory(new PropertyValueFactory("barrio"));
-		this.colCodPostal.setCellValueFactory(new PropertyValueFactory("codPostal"));
-		this.ColTipoCliente.setCellValueFactory(new PropertyValueFactory("tipo"));
-		this.colIngresos.setCellValueFactory(new PropertyValueFactory("ingresos"));
+		this.colApellido.setCellValueFactory(new PropertyValueFactory<Cliente, String>("apellido"));
+		this.colDni.setCellValueFactory(new PropertyValueFactory<Cliente, Integer>("dni"));
+		this.colTelefono.setCellValueFactory(new PropertyValueFactory<Cliente, Integer>("telefono"));
+		this.colEmail.setCellValueFactory(new PropertyValueFactory<Cliente, String>("email"));
+		this.colCalle.setCellValueFactory(new PropertyValueFactory<Cliente, String>("calle"));
+		this.colNumero.setCellValueFactory(new PropertyValueFactory<Cliente, Integer>("numero"));
+		this.colBarrio.setCellValueFactory(new PropertyValueFactory<Cliente, String>("barrio"));
+		this.colCodPostal.setCellValueFactory(new PropertyValueFactory<Cliente, Integer>("codPostal"));
+		this.ColTipoCliente.setCellValueFactory(new PropertyValueFactory<Cliente, String>("tipo"));
+		this.colIngresos.setCellValueFactory(new PropertyValueFactory<Cliente, Double>("ingresos"));
 		
 		
 	}

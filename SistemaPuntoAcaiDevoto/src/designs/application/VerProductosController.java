@@ -6,7 +6,6 @@ import java.util.ResourceBundle;
 
 import Alertas.Alerta;
 import ConexionBD.ObtenerDatos;
-import ModelosClientes.Cliente;
 import Productos.Producto;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;

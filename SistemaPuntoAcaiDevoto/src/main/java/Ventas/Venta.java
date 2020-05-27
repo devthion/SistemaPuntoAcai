@@ -39,5 +39,10 @@ public class Venta {
 	public ArrayList<Item> getItems() {
 		return items;
 	}
+
+	public void almacenarVenta() {
+		// TODO Auto-generated method stub
+		
+	}
 	
 }

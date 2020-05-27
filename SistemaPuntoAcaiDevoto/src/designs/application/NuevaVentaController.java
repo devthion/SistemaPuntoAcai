@@ -1,12 +1,8 @@
 package application;
 
-import java.awt.List;
+
 import java.net.URL;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.ListIterator;
 import java.util.ResourceBundle;
 
 import Alertas.Alerta;
@@ -109,7 +105,6 @@ public class NuevaVentaController implements Initializable {
     private ObservableList<Cliente> clientes;
     private ObservableList<Item> itemsAVender= FXCollections.observableArrayList();
     private double precioTotal=0;
-    private Venta nuevaVenta;
     private VentasBuilder ventaBorrador; 
 
     @FXML
@@ -163,7 +158,7 @@ public class NuevaVentaController implements Initializable {
 
     @FXML
     void onBuscarClienteClick(ActionEvent event) {
-    	String nombreABuscarString = txtNombreABuscar.getText();
+    	//String nombreABuscarString = txtNombreABuscar.getText();
     	//buscarEnClien
     }
 
@@ -195,7 +190,8 @@ public class NuevaVentaController implements Initializable {
     		Alerta.errorAlert("Debe seleccionar un cliente y minimo un producto", "Nueva Venta");
     	}else {
     		ventaBorrador.setCliente(cliente);
-        	nuevaVenta = ventaBorrador.crearVenta();
+        	Venta nuevaVenta = ventaBorrador.crearVenta();
+        	nuevaVenta.almacenarVenta();
         	Alerta.informationAlert("Se ha registrado la venta", "Nueva Venta");
         	Stage stage = (Stage) btnRealizarVenta.getScene().getWindow();
         	stage.close();
