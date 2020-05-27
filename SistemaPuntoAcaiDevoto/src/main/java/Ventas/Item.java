@@ -8,7 +8,6 @@ public class Item {
 	private int cantidad;
 	
 	public Item(Producto producto, int cantidad) {
-		super();
 		this.producto = producto;
 		this.cantidad = cantidad;
 	}

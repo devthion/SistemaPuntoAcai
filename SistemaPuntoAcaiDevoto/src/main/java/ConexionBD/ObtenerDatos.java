@@ -39,7 +39,12 @@ public class ObtenerDatos extends ConexionBd{
 	}
 	
 	
-	public double ingresosGeneradosPor(int clie_dni) {
+	public double ingresosGeneradosPor(int clie_dni) throws SQLException {
+		
+		/*sql = "SELECT isnull(SUM(venta_precioTotal),0) FROM VENTA "
+				+ "WHERE venta_cliente = '"+clie_dni+"'";
+		rs=ejecutarQuery(sql);*/
+		
 		return 1;
 	}
 	

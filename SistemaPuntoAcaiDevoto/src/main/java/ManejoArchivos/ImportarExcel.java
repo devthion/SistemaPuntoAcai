@@ -1,4 +1,4 @@
-package ImportarArchivos;
+package ManejoArchivos;
 
 import java.io.File;
 import java.io.FileInputStream;
