@@ -3,6 +3,7 @@ package application;
 
 import java.net.URL;
 import java.sql.SQLException;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 import Alertas.Alerta;
@@ -19,7 +20,9 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -117,6 +120,7 @@ public class NuevaVentaController implements Initializable {
     	}else {
     		Item item = new Item(producto, contadorCantidad);
     		contadorCantidad = 1;
+    		lblCantidadItem.setText(""+contadorCantidad);
     		itemsAVender.add(item);
     		tblProductosVenta.setItems(itemsAVender);
     		this.tblProductosVenta.refresh();
@@ -193,30 +197,48 @@ public class NuevaVentaController implements Initializable {
         	Venta nuevaVenta = ventaBorrador.crearVenta();
         	nuevaVenta.almacenarVenta();
         	Alerta.informationAlert("Se ha registrado la venta", "Nueva Venta");
+        	try {
+    			FXMLLoader loader = new FXMLLoader();
+    			loader.setLocation(getClass().getResource("MenuPrincipal.fxml"));
+    			AnchorPane root = (AnchorPane) loader.load();
+    			Scene scene = new Scene(root,1300,650);
+    			Stage stage = new Stage();
+    			stage.setScene(scene);
+    			stage.initModality(Modality.APPLICATION_MODAL);
+    			stage.setTitle("Menu Principal");
+    			stage.show();
+    		} catch(Exception e) {
+    			e.printStackTrace();
+    		}
         	Stage stage = (Stage) btnRealizarVenta.getScene().getWindow();
         	stage.close();
-    	}
-    	
-    	
+    	}  	
     }
 
     @FXML
     void onVolverClick(ActionEvent event) {
-    	try {
-			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(getClass().getResource("MenuPrincipal.fxml"));
-			AnchorPane root = (AnchorPane) loader.load();
-			Scene scene = new Scene(root,1300,650);
-			Stage stage = new Stage();
-			stage.setScene(scene);
-			stage.initModality(Modality.APPLICATION_MODAL);
-			stage.setTitle("Menu Principal");
-			stage.show();
-		} catch(Exception e) {
-			e.printStackTrace();
-		}
-    	Stage stage = (Stage) btnVolver.getScene().getWindow();
-    	stage.close();
+    	
+    	
+    	Optional<ButtonType> action = Alerta.preguntaConfirmacion("¿Estas seguro que desea cancelar la operación?", "Confirmación");
+    	if (action.get() == ButtonType.OK) {
+    		try {
+    			FXMLLoader loader = new FXMLLoader();
+    			loader.setLocation(getClass().getResource("MenuPrincipal.fxml"));
+    			AnchorPane root = (AnchorPane) loader.load();
+    			Scene scene = new Scene(root,1300,650);
+    			Stage stage = new Stage();
+    			stage.setScene(scene);
+    			stage.initModality(Modality.APPLICATION_MODAL);
+    			stage.setTitle("Menu Principal");
+    			stage.show();
+    		} catch(Exception e) {
+    			e.printStackTrace();
+    		}
+        	Stage stage = (Stage) btnVolver.getScene().getWindow();
+        	stage.close();
+    	}
+    	
+    	
     }
 
 	@Override
