@@ -156,7 +156,8 @@ public class NuevaVentaController implements Initializable {
 
     @FXML
     void onBuscarClienteClick(ActionEvent event) {
-    	
+    	String nombreABuscarString = txtNombreABuscar.getText();
+    	//buscarEnClien
     }
 
     @FXML
