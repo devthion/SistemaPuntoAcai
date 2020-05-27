@@ -189,6 +189,18 @@ public class NuevaVentaController implements Initializable {
     void onRealizarVentaClick(ActionEvent event) {
     	//ALMACENA LA VENTA
     	//RECIBE UNA LISTA DE ITEMS VENTA Y UN CLIENTE Y GENERA LA VENTA
+    	Cliente cliente = this.tblClientes.getSelectionModel().getSelectedItem();
+    	
+    	if(cliente==null || ventaBorrador.getItems().size() == 0) {
+    		Alerta.errorAlert("Debe seleccionar un cliente y minimo un producto", "Nueva Venta");
+    	}else {
+    		ventaBorrador.setCliente(cliente);
+        	nuevaVenta = ventaBorrador.crearVenta();
+        	Alerta.informationAlert("Se ha registrado la venta", "Nueva Venta");
+        	Stage stage = (Stage) btnRealizarVenta.getScene().getWindow();
+        	stage.close();
+    	}
+    	
     	
     }
 
@@ -247,6 +259,7 @@ public class NuevaVentaController implements Initializable {
 		this.colProdVentaNombre.setCellValueFactory(new PropertyValueFactory<Item, String>("nombreProducto"));
 		this.colProdVentaCantidad.setCellValueFactory(new PropertyValueFactory<Item, Integer>("cantidad"));
 		this.colProdVentaPrecioTotal.setCellValueFactory(new PropertyValueFactory<Item, Double>("precioFinal"));
+		
 		
 	}
 
