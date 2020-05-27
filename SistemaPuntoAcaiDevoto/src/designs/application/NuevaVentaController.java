@@ -1,14 +1,21 @@
 package application;
 
+import java.awt.List;
 import java.net.URL;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.ListIterator;
 import java.util.ResourceBundle;
 
 import Alertas.Alerta;
 import ConexionBD.ObtenerDatos;
 import ModelosClientes.Cliente;
 import Productos.Producto;
+import javafx.beans.InvalidationListener;
 import javafx.collections.FXCollections;
+import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -99,7 +106,7 @@ public class NuevaVentaController implements Initializable {
     private int contadorCantidad;
     private ObservableList<Producto> productos;
     private ObservableList<Cliente> clientes;
-    private ObservableList<Producto> productosAVender;
+    private ObservableList<Producto> productosAVender= FXCollections.observableArrayList();;
 
     @FXML
     void onAgregarAlCarritoClick(ActionEvent event) {
@@ -108,8 +115,10 @@ public class NuevaVentaController implements Initializable {
     	if(producto==null) {
     		Alerta.errorAlert("Debe seleccionar un Producto", "Actualizar Stock");
     	}else {
+    		
     		productosAVender.add(producto);
     		tblProductosVenta.setItems(productosAVender);
+    		this.tblProductosVenta.refresh();
     	}
     }
 
@@ -223,7 +232,7 @@ public class NuevaVentaController implements Initializable {
 		this.colClieDireccion.setCellValueFactory(new PropertyValueFactory<Cliente, String>("direccionCompleta"));
 		
 		this.colProdVentaNombre.setCellValueFactory(new PropertyValueFactory<Producto, String>("nombre"));
-		this.colProdVentaCantidad.setCellValueFactory(new PropertyValueFactory<Integer, Integer>("cantidad"));
+		//this.colProdVentaCantidad.setCellValueFactory(new PropertyValueFactory<Integer, Integer>("cantidad"));
 		this.colProdStock.setCellValueFactory(new PropertyValueFactory<Producto, Integer>("stock"));
 		
 		
