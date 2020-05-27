@@ -2,13 +2,15 @@ package ConexionBD;
 
 
 import java.sql.SQLException;
-
+import java.util.List;
 
 import ModelosClientes.Cliente;
 import Productos.Producto;
+import Ventas.Item;
+import Ventas.Venta;
 
 public class InsertarDatos extends ConexionBd{
-
+	
 	public InsertarDatos() throws SQLException {
 		super();
 	}
@@ -42,11 +44,34 @@ public class InsertarDatos extends ConexionBd{
 	}
 	
 	
-	public void insertarVenta() {
+	public void insertarVenta(Venta unaVenta) throws SQLException {
+		String sql = "INSERT INTO VENTA"
+				+ "(venta_cliente,"
+				+ "venta_fecha,"
+				+ "venta_precioTotal,"
+				+ "venta_ganancia)"
+				+ "values('"+unaVenta.getCliente().getDni()+"','"+unaVenta.getFecha()+"','"+unaVenta.getPrecioTotal()+"','"+unaVenta.getGanancia()+"')";
+		ejecutarUpdate(sql, "Venta ingresada");
 		
+		System.out.println(new ObtenerDatos().obtenerIdUltimaVentaIngresada());
+		unaVenta.getItems().stream().forEach(unItem-> {
+			try {
+				unItem.almacenarItemVenta(new ObtenerDatos().obtenerIdUltimaVentaIngresada());
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		});
 	}
 	
-	public void insertarItemVenta() {
+	public void insertarItemVenta(Item unItem,int venta_id) {
+		String sql = "INSERT INTO ITEM_VENTA"
+						+ "(item_producto,"
+						+ "item_venta,"
+						+ "item_cantidad,"
+						+ "item_precio)"
+						+ "values('"+unItem.getProdId()+"','"+venta_id+"','"+unItem.getCantidad()+"','"+unItem.getPrecioFinal()+"')";
+		ejecutarUpdate(sql, "Item ingresado");
+				
 		
 	}
 	

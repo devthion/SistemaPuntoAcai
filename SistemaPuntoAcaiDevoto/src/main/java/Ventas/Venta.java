@@ -48,7 +48,7 @@ public class Venta {
 
 	public void almacenarVenta() throws SQLException {
 		insertarDatos = new InsertarDatos();
-		insertarDatos.
+		insertarDatos.insertarVenta(this);
 	}
 	
 }

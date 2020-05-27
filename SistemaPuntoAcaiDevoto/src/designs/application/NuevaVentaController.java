@@ -194,7 +194,11 @@ public class NuevaVentaController implements Initializable {
     	}else {
     		ventaBorrador.setCliente(cliente);
         	Venta nuevaVenta = ventaBorrador.crearVenta();
-        	nuevaVenta.almacenarVenta();
+        	try {
+				nuevaVenta.almacenarVenta();
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+			}
         	Alerta.informationAlert("Se ha registrado la venta", "Nueva Venta");
         	try {
     			FXMLLoader loader = new FXMLLoader();
