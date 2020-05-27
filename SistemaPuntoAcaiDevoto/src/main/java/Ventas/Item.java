@@ -13,6 +13,7 @@ public class Item {
 	}
 
 	public double getPrecioFinal() {
+		//ACA HACER CUENTAS SEGUN SI ES MAYORISTA O CONSUMIDOR FINAL
 		return cantidad*producto.getPrecioUnitario();
 	}
 	
@@ -34,5 +35,9 @@ public class Item {
 
 	public void setCantidad(int cantidad) {
 		this.cantidad = cantidad;
+	}
+	
+	public double getCostoTotal() {
+		return producto.getCosto()*cantidad;
 	}
 }

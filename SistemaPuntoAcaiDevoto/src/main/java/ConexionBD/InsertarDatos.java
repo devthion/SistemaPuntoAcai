@@ -41,5 +41,15 @@ public class InsertarDatos extends ConexionBd{
 		
 	}
 	
+	
+	public void insertarVenta() {
+		
+	}
+	
+	public void insertarItemVenta() {
+		
+	}
+	
+	
 
 }
