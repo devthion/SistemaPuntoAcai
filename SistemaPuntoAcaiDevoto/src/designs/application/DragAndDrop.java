@@ -3,6 +3,7 @@ package application;
 
 import java.io.File;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -68,6 +69,9 @@ public class DragAndDrop extends Application {
                        	}catch (IOException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
+						} catch (SQLException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
 						}
                    }
                }
