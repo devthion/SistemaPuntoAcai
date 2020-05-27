@@ -4,6 +4,7 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
+import Alertas.Alerta;
 import ConexionBD.ObtenerDatos;
 import ModelosClientes.Cliente;
 import Productos.Producto;
@@ -98,10 +99,18 @@ public class NuevaVentaController implements Initializable {
     private int contadorCantidad;
     private ObservableList<Producto> productos;
     private ObservableList<Cliente> clientes;
+    private ObservableList<Producto> productosAVender;
 
     @FXML
     void onAgregarAlCarritoClick(ActionEvent event) {
-
+    	Producto producto = this.tblProductos.getSelectionModel().getSelectedItem();
+    	
+    	if(producto==null) {
+    		Alerta.errorAlert("Debe seleccionar un Producto", "Actualizar Stock");
+    	}else {
+    		productosAVender.add(producto);
+    		tblProductosVenta.setItems(productosAVender);
+    	}
     }
 
     @FXML
@@ -134,23 +143,32 @@ public class NuevaVentaController implements Initializable {
 
     @FXML
     void onBuscarClienteClick(ActionEvent event) {
-
+    	
     }
 
     @FXML
     void onMenosClick(ActionEvent event) {
-    	contadorCantidad--;
+    	if(contadorCantidad==1) {
+    		lblCantidadItem.setText(""+contadorCantidad);
+    	}else {
+    		contadorCantidad--;
+        	lblCantidadItem.setText(""+contadorCantidad);
+    	}
+    	
 
     }
 
     @FXML
     void onMasClick(ActionEvent event) {
-
+    	contadorCantidad++;
+    	lblCantidadItem.setText(""+contadorCantidad);
     }
 
     @FXML
     void onRealizarVentaClick(ActionEvent event) {
-
+    	//ALMACENA LA VENTA
+    	//RECIBE UNA LISTA DE ITEMS VENTA Y UN CLIENTE Y GENERA LA VENTA
+    	
     }
 
     @FXML
@@ -203,6 +221,11 @@ public class NuevaVentaController implements Initializable {
 		this.colClieApellido.setCellValueFactory(new PropertyValueFactory<Cliente, String>("apellido"));
 		this.colClieDni.setCellValueFactory(new PropertyValueFactory<Cliente, Integer>("dni"));
 		this.colClieDireccion.setCellValueFactory(new PropertyValueFactory<Cliente, String>("direccionCompleta"));
+		
+		this.colProdVentaNombre.setCellValueFactory(new PropertyValueFactory<Producto, String>("nombre"));
+		this.colProdVentaCantidad.setCellValueFactory(new PropertyValueFactory<Integer, Integer>("cantidad"));
+		this.colProdStock.setCellValueFactory(new PropertyValueFactory<Producto, Integer>("stock"));
+		
 		
 		
 		
