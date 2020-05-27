@@ -16,7 +16,7 @@ public class CrearTabla {
 	public static void crearTablaVenta() {
 		try 
 		{
-			Connection con = DriverManager.getConnection("jdbc:h2:"+"./Database/my", "root", "devthion");
+			Connection con = DriverManager.getConnection("jdbc:h2:"+"~/test", "root", "devthion");
 			Statement stmt= con.createStatement();
 			String sql = "CREATE TABLE IF NOT EXISTS VENTA" 
 				+"(venta_id INTEGER auto_increment,"
@@ -37,7 +37,7 @@ public class CrearTabla {
 	public static void crearTablaCliente() {
 		try 
 		{
-			Connection con = DriverManager.getConnection("jdbc:h2:"+"./Database/my", "root", "devthion");
+			Connection con = DriverManager.getConnection("jdbc:h2:"+"~/test", "root", "devthion");
 			Statement stmt= con.createStatement();
 			String sql = "CREATE TABLE IF NOT EXISTS CLIENTE" 
 				+"(clie_tipo VARCHAR(40),"
@@ -64,7 +64,7 @@ public class CrearTabla {
 	public static void crearTablaProducto() {
 		try 
 		{
-			Connection con = DriverManager.getConnection("jdbc:h2:"+"./Database/my", "root", "devthion");
+			Connection con = DriverManager.getConnection("jdbc:h2:"+"~/test", "root", "devthion");
 			Statement stmt= con.createStatement();
 			String sql = "CREATE TABLE IF NOT EXISTS PRODUCTO" 
 				+ "(prod_id INTEGER auto_increment,"
@@ -87,7 +87,7 @@ public class CrearTabla {
 	public static void crearTablaItem_Venta() {
 		try 
 		{
-			Connection con = DriverManager.getConnection("jdbc:h2:"+"./Database/my", "root", "devthion");
+			Connection con = DriverManager.getConnection("jdbc:h2:"+"~/test", "root", "devthion");
 			Statement stmt= con.createStatement();
 			String sql = "CREATE TABLE IF NOT EXISTS ITEM_VENTA " 
 				+"(item_producto INTEGER(10) NOT NULL,"

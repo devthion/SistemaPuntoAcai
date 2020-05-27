@@ -1,11 +1,15 @@
 package Ventas;
 
+import java.sql.SQLException;
+
+import ConexionBD.InsertarDatos;
 import Productos.Producto;
 
 public class Item {
 	
 	private Producto producto;
 	private int cantidad;
+	InsertarDatos insertarDatos;
 	
 	public Item(Producto producto, int cantidad) {
 		this.producto = producto;
@@ -24,6 +28,10 @@ public class Item {
 	public Producto getProducto() {
 		return producto;
 	}
+	
+	public int getProdId() {
+		return producto.getProd_id();
+	}
 
 	public void setProducto(Producto producto) {
 		this.producto = producto;
@@ -39,5 +47,10 @@ public class Item {
 	
 	public double getCostoTotal() {
 		return producto.getCosto()*cantidad;
+	}
+
+	public void almacenarItemVenta(int venta_id) throws SQLException {
+		insertarDatos = new InsertarDatos();
+		insertarDatos.insertarItemVenta(this, venta_id);
 	}
 }
