@@ -53,6 +53,10 @@ public class Cliente {
 		return direccion.getCodPostal();
 	}
 	
+	public String getDireccionCompleta() {
+		return direccion.getCalle() +" " + direccion.getNumero() +", "+direccion.getBarrio();
+	}
+	
 	public String getTipo() {
 		return tipo;
 	}

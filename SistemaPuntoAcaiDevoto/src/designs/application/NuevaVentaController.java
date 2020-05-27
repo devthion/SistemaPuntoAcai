@@ -27,7 +27,7 @@ import javafx.stage.Stage;
 public class NuevaVentaController implements Initializable {
 
     @FXML
-    private TableColumn<?, ?> colClieDireccion;
+    private TableColumn<Cliente, String> colClieDireccion;
 
     @FXML
     private Label lblCantidadItem;
@@ -48,13 +48,13 @@ public class NuevaVentaController implements Initializable {
     private TableView<Cliente> tblClientes;
 
     @FXML
-    private TableColumn<?, ?> colClieApellido;
+    private TableColumn<Cliente, String> colClieApellido;
 
     @FXML
     private TableColumn<Integer, Integer> colProdVentaCantidad;
 
     @FXML
-    private TableColumn<?, ?> colClieDni;
+    private TableColumn<Cliente, Integer> colClieDni;
 
     @FXML
     private TableColumn<Producto, Integer> colProdKilos;
@@ -106,7 +106,30 @@ public class NuevaVentaController implements Initializable {
 
     @FXML
     void btnNuevoClienteClick(ActionEvent event) {
-
+    	try {
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("AgregarCliente.fxml"));
+			AnchorPane root = (AnchorPane) loader.load();
+			
+			AgregarCliente controller = loader.getController();
+			controller.initAgregar();
+			
+			Scene scene = new Scene(root,1300,650);
+			Stage stage = new Stage();
+			stage.setScene(scene);
+			stage.initModality(Modality.APPLICATION_MODAL);
+			stage.setTitle("Nuevo Cliente");
+			stage.showAndWait();
+			
+			ObtenerDatos obtenerDatos = new ObtenerDatos();
+			clientes = FXCollections.observableArrayList();
+			clientes = obtenerDatos.obtenerClientes();
+			
+			this.tblClientes.setItems(clientes);
+			this.tblClientes.refresh();
+			
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
     }
 
     @FXML
@@ -116,6 +139,7 @@ public class NuevaVentaController implements Initializable {
 
     @FXML
     void onMenosClick(ActionEvent event) {
+    	contadorCantidad--;
 
     }
 
@@ -174,13 +198,11 @@ public class NuevaVentaController implements Initializable {
 			e.printStackTrace();
 		}
 		
-		
 		this.tblClientes.setItems(clientes);
-		
 		this.colClieNombre.setCellValueFactory(new PropertyValueFactory<Cliente, String>("nombre"));
-		this.colClieApellido.setCellValueFactory(new PropertyValueFactory("apellido"));
-		this.colClieDni.setCellValueFactory(new PropertyValueFactory("dni"));
-		this.colClieDireccion.setCellValueFactory(new PropertyValueFactory("direccion"));
+		this.colClieApellido.setCellValueFactory(new PropertyValueFactory<Cliente, String>("apellido"));
+		this.colClieDni.setCellValueFactory(new PropertyValueFactory<Cliente, Integer>("dni"));
+		this.colClieDireccion.setCellValueFactory(new PropertyValueFactory<Cliente, String>("direccionCompleta"));
 		
 		
 		

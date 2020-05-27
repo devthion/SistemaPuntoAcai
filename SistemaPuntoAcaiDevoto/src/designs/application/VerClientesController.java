@@ -93,7 +93,11 @@ public class VerClientesController implements Initializable {
 			stage.setTitle("Nuevo Cliente");
 			stage.showAndWait();
 			
-			this.clientes.add(controller.getNuevoCliente());
+			ObtenerDatos obtenerDatos = new ObtenerDatos();
+			clientes = FXCollections.observableArrayList();
+			clientes = obtenerDatos.obtenerClientes();
+			
+			this.tblClientes.setItems(clientes);
 			this.tblClientes.refresh();
 			
 		} catch(Exception e) {
