@@ -14,6 +14,7 @@ import ConexionBD.ObtenerDatos;
 import ModelosClientes.Cliente;
 import Productos.Producto;
 import Ventas.Item;
+import Ventas.Venta;
 import javafx.beans.InvalidationListener;
 import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
@@ -109,6 +110,7 @@ public class NuevaVentaController implements Initializable {
     private ObservableList<Cliente> clientes;
     private ObservableList<Item> itemsAVender= FXCollections.observableArrayList();
     private double precioTotal=0;
+    private Venta nuevaVenta;
 
     @FXML
     void onAgregarAlCarritoClick(ActionEvent event) {
@@ -123,6 +125,7 @@ public class NuevaVentaController implements Initializable {
     		itemsAVender.add(item);
     		tblProductosVenta.setItems(itemsAVender);
     		this.tblProductosVenta.refresh();
+    		
     		
     		
     		txtPrecioTotal.setText("Aca va el precio : "+precioTotal);
