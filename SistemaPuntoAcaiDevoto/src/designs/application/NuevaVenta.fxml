@@ -6,45 +6,45 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane prefHeight="650.0" prefWidth="1300.0" stylesheets="@../Styles/Style.css" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="application.NuevaVenta">
+<AnchorPane prefHeight="650.0" prefWidth="1300.0" stylesheets="@../Styles/Style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.NuevaVentaController">
    <children>
-      <Button layoutX="1007.0" layoutY="236.0" mnemonicParsing="false" text="AGREGAR AL CARRITO" />
-      <Button layoutX="389.0" layoutY="441.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="227.0" text="NUEVO CLIENTE" />
+      <Button fx:id="btnAgregarAlCarrito" layoutX="1007.0" layoutY="236.0" mnemonicParsing="false" onAction="#onAgregarAlCarritoClick" text="AGREGAR AL CARRITO" />
+      <Button fx:id="btnNuevoCliente" layoutX="389.0" layoutY="441.0" mnemonicParsing="false" onAction="#btnNuevoClienteClick" prefHeight="49.0" prefWidth="227.0" text="NUEVO CLIENTE" />
       <Label layoutX="669.0" layoutY="98.0" text="PRODUCTOS" />
       <Label layoutX="24.0" layoutY="98.0" text="CLIENTES" />
-      <TableView layoutX="668.0" layoutY="128.0" prefHeight="157.0" prefWidth="322.0">
+      <TableView fx:id="tblProductos" layoutX="668.0" layoutY="128.0" prefHeight="157.0" prefWidth="322.0">
          <columns>
-            <TableColumn prefWidth="108.0" text="NOMBRE" />
-            <TableColumn prefWidth="101.0" text="KILOS" />
-            <TableColumn prefWidth="111.0" text="STOCK" />
+            <TableColumn fx:id="colProdNombre" prefWidth="108.0" text="NOMBRE" />
+            <TableColumn fx:id="colProdKilos" prefWidth="101.0" text="KILOS" />
+            <TableColumn fx:id="colProdStock" prefWidth="111.0" text="STOCK" />
          </columns>
       </TableView>
-      <Button layoutX="242.0" layoutY="441.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="139.0" text="BUSCAR" />
-      <TextField alignment="CENTER" layoutX="25.0" layoutY="441.0" prefHeight="49.0" prefWidth="207.0" promptText="NOMBRE A BUSCAR" />
-      <TableView layoutX="25.0" layoutY="128.0" prefHeight="301.0" prefWidth="591.0">
+      <Button fx:id="btnBuscarCliente" layoutX="242.0" layoutY="441.0" mnemonicParsing="false" onAction="#onBuscarClienteClick" prefHeight="49.0" prefWidth="139.0" text="BUSCAR" />
+      <TextField fx:id="txtNombreABuscar" alignment="CENTER" layoutX="25.0" layoutY="441.0" prefHeight="49.0" prefWidth="207.0" promptText="NOMBRE A BUSCAR" />
+      <TableView fx:id="tblClientes" layoutX="25.0" layoutY="128.0" prefHeight="301.0" prefWidth="591.0">
          <columns>
-            <TableColumn prefWidth="108.0" text="NOMBRE" />
-            <TableColumn prefWidth="110.0" text="APELLIDO" />
-            <TableColumn prefWidth="127.0" text="DNI" />
-            <TableColumn prefWidth="244.0" text="DIRECCION" />
+            <TableColumn fx:id="colClieNombre" prefWidth="108.0" text="NOMBRE" />
+            <TableColumn fx:id="colClieApellido" prefWidth="110.0" text="APELLIDO" />
+            <TableColumn fx:id="colClieDni" prefWidth="127.0" text="DNI" />
+            <TableColumn fx:id="colClieDireccion" prefWidth="244.0" text="DIRECCION" />
          </columns>
       </TableView>
       <Separator layoutX="161.0" layoutY="81.0" prefWidth="1000.0" />
       <Label layoutX="595.0" layoutY="40.0" text="NUEVA VENTA" />
       <Button fx:id="btnMenos" layoutX="1209.0" layoutY="139.0" mnemonicParsing="false" onAction="#onMenosClick" prefHeight="50.0" prefWidth="71.0" text="-" />
       <Button fx:id="btnMas" layoutX="1132.0" layoutY="139.0" mnemonicParsing="false" onAction="#onMasClick" prefHeight="50.0" prefWidth="71.0" text="+" />
-      <Label fx:id="lblStock" alignment="CENTER" layoutX="1022.0" layoutY="149.0" prefHeight="30.0" prefWidth="71.0" text="1" textAlignment="CENTER" />
+      <Label fx:id="lblCantidadItem" alignment="CENTER" layoutX="1022.0" layoutY="149.0" prefHeight="30.0" prefWidth="71.0" text="1" textAlignment="CENTER" />
       <Label layoutX="1013.0" layoutY="109.0" text="CANTIDAD" />
-      <TableView layoutX="668.0" layoutY="302.0" prefHeight="188.0" prefWidth="322.0">
+      <TableView fx:id="tblProductosVenta" layoutX="668.0" layoutY="302.0" prefHeight="188.0" prefWidth="322.0">
         <columns>
-          <TableColumn prefWidth="126.0" text="PRODUCTO" />
-          <TableColumn prefWidth="194.0" text="PRECIO TOTAL" />
+          <TableColumn fx:id="colProdVentaNombre" prefWidth="116.0" text="PRODUCTO" />
+          <TableColumn fx:id="colProdVentaCantidad" prefWidth="109.0" text="CANTIDAD" />
+            <TableColumn fx:id="colProdVentaPrecioTotal" maxWidth="1.7976931348623157E308" minWidth="11.0" prefWidth="95.0" text="TOTAL" />
         </columns>
       </TableView>
-      <TextField layoutX="1057.0" layoutY="457.0" />
+      <TextField fx:id="txtPrecioTotal" layoutX="1057.0" layoutY="457.0" />
       <Label layoutX="1099.0" layoutY="414.0" text="TOTAL VENTA" />
-      <Button layoutX="535.0" layoutY="545.0" mnemonicParsing="false" text="REALIZAR VENTA" />
-      <Button layoutX="1152.0" layoutY="587.0" mnemonicParsing="false" text="VOLVER" />
+      <Button fx:id="btnRealizarVenta" layoutX="535.0" layoutY="545.0" mnemonicParsing="false" onAction="#onRealizarVentaClick" text="REALIZAR VENTA" />
+      <Button fx:id="btnVolver" layoutX="1152.0" layoutY="587.0" mnemonicParsing="false" onAction="#onVolverClick" text="VOLVER" />
    </children>
 </AnchorPane>
