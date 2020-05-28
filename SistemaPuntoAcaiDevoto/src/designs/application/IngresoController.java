@@ -1,10 +1,14 @@
 package application;
 
+import java.util.Optional;
+
+import Alertas.Alerta;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
@@ -57,8 +61,9 @@ public class IngresoController {
 	
     @FXML
     void onSalirClick(ActionEvent event) {
-    	System.exit(0);
+    	Optional<ButtonType> action =  new Alerta().preguntaConfirmacion("¿Estas seguro que desea salir del sistema?", "Confirmación");
+    	if (action.get() == ButtonType.OK) {
+    			System.exit(0);
+    	}
     }
-
-
 }

@@ -188,8 +188,6 @@ public class NuevaVentaController implements Initializable {
 
     @FXML
     void onRealizarVentaClick(ActionEvent event) {
-    	//ALMACENA LA VENTA
-    	//RECIBE UNA LISTA DE ITEMS VENTA Y UN CLIENTE Y GENERA LA VENTA
     	Cliente cliente = this.tblClientes.getSelectionModel().getSelectedItem();
     	
     	if(cliente==null || ventaBorrador.getItems().size() == 0) {
@@ -223,8 +221,6 @@ public class NuevaVentaController implements Initializable {
 
     @FXML
     void onVolverClick(ActionEvent event) {
-    	
-    	
     	Optional<ButtonType> action =  new Alerta().preguntaConfirmacion("¿Estas seguro que desea cancelar la operación?", "Confirmación");
     	if (action.get() == ButtonType.OK) {
     		try {
@@ -242,9 +238,7 @@ public class NuevaVentaController implements Initializable {
     		}
         	Stage stage = (Stage) btnVolver.getScene().getWindow();
         	stage.close();
-    	}
-    	
-    	
+    	}   	
     }
 
 	@Override
