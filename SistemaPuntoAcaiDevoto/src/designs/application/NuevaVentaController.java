@@ -225,7 +225,7 @@ public class NuevaVentaController implements Initializable {
     void onVolverClick(ActionEvent event) {
     	
     	
-    	Optional<ButtonType> action = Alerta.preguntaConfirmacion("¿Estas seguro que desea cancelar la operación?", "Confirmación");
+    	Optional<ButtonType> action =  new Alerta().preguntaConfirmacion("¿Estas seguro que desea cancelar la operación?", "Confirmación");
     	if (action.get() == ButtonType.OK) {
     		try {
     			FXMLLoader loader = new FXMLLoader();

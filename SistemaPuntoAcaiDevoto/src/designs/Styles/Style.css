@@ -68,6 +68,7 @@
 
 .table-view:row-selection .table-row-cell:filled:hover { 
     -fx-background-color: #7424A9;
+    -fx-text-fill: #FFFFFF;
 }
 
 .table-view:row-selection .table-row-cell:filled:selected { 
