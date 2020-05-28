@@ -9,6 +9,7 @@ public class Item {
 	
 	private Producto producto;
 	private int cantidad;
+	private double item_precio;
 	InsertarDatos insertarDatos;
 	
 	public Item(Producto producto, int cantidad) {
@@ -23,6 +24,14 @@ public class Item {
 	
 	public String getNombreProducto() {
 		return producto.getNombre()+" "+producto.getKilos() +" kilos";
+	}
+	
+	public void setItemPrecio(double precio) {
+		this.item_precio=precio;
+	}
+	
+	public double getItemPrecio() {
+		return item_precio;
 	}
 
 	public Producto getProducto() {
