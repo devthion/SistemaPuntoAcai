@@ -16,11 +16,14 @@ public class Alerta {
 		alert.showAndWait();
 	}
 	
-	public static void errorAlert(String mensaje, String titulo) {
+	public void errorAlert(String mensaje, String titulo) {
 		Alert alert = new Alert(Alert.AlertType.ERROR);
 		alert.setHeaderText(null);
 		alert.setTitle(titulo);
 		alert.setContentText(mensaje);
+		DialogPane dialogPane = alert.getDialogPane();
+    	dialogPane.getStylesheets().add(getClass().getResource("myDialogs.css").toExternalForm());
+    	dialogPane.getStyleClass().add("myDialog");
 		alert.showAndWait();
 	}
 	
@@ -30,11 +33,12 @@ public class Alerta {
     	alert.setHeaderText(null);
     	alert.setTitle(titulo);
     	alert.setContentText(mensaje);
-    	Optional<ButtonType> action = alert.showAndWait();
+    	
     	
     	DialogPane dialogPane = alert.getDialogPane();
     	dialogPane.getStylesheets().add(getClass().getResource("myDialogs.css").toExternalForm());
     	dialogPane.getStyleClass().add("myDialog");
+    	Optional<ButtonType> action = alert.showAndWait();
     	
     	return action;
 	}

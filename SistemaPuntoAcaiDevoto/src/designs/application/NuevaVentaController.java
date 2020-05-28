@@ -118,7 +118,7 @@ public class NuevaVentaController implements Initializable {
     	
     	
     	if(producto==null) {
-    		Alerta.errorAlert("Debe seleccionar un Producto", "Actualizar Stock");
+    		new Alerta().errorAlert("Debe seleccionar un Producto", "Actualizar Stock");
     	}else {
     		Item item = new Item(producto, contadorCantidad);
     		contadorCantidad = 1;
@@ -193,7 +193,7 @@ public class NuevaVentaController implements Initializable {
     	Cliente cliente = this.tblClientes.getSelectionModel().getSelectedItem();
     	
     	if(cliente==null || ventaBorrador.getItems().size() == 0) {
-    		Alerta.errorAlert("Debe seleccionar un cliente y minimo un producto", "Nueva Venta");
+    		new Alerta().errorAlert("Debe seleccionar un cliente y minimo un producto", "Nueva Venta");
     	}else {
     		ventaBorrador.setCliente(cliente);
         	Venta nuevaVenta = ventaBorrador.crearVenta();

@@ -90,7 +90,7 @@ public class VerProductosController implements Initializable {
     	Producto producto = this.tblProductos.getSelectionModel().getSelectedItem();
     	
     	if(producto==null) {
-    		Alerta.errorAlert("Debe seleccionar un Producto", "Actualizar Stock");
+    		new Alerta().errorAlert("Debe seleccionar un Producto", "Actualizar Stock");
     	}else {
     		try {
     			FXMLLoader loader = new FXMLLoader(getClass().getResource("ActualizarStock.fxml"));
@@ -126,7 +126,7 @@ public class VerProductosController implements Initializable {
     	Producto producto = this.tblProductos.getSelectionModel().getSelectedItem();
     	
     	if(producto==null) {
-    		Alerta.errorAlert("Debe seleccionar un Producto", "Actualizar Precio");
+    		new Alerta().errorAlert("Debe seleccionar un Producto", "Actualizar Precio");
     	}else {
     		try {
     			FXMLLoader loader = new FXMLLoader(getClass().getResource("ActualizarPrecio.fxml"));

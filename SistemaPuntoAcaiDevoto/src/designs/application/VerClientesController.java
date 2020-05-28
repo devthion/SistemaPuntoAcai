@@ -109,7 +109,7 @@ public class VerClientesController implements Initializable {
     	Cliente cliente = this.tblClientes.getSelectionModel().getSelectedItem();
     	
     	if(cliente==null) {
-    		Alerta.errorAlert("Debe seleccionar un cliente", "Editar Cliente");
+    		new Alerta().errorAlert("Debe seleccionar un cliente", "Editar Cliente");
     	}else {
     		try {
     			FXMLLoader loader = new FXMLLoader(getClass().getResource("AgregarCliente.fxml"));

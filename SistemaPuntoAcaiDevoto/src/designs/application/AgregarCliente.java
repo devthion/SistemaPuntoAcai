@@ -85,7 +85,7 @@ public class AgregarCliente {
 			Stage stage = (Stage) btnGuardarCliente.getScene().getWindow();
 	    	stage.close();
     	}else {
-    		Alerta.errorAlert("El cliente ingresado ya existe en la base de datos", "Cliente Repetido");
+    		new Alerta().errorAlert("El cliente ingresado ya existe en la base de datos", "Cliente Repetido");
     	}
     	
     }
@@ -99,7 +99,7 @@ public class AgregarCliente {
         	Stage stage = (Stage) btnGuardarCliente.getScene().getWindow();
         	stage.close();
     	}else {
-    		Alerta.errorAlert("Asigno un dni que ya existe en la base de datos", "Error en la modificacion");
+    		new Alerta().errorAlert("Asigno un dni que ya existe en la base de datos", "Error en la modificacion");
     	}
 
     }
