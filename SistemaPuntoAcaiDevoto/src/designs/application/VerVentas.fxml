@@ -1,27 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane prefHeight="650.0" prefWidth="1300.0" stylesheets="@../Styles/Style.css" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="application.VerVentasController">
+<AnchorPane prefHeight="650.0" prefWidth="1300.0" stylesheets="@../Styles/Style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.VerVentasController">
    <children>
-      <Separator layoutX="160.0" layoutY="71.0" prefWidth="1000.0" />
-      <Label layoutX="618.0" layoutY="30.0" text="VENTAS" />
-      <Button fx:id="btnVolver" layoutX="1148.0" layoutY="585.0" mnemonicParsing="false" onAction="#onVolverClick" prefHeight="51.0" prefWidth="138.0" text="VOLVER" textFill="WHITE">
+      <Separator layoutX="160.0" layoutY="71.0" prefWidth="1000.0" AnchorPane.leftAnchor="160.0" AnchorPane.rightAnchor="140.0" AnchorPane.topAnchor="71.0" />
+      <Label layoutX="618.0" layoutY="30.0" text="VENTAS" AnchorPane.topAnchor="30.0" />
+      <Button fx:id="btnVolver" layoutX="1148.0" layoutY="585.0" mnemonicParsing="false" onAction="#onVolverClick" prefHeight="51.0" prefWidth="138.0" text="VOLVER" textFill="WHITE" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="14.0">
          <font>
             <Font size="24.0" />
          </font>
       </Button>
-      <TableView fx:id="tblVentas" layoutX="328.0" layoutY="100.0" prefHeight="402.0" prefWidth="653.0">
+      <TableView fx:id="tblVentas" layoutX="328.0" layoutY="100.0" prefHeight="402.0" prefWidth="653.0" AnchorPane.bottomAnchor="148.0" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="200.0" AnchorPane.topAnchor="100.0">
          <columns>
-            <TableColumn fx:id="colFecha" prefWidth="167.0" text="FECHA" />
-            <TableColumn fx:id="colCliente" prefWidth="120.0" text="CLIENTE" />
-            <TableColumn fx:id="colMontoTotal" prefWidth="208.0" text="MONTO TOTAL" />
-            <TableColumn fx:id="colGanancia" prefWidth="156.0" text="GANANCIA" />
+            <TableColumn fx:id="colFecha" maxWidth="1.7976931348623157E308" prefWidth="167.0" text="FECHA" />
+            <TableColumn fx:id="colCliente" maxWidth="1.7976931348623157E308" prefWidth="202.0" text="CLIENTE" />
+            <TableColumn fx:id="colMontoTotal" prefWidth="238.0" text="MONTO TOTAL" />
+            <TableColumn fx:id="colGanancia" maxWidth="440.0" prefWidth="291.0" text="GANANCIA" />
          </columns>
       </TableView>
    </children>
