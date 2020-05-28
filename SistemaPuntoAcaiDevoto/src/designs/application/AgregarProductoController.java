@@ -45,7 +45,7 @@ public class AgregarProductoController {
     	
     	this.nuevoProducto = producto;
 		producto.almacenarProducto();
-		Alerta.informationAlert("Se ha añadido correctamente", "Informacion");
+		new Alerta().informationAlert("Se ha añadido correctamente", "Informacion");
 		Stage stage = (Stage) btnAgregarProducto.getScene().getWindow();
     	stage.close();
     }

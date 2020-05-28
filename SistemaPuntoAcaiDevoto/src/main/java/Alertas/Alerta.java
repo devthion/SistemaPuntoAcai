@@ -8,11 +8,14 @@ import javafx.scene.control.DialogPane;
 
 public class Alerta {
 	
-	public static void informationAlert(String mensaje, String titulo) {
+	public void informationAlert(String mensaje, String titulo) {
 		Alert alert = new Alert(Alert.AlertType.INFORMATION);
 		alert.setHeaderText(null);
 		alert.setTitle(titulo);
 		alert.setContentText(mensaje);
+		DialogPane dialogPane = alert.getDialogPane();
+    	dialogPane.getStylesheets().add(getClass().getResource("myDialogs.css").toExternalForm());
+    	dialogPane.getStyleClass().add("myDialog");
 		alert.showAndWait();
 	}
 	
@@ -33,7 +36,6 @@ public class Alerta {
     	alert.setHeaderText(null);
     	alert.setTitle(titulo);
     	alert.setContentText(mensaje);
-    	
     	
     	DialogPane dialogPane = alert.getDialogPane();
     	dialogPane.getStylesheets().add(getClass().getResource("myDialogs.css").toExternalForm());

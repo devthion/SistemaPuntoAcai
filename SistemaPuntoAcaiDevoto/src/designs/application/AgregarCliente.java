@@ -81,7 +81,7 @@ public class AgregarCliente {
     		Cliente cliente = generarCliente();
     		this.nuevoCliente = cliente;
     		cliente.almacenarCliente();
-    		Alerta.informationAlert("Se ha añadido correctamente", "Informacion");
+    		new Alerta().informationAlert("Se ha añadido correctamente", "Informacion");
 			Stage stage = (Stage) btnGuardarCliente.getScene().getWindow();
 	    	stage.close();
     	}else {
@@ -95,7 +95,7 @@ public class AgregarCliente {
     	Cliente cliente = generarCliente();
     	if(!existeElUsuarioEnLaBd()||(cliente.getDni()==nuevoCliente.getDni())) {
         	nuevoCliente.modificarCliente(cliente);
-        	Alerta.informationAlert("Se ha editado el cliente", "Informacion");
+        	new Alerta().informationAlert("Se ha editado el cliente", "Informacion");
         	Stage stage = (Stage) btnGuardarCliente.getScene().getWindow();
         	stage.close();
     	}else {

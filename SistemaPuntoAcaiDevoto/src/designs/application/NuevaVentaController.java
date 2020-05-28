@@ -202,7 +202,7 @@ public class NuevaVentaController implements Initializable {
 			} catch (SQLException e1) {
 				e1.printStackTrace();
 			}
-        	Alerta.informationAlert("Se ha registrado la venta", "Nueva Venta");
+        	new Alerta().informationAlert("Se ha registrado la venta", "Nueva Venta");
         	try {
     			FXMLLoader loader = new FXMLLoader();
     			loader.setLocation(getClass().getResource("MenuPrincipal.fxml"));
