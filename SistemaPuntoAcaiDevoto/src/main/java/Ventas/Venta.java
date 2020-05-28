@@ -13,6 +13,8 @@ public class Venta {
 	private LocalDate fecha;
 	private List<Item> items;
 	private int venta_id;
+	private double venta_precioTotal;
+	private double venta_ganancia;
 	InsertarDatos insertarDatos;
 	
 	public Venta(Cliente cliente, LocalDate fecha, List<Item> items) {
@@ -20,6 +22,14 @@ public class Venta {
 		this.cliente = cliente;
 		this.fecha = fecha;
 		this.items = items;
+	}
+	
+	public void setVenta_precioTotal(double venta_precioTotal) {
+		this.venta_precioTotal=venta_precioTotal;
+	}
+	
+	public void setVenta_ganancia(double venta_ganancia) {
+		this.venta_ganancia=venta_ganancia;
 	}
 
 	public double getPrecioTotal() {

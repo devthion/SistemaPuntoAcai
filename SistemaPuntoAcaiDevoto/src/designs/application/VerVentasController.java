@@ -3,6 +3,7 @@ package application;
 import java.net.URL;
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
 import ConexionBD.ObtenerDatos;
@@ -71,6 +72,7 @@ public class VerVentasController implements Initializable{
 			obtenerDatos = new ObtenerDatos();
 			ventas = FXCollections.observableArrayList();
 			ventas = obtenerDatos.obtenerVentas();
+			System.out.println(ventas.get(0).getCostoDeLaVenta());
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -79,10 +81,10 @@ public class VerVentasController implements Initializable{
 		
 		this.tblVentas.setItems(ventas);
 		
-		this.colCliente.setCellValueFactory(new PropertyValueFactory<Venta, String>("nombre"));
-		this.colFecha.setCellValueFactory(new PropertyValueFactory<Venta, LocalDate>("costo"));
-		this.colGanancia.setCellValueFactory(new PropertyValueFactory<Venta, Double>("precioMayor"));
-		this.colMontoTotal.setCellValueFactory(new PropertyValueFactory<Venta, Double>("precioUnitario"));
+		this.colCliente.setCellValueFactory(new PropertyValueFactory<Venta, String>("cliente"));
+		this.colFecha.setCellValueFactory(new PropertyValueFactory<Venta, LocalDate>("fecha"));
+		this.colGanancia.setCellValueFactory(new PropertyValueFactory<Venta, Double>("ganancia"));
+		this.colMontoTotal.setCellValueFactory(new PropertyValueFactory<Venta, Double>("precioTotal"));
 		
 	}
 
