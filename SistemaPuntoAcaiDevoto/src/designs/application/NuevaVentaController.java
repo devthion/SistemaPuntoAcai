@@ -3,8 +3,11 @@ package application;
 
 import java.net.URL;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Optional;
 import java.util.ResourceBundle;
+
+import javax.security.auth.x500.X500Principal;
 
 import Alertas.Alerta;
 import ConexionBD.ObtenerDatos;
@@ -118,7 +121,7 @@ public class NuevaVentaController implements Initializable {
     	
     	
     	if(producto==null) {
-    		new Alerta().errorAlert("Debe seleccionar un Producto", "Actualizar Stock");
+    		new Alerta().errorAlert("Debe seleccionar un Producto", "Agregar al Carrito");
     	}else {
     		Item item = new Item(producto, contadorCantidad);
     		contadorCantidad = 1;
@@ -127,12 +130,24 @@ public class NuevaVentaController implements Initializable {
     		tblProductosVenta.setItems(itemsAVender);
     		this.tblProductosVenta.refresh();
     		
-    		ventaBorrador.setNuevoItem(item);
-    		precioTotal += item.getPrecioFinal();
-    		
-    		txtPrecioTotal.setText(""+precioTotal);
+    		calcularPrecioFinal(itemsAVender);
+    	
     	}
     }
+	@FXML
+	void onSacarDelCarritoClick(ActionEvent event) {
+		Item item = this.tblProductosVenta.getSelectionModel().getSelectedItem();
+		if(item==null) {
+    		new Alerta().errorAlert("Debe seleccionar un Producto del Carrito", "Agregar al Carrito");
+    	}else {
+    		itemsAVender.remove(item);
+    		tblProductosVenta.setItems(itemsAVender);
+    		this.tblProductosVenta.refresh();
+    		
+    		calcularPrecioFinal(itemsAVender);
+    	}
+		
+	}
 
     @FXML
     void btnNuevoClienteClick(ActionEvent event) {
@@ -190,9 +205,10 @@ public class NuevaVentaController implements Initializable {
     void onRealizarVentaClick(ActionEvent event) {
     	Cliente cliente = this.tblClientes.getSelectionModel().getSelectedItem();
     	
-    	if(cliente==null || ventaBorrador.getItems().size() == 0) {
+    	if(cliente==null || itemsAVender.size() == 0) {
     		new Alerta().errorAlert("Debe seleccionar un cliente y minimo un producto", "Nueva Venta");
     	}else {
+    		agregarItems(itemsAVender);
     		ventaBorrador.setCliente(cliente);
         	Venta nuevaVenta = ventaBorrador.crearVenta();
         	try {
@@ -281,9 +297,19 @@ public class NuevaVentaController implements Initializable {
 		
 	}
 	
-	@FXML
-	void onSacarDelCarritoClick(ActionEvent event) {
+	public void calcularPrecioFinal(ObservableList<Item> itemsAVender) {
+		precioTotal = 0;
+		for (Item item : itemsAVender) {
+			precioTotal += item.getPrecioFinal();
+		}
 
+		txtPrecioTotal.setText(""+precioTotal);
 	}
+	public void agregarItems(ObservableList<Item> itemsAVender2) {
+		for (Item item : itemsAVender2) {
+			ventaBorrador.setNuevoItem(item);
+		}
+	}
+
 
 }
