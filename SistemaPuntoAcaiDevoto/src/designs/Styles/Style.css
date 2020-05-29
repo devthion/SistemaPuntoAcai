@@ -70,7 +70,8 @@
 
 
 .table-view:row-selection .table-row-cell:filled:hover { 
-    -fx-background-color: #C378EA;
+    -fx-background-color: #9978D1;
+    -fx-cursor:hand;
     -fx-text-fill: #FFFFFF;
 }
 
@@ -108,3 +109,10 @@
     -fx-background-insets: 0, 0 0 1 0;
     -fx-padding: 0.0em; /* 0 */  
 }
+
+.combo-box{
+       -fx-background-color: transparent;
+       -fx-border-radius: 20;
+       -fx-border-color: #481862;
+}
+

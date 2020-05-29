@@ -114,7 +114,21 @@ public class MenuPrincipalControler {
     
     @FXML
     void onEstadisticasClick(ActionEvent event) {
-
+    	try {
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(getClass().getResource("GraficoVentas.fxml"));
+			AnchorPane root = (AnchorPane) loader.load();
+			Scene scene = new Scene(root,1300,650);
+			Stage stage = new Stage();
+			stage.setScene(scene);
+			stage.initModality(Modality.APPLICATION_MODAL);
+			stage.setTitle("Estadisticas");
+			stage.show();
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+    	Stage stage = (Stage) btnEstadisticas.getScene().getWindow();
+    	stage.close();
     }
     
     @FXML
