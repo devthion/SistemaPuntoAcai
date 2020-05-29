@@ -72,7 +72,7 @@ public class VerVentasController implements Initializable{
 			obtenerDatos = new ObtenerDatos();
 			ventas = FXCollections.observableArrayList();
 			ventas = obtenerDatos.obtenerVentas();
-			System.out.println(ventas.get(0).getCostoDeLaVenta());
+			System.out.println(ventas.size());
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

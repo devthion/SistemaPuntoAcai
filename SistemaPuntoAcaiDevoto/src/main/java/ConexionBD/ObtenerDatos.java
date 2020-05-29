@@ -1,5 +1,6 @@
 package ConexionBD;
 
+import java.security.interfaces.RSAKey;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -20,6 +21,9 @@ import javafx.collections.ObservableList;
 
 public class ObtenerDatos extends ConexionBd{
 	ResultSet rs;
+	ResultSet rc;
+	ResultSet rl;
+	ResultSet rd;
 	String sql;
 
 	public ObtenerDatos() throws SQLException {
@@ -29,7 +33,6 @@ public class ObtenerDatos extends ConexionBd{
 	public ObservableList<Cliente> obtenerClientes() throws SQLException {
 		ObservableList<Cliente> clientes = FXCollections.observableArrayList();
 		
-	
 		sql = "select * from CLIENTE";
 		rs = ejecutarQuery(sql);
 		while(rs.next()) {
@@ -37,7 +40,6 @@ public class ObtenerDatos extends ConexionBd{
 			Cliente unCliente = new Cliente(rs.getInt(4),rs.getString(2),rs.getString(3),rs.getInt(5),rs.getString(6),unaDireccion,rs.getString(1),rs.getString(11));
 			clientes.add(unCliente);
 		}
-		
 		return clientes;
 	}
 	
@@ -52,7 +54,6 @@ public class ObtenerDatos extends ConexionBd{
 		while(rs.next()) {
 			ingresos=rs.getInt(1);
 		}
-		
 			return ingresos;
 		
 		
@@ -99,18 +100,24 @@ public class ObtenerDatos extends ConexionBd{
 	public ObservableList<Venta> obtenerVentas() throws SQLException{
 		ObservableList<Venta> ventas = FXCollections.observableArrayList();
 		Venta unaVenta;
+		 Connection con = DriverManager.getConnection("jdbc:h2:"+"~/test", "root", "devthion");
+		 Statement smt= con.createStatement();
+		ResultSet result;
 		sql = "SELECT * FROM VENTA";
-		rs=ejecutarQuery(sql);
-		while(rs.next()) {
-			int ventaId=rs.getInt(1);
+		result=stmt.executeQuery(sql);
+		while(result.next()) {
+			int ventaId=result.getInt(1);
+			Direccion direccionAndres = new Direccion("Moliere", 1167, "Versailles", 1407);
+			Cliente cliente = new Cliente(41666987, "Andrés", "Cabrera", 1553190257, "andrescabrera8199@gmail.com", direccionAndres , "CONSUMIDOR FINAL", "Instagram");
 		
-			LocalDate date = rs.getDate(3).toLocalDate();
+			LocalDate date = result.getDate(3).toLocalDate();
 			
-			int ventaCliente = rs.getInt(2);
+			int ventaCliente = result.getInt(2);
 			//setear ganancia y precio total
-			unaVenta = new Venta(obtenerUnCliente(ventaCliente),date,itemsDeVenta(ventaId));
+			unaVenta = new Venta(cliente,date,itemsDeVenta(ventaId));
 			ventas.add(unaVenta);
 			}
+		//obtenerUnCliente(ventaCliente)
 		return ventas;
 	}
 	
@@ -119,29 +126,31 @@ public class ObtenerDatos extends ConexionBd{
 		Direccion unaDireccion = null;
 		sql = "SELECT * FROM CLIENTE "
 				+ "WHERE clie_dni = '"+clie_dni+"'";
-		rs=ejecutarQuery(sql);
-		while(rs.next()) {
-			unaDireccion = new Direccion(rs.getString(10),rs.getInt(9),rs.getString(8),rs.getInt(7));
-			unCliente = new Cliente(rs.getInt(4),rs.getString(2),rs.getString(3),rs.getInt(5),rs.getString(6),unaDireccion,rs.getString(1),rs.getString(11));
+		rc=ejecutarQuery(sql);
+		while(rc.next()) {
+			unaDireccion = new Direccion(rc.getString(10),rc.getInt(9),rc.getString(8),rc.getInt(7));
+			unCliente = new Cliente(rc.getInt(4),rc.getString(2),rc.getString(3),rc.getInt(5),rc.getString(6),unaDireccion,rc.getString(1),rc.getString(11));
 		}
+		rc.close();
 		return unCliente;
 	}
 
 	public List<Item> itemsDeVenta(int venta_id) throws SQLException{
+		System.out.println("venta id:"+venta_id);
+		Producto unProducto;
 		List<Item> itemsDeVenta = new ArrayList<Item>();
 		Item unItem;
 		sql ="SELECT * FROM ITEM_VENTA "
 				+ "WHERE item_venta = '"+venta_id+"'";
-		rs=ejecutarQuery(sql);
-		while(rs.next()) {
-			int itemProducto = rs.getInt(1);
-			Producto unProducto = obtenerProductoPorId(rs.getInt(1));
-			System.out.println(rs.getInt(3));
-			
-			unItem = new Item(unProducto, 3);
-			unItem.setItemPrecio(rs.getDouble(4));
-			itemsDeVenta.add(unItem);
+		rl=ejecutarQuery(sql);
+		while(rl.next()) {
+			System.out.println(rl.getInt("item_producto"));
+			System.out.println(rl.getInt("item_venta"));
+			System.out.println(rl.getInt("item_cantidad"));
+			System.out.println(rl.getInt("item_precio"));
+		
 		}
+		rl.close();
 		return itemsDeVenta;
 	}
 
@@ -149,10 +158,11 @@ public class ObtenerDatos extends ConexionBd{
 		Producto unProducto = null;
 		sql = "SELECT * FROM PRODUCTO "
 				+ "WHERE prod_id = '"+itemProducto+"'";
-		rs=ejecutarQuery(sql);
-		while(rs.next()) {
-			 unProducto = new Producto(rs.getString(2),rs.getDouble(3),rs.getInt(4),rs.getDouble(5),rs.getDouble(6),rs.getDouble(7), rs.getInt(8));
+		rd=ejecutarQuery(sql);
+		while(rd.next()) {
+			 unProducto = new Producto(rd.getString(2),rd.getDouble(3),rd.getInt(4),rd.getDouble(5),rd.getDouble(6),rd.getDouble(7), rd.getInt(8));
 		}
+		rd.close();
 		return unProducto;
 	}	
 
