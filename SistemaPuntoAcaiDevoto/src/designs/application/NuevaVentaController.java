@@ -43,6 +43,9 @@ public class NuevaVentaController implements Initializable {
     private Label lblCantidadItem;
 
     @FXML
+    private Label lblCostoEnvio;
+
+    @FXML
     private Button btnRealizarVenta;
 
     @FXML
@@ -168,7 +171,7 @@ public class NuevaVentaController implements Initializable {
 			stage.showAndWait();
 			
 			ventaBorrador.setCostoEnvio(controller.getCostoEnvio());
-			
+			lblCostoEnvio.setText("Envio: "+ventaBorrador.getCostoEnvio()+" $");
 		} catch(Exception e) {
 			e.printStackTrace();
 		}

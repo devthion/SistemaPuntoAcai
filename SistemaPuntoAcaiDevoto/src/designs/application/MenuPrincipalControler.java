@@ -32,6 +32,9 @@ public class MenuPrincipalControler {
 
     @FXML
     private Button btnEstadisticas;
+    
+    @FXML
+    private Button btnCostos;
 
     @FXML
     void verClientes(ActionEvent event) {
@@ -108,9 +111,29 @@ public class MenuPrincipalControler {
     	Stage stage = (Stage) btnNuevaVenta.getScene().getWindow();
     	stage.close();
     }
+    
     @FXML
     void onEstadisticasClick(ActionEvent event) {
 
+    }
+    
+    @FXML
+    void onCostosClick(ActionEvent event) {
+    	try {
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(getClass().getResource("Costos.fxml"));
+			AnchorPane root = (AnchorPane) loader.load();
+			Scene scene = new Scene(root,1300,650);
+			Stage stage = new Stage();
+			stage.setScene(scene);
+			stage.initModality(Modality.APPLICATION_MODAL);
+			stage.setTitle("Gastos");
+			stage.show();
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+    	Stage stage = (Stage) btnCostos.getScene().getWindow();
+    	stage.close();
     }
 
     @FXML

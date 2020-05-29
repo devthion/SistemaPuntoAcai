@@ -105,7 +105,7 @@ public class VerClientesController implements Initializable {
     }
 
     @FXML
-    void editarCliente(ActionEvent event) {
+    void editarCliente(ActionEvent event) throws SQLException {
     	Cliente cliente = this.tblClientes.getSelectionModel().getSelectedItem();
     	
     	if(cliente==null) {
@@ -125,16 +125,17 @@ public class VerClientesController implements Initializable {
     			stage.setTitle("Editar Cliente");
     			stage.showAndWait();
     			
-    			ObtenerDatos obtenerDatos = new ObtenerDatos();
-    			clientes = FXCollections.observableArrayList();
-    			clientes = obtenerDatos.obtenerClientes();
     			
-    			this.tblClientes.setItems(clientes);
-    			this.tblClientes.refresh();
     			
     		} catch(Exception e) {
     			e.printStackTrace();
     		}
+    		ObtenerDatos obtenerDatos = new ObtenerDatos();
+			clientes = FXCollections.observableArrayList();
+			clientes = obtenerDatos.obtenerClientes();
+			
+			this.tblClientes.setItems(clientes);
+			this.tblClientes.refresh();
     	}
     	
     	
