@@ -21,12 +21,13 @@ public class TestBd {
 	
 	
 	@Test
-	public void obtengoVentas() throws SQLException {
+	public void ejecutarQueryEjecutaLaQuery() throws SQLException {
 		obtenerDatosImpostor.ejecutarQuery(Mockito.any(), Mockito.any());
 		
 		Mockito.verify(obtenerDatosImpostor, Mockito.only()).ejecutarQuery(Mockito.any(), Mockito.any());
-		//assert(obtenerDatos.obtenerVentas().size()!=0);
+		
 	}
+
 	
 	/*@Test
 	public void obtengoClienteHibernate() throws SQLException {
