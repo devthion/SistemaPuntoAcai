@@ -70,7 +70,8 @@
 
 
 .table-view:row-selection .table-row-cell:filled:hover { 
-    -fx-background-color: #C378EA;
+    -fx-background-color: #9978D1;
+    -fx-cursor:hand;
     -fx-text-fill: #FFFFFF;
 }
 
