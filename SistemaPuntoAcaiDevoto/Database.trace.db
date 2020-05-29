@@ -1,0 +1,8 @@
+2020-05-27 12:54:54 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Tabla "CLIENTE" no encontrada
+Table "CLIENTE" not found; SQL statement:
+select * from cliente [42102-200]
+2020-05-27 12:55:08 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "INFORMATION_SCHEMA[*].COLUMNS"; se esperaba "INSERT"
+Syntax error in SQL statement "INFORMATION_SCHEMA[*].COLUMNS"; expected "INSERT"; SQL statement:
+INFORMATION_SCHEMA.COLUMNS [42001-200]
