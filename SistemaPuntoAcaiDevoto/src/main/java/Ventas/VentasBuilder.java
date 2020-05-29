@@ -10,7 +10,10 @@ public class VentasBuilder {
 	private Cliente cliente;
 	private LocalDate fecha;
 	private ArrayList<Item> items = new ArrayList<>();
-	
+	private double costoEnvio=0;
+	private String estado;
+
+
 	public VentasBuilder() {}
 	
 	public Venta crearVenta() {
@@ -43,6 +46,21 @@ public class VentasBuilder {
 
 	public void setItems(ArrayList<Item> items) {
 		this.items = items;
+	}
+	public double getCostoEnvio() {
+		return costoEnvio;
+	}
+
+	public void setCostoEnvio(double costoEnvio) {
+		this.costoEnvio = costoEnvio;
+	}
+
+	public String getEstado() {
+		return estado;
+	}
+
+	public void setEstado(String estado) {
+		this.estado = estado;
 	}
 	
 	

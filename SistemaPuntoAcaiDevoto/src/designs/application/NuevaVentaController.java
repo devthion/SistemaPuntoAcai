@@ -47,6 +47,9 @@ public class NuevaVentaController implements Initializable {
 
     @FXML
     private Button btnNuevoCliente;
+    
+    @FXML
+    private Button btnAgregarEnvio;
 
     @FXML
     private TableView<Item> tblProductosVenta;
@@ -148,6 +151,28 @@ public class NuevaVentaController implements Initializable {
     	}
 		
 	}
+	
+    @FXML
+    void onAgregarEnvioClick(ActionEvent event) {
+    	try {
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("AgregarEnvio.fxml"));
+			AnchorPane root = (AnchorPane) loader.load();
+			
+			AgregarEnvioController controller = loader.getController();
+			
+			Scene scene = new Scene(root,700,300);
+			Stage stage = new Stage();
+			stage.setScene(scene);
+			stage.initModality(Modality.APPLICATION_MODAL);
+			stage.setTitle("Nuevo Cliente");
+			stage.showAndWait();
+			
+			ventaBorrador.setCostoEnvio(controller.getCostoEnvio());
+			
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+    }
 
     @FXML
     void btnNuevoClienteClick(ActionEvent event) {

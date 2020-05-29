@@ -14,9 +14,9 @@
       <Label layoutX="24.0" layoutY="98.0" text="CLIENTES" />
       <TableView fx:id="tblProductos" layoutX="668.0" layoutY="128.0" prefHeight="157.0" prefWidth="322.0">
          <columns>
-            <TableColumn fx:id="colProdNombre" prefWidth="108.0" text="NOMBRE" />
-            <TableColumn fx:id="colProdKilos" prefWidth="101.0" text="KILOS" />
-            <TableColumn fx:id="colProdStock" prefWidth="111.0" text="STOCK" />
+            <TableColumn fx:id="colProdNombre" prefWidth="118.0" text="NOMBRE" />
+            <TableColumn fx:id="colProdKilos" prefWidth="109.0" text="PRECIO" />
+            <TableColumn fx:id="colProdStock" prefWidth="93.0" text="STOCK" />
          </columns>
       </TableView>
       <Button fx:id="btnBuscarCliente" layoutX="242.0" layoutY="464.0" mnemonicParsing="false" onAction="#onBuscarClienteClick" prefHeight="49.0" prefWidth="139.0" text="BUSCAR" />
@@ -44,9 +44,10 @@
       </TableView>
       <TextField fx:id="txtPrecioTotal" layoutX="1038.0" layoutY="355.0" />
       <Label layoutX="1079.0" layoutY="325.0" text="TOTAL VENTA" />
-      <Button fx:id="btnRealizarVenta" layoutX="535.0" layoutY="545.0" mnemonicParsing="false" onAction="#onRealizarVentaClick" text="REALIZAR VENTA" />
+      <Button fx:id="btnRealizarVenta" layoutX="535.0" layoutY="563.0" mnemonicParsing="false" onAction="#onRealizarVentaClick" text="REALIZAR VENTA" />
       <Button fx:id="btnVolver" layoutX="1152.0" layoutY="587.0" mnemonicParsing="false" onAction="#onVolverClick" text="VOLVER" />
       <Button fx:id="btnSacarDelCarrito" layoutX="1006.0" layoutY="464.0" mnemonicParsing="false" onAction="#onSacarDelCarritoClick" text="SACAR DEL CARRITO" />
       <Label layoutX="668.0" layoutY="295.0" text="CARRITO" />
+      <Button fx:id="btnAgregarEnvio" layoutX="1006.0" layoutY="403.0" mnemonicParsing="false" onAction="#onAgregarEnvioClick" prefHeight="49.0" prefWidth="271.0" text="AGREGAR ENVIO" />
    </children>
 </AnchorPane>
