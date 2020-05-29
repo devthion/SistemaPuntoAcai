@@ -25,8 +25,9 @@ public class ConexionBd {
 		}
 	}
 	
-	public ResultSet ejecutarQuery(String sql) throws SQLException {
-		return stmt.executeQuery(sql);
+	public ResultSet ejecutarQuery(String sql, Statement unStmt) throws SQLException {
+		unStmt = con.createStatement();
+		return unStmt.executeQuery(sql);
 	//asdasdasdasd
 	}
 	

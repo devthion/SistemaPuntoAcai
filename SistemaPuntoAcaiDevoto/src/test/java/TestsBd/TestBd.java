@@ -16,6 +16,7 @@ public class TestBd {
 	
 	@Test
 	public void obtengoVentas() throws SQLException {
+		obtenerDatos = new ObtenerDatos();
 		assert(obtenerDatos.obtenerVentas().size()!=0);
 	}
 	

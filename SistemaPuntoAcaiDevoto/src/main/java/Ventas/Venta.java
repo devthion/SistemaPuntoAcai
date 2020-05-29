@@ -61,4 +61,16 @@ public class Venta {
 		insertarDatos.insertarVenta(this);
 	}
 	
+	public double getVenta_ganancia() {
+		return this.venta_ganancia;
+	}
+	
+	public double getVenta_precioTotal() {
+		return this.venta_precioTotal;
+	}
+	
+	public String getDatosCliente() {
+		return cliente.getNombre()+" "+cliente.getApellido() +", DNI: "+cliente.getDni();
+	}
+	
 }
