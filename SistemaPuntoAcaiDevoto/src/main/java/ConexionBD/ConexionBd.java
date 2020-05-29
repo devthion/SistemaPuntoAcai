@@ -27,7 +27,7 @@ public class ConexionBd {
 	
 	public ResultSet ejecutarQuery(String sql) throws SQLException {
 		return stmt.executeQuery(sql);
-		//aca
+	//asdasdasdasd
 	}
 	
 	
