@@ -64,7 +64,7 @@
             <Font size="24.0" />
          </font>
       </Label>
-      <SplitMenuButton fx:id="slipComoLlego" layoutX="752.0" layoutY="261.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="250.0" style="-fx-background-color: #7424A9; -fx-border-radius: 20; -fx-border-color: #481862;" textFill="#481862">
+      <SplitMenuButton fx:id="slipComoLlego" layoutX="752.0" layoutY="261.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="250.0" textFill="#481862">
          <items>
             <MenuItem mnemonicParsing="false" onAction="#onInstagram" text="Instagram" />
             <MenuItem mnemonicParsing="false" onAction="#onUnConocido" text="Un Conocido" />
@@ -72,7 +72,7 @@
             <MenuItem mnemonicParsing="false" onAction="#onOtro" text="Otro" />
          </items>
       </SplitMenuButton>
-      <SplitMenuButton fx:id="slipTipoCliente" layoutX="752.0" layoutY="331.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="250.0" style="-fx-background-color: #7424A9; -fx-border-radius: 20; -fx-border-color: #481862;" textFill="#481862">
+      <SplitMenuButton fx:id="slipTipoCliente" layoutX="752.0" layoutY="331.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="250.0" textFill="#481862">
         <items>
           <MenuItem mnemonicParsing="false" onAction="#onConsumidorFinal" text="Consumidor Final" />
           <MenuItem mnemonicParsing="false" onAction="#onMayorista" text="Mayorista" />
