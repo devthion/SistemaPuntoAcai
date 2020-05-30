@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane prefHeight="650.0" prefWidth="1300.0" stylesheets="@../Styles/Style.css" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="application.VerClientesMayoristas">
+   <children>
+      <Separator layoutX="150.0" layoutY="71.0" prefWidth="1000.0" />
+      <Label layoutX="490.0" layoutY="30.0" text="CLIENTES CONSUMIDORES FINALES" />
+      <Button fx:id="btnVolver" layoutX="1148.0" layoutY="584.0" mnemonicParsing="false" onAction="#onVolverClick" prefHeight="51.0" prefWidth="138.0" text="VOLVER" textFill="WHITE">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Button>
+      <Button fx:id="btnEditarCliente" layoutX="749.0" layoutY="534.0" mnemonicParsing="false" onAction="#editarCliente" prefHeight="51.0" prefWidth="340.0" stylesheets="@../Styles/Style.css" text="EDITAR CLIENTE" textFill="WHITE">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Button>
+      <Button fx:id="btnAgregarPersona" layoutX="232.0" layoutY="535.0" mnemonicParsing="false" onAction="#agregarCliente" prefHeight="49.0" prefWidth="340.0" stylesheets="@../Styles/Style.css" text="AGREGAR NUEVO CLIENTE" textFill="WHITE">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Button>
+      <TableView fx:id="tblClientes" layoutX="32.0" layoutY="103.0" prefHeight="402.0" prefWidth="1236.0">
+         <columns>
+            <TableColumn fx:id="colNombre" prefWidth="119.0" text="Nombre" />
+            <TableColumn fx:id="colApellido" prefWidth="100.0" text="Apellido" />
+            <TableColumn fx:id="colDni" prefWidth="112.0" text="DNI" />
+            <TableColumn fx:id="colTelefono" prefWidth="110.0" text="Telefono" />
+            <TableColumn fx:id="colEmail" prefWidth="131.0" text="Email" />
+            <TableColumn fx:id="ColTipoCliente" prefWidth="123.0" text="Tipo Cliente" />
+            <TableColumn fx:id="colBarrio" prefWidth="102.0" text="Barrio" />
+            <TableColumn fx:id="colCalle" prefWidth="103.0" text="Calle" />
+            <TableColumn fx:id="colNumero" prefWidth="71.0" text="Numero" />
+            <TableColumn fx:id="colCodPostal" prefWidth="85.0" text="Codigo Postal" />
+            <TableColumn fx:id="colIngresos" prefWidth="178.0" text="Ingresos Generados" />
+         </columns>
+      </TableView>
+   </children>
+</AnchorPane>

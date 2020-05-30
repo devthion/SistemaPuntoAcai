@@ -23,7 +23,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
-public class VerClientesController implements Initializable {
+public class VerClientesConsumidoresFinales implements Initializable {
 
     @FXML
     private TableColumn<Cliente, Integer> colDni;
@@ -147,13 +147,13 @@ public class VerClientesController implements Initializable {
     void onVolverClick(ActionEvent event) {
     	try {
 			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(getClass().getResource("MenuPrincipal.fxml"));
+			loader.setLocation(getClass().getResource("VerClientes.fxml"));
 			AnchorPane root = (AnchorPane) loader.load();
 			Scene scene = new Scene(root,1300,650);
 			Stage stage = new Stage();
 			stage.setScene(scene);
 			stage.initModality(Modality.APPLICATION_MODAL);
-			stage.setTitle("Menu Principal");
+			stage.setTitle("Clientes");
 			stage.show();
 		} catch(Exception e) {
 			e.printStackTrace();
