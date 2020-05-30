@@ -1,8 +1,12 @@
 package application;
 
+import ModelosClientes.Cliente;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
@@ -19,8 +23,11 @@ public class VerClientes {
 
     @FXML
     private Button btnMayoristas;
+    
+    private ObservableList<Cliente> clientes;
 
-    @FXML
+
+	@FXML
     void onVolverClick(ActionEvent event) {
     	try {
 			FXMLLoader loader = new FXMLLoader();
@@ -76,5 +83,6 @@ public class VerClientes {
     	Stage stage = (Stage) btnMayoristas.getScene().getWindow();
     	stage.close();
     }
+
 
 }

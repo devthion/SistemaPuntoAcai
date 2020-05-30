@@ -96,7 +96,7 @@ public class VerClientesConsumidoresFinales implements Initializable {
 			clientes = FXCollections.observableArrayList();
 			clientes = obtenerDatos.obtenerClientes();
 			
-			this.tblClientes.setItems(clientes);
+			this.tblClientes.setItems(clientes.filtered(unCliente -> unCliente.getTipo().equalsIgnoreCase("Consumidor Final")));
 			this.tblClientes.refresh();
 			
 		} catch(Exception e) {
@@ -134,13 +134,9 @@ public class VerClientesConsumidoresFinales implements Initializable {
 			clientes = FXCollections.observableArrayList();
 			clientes = obtenerDatos.obtenerClientes();
 			
-			this.tblClientes.setItems(clientes);
+			this.tblClientes.setItems(clientes.filtered(unCliente -> unCliente.getTipo().equalsIgnoreCase("Consumidor Final")));
 			this.tblClientes.refresh();
     	}
-    	
-    	
-    	
-    	
     }
 
     @FXML
@@ -175,7 +171,7 @@ public class VerClientesConsumidoresFinales implements Initializable {
 		}
 		
 		
-		this.tblClientes.setItems(clientes);
+		this.tblClientes.setItems(clientes.filtered(unCliente -> unCliente.getTipo().equalsIgnoreCase("Consumidor Final")));
 		
 		this.colNombre.setCellValueFactory(new PropertyValueFactory<Cliente, String>("nombre"));
 		this.colApellido.setCellValueFactory(new PropertyValueFactory<Cliente, String>("apellido"));

@@ -10,7 +10,7 @@
 <AnchorPane prefHeight="650.0" prefWidth="1300.0" stylesheets="@../Styles/Style.css" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="application.VerClientesMayoristas">
    <children>
       <Separator layoutX="150.0" layoutY="71.0" prefWidth="1000.0" />
-      <Label layoutX="490.0" layoutY="30.0" text="CLIENTES CONSUMIDORES FINALES" />
+      <Label layoutX="546.0" layoutY="30.0" text="CLIENTES MAYORISTAS" />
       <Button fx:id="btnVolver" layoutX="1148.0" layoutY="584.0" mnemonicParsing="false" onAction="#onVolverClick" prefHeight="51.0" prefWidth="138.0" text="VOLVER" textFill="WHITE">
          <font>
             <Font size="24.0" />
@@ -33,7 +33,7 @@
             <TableColumn fx:id="colDni" prefWidth="112.0" text="DNI" />
             <TableColumn fx:id="colTelefono" prefWidth="110.0" text="Telefono" />
             <TableColumn fx:id="colEmail" prefWidth="131.0" text="Email" />
-            <TableColumn fx:id="ColTipoCliente" prefWidth="123.0" text="Tipo Cliente" />
+            <TableColumn fx:id="ColTipoCliente" prefWidth="123.0" text="Rubro" />
             <TableColumn fx:id="colBarrio" prefWidth="102.0" text="Barrio" />
             <TableColumn fx:id="colCalle" prefWidth="103.0" text="Calle" />
             <TableColumn fx:id="colNumero" prefWidth="71.0" text="Numero" />
