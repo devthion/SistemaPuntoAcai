@@ -86,6 +86,10 @@ public class Producto {
 	public double getCosto() {
 		return costo;
 	}
+	
+	public String getNombreProducto() {
+		return this.getNombre()+" "+this.getKilos() +" kilos";
+	}
 
 	public int getCantidadVendidos() {
 		//TIENE QUE RETORNAR LA CONSULTA

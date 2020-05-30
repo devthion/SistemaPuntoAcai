@@ -6,12 +6,11 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane prefHeight="300.0" prefWidth="700.0" stylesheets="@../Styles/Style.css" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="application.ActualizarStock">
+<AnchorPane prefHeight="300.0" prefWidth="700.0" stylesheets="@../Styles/Style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.ActualizarStock">
    <children>
       <Label layoutX="260.0" layoutY="14.0" text="ACTUALIZAR STOCK" />
       <Label fx:id="lblNombreProd" layoutX="92.0" layoutY="120.0" prefHeight="30.0" prefWidth="199.0" text="NOMBRE PRODUCTO" />
-      <Label fx:id="lblStock" layoutX="371.0" layoutY="120.0" prefHeight="30.0" prefWidth="27.0" text="0" textAlignment="CENTER" />
+      <Label fx:id="lblStock" layoutX="356.0" layoutY="120.0" prefHeight="30.0" prefWidth="71.0" text="0" textAlignment="CENTER" />
       <Button fx:id="btnMas" layoutX="479.0" layoutY="110.0" mnemonicParsing="false" onAction="#onMasClick" prefHeight="50.0" prefWidth="71.0" text="+" />
       <Button fx:id="btnMenos" layoutX="556.0" layoutY="110.0" mnemonicParsing="false" onAction="#onMenosClick" prefHeight="50.0" prefWidth="71.0" text="-" />
       <Button fx:id="btnActualizar" layoutX="258.0" layoutY="199.0" mnemonicParsing="false" onAction="#onActualizarClick" text="ACTUALIZAR" />

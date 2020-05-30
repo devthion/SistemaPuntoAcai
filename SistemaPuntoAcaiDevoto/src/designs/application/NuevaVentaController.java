@@ -299,8 +299,8 @@ public class NuevaVentaController implements Initializable {
 			e.printStackTrace();
 		}	
 		this.tblProductos.setItems(productos);	
-		this.colProdNombre.setCellValueFactory(new PropertyValueFactory<Producto, String>("nombre"));
-		this.colProdKilos.setCellValueFactory(new PropertyValueFactory<Producto, Integer>("kilos"));
+		this.colProdNombre.setCellValueFactory(new PropertyValueFactory<Producto, String>("nombreProducto"));
+		this.colProdKilos.setCellValueFactory(new PropertyValueFactory<Producto, Integer>("precioUnitario"));
 		this.colProdStock.setCellValueFactory(new PropertyValueFactory<Producto, Integer>("stock"));
 		
 		try {
