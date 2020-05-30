@@ -41,7 +41,7 @@ public class Venta {
 	}
 	
 	public double getGanancia() {
-		return getPrecioTotal()-getCostoDeLaVenta();
+		return (getPrecioTotal()-getCostoDeLaVenta());
 	}
 
 	public Cliente getCliente() {

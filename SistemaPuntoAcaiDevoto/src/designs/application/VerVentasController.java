@@ -86,10 +86,10 @@ public class VerVentasController implements Initializable{
 		
 		this.colCliente.setCellValueFactory(new PropertyValueFactory<Venta, String>("datosCliente"));
 		this.colFecha.setCellValueFactory(new PropertyValueFactory<Venta, LocalDate>("fecha"));
-		this.colGanancia.setCellValueFactory(new PropertyValueFactory<Venta, Double>("venta_ganancia"));
-		this.colMontoTotal.setCellValueFactory(new PropertyValueFactory<Venta, Double>("venta_precioTotal"));
+		this.colGanancia.setCellValueFactory(new PropertyValueFactory<Venta, Double>("ganancia"));
+		this.colMontoTotal.setCellValueFactory(new PropertyValueFactory<Venta, Double>("precioTotal"));
 		
-		//lblGananciasVentas.setText("GANANCIA TOTAL: "+ventas.stream().mapToDouble(unaVenta-> unaVenta.getGanancia()).sum()+" $");  
+		lblGananciasVentas.setText("GANANCIA TOTAL: "+ventas.stream().mapToDouble(unaVenta-> unaVenta.getGanancia()).sum()+" $");  
 	}
 	
 	
