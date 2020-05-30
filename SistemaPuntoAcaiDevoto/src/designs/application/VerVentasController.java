@@ -3,7 +3,6 @@ package application;
 import java.net.URL;
 import java.sql.SQLException;
 import java.time.LocalDate;
-import java.util.Objects;
 import java.util.ResourceBundle;
 
 import ConexionBD.ObtenerDatos;
@@ -16,6 +15,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -42,6 +42,9 @@ public class VerVentasController implements Initializable{
 
     @FXML
     private TableColumn<Venta, Double> colMontoTotal;
+    
+    @FXML
+    private Label lblGananciasVentas;
     
     private ObservableList<Venta> ventas;
 
@@ -86,6 +89,9 @@ public class VerVentasController implements Initializable{
 		this.colGanancia.setCellValueFactory(new PropertyValueFactory<Venta, Double>("venta_ganancia"));
 		this.colMontoTotal.setCellValueFactory(new PropertyValueFactory<Venta, Double>("venta_precioTotal"));
 		
+		//lblGananciasVentas.setText("GANANCIA TOTAL: "+ventas.stream().mapToDouble(unaVenta-> unaVenta.getGanancia()).sum()+" $");  
 	}
+	
+	
 
 }

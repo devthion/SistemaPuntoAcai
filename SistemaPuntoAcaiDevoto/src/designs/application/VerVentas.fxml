@@ -21,13 +21,13 @@
             <TableColumn fx:id="colFecha" maxWidth="1.7976931348623157E308" prefWidth="167.0" text="FECHA" />
             <TableColumn fx:id="colCliente" maxWidth="1.7976931348623157E308" prefWidth="202.0" text="CLIENTE" />
             <TableColumn fx:id="colMontoTotal" prefWidth="163.0" text="MONTO TOTAL" />
-            <TableColumn fx:id="colGanancia" maxWidth="440.0" prefWidth="177.0" text="GANANCIA" />
+            <TableColumn fx:id="colGanancia" maxWidth="440.0" prefWidth="164.0" text="GANANCIA" />
          </columns>
       </TableView>
       <Label layoutX="951.0" layoutY="134.0" text="MES" />
       <Label layoutX="949.0" layoutY="178.0" text="AÑO" />
       <ComboBox layoutX="1010.0" layoutY="137.0" prefWidth="150.0" />
       <ComboBox layoutX="1010.0" layoutY="181.0" prefWidth="150.0" />
-      <Label layoutX="951.0" layoutY="273.0" text="GANANCIA TOTAL" />
+      <Label fx:id="lblGananciasVentas" layoutX="990.0" layoutY="252.0" text="GANANCIAS" />
    </children>
 </AnchorPane>
