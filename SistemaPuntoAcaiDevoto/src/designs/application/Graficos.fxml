@@ -1,23 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
 <?import javafx.scene.chart.*?>
 <?import javafx.scene.control.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="Infinity" maxWidth="Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.VerGraficos">
+<AnchorPane maxHeight="Infinity" maxWidth="Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1300.0" stylesheets="@../Styles/Style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.VerGraficos">
    <children>
-      <LineChart fx:id="linechart" layoutX="9.0" layoutY="98.0" prefHeight="455.0" prefWidth="583.0" title="Ventas" AnchorPane.bottomAnchor="97.0" AnchorPane.leftAnchor="9.0" AnchorPane.rightAnchor="708.0" AnchorPane.topAnchor="98.0">
+      <LineChart fx:id="linechart" layoutX="50.0" layoutY="82.0" prefHeight="487.0" prefWidth="600.0" title="Ventas" AnchorPane.bottomAnchor="81.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="650.0" AnchorPane.topAnchor="82.0">
          <xAxis>
-            <CategoryAxis label="Mes" side="BOTTOM" fx:id="x" />
+            <CategoryAxis label="Mes" prefHeight="49.0" prefWidth="518.0" side="BOTTOM" fx:id="x" />
          </xAxis>
          <yAxis>
-            <NumberAxis fx:id="y" label="Cantidad" prefHeight="135.0" prefWidth="44.0" side="LEFT" />
+            <NumberAxis fx:id="y" label="Cantidad" prefHeight="382.0" prefWidth="52.0" side="LEFT" />
          </yAxis>
       </LineChart>
   
-      <BarChart fx:id="barchart" layoutX="618.0" layoutY="82.0" prefHeight="487.0" prefWidth="606.0" title="Barrios" AnchorPane.bottomAnchor="81.0" AnchorPane.rightAnchor="76.0" AnchorPane.topAnchor="82.0">
+      <BarChart fx:id="barchart" layoutX="650.0" layoutY="82.0" prefHeight="480.0" prefWidth="600.0" title="Barrios" AnchorPane.bottomAnchor="81.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="82.0">
         <xAxis>
           <CategoryAxis side="BOTTOM" fx:id="xBarrios" />
         </xAxis>
@@ -25,5 +26,12 @@
           <NumberAxis fx:id="yBarrios" label="Clientes" nodeOrientation="LEFT_TO_RIGHT" side="LEFT" />
         </yAxis>
       </BarChart>
+      <Button fx:id="btnVolver" layoutX="1148.0" layoutY="585.0" mnemonicParsing="false" onAction="#onVolverClick" prefHeight="51.0" prefWidth="138.0" text="VOLVER" textFill="WHITE">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Button>
+      <Label layoutX="628.0" layoutY="30.0" text="ESTADISTICAS" />
+      <Separator layoutX="170.0" layoutY="71.0" prefWidth="1000.0" />
    </children>
 </AnchorPane>
