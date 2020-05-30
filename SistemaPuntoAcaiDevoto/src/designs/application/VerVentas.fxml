@@ -24,10 +24,28 @@
             <TableColumn fx:id="colGanancia" maxWidth="440.0" prefWidth="164.0" text="GANANCIA" />
          </columns>
       </TableView>
-      <Label layoutX="951.0" layoutY="134.0" text="MES" />
+      <Label layoutX="951.0" layoutY="109.0" text="MES" />
       <Label layoutX="949.0" layoutY="178.0" text="AÑO" />
-      <ComboBox layoutX="1010.0" layoutY="137.0" prefWidth="150.0" />
-      <ComboBox layoutX="1010.0" layoutY="181.0" prefWidth="150.0" />
-      <Label fx:id="lblGananciasVentas" layoutX="990.0" layoutY="252.0" text="GANANCIAS" />
+      <Label fx:id="lblGananciasVentas" layoutX="1093.0" layoutY="303.0" prefHeight="30.0" prefWidth="177.0" text="GANANCIAS" />
+      <SplitMenuButton fx:id="slipMenuMes" layoutX="1013.0" layoutY="102.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="177.0">
+        <items>
+          <MenuItem fx:id="slipEnero" mnemonicParsing="false" onAction="#onEneroClick" text="ENERO" />
+            <MenuItem fx:id="slipFebrero" mnemonicParsing="false" onAction="#onFebreroClick" text="FEBRERO" />
+            <MenuItem fx:id="slipMarzo" mnemonicParsing="false" onAction="#onMarzoClick" text="MARZO" />
+            <MenuItem fx:id="slipAbril" mnemonicParsing="false" onAction="#onAbrilClick" text="ABRIL" />
+          <MenuItem fx:id="slipMayo" mnemonicParsing="false" onAction="#onMayoClick" text="MAYO" />
+            <MenuItem fx:id="slipJunio" mnemonicParsing="false" onAction="#onJunioClick" text="JUNIO" />
+            <MenuItem fx:id="slipJulio" mnemonicParsing="false" onAction="#onJulioClick" text="JULIO" />
+            <MenuItem fx:id="slipAgosto" mnemonicParsing="false" onAction="#onAgostoClick" text="AGOSTO" />
+            <MenuItem fx:id="slipSeptiembre" mnemonicParsing="false" onAction="#onSeptiembreClick" text="SEPTIEMBRE" />
+            <MenuItem fx:id="slipOctubre" mnemonicParsing="false" onAction="#onOctubreClick" text="OCTUBRE" />
+            <MenuItem fx:id="slipNoviembre" mnemonicParsing="false" onAction="#onNoviembreClick" text="NOVIEMBRE" />
+            <MenuItem fx:id="slipDiciembre" mnemonicParsing="false" onAction="#onDiciembreClick" text="DICIEMBRE" />
+        </items>
+      </SplitMenuButton>
+      <TextField fx:id="txtAnio" layoutX="1013.0" layoutY="177.0" prefHeight="33.0" prefWidth="177.0" />
+      <Label layoutX="949.0" layoutY="303.0" text="GANANCIAS:" />
+      <Label layoutX="949.0" layoutY="354.0" prefHeight="30.0" prefWidth="144.0" text="DINERO TOTAL:" />
+      <Label fx:id="lblDineroTotal" layoutX="1093.0" layoutY="354.0" prefHeight="30.0" prefWidth="177.0" text="DINERO TOTAL" />
    </children>
 </AnchorPane>

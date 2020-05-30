@@ -51,6 +51,14 @@ public class Venta {
 	public LocalDate getFecha() {
 		return fecha;
 	}
+	
+	public int getMes() {
+		return fecha.getMonthValue();
+	}
+	
+	public int getAnio() {
+		return fecha.getYear();
+	}
 
 	public List<Item> getItems() {
 		return items;
