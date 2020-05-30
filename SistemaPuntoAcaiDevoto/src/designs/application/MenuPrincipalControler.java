@@ -116,7 +116,7 @@ public class MenuPrincipalControler {
     void onEstadisticasClick(ActionEvent event) {
     	try {
 			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(getClass().getResource("GraficoClientesPorBarrio.fxml"));
+			loader.setLocation(getClass().getResource("Graficos.fxml"));
 			AnchorPane root = (AnchorPane) loader.load();
 			Scene scene = new Scene(root,1300,650);
 			Stage stage = new Stage();
