@@ -163,6 +163,7 @@ public class VerClientesMayoristas implements Initializable {
 		try {
 			obtenerDatos = new ObtenerDatos();
 			clientes = FXCollections.observableArrayList();
+			//OBTENER DATOS CLIENTES MAYORISTAS
 			clientes = obtenerDatos.obtenerClientes();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

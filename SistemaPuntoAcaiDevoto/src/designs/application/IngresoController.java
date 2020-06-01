@@ -1,5 +1,7 @@
 package application;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 import Alertas.Alerta;
@@ -31,14 +33,26 @@ public class IngresoController {
 
     @FXML
     private Label txtClave;
+    
+    List<TextField> txtfiles = new ArrayList<>();
 
     @FXML
     void onIngresarClick(ActionEvent event) {
-    	System.out.println("Se precionio el boton ingresar"+etNombreUsuario.getText());
+    	txtfiles.add(etClave);
+    	txtfiles.add(etNombreUsuario);
     	
-    	verMenuPrincipal("MenuPrincipal","Menu Principal");
-    	Stage stage = (Stage) btnIngresar.getScene().getWindow();
-    	stage.close();
+    	if (txtfiles.stream().anyMatch(unTxt -> unTxt.getText().isEmpty())){
+    		System.out.println("ERROR");
+    	}else {
+    		System.out.println("ERROR"+txtClave.getText());
+    		System.out.println("Se precionio el boton ingresar"+etNombreUsuario.getText());
+        	
+        	verMenuPrincipal("MenuPrincipal","Menu Principal");
+        	Stage stage = (Stage) btnIngresar.getScene().getWindow();
+        	stage.close();
+    	}
+    	
+    	
     	
     }
 	

@@ -164,6 +164,7 @@ public class VerClientesConsumidoresFinales implements Initializable {
 		try {
 			obtenerDatos = new ObtenerDatos();
 			clientes = FXCollections.observableArrayList();
+			//OBTENER DATOS CLIENTES CONSUMIDORES FINALES
 			clientes = obtenerDatos.obtenerClientes();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
