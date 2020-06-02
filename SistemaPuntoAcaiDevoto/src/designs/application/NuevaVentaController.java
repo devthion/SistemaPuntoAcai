@@ -16,6 +16,7 @@ import Ventas.Venta;
 import Ventas.VentasBuilder;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -202,13 +203,7 @@ public class NuevaVentaController implements Initializable {
 			e.printStackTrace();
 		}
     }
-
-    @FXML
-    void onBuscarClienteClick(ActionEvent event) {
-    	//String nombreABuscarString = txtNombreABuscar.getText();
-    	//buscarEnClien
-    }
-
+    
     @FXML
     void onMenosClick(ActionEvent event) {
     	if(contadorCantidad==1) {
@@ -327,6 +322,19 @@ public class NuevaVentaController implements Initializable {
 		this.colProdVentaNombre.setCellValueFactory(new PropertyValueFactory<Item, String>("nombreProducto"));
 		this.colProdVentaCantidad.setCellValueFactory(new PropertyValueFactory<Item, Integer>("cantidad"));
 		this.colProdVentaPrecioTotal.setCellValueFactory(new PropertyValueFactory<Item, Double>("precioFinal"));
+		
+		FilteredList<Cliente> filteredData = new FilteredList<>(clientes, p -> true);
+    	tblClientes.setItems(filteredData);
+    	
+    	txtNombreABuscar.setPromptText("Buscar...");
+    	txtNombreABuscar.textProperty().addListener((prop, old, text) -> {
+    	    filteredData.setPredicate(unCliente -> {
+    	        if(text == null || text.isEmpty()) return true;
+    	        
+    	        String name = unCliente.getNombre().toLowerCase();  
+    	        return name.contains(text.toLowerCase());
+    	    });
+    	});
 		
 		
 	}

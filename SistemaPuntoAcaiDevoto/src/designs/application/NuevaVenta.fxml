@@ -9,7 +9,7 @@
 <AnchorPane prefHeight="650.0" prefWidth="1300.0" stylesheets="@../Styles/Style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.NuevaVentaController">
    <children>
       <Button fx:id="btnAgregarAlCarrito" layoutX="997.0" layoutY="230.0" mnemonicParsing="false" onAction="#onAgregarAlCarritoClick" text="AGREGAR AL CARRITO" />
-      <Button fx:id="btnNuevoCliente" layoutX="389.0" layoutY="464.0" mnemonicParsing="false" onAction="#btnNuevoClienteClick" prefHeight="49.0" prefWidth="227.0" text="NUEVO CLIENTE" />
+      <Button fx:id="btnNuevoCliente" layoutX="358.0" layoutY="464.0" mnemonicParsing="false" onAction="#btnNuevoClienteClick" prefHeight="49.0" prefWidth="227.0" text="NUEVO CLIENTE" />
       <Label layoutX="669.0" layoutY="98.0" text="PRODUCTOS" />
       <Label layoutX="24.0" layoutY="98.0" text="CLIENTES" />
       <TableView fx:id="tblProductos" layoutX="668.0" layoutY="128.0" prefHeight="157.0" prefWidth="322.0">
@@ -19,8 +19,7 @@
             <TableColumn fx:id="colProdStock" prefWidth="93.0" text="STOCK" />
          </columns>
       </TableView>
-      <Button fx:id="btnBuscarCliente" layoutX="242.0" layoutY="464.0" mnemonicParsing="false" onAction="#onBuscarClienteClick" prefHeight="49.0" prefWidth="139.0" text="BUSCAR" />
-      <TextField fx:id="txtNombreABuscar" alignment="CENTER" layoutX="25.0" layoutY="464.0" prefHeight="49.0" prefWidth="207.0" promptText="NOMBRE A BUSCAR" />
+      <TextField fx:id="txtNombreABuscar" alignment="CENTER" layoutX="47.0" layoutY="464.0" prefHeight="49.0" prefWidth="207.0" promptText="NOMBRE A BUSCAR" />
       <TableView fx:id="tblClientes" layoutX="25.0" layoutY="128.0" prefHeight="317.0" prefWidth="591.0">
          <columns>
             <TableColumn fx:id="colClieNombre" prefWidth="108.0" text="NOMBRE" />

@@ -13,6 +13,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.SplitMenuButton;
 import javafx.scene.control.TextField;
 
@@ -37,6 +38,9 @@ public class AgregarCliente {
 
     @FXML
     private TextField txtCodigoPostal;
+    
+    @FXML
+    private TextField txtRubro;
 
     @FXML
     private TextField txtApellido;
@@ -64,6 +68,9 @@ public class AgregarCliente {
     
     @FXML
     private Button btnVolver;
+    
+    @FXML
+    private Label lblRubro;
     
     private Cliente nuevoCliente;
     private ObservableList<Cliente> clientes;
@@ -109,6 +116,13 @@ public class AgregarCliente {
     public void initEditar(Cliente clienteEditable) {
     	
     	btnGuardarCliente.setVisible(false);
+    	if(clienteEditable.getTipo().equalsIgnoreCase("mayorista")) {
+    		this.txtRubro.setText(clienteEditable.getRubro());
+    	}else {
+    		lblRubro.setVisible(false);
+    		txtRubro.setVisible(false);
+    		txtRubro.setText(clienteEditable.getRubro());
+    	}
     	
     	this.txtNombre.setText(clienteEditable.getNombre());
     	this.txtApellido.setText(clienteEditable.getApellido());
@@ -129,6 +143,8 @@ public class AgregarCliente {
     
     public void initAgregar() {
     	btnEditarCliente.setVisible(false);
+    	lblRubro.setVisible(false);
+		txtRubro.setVisible(false);
     }
     
     public Cliente generarCliente() {
@@ -143,9 +159,10 @@ public class AgregarCliente {
     	int telefono=Integer.parseInt(txtTelefono.getText());
     	String tipo = slipTipoCliente.getText().toLowerCase();
     	String comoLlego = slipComoLlego.getText().toLowerCase();
+    	String rubro = txtRubro.getText().toLowerCase();
     	
     	Direccion direccion = new Direccion(calle, numero, barrio, codPostal);
-    	return new Cliente(dni, nombre, apellido, telefono, email, direccion, tipo, comoLlego, "unRubro");
+    	return new Cliente(dni, nombre, apellido, telefono, email, direccion, tipo, comoLlego, rubro);
     }
     
     @FXML
@@ -157,37 +174,41 @@ public class AgregarCliente {
     @FXML
     void onConsumidorFinal(ActionEvent event) {
     	this.slipTipoCliente.setText("CONSUMIDOR FINAL");
+    	txtRubro.setText("consumidor final");
+    	lblRubro.setVisible(false);
+		txtRubro.setVisible(false);
     }
 
     @FXML
     void onMayorista(ActionEvent event) {
     	this.slipTipoCliente.setText("MAYORISTA");
+    	txtRubro.setText("");
+    	lblRubro.setVisible(true);
+		txtRubro.setVisible(true);
     }
     
     @FXML
-    void onInstagram(ActionEvent event) {
-    	this.slipComoLlego.setText("Instagram");
+    void onPorInstagram(ActionEvent event) {
+    	this.slipComoLlego.setText("Por Instagram");
     }
 
     @FXML
-    void onUnConocido(ActionEvent event) {
-    	this.slipComoLlego.setText("Un Conocido");
+    void onPorRecomendacion(ActionEvent event) {
+    	this.slipComoLlego.setText("Por Recomendacion");
     }
 
     @FXML
-    void onFolleto(ActionEvent event) {
-    	this.slipComoLlego.setText("Folleto");
+    void onPorOtraPersona(ActionEvent event) {
+    	this.slipComoLlego.setText("Por Otra Persona");
     }
 
     @FXML
     void onOtro(ActionEvent event) {
     	this.slipComoLlego.setText("Otro");
     }
-
-
+    
 	public Cliente getNuevoCliente() {
 		return nuevoCliente;
 	}
-    
 
 }

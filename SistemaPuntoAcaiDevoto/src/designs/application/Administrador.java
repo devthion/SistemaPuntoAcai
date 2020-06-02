@@ -27,6 +27,9 @@ public class Administrador {
     
     @FXML
     private Button btnEliminarTablas;
+    
+    @FXML
+    private Button btnTraerDatos;
 
     @FXML
     void onVolverClick(ActionEvent event) {
