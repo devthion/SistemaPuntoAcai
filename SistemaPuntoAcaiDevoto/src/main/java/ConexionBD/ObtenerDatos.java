@@ -34,10 +34,10 @@ public class ObtenerDatos extends ConexionBd{
 	
 	
 	
-	public List<Gasto> obtenerGastos() throws SQLException{
+	public ObservableList<Gasto> obtenerGastos() throws SQLException{
 		ResultSet rs;
 		Statement unStmt =null;
-		List<Gasto> gastos = new ArrayList<>();		
+		ObservableList<Gasto> gastos = FXCollections.observableArrayList();	
 		
 		sql="select * from GASTO";
 		rs=ejecutarQuery(sql,unStmt);

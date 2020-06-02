@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="Infinity" maxWidth="Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1300.0" stylesheets="@../Styles/Style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.VerGraficosVentas">
+   <children>
+      <LineChart fx:id="linechart" layoutX="61.0" layoutY="82.0" prefHeight="487.0" prefWidth="1179.0" title="Ventas" AnchorPane.bottomAnchor="81.0" AnchorPane.leftAnchor="61.0" AnchorPane.rightAnchor="60.0" AnchorPane.topAnchor="82.0">
+         <xAxis>
+            <CategoryAxis label="Mes" prefHeight="43.0" prefWidth="518.0" side="BOTTOM" fx:id="x" />
+         </xAxis>
+         <yAxis>
+            <NumberAxis fx:id="y" label="Cantidad" prefHeight="382.0" prefWidth="52.0" side="LEFT" />
+         </yAxis>
+      </LineChart>
+      <Button fx:id="btnVolver" layoutX="1148.0" layoutY="585.0" mnemonicParsing="false" onAction="#onVolverClick" prefHeight="51.0" prefWidth="138.0" text="VOLVER" textFill="WHITE">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Button>
+      <Label layoutX="628.0" layoutY="30.0" text="ESTADISTICAS" />
+      <Separator layoutX="170.0" layoutY="71.0" prefWidth="1000.0" />
+   </children>
+</AnchorPane>

@@ -25,7 +25,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 
-public class VerGraficos implements Initializable {
+public class VerGraficosVentas implements Initializable {
     @FXML
     private CategoryAxis x;
 
@@ -36,24 +36,15 @@ public class VerGraficos implements Initializable {
     private LineChart<?, ?> linechart;
     
     @FXML
-    private BarChart<?, ?> barchart;
-	
-    @FXML
-    private CategoryAxis xBarrios;
-
-    @FXML
-    private NumberAxis yBarrios;
-    
-    @FXML
     private Button btnVolver;
     
-    private List<ClientesPorBarrio> clientesPorBarrioList = new ArrayList<ClientesPorBarrio>();
+   
     ObtenerDatos obtenerDatos;
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		
 		graficoVentas();
-		graficoClientesPorBarrio();
+		
 	}
 	
 	public void graficoVentas() {
@@ -68,18 +59,7 @@ public class VerGraficos implements Initializable {
 		
 	}
 	
-	public void graficoClientesPorBarrio() {
-		XYChart.Series set1= new XYChart.Series<>();
-		try {
-			obtenerDatos=new ObtenerDatos();
-			clientesPorBarrioList = obtenerDatos.obtenerClientesPorBarrio();
-			
-			clientesPorBarrioList.stream().forEach(unBarrioConClientes -> set1.getData().add(new XYChart.Data(unBarrioConClientes.getBarrio(), unBarrioConClientes.getCantidadClientes())));
-			barchart.getData().add(set1);
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-	}
+	
 	
     @FXML
     void onVolverClick(ActionEvent event) {
