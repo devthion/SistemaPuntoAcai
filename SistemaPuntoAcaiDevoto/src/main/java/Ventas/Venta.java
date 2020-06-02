@@ -72,6 +72,14 @@ public class Venta {
 	public List<Item> getItems() {
 		return items;
 	}
+	
+	public double getVenta_ganancia() {
+		return this.venta_ganancia;
+	}
+	
+	public double getVenta_precioTotal() {
+		return this.venta_precioTotal;
+	}
 
 	public void almacenarVenta() throws SQLException {
 		insertarDatos = new InsertarDatos();

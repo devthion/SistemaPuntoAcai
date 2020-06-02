@@ -14,6 +14,7 @@ import ModelosClientes.Cliente;
 import ModelosClientes.Direccion;
 import ModelosGraficos.ClientesPorBarrio;
 import ModelosGraficos.ComoLlegoUnCliente;
+import ModelosGraficos.VentasPorMes;
 import Productos.Producto;
 import Ventas.Item;
 import Ventas.Venta;
@@ -32,6 +33,21 @@ public class ObtenerDatos extends ConexionBd{
 		super();
 	}
 	
+	public List<VentasPorMes> obtenerVentasPorMes() throws SQLException{
+		List<VentasPorMes> ventasPorMes = new ArrayList<VentasPorMes>();
+		ResultSet rs;
+		Statement unStmt = null;
+		
+		sql="SELECT MONTH(venta_fecha),COUNT(venta_fecha) FROM VENTA"
+				+ "WHERE YEAR(venta_fecha)= '"+LocalDate.now().getYear()+"'"
+						+ "GROUP BY MONTH(venta_fecha)";
+		rs=ejecutarQuery(sql, unStmt);
+		while(rs.next()) {
+			VentasPorMes unMesConVentas = new VentasPorMes(rs.getInt(1), rs.getInt(2));
+			ventasPorMes.add(unMesConVentas);
+		}
+		return ventasPorMes;
+	}
 	
 	
 	public ObservableList<Gasto> obtenerGastos() throws SQLException{
