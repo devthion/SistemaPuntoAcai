@@ -58,8 +58,8 @@ public class ObtenerDatos extends ConexionBd{
 		sql="select * from GASTO";
 		rs=ejecutarQuery(sql,unStmt);
 		while(rs.next()) {
-			LocalDate date = rs.getDate(1).toLocalDate();
-			Gasto unGasto = new Gasto(rs.getString(3),rs.getDouble(2));
+			LocalDate date = rs.getDate(2).toLocalDate();
+			Gasto unGasto = new Gasto(rs.getString(4),rs.getDouble(3));
 			unGasto.setFecha(date);
 			gastos.add(unGasto);
 		}

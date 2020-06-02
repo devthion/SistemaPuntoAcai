@@ -186,7 +186,7 @@ public class VerGastos implements Initializable {
 		try {
 			obtenerDatos = new ObtenerDatos();
 			gastos = FXCollections.observableArrayList();
-			gastos = (ObservableList<Gasto>) obtenerDatos.obtenerGastos();
+			gastos = obtenerDatos.obtenerGastos();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -195,9 +195,9 @@ public class VerGastos implements Initializable {
 		
 		this.tblGastos.setItems(gastos);
 		
-		this.colDetalle.setCellValueFactory(new PropertyValueFactory<Gasto, String>("datosCliente"));
+		this.colDetalle.setCellValueFactory(new PropertyValueFactory<Gasto, String>("detalle"));
 		this.colFecha.setCellValueFactory(new PropertyValueFactory<Gasto, LocalDate>("fecha"));
-		this.colCantidad.setCellValueFactory(new PropertyValueFactory<Gasto, Double>("ganancia"));
+		this.colCantidad.setCellValueFactory(new PropertyValueFactory<Gasto, Double>("monto"));
 		
 		lblGastosMes.setText(gastos.stream().mapToDouble(unGasto-> unGasto.getMonto()).sum()+" $");
     	lblGastosTotal.setText(gastos.stream().mapToDouble(unGasto-> unGasto.getMonto()).sum()+" $");
