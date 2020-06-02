@@ -238,6 +238,13 @@ public class NuevaVentaController implements Initializable {
     		ventaBorrador.setCliente(cliente);
         	Venta nuevaVenta = ventaBorrador.crearVenta();
         	nuevaVenta.setVenta_envio(ventaBorrador.getCostoEnvio());
+        	nuevaVenta.getItems().stream().forEach(unItem -> {
+				try {
+					unItem.getProducto().actualizarStock(-unItem.getCantidad());
+				} catch (SQLException e2) {
+					e2.printStackTrace();
+				}
+			});
         	try {
 				nuevaVenta.almacenarVenta();
 			} catch (SQLException e1) {
