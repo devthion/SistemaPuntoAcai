@@ -4,6 +4,7 @@ package ConexionBD;
 import java.sql.SQLException;
 import java.util.List;
 
+import ModeloGasto.Gasto;
 import ModelosClientes.Cliente;
 import Productos.Producto;
 import Ventas.Item;
@@ -15,6 +16,16 @@ public class InsertarDatos extends ConexionBd{
 		super();
 	}
 	
+	
+	public void insertarGasto(Gasto unGasto) {
+		String sql = "insert into GASTO"
+				+ "(gasto_fecha,"
+				+ "gasto_monto,"
+				+ "gasto_detalle)"
+				+ "values('"+unGasto.getFecha()+"','"+unGasto.getMonto()+"','"+unGasto.getDetalle()+"')";
+		ejecutarUpdate(sql, "Gasto ingresado");
+				
+	}
 	
 	public void insertarCliente(Cliente unCliente) {
 		String sql = "insert into CLIENTE"
