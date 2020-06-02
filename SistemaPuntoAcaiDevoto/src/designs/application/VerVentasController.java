@@ -136,12 +136,12 @@ public class VerVentasController implements Initializable{
 		
 		this.colCliente.setCellValueFactory(new PropertyValueFactory<Venta, String>("datosCliente"));
 		this.colFecha.setCellValueFactory(new PropertyValueFactory<Venta, LocalDate>("fecha"));
-		this.colGanancia.setCellValueFactory(new PropertyValueFactory<Venta, Double>("ganancia"));
-		this.colMontoTotal.setCellValueFactory(new PropertyValueFactory<Venta, Double>("precioTotal"));
+		this.colGanancia.setCellValueFactory(new PropertyValueFactory<Venta, Double>("venta_ganancia"));
+		this.colMontoTotal.setCellValueFactory(new PropertyValueFactory<Venta, Double>("venta_precioTotal"));
 		
 		//HAY QUE RESTARLE LOS COSTOS TOTALES
-		lblGananciasVentas.setText(ventas.stream().mapToDouble(unaVenta-> unaVenta.getGanancia()).sum()+" $");
-    	lblDineroTotal.setText(ventas.stream().mapToDouble(unaVenta-> unaVenta.getPrecioTotal()).sum()+" $");
+		lblGananciasVentas.setText(ventas.stream().mapToDouble(unaVenta-> unaVenta.getVenta_ganancia()).sum()+" $");
+    	lblDineroTotal.setText(ventas.stream().mapToDouble(unaVenta-> unaVenta.getVenta_precioTotal()).sum()+" $");
 	}
 	
 
@@ -208,7 +208,7 @@ public class VerVentasController implements Initializable{
     public void mostrarVentasPorMes(int mes) {
     	ventasPorMes =ventas.filtered(unaVenta-> unaVenta.getMes()==mes && unaVenta.getAnio()==Integer.parseInt(txtAnio.getText()));
     	this.tblVentas.setItems(ventasPorMes);
-    	lblGananciasVentas.setText(ventasPorMes.stream().mapToDouble(unaVenta-> unaVenta.getGanancia()).sum()+" $");
-    	lblDineroTotal.setText(ventasPorMes.stream().mapToDouble(unaVenta-> unaVenta.getPrecioTotal()).sum()+" $");
+    	lblGananciasVentas.setText(ventasPorMes.stream().mapToDouble(unaVenta-> unaVenta.getVenta_ganancia()).sum()+" $");
+    	lblDineroTotal.setText(ventasPorMes.stream().mapToDouble(unaVenta-> unaVenta.getVenta_precioTotal()).sum()+" $");
     }
 }
