@@ -296,7 +296,7 @@ public class NuevaVentaController implements Initializable {
 			productos = FXCollections.observableArrayList();
 			productos = obtenerDatos.obtenerProductos();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}	
 		this.tblProductos.setItems(productos);	
@@ -309,7 +309,7 @@ public class NuevaVentaController implements Initializable {
 			clientes = FXCollections.observableArrayList();
 			clientes = obtenerDatos.obtenerClientes(new Querys().queryClientes());
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 		

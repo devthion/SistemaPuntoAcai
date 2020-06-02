@@ -16,12 +16,21 @@ public class Venta {
 	private double venta_precioTotal;
 	private double venta_ganancia;
 	InsertarDatos insertarDatos;
+	private double venta_envio=0;
 	
 	public Venta(Cliente cliente, LocalDate fecha, List<Item> items) {
 		super();
 		this.cliente = cliente;
 		this.fecha = fecha;
 		this.items = items;
+	}
+	
+	public void setVenta_envio(double envio) {
+		this.venta_envio=envio;
+	}
+	
+	public double getEnvio() {
+		return venta_envio;
 	}
 	
 	public void setVenta_precioTotal(double venta_precioTotal) {
