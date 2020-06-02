@@ -1,7 +1,6 @@
 package application;
 
 import java.sql.SQLException;
-import java.util.Objects;
 
 import Alertas.Alerta;
 import ModeloGasto.Gasto;
@@ -9,7 +8,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
@@ -34,13 +32,13 @@ public class CostosController {
     void onVolverClick(ActionEvent event) {
     	try {
 			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(getClass().getResource("MenuPrincipal.fxml"));
+			loader.setLocation(getClass().getResource("Gastos.fxml"));
 			AnchorPane root = (AnchorPane) loader.load();
 			Scene scene = new Scene(root,1300,650);
 			Stage stage = new Stage();
 			stage.setScene(scene);
 			stage.initModality(Modality.APPLICATION_MODAL);
-			stage.setTitle("Menu Principal");
+			stage.setTitle("Gastos");
 			stage.show();
 		} catch(Exception e) {
 			e.printStackTrace();

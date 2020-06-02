@@ -135,7 +135,7 @@ public class MenuPrincipalControler {
     void onCostosClick(ActionEvent event) {
     	try {
 			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(getClass().getResource("Costos.fxml"));
+			loader.setLocation(getClass().getResource("Gastos.fxml"));
 			AnchorPane root = (AnchorPane) loader.load();
 			Scene scene = new Scene(root,1300,650);
 			Stage stage = new Stage();
