@@ -10,7 +10,7 @@
 <AnchorPane maxHeight="Infinity" maxWidth="Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1300.0" stylesheets="@../Styles/Style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.VerGraficoComoLlegaron">
    <children>
   
-      <BarChart fx:id="barchart" layoutX="101.0" layoutY="99.0" prefHeight="516.0" prefWidth="1180.0" title="Medios de alcance a clientes" AnchorPane.bottomAnchor="35.0" AnchorPane.rightAnchor="19.0" AnchorPane.topAnchor="99.0">
+      <BarChart fx:id="barchart" layoutX="60.0" layoutY="84.0" prefHeight="491.0" prefWidth="1180.0" title="Medios de alcance a clientes" AnchorPane.bottomAnchor="75.0" AnchorPane.rightAnchor="60.0" AnchorPane.topAnchor="84.0">
         <xAxis>
           <CategoryAxis side="BOTTOM" fx:id="x" />
         </xAxis>
@@ -18,7 +18,12 @@
           <NumberAxis fx:id="y" nodeOrientation="LEFT_TO_RIGHT" side="LEFT" />
         </yAxis>
       </BarChart>
-      <Label layoutX="628.0" layoutY="30.0" text="ESTADISTICAS" />
-      <Separator layoutX="170.0" layoutY="71.0" prefWidth="1000.0" />
+      <Label layoutX="587.0" layoutY="30.0" text="ESTADISTICAS" />
+      <Separator layoutX="150.0" layoutY="71.0" prefWidth="1000.0" />
+      <Button fx:id="btnVolver" layoutX="1148.0" layoutY="585.0" mnemonicParsing="false" onAction="#onVolverClick" prefHeight="51.0" prefWidth="138.0" text="VOLVER" textFill="WHITE">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

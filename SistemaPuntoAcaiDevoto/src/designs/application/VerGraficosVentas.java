@@ -43,34 +43,28 @@ public class VerGraficosVentas implements Initializable {
     
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		
 		graficoVentas();
 		
 	}
 	
 	public void graficoVentas()  {
-	XYChart.Series series = new XYChart.Series();
-	try {
-		ObtenerDatos obtenerDatos = new ObtenerDatos();
-		ventasPorMes = obtenerDatos.obtenerVentasPorMes();
-		ventasPorMes.stream().forEach(unMesConVentas -> series.getData().add(new XYChart.Data(String.valueOf(unMesConVentas.getMes()),unMesConVentas.getCantidadDeVentas())));
-		linechart.getData().addAll(series);
-	} catch (SQLException e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
+		XYChart.Series series = new XYChart.Series();
+		try {
+			ObtenerDatos obtenerDatos = new ObtenerDatos();
+			ventasPorMes = obtenerDatos.obtenerVentasPorMes();
+			ventasPorMes.stream().forEach(unMesConVentas -> series.getData().add(new XYChart.Data(String.valueOf(unMesConVentas.getMes()),unMesConVentas.getCantidadDeVentas())));
+			linechart.getData().addAll(series);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
-		
-	
-		
-	}
-	
-	
 	
     @FXML
     void onVolverClick(ActionEvent event) {
     	try {
 			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(getClass().getResource("MenuPrincipal.fxml"));
+			loader.setLocation(getClass().getResource("Estadisticas.fxml"));
 			AnchorPane root = (AnchorPane) loader.load();
 			Scene scene = new Scene(root,1300,650);
 			Stage stage = new Stage();

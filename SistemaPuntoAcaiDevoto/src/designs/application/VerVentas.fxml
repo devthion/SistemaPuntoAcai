@@ -24,10 +24,10 @@
             <TableColumn fx:id="colGanancia" maxWidth="440.0" prefWidth="164.0" text="GANANCIA" />
          </columns>
       </TableView>
-      <Label layoutX="951.0" layoutY="109.0" text="MES" />
-      <Label layoutX="949.0" layoutY="178.0" text="AÑO" />
-      <Label fx:id="lblGananciasVentas" layoutX="1093.0" layoutY="303.0" prefHeight="30.0" prefWidth="177.0" text="GANANCIAS" />
-      <SplitMenuButton fx:id="slipMenuMes" layoutX="1013.0" layoutY="102.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="177.0">
+      <Label layoutX="921.0" layoutY="109.0" text="MES" />
+      <Label layoutX="919.0" layoutY="178.0" text="AÑO" />
+      <Label fx:id="lblGananciasVentas" layoutX="1040.0" layoutY="303.0" prefHeight="30.0" prefWidth="177.0" text="GANANCIAS" />
+      <SplitMenuButton fx:id="slipMenuMes" layoutX="983.0" layoutY="102.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="177.0">
         <items>
           <MenuItem fx:id="slipEnero" mnemonicParsing="false" onAction="#onEneroClick" text="ENERO" />
             <MenuItem fx:id="slipFebrero" mnemonicParsing="false" onAction="#onFebreroClick" text="FEBRERO" />
@@ -43,9 +43,9 @@
             <MenuItem fx:id="slipDiciembre" mnemonicParsing="false" onAction="#onDiciembreClick" text="DICIEMBRE" />
         </items>
       </SplitMenuButton>
-      <TextField fx:id="txtAnio" layoutX="1013.0" layoutY="177.0" prefHeight="33.0" prefWidth="177.0" />
-      <Label layoutX="949.0" layoutY="303.0" text="GANANCIAS:" />
-      <Label layoutX="949.0" layoutY="354.0" prefHeight="30.0" prefWidth="144.0" text="DINERO TOTAL:" />
-      <Label fx:id="lblDineroTotal" layoutX="1093.0" layoutY="354.0" prefHeight="30.0" prefWidth="177.0" text="DINERO TOTAL" />
+      <TextField fx:id="txtAnio" layoutX="983.0" layoutY="177.0" prefHeight="33.0" prefWidth="177.0" />
+      <Label layoutX="896.0" layoutY="303.0" text="GANANCIAS:" />
+      <Label layoutX="896.0" layoutY="354.0" prefHeight="30.0" prefWidth="144.0" text="DINERO TOTAL:" />
+      <Label fx:id="lblDineroTotal" layoutX="1040.0" layoutY="354.0" prefHeight="30.0" prefWidth="177.0" text="DINERO TOTAL" />
    </children>
 </AnchorPane>

@@ -42,18 +42,17 @@ public class IngresoController {
     	txtfiles.add(etNombreUsuario);
     	
     	if (txtfiles.stream().anyMatch(unTxt -> unTxt.getText().isEmpty())){
-    		System.out.println("ERROR");
+    		new Alerta().errorAlert("Debe ingresar un nombre y una contraseña", "Error de Ingreso");
     	}else {
-    		System.out.println("ERROR"+txtClave.getText());
-    		System.out.println("Se precionio el boton ingresar"+etNombreUsuario.getText());
-        	
-        	verMenuPrincipal("MenuPrincipal","Menu Principal");
+    		if(etNombreUsuario.getText().equalsIgnoreCase("admin") && etClave.getText().equalsIgnoreCase("admin")) {
+    			verMenuPrincipal("Estadisticas","Estadisticas");    
+    		}else {
+    			verMenuPrincipal("MenuPrincipal","Menu Principal");      
+    		}		
         	Stage stage = (Stage) btnIngresar.getScene().getWindow();
         	stage.close();
+    		
     	}
-    	
-    	
-    	
     }
 	
 	public void verMenuPrincipal(String ventana,String title) {
@@ -61,8 +60,8 @@ public class IngresoController {
 			FXMLLoader loader = new FXMLLoader();
 			loader.setLocation(getClass().getResource(""+ventana+".fxml"));
 			AnchorPane root = (AnchorPane) loader.load();
+			
 			Scene scene = new Scene(root,1300,650);
-			//scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			Stage stage = new Stage();
 			stage.setScene(scene);
 			//stage.initModality(Modality.APPLICATION_MODAL);
