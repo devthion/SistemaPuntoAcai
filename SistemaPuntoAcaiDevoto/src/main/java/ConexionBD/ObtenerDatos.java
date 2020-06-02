@@ -9,6 +9,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+import ModeloGasto.Gasto;
 import ModelosClientes.Cliente;
 import ModelosClientes.Direccion;
 import ModelosGraficos.ClientesPorBarrio;
@@ -29,8 +30,27 @@ public class ObtenerDatos extends ConexionBd{
 	public ObtenerDatos() throws SQLException {
 		super();
 	}
+	
+	public List<Gasto> obtenerGastos() throws SQLException{
+		ResultSet rs;
+		Statement unStmt =null;
+		List<Gasto> gastos = new ArrayList<>();
+		
+		
+		
+		sql="select * from GASTO";
+		rs=ejecutarQuery(sql,unStmt);
+		while(rs.next()) {
+			LocalDate date = rs.getDate(1).toLocalDate();
+			Gasto unGasto = new Gasto(rs.getString(3),rs.getDouble(2));
+			unGasto.setFecha(date);
+			gastos.add(unGasto);
+		}
+		return gastos;
+	}
 
 	public ObservableList<Cliente> obtenerClientes() throws SQLException {
+
 		Statement unStmt = null;
 		ObservableList<Cliente> clientes = FXCollections.observableArrayList();
 		

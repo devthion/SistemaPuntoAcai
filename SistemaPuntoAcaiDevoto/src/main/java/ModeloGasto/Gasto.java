@@ -7,6 +7,7 @@ public class Gasto {
 	private String detalle;
 	private double monto;
 	
+	
 	public Gasto(String detalle, double monto) {
 		this.fecha=LocalDate.now();
 		this.detalle=detalle;
@@ -25,6 +26,8 @@ public class Gasto {
 		return monto;
 	}
 	
-	
+	public void setFecha(LocalDate fecha) {
+		this.fecha=fecha;
+	}
 	
 }
