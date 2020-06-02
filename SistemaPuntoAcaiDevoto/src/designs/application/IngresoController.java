@@ -14,7 +14,6 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 public class IngresoController {
@@ -45,7 +44,7 @@ public class IngresoController {
     		new Alerta().errorAlert("Debe ingresar un nombre y una contraseña", "Error de Ingreso");
     	}else {
     		if(etNombreUsuario.getText().equalsIgnoreCase("admin") && etClave.getText().equalsIgnoreCase("admin")) {
-    			verMenuPrincipal("Estadisticas","Estadisticas");    
+    			verMenuPrincipal("Administrador","Administrador");    
     		}else {
     			verMenuPrincipal("MenuPrincipal","Menu Principal");      
     		}		
@@ -60,7 +59,6 @@ public class IngresoController {
 			FXMLLoader loader = new FXMLLoader();
 			loader.setLocation(getClass().getResource(""+ventana+".fxml"));
 			AnchorPane root = (AnchorPane) loader.load();
-			
 			Scene scene = new Scene(root,1300,650);
 			Stage stage = new Stage();
 			stage.setScene(scene);
