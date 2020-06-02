@@ -38,7 +38,7 @@ public class ObtenerDatos extends ConexionBd{
 		ResultSet rs;
 		Statement unStmt = null;
 		
-		sql="SELECT MONTH(venta_fecha),COUNT(venta_fecha) FROM VENTA"
+		sql="SELECT MONTH(venta_fecha),isnull(COUNT(venta_fecha),0) FROM VENTA "
 				+ "WHERE YEAR(venta_fecha)= '"+LocalDate.now().getYear()+"'"
 						+ "GROUP BY MONTH(venta_fecha)";
 		rs=ejecutarQuery(sql, unStmt);

@@ -8,6 +8,7 @@ import java.util.ResourceBundle;
 
 import ConexionBD.ObtenerDatos;
 import ModelosGraficos.ClientesPorBarrio;
+import ModelosGraficos.VentasPorMes;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -38,8 +39,8 @@ public class VerGraficosVentas implements Initializable {
     @FXML
     private Button btnVolver;
     
-   
-    ObtenerDatos obtenerDatos;
+    List<VentasPorMes> ventasPorMes = new ArrayList<VentasPorMes>();
+    
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		
@@ -47,15 +48,19 @@ public class VerGraficosVentas implements Initializable {
 		
 	}
 	
-	public void graficoVentas() {
+	public void graficoVentas()  {
 	XYChart.Series series = new XYChart.Series();
-		
-		series.getData().add(new XYChart.Data("1",23));
-		series.getData().add(new XYChart.Data("2",4));
-		series.getData().add(new XYChart.Data("3",43));
-		series.getData().add(new XYChart.Data("1",16));
-		
+	try {
+		ObtenerDatos obtenerDatos = new ObtenerDatos();
+		ventasPorMes = obtenerDatos.obtenerVentasPorMes();
+		ventasPorMes.stream().forEach(unMesConVentas -> series.getData().add(new XYChart.Data(String.valueOf(unMesConVentas.getMes()),unMesConVentas.getCantidadDeVentas())));
 		linechart.getData().addAll(series);
+	} catch (SQLException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+		
+	
 		
 	}
 	

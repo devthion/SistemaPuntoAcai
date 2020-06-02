@@ -19,6 +19,7 @@ public class ConexionBd {
 		try {
 			stmt.executeUpdate(sql);
 			System.out.println(mensaje);
+			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -27,8 +28,9 @@ public class ConexionBd {
 	
 	public ResultSet ejecutarQuery(String sql, Statement unStmt) throws SQLException {
 		unStmt = con.createStatement();
+		
 		return unStmt.executeQuery(sql);
-	//asdasdasdasd
+		
 	}
 	
 	
