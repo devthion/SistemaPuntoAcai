@@ -41,8 +41,6 @@ public class VerClientesConsumidoresFinales implements Initializable {
     @FXML
     private Button btnAgregarPersona;
 
-    /*@FXML
-    private TableColumn<Cliente, String> ColTipoCliente;*/
 
     @FXML
     private TableColumn<Cliente, String> colNombre;
@@ -184,7 +182,6 @@ public class VerClientesConsumidoresFinales implements Initializable {
 		this.colNumero.setCellValueFactory(new PropertyValueFactory<Cliente, Integer>("numero"));
 		this.colBarrio.setCellValueFactory(new PropertyValueFactory<Cliente, String>("barrio"));
 		this.colCodPostal.setCellValueFactory(new PropertyValueFactory<Cliente, Integer>("codPostal"));
-		//this.ColTipoCliente.setCellValueFactory(new PropertyValueFactory<Cliente, String>("tipo"));
 		this.colIngresos.setCellValueFactory(new PropertyValueFactory<Cliente, Double>("ingresos"));
 		
 		
