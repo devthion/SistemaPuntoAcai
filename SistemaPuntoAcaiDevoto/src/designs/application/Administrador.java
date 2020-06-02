@@ -2,8 +2,10 @@ package application;
 
 import java.sql.SQLException;
 
+import Alertas.Alerta;
 import ConexionBD.CrearArchivoH2;
 import ConexionBD.CrearTabla;
+import ConexionBD.DropTable;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -22,6 +24,9 @@ public class Administrador {
 
     @FXML
     private Button btnCrearTablas;
+    
+    @FXML
+    private Button btnEliminarTablas;
 
     @FXML
     void onVolverClick(ActionEvent event) {
@@ -44,6 +49,7 @@ public class Administrador {
     @FXML
     void onCrearBDClick(ActionEvent event) throws InstantiationException, IllegalAccessException, ClassNotFoundException, SQLException{
     	CrearArchivoH2.crearArchivo();
+    	new Alerta().informationAlert("La BD ha sido creado con Exito", "Creacion BD");
     }
 
     @FXML
@@ -53,6 +59,19 @@ public class Administrador {
     	CrearTabla.crearTablaVenta();
     	CrearTabla.crearTablaItem_Venta();
     	CrearTabla.crearTablaGasto();
+    	
+    	new Alerta().informationAlert("Las tablas de la BD han sido creadas con Exito", "Creacion Tablas");
+    }
+    
+    @FXML
+    void onEliminarTablas(ActionEvent event) {
+    	DropTable.main();
+    	new Alerta().informationAlert("Las tablas de la BD han sido eliminadas con Exito", "Eliminacion Tablas");
+    }
+    
+    @FXML
+    void onTraerDatosClick(ActionEvent event) {
+    	//DragAndDrop;
     }
 
 }

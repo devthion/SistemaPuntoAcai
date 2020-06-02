@@ -157,7 +157,7 @@ public class VerGastos implements Initializable {
     public void mostrarGastosPorMes(int mes) {
     	gastosPorMes =gastos.filtered(unGasto-> unGasto.getFecha().getMonthValue()==mes && unGasto.getFecha().getYear()==Integer.parseInt(txtAnio.getText()));
     	this.tblGastos.setItems(gastosPorMes);
-    	lblGastosMes.setText(gastos.stream().mapToDouble(unGasto-> unGasto.getMonto()).sum()+" $");
+    	lblGastosMes.setText(gastosPorMes.stream().mapToDouble(unGasto-> unGasto.getMonto()).sum()+" $");
     }
 
     @FXML

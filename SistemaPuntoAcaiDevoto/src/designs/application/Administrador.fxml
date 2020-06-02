@@ -7,8 +7,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane prefHeight="650.0" prefWidth="1300.0" stylesheets="@../Styles/Style.css" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="application.Administrador">
+<AnchorPane prefHeight="650.0" prefWidth="1300.0" stylesheets="@../Styles/Style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Administrador">
    <children>
       <Separator layoutX="150.0" layoutY="71.0" prefWidth="1000.0" />
       <Label layoutX="571.0" layoutY="29.0" text="ADMINISTRADOR" />
@@ -17,7 +16,9 @@
             <Font size="24.0" />
          </font>
       </Button>
-      <Button fx:id="btnCrearBd" layoutX="327.0" layoutY="231.0" mnemonicParsing="false" onAction="#onCrearBDClick" prefHeight="125.0" prefWidth="215.0" text="CREAR BD" />
-      <Button fx:id="btnCrearTablas" layoutX="759.0" layoutY="231.0" mnemonicParsing="false" onAction="#onCrearTablasClcik" prefHeight="125.0" prefWidth="215.0" text="CREAR TABLAS" />
+      <Button fx:id="btnCrearBd" layoutX="322.0" layoutY="154.0" mnemonicParsing="false" onAction="#onCrearBDClick" prefHeight="125.0" prefWidth="253.0" text="CREAR BD" />
+      <Button fx:id="btnCrearTablas" layoutX="725.0" layoutY="154.0" mnemonicParsing="false" onAction="#onCrearTablasClcik" prefHeight="125.0" prefWidth="253.0" text="CREAR TABLAS" />
+      <Button fx:id="btnEliminarTablas" layoutX="322.0" layoutY="350.0" mnemonicParsing="false" onAction="#onEliminarTablas" prefHeight="125.0" prefWidth="253.0" text="ELIMINAR TABLAS" />
+      <Button fx:id="btnTraerDatos" layoutX="725.0" layoutY="350.0" mnemonicParsing="false" onAction="#onTraerDatosClick" prefHeight="125.0" prefWidth="253.0" text="TRAER DATOS" />
    </children>
 </AnchorPane>
