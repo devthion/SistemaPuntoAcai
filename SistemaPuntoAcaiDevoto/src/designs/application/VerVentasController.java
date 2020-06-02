@@ -119,7 +119,7 @@ public class VerVentasController implements Initializable{
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		txtAnio.setText("2020");
+		txtAnio.setText(""+LocalDate.now().getYear());
 		ObtenerDatos obtenerDatos;
 		try {
 			obtenerDatos = new ObtenerDatos();
