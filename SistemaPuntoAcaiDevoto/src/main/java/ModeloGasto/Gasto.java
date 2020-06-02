@@ -1,6 +1,9 @@
 package ModeloGasto;
 
+import java.sql.SQLException;
 import java.time.LocalDate;
+
+import ConexionBD.InsertarDatos;
 
 public class Gasto {
 	private LocalDate fecha;
@@ -28,6 +31,11 @@ public class Gasto {
 	
 	public void setFecha(LocalDate fecha) {
 		this.fecha=fecha;
+	}
+
+	public void almacenarGasto() throws SQLException {
+		InsertarDatos insertarDatos = new InsertarDatos();
+		insertarDatos.insertarGasto(this);
 	}
 	
 }

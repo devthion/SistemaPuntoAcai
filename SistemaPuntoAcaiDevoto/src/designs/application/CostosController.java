@@ -1,8 +1,10 @@
 package application;
 
+import java.sql.SQLException;
 import java.util.Objects;
 
 import Alertas.Alerta;
+import ModeloGasto.Gasto;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -48,13 +50,22 @@ public class CostosController {
     }
 
     @FXML
-    void onGuardarGastoClick(ActionEvent event) {
+    void onGuardarGastoClick(ActionEvent event) throws SQLException {
     	if(Integer.parseInt(txtMonto.getText()) != 0 ) {
+    		Gasto unGasto = generarGasto();
+    		unGasto.almacenarGasto();
     		new Alerta().informationAlert("Se ha agregado el Gasto con exito", "Nuevo Gasto");
     	}else {
     		new Alerta().errorAlert("Debe ingresar un Monto", "Nuevo Gasto");
     	}
     	
+    }
+    
+    public Gasto generarGasto() {
+    	String detalle = this.txtDetalle.getText().toString();
+    	double monto = Double.parseDouble(this.txtMonto.getText().toString());
+    	
+    	return new Gasto(detalle, monto);
     }
 
 }

@@ -24,7 +24,7 @@ public class CrearTabla {
 				+"gasto_fecha DATE,"
 				+"gasto_monto DOUBLE(10),"
 				+"gasto_detalle VARCHAR(255),"
-				+"PRIMARY KEY (venta_id)";
+				+"PRIMARY KEY (gasto_id))";
 			stmt.executeUpdate(sql);
 			System.out.println("Tabla GASTO creada");
 		}
