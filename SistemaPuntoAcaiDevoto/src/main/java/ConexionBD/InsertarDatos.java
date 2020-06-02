@@ -28,8 +28,9 @@ public class InsertarDatos extends ConexionBd{
 				+ "dire_barrio,"
 				+ "dire_numero,"
 				+ "dire_calle,"
-				+ "clie_como_llego) "
-				+ "values('"+unCliente.getTipo()+"','"+unCliente.getNombre()+"','"+unCliente.getApellido()+"','"+unCliente.getDni()+"','"+unCliente.getTelefono()+"','"+unCliente.getEmail()+"','"+unCliente.getDireccion().getCodPostal()+"','"+unCliente.getDireccion().getBarrio()+"','"+unCliente.getDireccion().getNumero()+"','"+unCliente.getDireccion().getCalle()+"','"+unCliente.getComoLlego()+"')"; 
+				+ "clie_como_llego,"
+				+ "clie_rubro) "
+				+ "values('"+unCliente.getTipo()+"','"+unCliente.getNombre()+"','"+unCliente.getApellido()+"','"+unCliente.getDni()+"','"+unCliente.getTelefono()+"','"+unCliente.getEmail()+"','"+unCliente.getDireccion().getCodPostal()+"','"+unCliente.getDireccion().getBarrio()+"','"+unCliente.getDireccion().getNumero()+"','"+unCliente.getDireccion().getCalle()+"','"+unCliente.getComoLlego()+"','"+unCliente.getRubro()+"')"; 
 		ejecutarUpdate(sql, "Cliente ingresado");	
 	}
 	

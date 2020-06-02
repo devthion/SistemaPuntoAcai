@@ -11,6 +11,26 @@ public class CrearTabla {
 		crearTablaCliente();
 		crearTablaVenta();
 		crearTablaItem_Venta();
+		crearTablaGasto();
+	}
+	
+	public static void crearTablaGasto() {
+		try 
+		{
+			Connection con = DriverManager.getConnection("jdbc:h2:"+"~/test", "root", "devthion");
+			Statement stmt= con.createStatement();
+			String sql = "CREATE TABLE IF NOT EXISTS GASTO" 
+				+"(gasto_id INTEGER auto_increment,"
+				+"gasto_fecha DATE,"
+				+"gasto_monto DOUBLE(10),"
+				+"gasto_detalle VARCHAR(255),"
+				+"PRIMARY KEY (venta_id)";
+			stmt.executeUpdate(sql);
+			System.out.println("Tabla GASTO creada");
+		}
+		catch(Exception e) {
+			System.err.println(e.getMessage());
+		}
 	}
 	
 	public static void crearTablaVenta() {
@@ -51,6 +71,7 @@ public class CrearTabla {
 				+"dire_numero INTEGER(6),"
 				+"dire_calle VARCHAR(40),"
 				+"clie_como_llego VARCHAR(40),"
+				+"clie_rubro VARCHAR(40),"
 				+"PRIMARY KEY (clie_dni))";
 			stmt.executeUpdate(sql);
 			System.out.println("Tabla CLIENTE creada");

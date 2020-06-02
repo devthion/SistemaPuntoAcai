@@ -16,8 +16,9 @@ public class Cliente {
 	private Direccion direccion;
 	private String tipo;
 	private String comoLlego;
+	private String rubro;
 
-	public Cliente(int dni, String nombre, String apellido, int telefono, String email, Direccion direccion, String tipo, String comoLlego) {
+	public Cliente(int dni, String nombre, String apellido, int telefono, String email, Direccion direccion, String tipo, String comoLlego, String rubro) {
 		this.dni = dni;
 		this.nombre = nombre;
 		this.apellido = apellido;
@@ -26,7 +27,7 @@ public class Cliente {
 		this.direccion = direccion;
 		this.tipo = tipo;
 		this.comoLlego = comoLlego;
-		
+		this.rubro=rubro;
 	}
 	
 	public void almacenarCliente() throws SQLException {
@@ -37,6 +38,10 @@ public class Cliente {
 	public void modificarCliente(Cliente clienteEditado) throws SQLException {
 		ModificarDatos modificarDatos = new ModificarDatos();
 		modificarDatos.editarCliente(this.dni, clienteEditado);
+	}
+	
+	public String getRubro() {
+		return rubro;
 	}
 	
 	public String getCalle() {

@@ -56,7 +56,7 @@ public class ImportarExcel {
 			
 			insertarDatos=new InsertarDatos();
 			Direccion unaDireccion = new Direccion(listaValores.get(5),(int) Float.parseFloat((listaValores.get(6))) ,listaValores.get(7),(int) Float.parseFloat((listaValores.get(8))));
-			Cliente unCliente = new Cliente((int) Float.parseFloat((listaValores.get(0))),listaValores.get(1),listaValores.get(2),(int) Float.parseFloat((listaValores.get(3))), listaValores.get(4),unaDireccion,listaValores.get(9) , listaValores.get(10));
+			Cliente unCliente = new Cliente((int) Float.parseFloat((listaValores.get(0))),listaValores.get(1),listaValores.get(2),(int) Float.parseFloat((listaValores.get(3))), listaValores.get(4),unaDireccion,listaValores.get(9) , listaValores.get(10), listaValores.get(11));
 			insertarDatos.insertarCliente(unCliente);
 			listaValores.clear();
 			
