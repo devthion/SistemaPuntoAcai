@@ -3,10 +3,8 @@ package application;
 import java.net.URL;
 import java.sql.SQLException;
 import java.time.LocalDate;
-import java.util.List;
-import java.util.ResourceBundle;
 
-import org.mockito.internal.matchers.And;
+import java.util.ResourceBundle;
 
 import ConexionBD.ObtenerDatos;
 import Ventas.Venta;
@@ -45,7 +43,6 @@ public class VerVentasController implements Initializable{
 
 	@FXML
 	private MenuItem slipEnero;
-
 
 	@FXML
 	private MenuItem slipSeptiembre;
@@ -214,7 +211,4 @@ public class VerVentasController implements Initializable{
     	lblGananciasVentas.setText(ventasPorMes.stream().mapToDouble(unaVenta-> unaVenta.getGanancia()).sum()+" $");
     	lblDineroTotal.setText(ventasPorMes.stream().mapToDouble(unaVenta-> unaVenta.getPrecioTotal()).sum()+" $");
     }
-	
-	
-
 }

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane prefHeight="650.0" prefWidth="1300.0" stylesheets="@../Styles/Style.css" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="application.Gastos">
+   <children>
+      <Button fx:id="btnVolver" layoutX="1148.0" layoutY="585.0" mnemonicParsing="false" onAction="#onVolverClick" prefHeight="51.0" prefWidth="138.0" text="VOLVER" textFill="WHITE">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Button>
+      <Label layoutX="608.0" layoutY="30.0" text="CLIENTES" />
+      <Separator layoutX="150.0" layoutY="71.0" prefWidth="1000.0" />
+      <Button fx:id="btnVerGastos" layoutX="305.0" layoutY="249.0" mnemonicParsing="false" onAction="#onVerGastosClick" prefHeight="76.0" prefWidth="210.0" text="VER GASTOS" />
+      <Button fx:id="btnNuevoGasto" layoutX="786.0" layoutY="249.0" mnemonicParsing="false" onAction="#onNuevoGastoClick" prefHeight="76.0" prefWidth="210.0" text="NUEVO GASTO" />
+   </children>
+</AnchorPane>
