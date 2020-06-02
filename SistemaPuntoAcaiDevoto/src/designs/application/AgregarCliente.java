@@ -119,7 +119,7 @@ public class AgregarCliente {
     	this.txtCodigoPostal.setText(""+clienteEditable.getCodPostal());
     	this.txtEmail.setText(clienteEditable.getEmail());
     	this.txtTelefono.setText(""+clienteEditable.getTelefono());
-    	this.slipTipoCliente.setText(clienteEditable.getTipo());
+    	this.slipTipoCliente.setText(clienteEditable.getTipo().toLowerCase());
     	this.slipComoLlego.setText(clienteEditable.getComoLlego());
     	
     	nuevoCliente = clienteEditable;
@@ -132,17 +132,17 @@ public class AgregarCliente {
     }
     
     public Cliente generarCliente() {
-    	String nombre = this.txtNombre.getText().toString();
-    	String apellido = this.txtApellido.getText();
+    	String nombre = this.txtNombre.getText().toString().toLowerCase();
+    	String apellido = this.txtApellido.getText().toLowerCase();
     	int dni = Integer.parseInt(txtDni.getText());
     	int numero = Integer.parseInt(txtNumero.getText());
-    	String calle = this.txtCalle.getText();
-    	String barrio = this.txtBarrio.getText();
+    	String calle = this.txtCalle.getText().toLowerCase();
+    	String barrio = this.txtBarrio.getText().toLowerCase();
     	int codPostal = Integer.parseInt(this.txtCodigoPostal.getText());
-    	String email=this.txtEmail.getText();
+    	String email=this.txtEmail.getText().toLowerCase();
     	int telefono=Integer.parseInt(txtTelefono.getText());
-    	String tipo = slipTipoCliente.getText();
-    	String comoLlego = slipComoLlego.getText();
+    	String tipo = slipTipoCliente.getText().toLowerCase();
+    	String comoLlego = slipComoLlego.getText().toLowerCase();
     	
     	Direccion direccion = new Direccion(calle, numero, barrio, codPostal);
     	return new Cliente(dni, nombre, apellido, telefono, email, direccion, tipo, comoLlego, "unRubro");
