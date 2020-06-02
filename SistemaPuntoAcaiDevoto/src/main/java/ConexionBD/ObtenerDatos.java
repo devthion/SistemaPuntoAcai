@@ -13,6 +13,7 @@ import ModeloGasto.Gasto;
 import ModelosClientes.Cliente;
 import ModelosClientes.Direccion;
 import ModelosGraficos.ClientesPorBarrio;
+import ModelosGraficos.ComoLlegoUnCliente;
 import Productos.Producto;
 import Ventas.Item;
 import Ventas.Venta;
@@ -30,6 +31,8 @@ public class ObtenerDatos extends ConexionBd{
 	public ObtenerDatos() throws SQLException {
 		super();
 	}
+	
+	
 	
 	public List<Gasto> obtenerGastos() throws SQLException{
 		ResultSet rs;
@@ -97,6 +100,20 @@ public class ObtenerDatos extends ConexionBd{
 		}
 		return productos;
 		
+	}
+	
+	public List<ComoLlegoUnCliente> obtenerComoLlegaronLosClientes() throws SQLException{
+		Statement unStmt = null;
+		ResultSet rs;
+		List<ComoLlegoUnCliente> comoLlegaronLosClientes = new ArrayList<ComoLlegoUnCliente>();
+		sql="SELECT clie_como_llego, COUNT(clie_como_llego) FROM CLIENTE "
+				+ "GROUP BY clie_como_llego";
+		rs=ejecutarQuery(sql, unStmt);
+		while(rs.next()) {
+			ComoLlegoUnCliente comoLlegoUnCliente = new ComoLlegoUnCliente(rs.getString(1),rs.getInt(2));
+			comoLlegaronLosClientes.add(comoLlegoUnCliente);
+		}
+		return comoLlegaronLosClientes;
 	}
 	
 	
