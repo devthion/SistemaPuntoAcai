@@ -42,7 +42,7 @@ public class Venta {
 	}
 
 	public double getPrecioTotal() {
-		return items.stream().mapToDouble(unItem-> unItem.getPrecioFinal()).sum();
+		return items.stream().mapToDouble(unItem-> unItem.getPrecioFinal()).sum() + this.venta_envio;
 	}
 	
 	public double getCostoDeLaVenta() {
@@ -76,14 +76,6 @@ public class Venta {
 	public void almacenarVenta() throws SQLException {
 		insertarDatos = new InsertarDatos();
 		insertarDatos.insertarVenta(this);
-	}
-	
-	public double getVenta_ganancia() {
-		return this.venta_ganancia;
-	}
-	
-	public double getVenta_precioTotal() {
-		return this.venta_precioTotal;
 	}
 	
 	public String getDatosCliente() {

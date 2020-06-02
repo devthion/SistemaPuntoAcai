@@ -3,11 +3,8 @@ package application;
 
 import java.net.URL;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.Optional;
 import java.util.ResourceBundle;
-
-import javax.security.auth.x500.X500Principal;
 
 import Alertas.Alerta;
 import ConexionBD.ObtenerDatos;
@@ -240,6 +237,7 @@ public class NuevaVentaController implements Initializable {
     		agregarItems(itemsAVender);
     		ventaBorrador.setCliente(cliente);
         	Venta nuevaVenta = ventaBorrador.crearVenta();
+        	nuevaVenta.setVenta_envio(ventaBorrador.getCostoEnvio());
         	try {
 				nuevaVenta.almacenarVenta();
 			} catch (SQLException e1) {
