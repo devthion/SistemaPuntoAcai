@@ -44,6 +44,7 @@ public class CrearTabla {
 				+"venta_fecha DATE,"
 				+"venta_precioTotal DOUBLE(10),"
 				+"venta_ganancia DOUBLE(10),"
+				+ "venta_envio DOUBLE (10),"
 				+"PRIMARY KEY (venta_id),"
 				+"FOREIGN KEY (venta_cliente) REFERENCES CLIENTE(clie_dni))";
 			stmt.executeUpdate(sql);

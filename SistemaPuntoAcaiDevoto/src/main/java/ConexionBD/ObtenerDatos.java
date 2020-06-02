@@ -139,10 +139,12 @@ public class ObtenerDatos extends ConexionBd{
 			int ventaCliente = rsUnaVenta.getInt(2);
 			double ganancia = rsUnaVenta.getDouble(5);
 			double precioTotal = rsUnaVenta.getDouble(4);
+			double envio = rsUnaVenta.getDouble(6);
 			
 			unaVenta = new Venta(obtenerUnCliente(ventaCliente),date,itemsDeVenta(ventaId));
 			unaVenta.setVenta_ganancia(ganancia);
 			unaVenta.setVenta_precioTotal(precioTotal);
+			unaVenta.setVenta_envio(envio);
 			ventas.add(unaVenta);
 			}
 		return ventas;
