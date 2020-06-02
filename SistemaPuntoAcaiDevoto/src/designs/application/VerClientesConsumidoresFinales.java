@@ -6,6 +6,7 @@ import java.util.ResourceBundle;
 
 import Alertas.Alerta;
 import ConexionBD.ObtenerDatos;
+import ConexionBD.Querys;
 import ModelosClientes.Cliente;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -40,8 +41,8 @@ public class VerClientesConsumidoresFinales implements Initializable {
     @FXML
     private Button btnAgregarPersona;
 
-    @FXML
-    private TableColumn<Cliente, String> ColTipoCliente;
+    /*@FXML
+    private TableColumn<Cliente, String> ColTipoCliente;*/
 
     @FXML
     private TableColumn<Cliente, String> colNombre;
@@ -94,9 +95,9 @@ public class VerClientesConsumidoresFinales implements Initializable {
 			
 			ObtenerDatos obtenerDatos = new ObtenerDatos();
 			clientes = FXCollections.observableArrayList();
-			clientes = obtenerDatos.obtenerClientes();
+			clientes = obtenerDatos.obtenerClientes(new Querys().queryClientesConsumidoresFinales());
 			
-			this.tblClientes.setItems(clientes.filtered(unCliente -> unCliente.getTipo().equalsIgnoreCase("Consumidor Final")));
+			this.tblClientes.setItems(clientes);
 			this.tblClientes.refresh();
 			
 		} catch(Exception e) {
@@ -132,9 +133,9 @@ public class VerClientesConsumidoresFinales implements Initializable {
     		}
     		ObtenerDatos obtenerDatos = new ObtenerDatos();
 			clientes = FXCollections.observableArrayList();
-			clientes = obtenerDatos.obtenerClientes();
+			clientes = obtenerDatos.obtenerClientes(new Querys().queryClientesConsumidoresFinales());
 			
-			this.tblClientes.setItems(clientes.filtered(unCliente -> unCliente.getTipo().equalsIgnoreCase("Consumidor Final")));
+			this.tblClientes.setItems(clientes);
 			this.tblClientes.refresh();
     	}
     }
@@ -165,14 +166,14 @@ public class VerClientesConsumidoresFinales implements Initializable {
 			obtenerDatos = new ObtenerDatos();
 			clientes = FXCollections.observableArrayList();
 			//OBTENER DATOS CLIENTES CONSUMIDORES FINALES
-			clientes = obtenerDatos.obtenerClientes();
+			clientes = obtenerDatos.obtenerClientes(new Querys().queryClientesConsumidoresFinales());
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
 		
-		this.tblClientes.setItems(clientes.filtered(unCliente -> unCliente.getTipo().equalsIgnoreCase("Consumidor Final")));
+		this.tblClientes.setItems(clientes);
 		
 		this.colNombre.setCellValueFactory(new PropertyValueFactory<Cliente, String>("nombre"));
 		this.colApellido.setCellValueFactory(new PropertyValueFactory<Cliente, String>("apellido"));
@@ -183,7 +184,7 @@ public class VerClientesConsumidoresFinales implements Initializable {
 		this.colNumero.setCellValueFactory(new PropertyValueFactory<Cliente, Integer>("numero"));
 		this.colBarrio.setCellValueFactory(new PropertyValueFactory<Cliente, String>("barrio"));
 		this.colCodPostal.setCellValueFactory(new PropertyValueFactory<Cliente, Integer>("codPostal"));
-		this.ColTipoCliente.setCellValueFactory(new PropertyValueFactory<Cliente, String>("tipo"));
+		//this.ColTipoCliente.setCellValueFactory(new PropertyValueFactory<Cliente, String>("tipo"));
 		this.colIngresos.setCellValueFactory(new PropertyValueFactory<Cliente, Double>("ingresos"));
 		
 		

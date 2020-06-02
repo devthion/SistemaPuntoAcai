@@ -11,6 +11,7 @@ import javax.security.auth.x500.X500Principal;
 
 import Alertas.Alerta;
 import ConexionBD.ObtenerDatos;
+import ConexionBD.Querys;
 import ModelosClientes.Cliente;
 import Productos.Producto;
 import Ventas.Item;
@@ -195,7 +196,7 @@ public class NuevaVentaController implements Initializable {
 			
 			ObtenerDatos obtenerDatos = new ObtenerDatos();
 			clientes = FXCollections.observableArrayList();
-			clientes = obtenerDatos.obtenerClientes();
+			clientes = obtenerDatos.obtenerClientes(new Querys().queryClientes());
 			
 			this.tblClientes.setItems(clientes);
 			this.tblClientes.refresh();
@@ -306,7 +307,7 @@ public class NuevaVentaController implements Initializable {
 		try {
 			obtenerDatos = new ObtenerDatos();
 			clientes = FXCollections.observableArrayList();
-			clientes = obtenerDatos.obtenerClientes();
+			clientes = obtenerDatos.obtenerClientes(new Querys().queryClientes());
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

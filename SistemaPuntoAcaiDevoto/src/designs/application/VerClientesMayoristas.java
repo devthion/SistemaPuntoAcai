@@ -6,6 +6,7 @@ import java.util.ResourceBundle;
 
 import Alertas.Alerta;
 import ConexionBD.ObtenerDatos;
+import ConexionBD.Querys;
 import ModelosClientes.Cliente;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -122,9 +123,9 @@ public class VerClientesMayoristas implements Initializable {
     		}
     		ObtenerDatos obtenerDatos = new ObtenerDatos();
 			clientes = FXCollections.observableArrayList();
-			clientes = obtenerDatos.obtenerClientes();
+			clientes = obtenerDatos.obtenerClientes(new Querys().queryClientesMayoristas());
 			
-			this.tblClientes.setItems(clientes.filtered(unCliente -> unCliente.getTipo().equalsIgnoreCase("Mayorista")));
+			this.tblClientes.setItems(clientes);
 			this.tblClientes.refresh();
     	}
     }
@@ -147,9 +148,9 @@ public class VerClientesMayoristas implements Initializable {
 			
 			ObtenerDatos obtenerDatos = new ObtenerDatos();
 			clientes = FXCollections.observableArrayList();
-			clientes = obtenerDatos.obtenerClientes();
+			clientes = obtenerDatos.obtenerClientes(new Querys().queryClientesMayoristas());
 			
-			this.tblClientes.setItems(clientes.filtered(unCliente -> unCliente.getTipo().equalsIgnoreCase("Mayorista")));
+			this.tblClientes.setItems(clientes);
 			this.tblClientes.refresh();
 			
 		} catch(Exception e) {
@@ -164,13 +165,13 @@ public class VerClientesMayoristas implements Initializable {
 			obtenerDatos = new ObtenerDatos();
 			clientes = FXCollections.observableArrayList();
 			//OBTENER DATOS CLIENTES MAYORISTAS
-			clientes = obtenerDatos.obtenerClientes();
+			clientes = obtenerDatos.obtenerClientes(new Querys().queryClientesMayoristas());
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
-		this.tblClientes.setItems(clientes.filtered(unCliente -> unCliente.getTipo().equalsIgnoreCase("Mayorista")));
+		this.tblClientes.setItems(clientes);
 		
 		this.colNombre.setCellValueFactory(new PropertyValueFactory<Cliente, String>("nombre"));
 		this.colApellido.setCellValueFactory(new PropertyValueFactory<Cliente, String>("apellido"));
@@ -181,7 +182,7 @@ public class VerClientesMayoristas implements Initializable {
 		this.colNumero.setCellValueFactory(new PropertyValueFactory<Cliente, Integer>("numero"));
 		this.colBarrio.setCellValueFactory(new PropertyValueFactory<Cliente, String>("barrio"));
 		this.colCodPostal.setCellValueFactory(new PropertyValueFactory<Cliente, Integer>("codPostal"));
-		this.ColTipoCliente.setCellValueFactory(new PropertyValueFactory<Cliente, String>("tipo"));
+		this.ColTipoCliente.setCellValueFactory(new PropertyValueFactory<Cliente, String>("rubro"));
 		this.colIngresos.setCellValueFactory(new PropertyValueFactory<Cliente, Double>("ingresos"));	
 	}
 }

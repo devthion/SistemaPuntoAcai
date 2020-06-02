@@ -34,9 +34,7 @@ public class ObtenerDatos extends ConexionBd{
 	public List<Gasto> obtenerGastos() throws SQLException{
 		ResultSet rs;
 		Statement unStmt =null;
-		List<Gasto> gastos = new ArrayList<>();
-		
-		
+		List<Gasto> gastos = new ArrayList<>();		
 		
 		sql="select * from GASTO";
 		rs=ejecutarQuery(sql,unStmt);
@@ -49,13 +47,13 @@ public class ObtenerDatos extends ConexionBd{
 		return gastos;
 	}
 
-	public ObservableList<Cliente> obtenerClientes() throws SQLException {
+	public ObservableList<Cliente> obtenerClientes(String sql) throws SQLException {
 
 		Statement unStmt = null;
 		ObservableList<Cliente> clientes = FXCollections.observableArrayList();
 		
 	
-		sql = "select * from CLIENTE";
+		//sql = "select * from CLIENTE";
 		rs = ejecutarQuery(sql,unStmt);
 		while(rs.next()) {
 			Direccion unaDireccion= new Direccion(rs.getString(10),rs.getInt(9),rs.getString(8),rs.getInt(7));
@@ -65,6 +63,8 @@ public class ObtenerDatos extends ConexionBd{
 		
 		return clientes;
 	}
+	
+	
 	
 	
 	public double ingresosGeneradosPor(int clie_dni) throws SQLException {

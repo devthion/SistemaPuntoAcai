@@ -4,6 +4,7 @@ import java.sql.SQLException;
 
 import Alertas.Alerta;
 import ConexionBD.ObtenerDatos;
+import ConexionBD.Querys;
 import ModelosClientes.Cliente;
 import ModelosClientes.Direccion;
 import javafx.collections.FXCollections;
@@ -71,7 +72,7 @@ public class AgregarCliente {
     public boolean existeElUsuarioEnLaBd() throws SQLException {
     	ObtenerDatos obtenerDatos = new ObtenerDatos();
 		clientes = FXCollections.observableArrayList();
-		clientes = obtenerDatos.obtenerClientes();
+		clientes = obtenerDatos.obtenerClientes(new Querys().queryClientes());
     	return clientes.stream().anyMatch(unCliente -> unCliente.tieneElMismoDni(Integer.parseInt(txtDni.getText())));
     }
 

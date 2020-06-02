@@ -18,6 +18,7 @@ import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import ConexionBD.ObtenerDatos;
+import ConexionBD.Querys;
 import ModelosClientes.Cliente;
 
 public class ExportarExcel {
@@ -31,7 +32,7 @@ public class ExportarExcel {
 		obtenerDatos = new ObtenerDatos();
 		
 		String[] columnas = {"clie_nombre", "clie_apellido", "clie_dni", "clie_telefono","clie_email","dire_calle","dire_numero","dire_codPostal","clie_como_llego","clie_tipo"};
-		List<Cliente> clientes = obtenerDatos.obtenerClientes();
+		List<Cliente> clientes = obtenerDatos.obtenerClientes(new Querys().queryClientes());
 	
 		// Create a Workbook
 	    Workbook workbook = new XSSFWorkbook();
