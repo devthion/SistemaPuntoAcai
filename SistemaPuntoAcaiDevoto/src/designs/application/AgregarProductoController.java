@@ -1,6 +1,8 @@
 package application;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import Alertas.Alerta;
 import Productos.Producto;
@@ -41,13 +43,18 @@ public class AgregarProductoController {
 
 	@FXML
     void onAgregarProductoClick(ActionEvent event) throws SQLException {
-    	Producto producto = generarProducto();
     	
-    	this.nuevoProducto = producto;
-		producto.almacenarProducto();
-		new Alerta().informationAlert("Se ha añadido correctamente", "Informacion");
-		Stage stage = (Stage) btnAgregarProducto.getScene().getWindow();
-    	stage.close();
+    	if(validarCajasDeTextos()) {
+    		new Alerta().informationAlert("Debe completar todos los campos","");
+    	}else {
+    		Producto producto = generarProducto();
+    		this.nuevoProducto = producto;
+			producto.almacenarProducto();
+			new Alerta().informationAlert("Se ha añadido correctamente", "Informacion");
+			Stage stage = (Stage) btnAgregarProducto.getScene().getWindow();
+	    	stage.close();
+		}
+	    	
     }
 
     @FXML
@@ -57,7 +64,6 @@ public class AgregarProductoController {
     }
     
     public Producto generarProducto() {
-    	
     	String nombre = this.txtNombre.getText().toString().toLowerCase();
     	int kilos = Integer.parseInt(this.txtKilos.getText());
     	double costo = Double.parseDouble(txtCosto.getText());
@@ -66,11 +72,23 @@ public class AgregarProductoController {
     	int cantidadMayor = Integer.parseInt(this.txtCantidadMayor.getText());
     	
     	return new Producto(nombre, kilos, 0, precioUnitario, precioMayor, costo, cantidadMayor);
-    
     }
     
     public Producto getNuevoProducto() {
 		return nuevoProducto;
 	}
+    
+    public boolean validarCajasDeTextos() {
+    	
+    	List<TextField> productosAValidar = new ArrayList<>();
+    	productosAValidar.add(txtCantidadMayor);
+    	productosAValidar.add(txtNombre);
+    	productosAValidar.add(txtKilos);
+    	productosAValidar.add(txtCosto);
+    	productosAValidar.add(txtPrecioUnitario);
+    	productosAValidar.add(txtPrecioMayor);
+    	
+    	return productosAValidar.stream().anyMatch(unTxt -> unTxt.getText().isEmpty());
+    }
 
 }

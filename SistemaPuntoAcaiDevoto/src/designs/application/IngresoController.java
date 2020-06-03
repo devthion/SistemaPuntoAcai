@@ -1,6 +1,7 @@
 package application;
 
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Optional;
 
@@ -43,6 +44,13 @@ public class IngresoController {
     	if (txtfiles.stream().anyMatch(unTxt -> unTxt.getText().isEmpty())){
     		new Alerta().errorAlert("Debe ingresar un nombre y una contraseña", "Error de Ingreso");
     	}else {
+    		try{
+				Integer.parseInt(etClave.getText());
+			}catch (Exception e){
+				new Alerta().informationAlert("adas", "adsdsa");
+			}
+			
+    		
     		if(etNombreUsuario.getText().equalsIgnoreCase("admin") && etClave.getText().equalsIgnoreCase("admin")) {
     			verMenuPrincipal("Administrador","Administrador");    
     		}else {
