@@ -48,8 +48,8 @@ public class InsertarDatos extends ConexionBd{
 	
 
 	public void insertarProducto(Producto unProducto) {
-		String sql = "insert into PRODUCTO(prod_nombre, prod_kilos, prod_stock, prod_precio, prod_precio_mayor, prod_costo) "
-				+ "values('"+unProducto.getNombre()+"','"+unProducto.getKilos()+"','"+unProducto.getStock()+"','"+unProducto.getPrecioUnitario()+"','"+unProducto.getPrecioMayor()+"','"+unProducto.getCosto()+"')"; 
+		String sql = "insert into PRODUCTO(prod_nombre, prod_kilos, prod_stock, prod_precio, prod_precio_mayor, prod_costo, prod_cantidad_mayor) "
+				+ "values('"+unProducto.getNombre()+"','"+unProducto.getKilos()+"','"+unProducto.getStock()+"','"+unProducto.getPrecioUnitario()+"','"+unProducto.getPrecioMayor()+"','"+unProducto.getCosto()+"','"+unProducto.getCantidadPorMayor()+"')"; 
 		
 		ejecutarUpdate(sql, "Producto ingresado");
 		

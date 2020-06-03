@@ -28,6 +28,8 @@ public class Producto {
 		this.cantidadPorMayor = cantidadPorMayor;
 	}
 	
+	
+	
 	public void almacenarProducto() throws SQLException {
 		InsertarDatos insertarDatos = new InsertarDatos();
 		insertarDatos.insertarProducto(this);
