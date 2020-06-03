@@ -1,8 +1,11 @@
 package application;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import Alertas.Alerta;
+import Alertas.Validaciones;
 import Productos.Producto;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -33,15 +36,21 @@ public class ActualizarPrecio {
 
 	@FXML
     void onActualizarPrecioClick(ActionEvent event) throws SQLException {
-		double costo = Double.parseDouble(txtCosto.getText());
-		double precioUnitario = Double.parseDouble(txtPrecioUnitario.getText());
-		double precioMayor = Double.parseDouble(txtPrecioPorMayor.getText());
 		
-		productoActualizar.actualizarPrecios(precioUnitario, precioMayor, costo);
-		new Alerta().informationAlert("Se ha actualizado el preio del producto", "Actualizar Precio");
+		if(Validaciones.validarCajasNumericas(generarListNumerica())) {
+			new Alerta().errorAlert("Debe ingresar valores numericos", "Eror de Datos");
+		}else {
+			double costo = Double.parseDouble(txtCosto.getText());
+			double precioUnitario = Double.parseDouble(txtPrecioUnitario.getText());
+			double precioMayor = Double.parseDouble(txtPrecioPorMayor.getText());
+			
+			productoActualizar.actualizarPrecios(precioUnitario, precioMayor, costo);
+			new Alerta().informationAlert("Se ha actualizado el preio del producto", "Actualizar Precio");
+			
+			Stage stage = (Stage) btnActualizarPrecio.getScene().getWindow();
+	    	stage.close();
+		}
 		
-		Stage stage = (Stage) btnActualizarPrecio.getScene().getWindow();
-    	stage.close();
     }
 
     @FXML
@@ -56,6 +65,17 @@ public class ActualizarPrecio {
 
 	public void setProductoActualizar(Producto productoActualizar) {
 		this.productoActualizar = productoActualizar;
+	}
+	
+	public List<TextField> generarListNumerica(){
+		
+		List<TextField> productosAValidar = new ArrayList<>();
+    	productosAValidar.add(txtCosto);
+    	productosAValidar.add(txtPrecioUnitario);
+    	productosAValidar.add(txtPrecioPorMayor);
+    	
+    	return productosAValidar;
+		
 	}
     
     
