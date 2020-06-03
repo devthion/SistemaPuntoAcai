@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import Alertas.Alerta;
+import Alertas.Validaciones;
 import Productos.Producto;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -44,8 +45,8 @@ public class AgregarProductoController {
 	@FXML
     void onAgregarProductoClick(ActionEvent event) throws SQLException {
     	
-    	if(validarCajasDeTextos()) {
-    		new Alerta().informationAlert("Debe completar todos los campos","");
+    	if(Validaciones.validarCajasDeTextos(generarListTxt()) || Validaciones.validarCajasNumericas(generarListNumericos()) ) {
+    		new Alerta().informationAlert("Los datos ingresados son erroneo o faltan completar algunos atrinutos","Error en el ingreso de Datos");
     	}else {
     		Producto producto = generarProducto();
     		this.nuevoProducto = producto;
@@ -78,7 +79,7 @@ public class AgregarProductoController {
 		return nuevoProducto;
 	}
     
-    public boolean validarCajasDeTextos() {
+    public List<TextField> generarListTxt() {
     	
     	List<TextField> productosAValidar = new ArrayList<>();
     	productosAValidar.add(txtCantidadMayor);
@@ -88,8 +89,22 @@ public class AgregarProductoController {
     	productosAValidar.add(txtPrecioUnitario);
     	productosAValidar.add(txtPrecioMayor);
     	
-    	return productosAValidar.stream().anyMatch(unTxt -> unTxt.getText().isEmpty());
+    	return productosAValidar;
     }
+    
+    public List<TextField> generarListNumericos() {
+    	
+    	List<TextField> productosAValidar = new ArrayList<>();
+    	productosAValidar.add(txtCantidadMayor);
+    	productosAValidar.add(txtKilos);
+    	productosAValidar.add(txtCosto);
+    	productosAValidar.add(txtPrecioUnitario);
+    	productosAValidar.add(txtPrecioMayor);
+    	
+    	return productosAValidar;
+    }
+    
+    
     
 
 
