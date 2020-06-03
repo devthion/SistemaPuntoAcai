@@ -252,7 +252,7 @@ public class ObtenerDatos extends ConexionBd{
 		Statement unStmt = null;
 		ResultSet rs;
 		int cantidadVendida=0;
-		sql="SELECT COUNT(item_producto) FROM ITEM_VENTA "
+		sql="SELECT COUNT(item_producto*item_cantidad) FROM ITEM_VENTA "
 				+ "WHERE item_producto = '"+prod_id+"'"
 						+ "GROUP BY item_producto";
 		
