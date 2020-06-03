@@ -1,10 +1,5 @@
 package application;
 
-import ConexionBD.ObtenerDatos;
-import ConexionBD.Querys;
-import ModelosClientes.Cliente;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -28,8 +23,6 @@ public class VerClientes {
     
     @FXML
     private Button btnAgregarPersona;
-    
-    private ObservableList<Cliente> clientes;
 
 
 	@FXML
