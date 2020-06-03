@@ -44,15 +44,17 @@ public class IngresoController {
     	if (Validaciones.validarCajasDeTextos(txtfiles)){
     		new Alerta().errorAlert("Debe ingresar un nombre y una contraseña", "Error de Ingreso");
     	}else {
-
-    		if(etNombreUsuario.getText().equalsIgnoreCase("admin") && etClave.getText().equalsIgnoreCase("admin")) {
+    		if(etNombreUsuario.getText().equalsIgnoreCase("acaidevoto") && etClave.getText().equalsIgnoreCase("123456")) {
+    			verMenuPrincipal("MenuPrincipal","Menu Principal");      	
+    			Stage stage = (Stage) btnIngresar.getScene().getWindow();
+    			stage.close();
+    		}else if(etNombreUsuario.getText().equalsIgnoreCase("admin") && etClave.getText().equalsIgnoreCase("admin")) {
     			verMenuPrincipal("Administrador","Administrador");    
+    			Stage stage = (Stage) btnIngresar.getScene().getWindow();
+            	stage.close();
     		}else {
-    			verMenuPrincipal("MenuPrincipal","Menu Principal");      
-    		}		
-        	Stage stage = (Stage) btnIngresar.getScene().getWindow();
-        	stage.close();
-    		
+    			new Alerta().errorAlert("Verifique los datos ingresados", "Error datos ingresados");
+    		}    		
     	}
     }
 	

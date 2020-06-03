@@ -1,8 +1,11 @@
 package application;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import Alertas.Alerta;
+import Alertas.Validaciones;
 import ConexionBD.ObtenerDatos;
 import ConexionBD.Querys;
 import ModelosClientes.Cliente;
@@ -85,17 +88,23 @@ public class AgregarCliente {
 
     @FXML
     void onGuardarClienteClick(ActionEvent event) throws SQLException {
-    	if(!existeElUsuarioEnLaBd()) {
-    		Cliente cliente = generarCliente();
-    		this.nuevoCliente = cliente;
-    		cliente.almacenarCliente();
-    		new Alerta().informationAlert("Se ha añadido correctamente", "Informacion");
-			Stage stage = (Stage) btnGuardarCliente.getScene().getWindow();
-	    	stage.close();
-    	}else {
-    		new Alerta().errorAlert("El cliente ingresado ya existe en la base de datos", "Cliente Repetido");
-    	}
+    	Validaciones.ponerVaciosTextsFiels(generarListOpcionales());
+    	Validaciones.ponerVaciosTextsFielsNumericos(generarListOpcionalesNumericos());
     	
+    	if(Validaciones.validarCajasDeTextos(generarListObligatorios()) || Validaciones.validarCajasNumericas(generarListNumericos())) {
+    		new Alerta().errorAlert("Puede que falten atributos llenar o esta ingresando mal los datos", "Error en el ingreso de Datos");
+    	}else {
+    		if(!existeElUsuarioEnLaBd()) {
+	    		Cliente cliente = generarCliente();
+	    		this.nuevoCliente = cliente;
+	    		cliente.almacenarCliente();
+	    		new Alerta().informationAlert("Se ha añadido correctamente", "Informacion");
+				Stage stage = (Stage) btnGuardarCliente.getScene().getWindow();
+		    	stage.close();
+	    	}else {
+	    		new Alerta().errorAlert("El cliente ingresado ya existe en la base de datos", "Cliente Repetido");
+	    	}
+    	}
     }
     
     @FXML
@@ -169,6 +178,48 @@ public class AgregarCliente {
     void onVolverClick(ActionEvent event) {
     	Stage stage = (Stage) btnVolver.getScene().getWindow();
     	stage.close();
+    }
+    
+    public List<TextField> generarListObligatorios() {
+    	
+    	List<TextField> productosAValidar = new ArrayList<>();
+    	productosAValidar.add(txtNombre);
+    	productosAValidar.add(txtDni);
+    	productosAValidar.add(txtRubro);
+    	
+    	return productosAValidar;
+    }
+    
+    public List<TextField> generarListNumericos() {
+    	
+    	List<TextField> productosAValidar = new ArrayList<>();
+    	productosAValidar.add(txtDni);
+    	productosAValidar.add(txtNumero);
+    	productosAValidar.add(txtCodigoPostal);
+    	productosAValidar.add(txtTelefono);
+    	
+    	return productosAValidar;
+    }
+    
+    public List<TextField> generarListOpcionales() {
+    	
+    	List<TextField> productosAValidar = new ArrayList<>();
+    	productosAValidar.add(txtApellido);
+    	productosAValidar.add(txtCalle);
+    	productosAValidar.add(txtBarrio);
+    	productosAValidar.add(txtEmail);
+    	
+    	return productosAValidar;
+    }
+    
+    public List<TextField> generarListOpcionalesNumericos() {
+    	
+    	List<TextField> productosAValidar = new ArrayList<>();
+    	productosAValidar.add(txtNumero);
+    	productosAValidar.add(txtCodigoPostal);
+    	productosAValidar.add(txtTelefono);
+    	
+    	return productosAValidar;
     }
     
     @FXML

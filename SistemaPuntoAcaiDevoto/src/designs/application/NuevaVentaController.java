@@ -125,20 +125,23 @@ public class NuevaVentaController implements Initializable {
     void onAgregarAlCarritoClick(ActionEvent event) {
     	Producto producto = this.tblProductos.getSelectionModel().getSelectedItem();
     	
-    	
-    	if(producto==null) {
-    		new Alerta().errorAlert("Debe seleccionar un Producto", "Agregar al Carrito");
+    	if(itemsAVender.stream().anyMatch(unItem -> unItem.getProducto().equals(producto))) {
+    		new Alerta().errorAlert("El producto solicitado ya existe en el carrito", "Error de duplicidad");
     	}else {
-    		Item item = new Item(producto, contadorCantidad);
-    		contadorCantidad = 1;
-    		lblCantidadItem.setText(""+contadorCantidad);
-    		itemsAVender.add(item);
-    		tblProductosVenta.setItems(itemsAVender);
-    		this.tblProductosVenta.refresh();
-    		
-    		calcularPrecioFinal(itemsAVender);
-    	
+    		if(producto==null) {
+	    		new Alerta().errorAlert("Debe seleccionar un Producto", "Agregar al Carrito");
+	    	}else {
+	    		Item item = new Item(producto, contadorCantidad);
+	    		contadorCantidad = 1;
+	    		lblCantidadItem.setText(""+contadorCantidad);
+	    		itemsAVender.add(item);
+	    		tblProductosVenta.setItems(itemsAVender);
+	    		this.tblProductosVenta.refresh();
+	    		
+	    		calcularPrecioFinal(itemsAVender);
+	    	}
     	}
+	    
     }
 	@FXML
 	void onSacarDelCarritoClick(ActionEvent event) {
