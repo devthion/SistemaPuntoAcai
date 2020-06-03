@@ -10,12 +10,27 @@ public class Item {
 	private Producto producto;
 	private int cantidad;
 	private double item_precio;
+	private int item_venta;
 	InsertarDatos insertarDatos;
 	
 	public Item(Producto producto, int cantidad) {
 		this.producto = producto;
 		this.cantidad = cantidad;
 	}
+	
+	
+
+	public int getItem_venta() {
+		return item_venta;
+	}
+
+
+
+	public void setItem_venta(int item_venta) {
+		this.item_venta = item_venta;
+	}
+
+
 
 	public double getPrecioFinal() {
 		//ACA HACER CUENTAS SEGUN SI ES MAYORISTA O CONSUMIDOR FINAL

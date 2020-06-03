@@ -230,7 +230,23 @@ public class ObtenerDatos extends ConexionBd{
 
 	
 	
-	//public List<Venta>
+	public List<Item> obtenerItemsVenta() throws SQLException{
+		Statement unStmt = null;
+		List<Item> itemsDeVenta = new ArrayList<Item>();
+		Item unItem;
+		sql ="SELECT * FROM ITEM_VENTA ";
+		rsUnItem=ejecutarQuery(sql,unStmt);
+		while(rsUnItem.next()) {
+			int itemProducto = rsUnItem.getInt(1);
+			Producto unProducto = obtenerProductoPorId(rsUnItem.getInt(1));
+			
+			unItem = new Item(unProducto, rsUnItem.getInt(3));
+			unItem.setItem_venta(rsUnItem.getInt(2));
+			unItem.setItemPrecio(rsUnItem.getDouble(4));
+			itemsDeVenta.add(unItem);
+		}
+		return itemsDeVenta;
+	}
 	
 	
 }
