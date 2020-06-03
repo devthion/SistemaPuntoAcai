@@ -17,6 +17,7 @@ public class Venta {
 	private double venta_ganancia;
 	InsertarDatos insertarDatos;
 	private double venta_envio=0;
+	private double precioModificado=0;
 	
 	public Venta(Cliente cliente, LocalDate fecha, List<Item> items) {
 		super();
@@ -42,7 +43,11 @@ public class Venta {
 	}
 
 	public double getPrecioTotal() {
-		return items.stream().mapToDouble(unItem-> unItem.getPrecioFinal()).sum() + this.venta_envio;
+		if (precioModificado == 0) {
+			return items.stream().mapToDouble(unItem-> unItem.getPrecioFinal()).sum() + this.venta_envio;
+		}else {
+			return precioModificado + this.venta_envio;
+		}
 	}
 	
 	public double getCostoDeLaVenta() {
@@ -59,6 +64,10 @@ public class Venta {
 
 	public LocalDate getFecha() {
 		return fecha;
+	}
+	
+	public void setPrecioModificado(double precioModificado) {
+		this.precioModificado = precioModificado;
 	}
 	
 	public int getMes() {
@@ -89,5 +98,4 @@ public class Venta {
 	public String getDatosCliente() {
 		return cliente.getNombre()+" "+cliente.getApellido() +", DNI: "+cliente.getDni();
 	}
-	
 }

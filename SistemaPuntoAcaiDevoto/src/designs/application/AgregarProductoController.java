@@ -46,7 +46,7 @@ public class AgregarProductoController {
     void onAgregarProductoClick(ActionEvent event) throws SQLException {
     	
     	if(Validaciones.validarCajasDeTextos(generarListTxt()) || Validaciones.validarCajasNumericas(generarListNumericos()) ) {
-    		new Alerta().informationAlert("Los datos ingresados son erroneo o faltan completar algunos atrinutos","Error en el ingreso de Datos");
+    		new Alerta().errorAlert("Los datos ingresados son erroneos o faltan completar algunos atributos","Error en el ingreso de Datos");
     	}else {
     		Producto producto = generarProducto();
     		this.nuevoProducto = producto;

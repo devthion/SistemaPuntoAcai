@@ -1,8 +1,11 @@
 package application;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import Alertas.Alerta;
+import Alertas.Validaciones;
 import ModeloGasto.Gasto;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -49,7 +52,9 @@ public class CostosController {
 
     @FXML
     void onGuardarGastoClick(ActionEvent event) throws SQLException {
-    	if(Integer.parseInt(txtMonto.getText()) != 0 ) {
+    	if(Validaciones.validarCajasDeTextos(generarListTxt()) || Validaciones.validarCajasNumericas(generarListNumericos()) ) {
+    		new Alerta().errorAlert("Los datos ingresados son erroneos o faltan completar algunos atributos","Error en el ingreso de Datos");
+    	}else {
     		Gasto unGasto = generarGasto();
     		unGasto.almacenarGasto();
     		new Alerta().informationAlert("Se ha agregado el Gasto con exito", "Nuevo Gasto");
@@ -68,8 +73,6 @@ public class CostosController {
     		}
         	Stage stage = (Stage) btnVolver.getScene().getWindow();
         	stage.close();
-    	}else {
-    		new Alerta().errorAlert("Debe ingresar un Monto", "Nuevo Gasto");
     	}
     	
     }
@@ -79,6 +82,23 @@ public class CostosController {
     	double monto = Double.parseDouble(this.txtMonto.getText().toString());
     	
     	return new Gasto(detalle, monto);
+    }
+    
+    public List<TextField> generarListTxt() {
+    	
+    	List<TextField> productosAValidar = new ArrayList<>();
+    	productosAValidar.add(txtMonto);
+    	productosAValidar.add(txtDetalle);
+    	
+    	return productosAValidar;
+    }
+    
+    public List<TextField> generarListNumericos() {
+    	
+    	List<TextField> productosAValidar = new ArrayList<>();
+    	productosAValidar.add(txtMonto);
+    	
+    	return productosAValidar;
     }
 
 }

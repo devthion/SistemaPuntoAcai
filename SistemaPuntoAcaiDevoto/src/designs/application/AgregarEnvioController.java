@@ -1,6 +1,10 @@
 package application;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import Alertas.Alerta;
+import Alertas.Validaciones;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -45,10 +49,17 @@ public class AgregarEnvioController {
 
     @FXML
     void onActualizarClick(ActionEvent event) {
-    	costoEnvio = Double.parseDouble(txtCostoEnvio.getText());
-    	new Alerta().informationAlert("Se ha agregado el costo de envio con exito", "Envio");
-    	Stage stage = (Stage) btnVolver.getScene().getWindow();
-    	stage.close();
+    	List<TextField> productosAValidar = new ArrayList<>();
+    	productosAValidar.add(txtCostoEnvio);
+    	if(Validaciones.validarCajasNumericas(productosAValidar)) {
+    		new Alerta().errorAlert("Debe ingresar un valor numerico", "Error ingreso de Datos");
+    	}else {
+    		costoEnvio = Double.parseDouble(txtCostoEnvio.getText());
+        	new Alerta().informationAlert("Se ha agregado el costo de envio con exito", "Envio");
+        	Stage stage = (Stage) btnVolver.getScene().getWindow();
+        	stage.close();
+    	}
+    
     }
     
     public double getCostoEnvio() {
