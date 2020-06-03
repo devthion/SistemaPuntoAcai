@@ -40,7 +40,8 @@ public class CostosController {
 			Scene scene = new Scene(root,1300,650);
 			Stage stage = new Stage();
 			stage.setScene(scene);
-			stage.initModality(Modality.APPLICATION_MODAL);
+			stage.resizableProperty().setValue(Boolean.FALSE);
+			stage.setResizable(false);
 			stage.setTitle("Gastos");
 			stage.show();
 		} catch(Exception e) {
@@ -65,7 +66,8 @@ public class CostosController {
     			Scene scene = new Scene(root,1300,650);
     			Stage stage = new Stage();
     			stage.setScene(scene);
-    			stage.initModality(Modality.APPLICATION_MODAL);
+    			stage.resizableProperty().setValue(Boolean.FALSE);
+    			stage.setResizable(false);
     			stage.setTitle("Gastos");
     			stage.show();
     		} catch(Exception e) {

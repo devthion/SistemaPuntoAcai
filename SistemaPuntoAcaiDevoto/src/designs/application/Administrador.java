@@ -40,6 +40,8 @@ public class Administrador {
 			Scene scene = new Scene(root,1300,650);
 			Stage stage = new Stage();
 			stage.setScene(scene);
+			stage.resizableProperty().setValue(Boolean.FALSE);
+			stage.setResizable(false);
 			stage.setTitle("Ingreso al Sistema");
 			stage.show();
 		} catch(Exception e) {

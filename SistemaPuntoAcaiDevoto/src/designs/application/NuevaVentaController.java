@@ -169,7 +169,8 @@ public class NuevaVentaController implements Initializable {
 			Scene scene = new Scene(root,700,300);
 			Stage stage = new Stage();
 			stage.setScene(scene);
-			stage.initModality(Modality.APPLICATION_MODAL);
+			stage.resizableProperty().setValue(Boolean.FALSE);
+			stage.setResizable(false);
 			stage.setTitle("Nuevo Cliente");
 			stage.showAndWait();
 			
@@ -192,7 +193,8 @@ public class NuevaVentaController implements Initializable {
 			Scene scene = new Scene(root,1300,650);
 			Stage stage = new Stage();
 			stage.setScene(scene);
-			stage.initModality(Modality.APPLICATION_MODAL);
+			stage.resizableProperty().setValue(Boolean.FALSE);
+			stage.setResizable(false);
 			stage.setTitle("Nuevo Cliente");
 			stage.showAndWait();
 			
@@ -280,7 +282,8 @@ public class NuevaVentaController implements Initializable {
 	    			Scene scene = new Scene(root,1300,650);
 	    			Stage stage = new Stage();
 	    			stage.setScene(scene);
-	    			stage.initModality(Modality.APPLICATION_MODAL);
+	    			stage.resizableProperty().setValue(Boolean.FALSE);
+	    			stage.setResizable(false);
 	    			stage.setTitle("Menu Principal");
 	    			stage.show();
 	    		} catch(Exception e) {
@@ -304,7 +307,8 @@ public class NuevaVentaController implements Initializable {
     			Scene scene = new Scene(root,1300,650);
     			Stage stage = new Stage();
     			stage.setScene(scene);
-    			stage.initModality(Modality.APPLICATION_MODAL);
+    			stage.resizableProperty().setValue(Boolean.FALSE);
+    			stage.setResizable(false);
     			stage.setTitle("Menu Principal");
     			stage.show();
     		} catch(Exception e) {

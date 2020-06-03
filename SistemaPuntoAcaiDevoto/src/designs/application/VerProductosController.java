@@ -103,7 +103,8 @@ public class VerProductosController implements Initializable {
     			Scene scene = new Scene(root,700,300);
     			Stage stage = new Stage();
     			stage.setScene(scene);
-    			stage.initModality(Modality.APPLICATION_MODAL);
+    			stage.resizableProperty().setValue(Boolean.FALSE);
+    			stage.setResizable(false);
     			stage.setTitle("Productos");
     			stage.showAndWait();
     			
@@ -138,7 +139,8 @@ public class VerProductosController implements Initializable {
     			Scene scene = new Scene(root,700,300);
     			Stage stage = new Stage();
     			stage.setScene(scene);
-    			stage.initModality(Modality.APPLICATION_MODAL);
+    			stage.resizableProperty().setValue(Boolean.FALSE);
+    			stage.setResizable(false);
     			stage.setTitle("Editar Cliente");
     			stage.showAndWait();
     			
@@ -164,7 +166,8 @@ public class VerProductosController implements Initializable {
 			Scene scene = new Scene(root,1300,650);
 			Stage stage = new Stage();
 			stage.setScene(scene);
-			stage.initModality(Modality.APPLICATION_MODAL);
+			stage.resizableProperty().setValue(Boolean.FALSE);
+			stage.setResizable(false);
 			stage.setTitle("Menu Principal");
 			stage.show();
 		} catch(Exception e) {

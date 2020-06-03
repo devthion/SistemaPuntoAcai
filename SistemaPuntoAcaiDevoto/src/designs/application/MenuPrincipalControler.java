@@ -51,7 +51,8 @@ public class MenuPrincipalControler {
 			Scene scene = new Scene(root,1300,650);
 			Stage stage = new Stage();
 			stage.setScene(scene);
-			stage.initModality(Modality.APPLICATION_MODAL);
+			stage.resizableProperty().setValue(Boolean.FALSE);
+			stage.setResizable(false);
 			stage.setTitle("Clientes");
 			stage.show();
 		} catch(Exception e) {
@@ -76,7 +77,8 @@ public class MenuPrincipalControler {
 			Scene scene = new Scene(root,1300,650);
 			Stage stage = new Stage();
 			stage.setScene(scene);
-			stage.initModality(Modality.APPLICATION_MODAL);
+			stage.resizableProperty().setValue(Boolean.FALSE);
+			stage.setResizable(false);
 			stage.setTitle("Producto");
 			stage.show();
 		} catch(Exception e) {
@@ -95,7 +97,8 @@ public class MenuPrincipalControler {
 			Scene scene = new Scene(root,1300,650);
 			Stage stage = new Stage();
 			stage.setScene(scene);
-			stage.initModality(Modality.APPLICATION_MODAL);
+			stage.resizableProperty().setValue(Boolean.FALSE);
+			stage.setResizable(false);
 			stage.setTitle("Ventas");
 			stage.show();
 		} catch(Exception e) {
@@ -114,7 +117,8 @@ public class MenuPrincipalControler {
 			Scene scene = new Scene(root,1300,650);
 			Stage stage = new Stage();
 			stage.setScene(scene);
-			stage.initModality(Modality.APPLICATION_MODAL);
+			stage.resizableProperty().setValue(Boolean.FALSE);
+			stage.setResizable(false);
 			stage.setTitle("Venta");
 			stage.show();
 		} catch(Exception e) {
@@ -133,7 +137,8 @@ public class MenuPrincipalControler {
 			Scene scene = new Scene(root,1300,650);
 			Stage stage = new Stage();
 			stage.setScene(scene);
-			stage.initModality(Modality.APPLICATION_MODAL);
+			stage.resizableProperty().setValue(Boolean.FALSE);
+			stage.setResizable(false);
 			stage.setTitle("Estadisticas");
 			stage.show();
 		} catch(Exception e) {
@@ -152,7 +157,8 @@ public class MenuPrincipalControler {
 			Scene scene = new Scene(root,1300,650);
 			Stage stage = new Stage();
 			stage.setScene(scene);
-			stage.initModality(Modality.APPLICATION_MODAL);
+			stage.resizableProperty().setValue(Boolean.FALSE);
+			stage.setResizable(false);
 			stage.setTitle("Gastos");
 			stage.show();
 		} catch(Exception e) {
