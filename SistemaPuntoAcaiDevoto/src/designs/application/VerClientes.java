@@ -1,5 +1,7 @@
 package application;
 
+import ConexionBD.ObtenerDatos;
+import ConexionBD.Querys;
 import ModelosClientes.Cliente;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -23,6 +25,9 @@ public class VerClientes {
 
     @FXML
     private Button btnMayoristas;
+    
+    @FXML
+    private Button btnAgregarPersona;
     
     private ObservableList<Cliente> clientes;
 
@@ -82,6 +87,28 @@ public class VerClientes {
 		}
     	Stage stage = (Stage) btnMayoristas.getScene().getWindow();
     	stage.close();
+    }
+    
+    @FXML
+    void agregarCliente(ActionEvent event) {
+    	try {
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("AgregarCliente.fxml"));
+			AnchorPane root = (AnchorPane) loader.load();
+			
+			AgregarCliente controller = loader.getController();
+			controller.initAgregar();
+			
+			Scene scene = new Scene(root,1300,650);
+			Stage stage = new Stage();
+			stage.setScene(scene);
+			stage.initModality(Modality.APPLICATION_MODAL);
+			stage.setTitle("Nuevo Cliente");
+			stage.showAndWait();
+			
+			
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
     }
 
 

@@ -6,8 +6,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane prefHeight="650.0" prefWidth="1300.0" stylesheets="@../Styles/Style.css" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="application.VerClientesMayoristas">
+<AnchorPane prefHeight="650.0" prefWidth="1300.0" stylesheets="@../Styles/Style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.VerClientesMayoristas">
    <children>
       <Separator layoutX="150.0" layoutY="71.0" prefWidth="1000.0" />
       <Label layoutX="546.0" layoutY="30.0" text="CLIENTES MAYORISTAS" />
@@ -16,12 +15,7 @@
             <Font size="24.0" />
          </font>
       </Button>
-      <Button fx:id="btnEditarCliente" layoutX="749.0" layoutY="534.0" mnemonicParsing="false" onAction="#editarCliente" prefHeight="51.0" prefWidth="340.0" stylesheets="@../Styles/Style.css" text="EDITAR CLIENTE" textFill="WHITE">
-         <font>
-            <Font size="24.0" />
-         </font>
-      </Button>
-      <Button fx:id="btnAgregarPersona" layoutX="232.0" layoutY="535.0" mnemonicParsing="false" onAction="#agregarCliente" prefHeight="49.0" prefWidth="340.0" stylesheets="@../Styles/Style.css" text="AGREGAR NUEVO CLIENTE" textFill="WHITE">
+      <Button fx:id="btnEditarCliente" layoutX="480.0" layoutY="533.0" mnemonicParsing="false" onAction="#editarCliente" prefHeight="51.0" prefWidth="340.0" stylesheets="@../Styles/Style.css" text="EDITAR CLIENTE" textFill="WHITE">
          <font>
             <Font size="24.0" />
          </font>

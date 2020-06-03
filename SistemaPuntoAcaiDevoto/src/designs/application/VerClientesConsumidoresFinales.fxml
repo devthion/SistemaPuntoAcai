@@ -22,11 +22,7 @@
             <TableColumn fx:id="colIngresos" prefWidth="178.0" text="Ingresos Generados" />
         </columns>
       </TableView>
-      <Button fx:id="btnAgregarPersona" layoutX="222.0" layoutY="525.0" mnemonicParsing="false" onAction="#agregarCliente" prefHeight="49.0" prefWidth="340.0" stylesheets="@../Styles/Style.css" text="AGREGAR NUEVO CLIENTE" textFill="WHITE">
-         <font>
-            <Font size="24.0" />
-         </font></Button>
-      <Button fx:id="btnEditarCliente" layoutX="739.0" layoutY="524.0" mnemonicParsing="false" onAction="#editarCliente" prefHeight="51.0" prefWidth="340.0" stylesheets="@../Styles/Style.css" text="EDITAR CLIENTE" textFill="WHITE">
+      <Button fx:id="btnEditarCliente" layoutX="481.0" layoutY="534.0" mnemonicParsing="false" onAction="#editarCliente" prefHeight="51.0" prefWidth="340.0" stylesheets="@../Styles/Style.css" text="EDITAR CLIENTE" textFill="WHITE">
          <font>
             <Font size="24.0" />
          </font>

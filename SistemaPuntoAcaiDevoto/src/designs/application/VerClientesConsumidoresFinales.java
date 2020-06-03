@@ -39,10 +39,6 @@ public class VerClientesConsumidoresFinales implements Initializable {
     private TableColumn<Cliente, Double> colIngresos;
 
     @FXML
-    private Button btnAgregarPersona;
-
-
-    @FXML
     private TableColumn<Cliente, String> colNombre;
 
     @FXML
@@ -74,34 +70,6 @@ public class VerClientesConsumidoresFinales implements Initializable {
 
     
     private ObservableList<Cliente> clientes;
-
-    @FXML
-    void agregarCliente(ActionEvent event) {
-    	try {
-			FXMLLoader loader = new FXMLLoader(getClass().getResource("AgregarCliente.fxml"));
-			AnchorPane root = (AnchorPane) loader.load();
-			
-			AgregarCliente controller = loader.getController();
-			controller.initAgregar();
-			
-			Scene scene = new Scene(root,1300,650);
-			Stage stage = new Stage();
-			stage.setScene(scene);
-			stage.initModality(Modality.APPLICATION_MODAL);
-			stage.setTitle("Nuevo Cliente");
-			stage.showAndWait();
-			
-			ObtenerDatos obtenerDatos = new ObtenerDatos();
-			clientes = FXCollections.observableArrayList();
-			clientes = obtenerDatos.obtenerClientes(new Querys().queryClientesConsumidoresFinales());
-			
-			this.tblClientes.setItems(clientes);
-			this.tblClientes.refresh();
-			
-		} catch(Exception e) {
-			e.printStackTrace();
-		}
-    }
 
     @FXML
     void editarCliente(ActionEvent event) throws SQLException {
