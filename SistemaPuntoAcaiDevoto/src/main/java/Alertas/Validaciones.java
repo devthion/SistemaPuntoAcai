@@ -21,4 +21,18 @@ public class Validaciones {
     	}
     	return error;
     }
+    
+    public static boolean validarCajaNumerica(TextField txTextField) {
+    	boolean error = false;
+    	
+       		try{
+       				if(txTextField.getText().isEmpty()) {
+       					error = true;
+       				}
+    				Integer.parseInt(txTextField.getText());
+    			}catch (Exception e){
+    				error = true;
+    		}
+    	return error;
+    }
 }

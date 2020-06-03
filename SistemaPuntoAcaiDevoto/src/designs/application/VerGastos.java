@@ -5,6 +5,8 @@ import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
 
+import Alertas.Alerta;
+import Alertas.Validaciones;
 import ConexionBD.ObtenerDatos;
 import ModeloGasto.Gasto;
 import javafx.collections.FXCollections;
@@ -155,9 +157,14 @@ public class VerGastos implements Initializable {
     }
     
     public void mostrarGastosPorMes(int mes) {
-    	gastosPorMes =gastos.filtered(unGasto-> unGasto.getFecha().getMonthValue()==mes && unGasto.getFecha().getYear()==Integer.parseInt(txtAnio.getText()));
-    	this.tblGastos.setItems(gastosPorMes);
-    	lblGastosMes.setText(gastosPorMes.stream().mapToDouble(unGasto-> unGasto.getMonto()).sum()+" $");
+    	if(Validaciones.validarCajaNumerica(txtAnio)) {
+    		 new Alerta().errorAlert("Debe ingresar un año valido", "Error de Datos");
+    	}else{
+    		gastosPorMes =gastos.filtered(unGasto-> unGasto.getFecha().getMonthValue()==mes && unGasto.getFecha().getYear()==Integer.parseInt(txtAnio.getText()));
+        	this.tblGastos.setItems(gastosPorMes);
+        	lblGastosMes.setText(gastosPorMes.stream().mapToDouble(unGasto-> unGasto.getMonto()).sum()+" $");
+    	}
+    	
     }
 
     @FXML
