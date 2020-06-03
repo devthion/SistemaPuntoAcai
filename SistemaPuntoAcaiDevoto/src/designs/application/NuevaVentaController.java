@@ -200,8 +200,18 @@ public class NuevaVentaController implements Initializable {
 			clientes = FXCollections.observableArrayList();
 			clientes = obtenerDatos.obtenerClientes(new Querys().queryClientes());
 			
-			this.tblClientes.setItems(clientes);
-			this.tblClientes.refresh();
+			FilteredList<Cliente> filteredData = new FilteredList<>(clientes, p -> true);
+	    	tblClientes.setItems(filteredData);
+			
+			txtNombreABuscar.setPromptText("Buscar...");
+	    	txtNombreABuscar.textProperty().addListener((prop, old, text) -> {
+	    	    filteredData.setPredicate(unCliente -> {
+	    	        if(text == null || text.isEmpty()) return true;
+	    	        
+	    	        String name = unCliente.getNombre().toLowerCase();  
+	    	        return name.contains(text.toLowerCase());
+	    	    });
+	    	});
 			
 		} catch(Exception e) {
 			e.printStackTrace();

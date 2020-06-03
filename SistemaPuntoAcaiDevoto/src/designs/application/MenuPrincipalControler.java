@@ -1,8 +1,11 @@
 package application;
 
+import java.io.IOException;
+import java.sql.SQLException;
 import java.util.Optional;
 
 import Alertas.Alerta;
+import ManejoArchivos.ExportarExcel;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -29,6 +32,9 @@ public class MenuPrincipalControler {
     
     @FXML
     private Button btnSalir;
+    
+    @FXML
+    private Button btnGenerarExcel;
 
     @FXML
     private Button btnEstadisticas;
@@ -53,6 +59,12 @@ public class MenuPrincipalControler {
 		}
     	Stage stage = (Stage) btnVerClientes.getScene().getWindow();
     	stage.close();
+    }
+    
+    @FXML
+    void onGenerarExcelClick(ActionEvent event) throws SQLException, IOException {
+    	ExportarExcel.exportar();
+    	new Alerta().informationAlert("Se ha exportar el Excel en la Carpeta Sistema Acai con Exito", "Exportar Excel");
     }
     
     @FXML
