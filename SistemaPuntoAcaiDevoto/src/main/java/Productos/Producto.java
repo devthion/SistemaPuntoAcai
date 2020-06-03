@@ -4,6 +4,7 @@ import java.sql.SQLException;
 
 import ConexionBD.InsertarDatos;
 import ConexionBD.ModificarDatos;
+import ConexionBD.ObtenerDatos;
 
 public class Producto {
 	
@@ -17,6 +18,7 @@ public class Producto {
 	private int cantidadVendidos;
 	private int prod_id;
 	ModificarDatos modificarDatos;
+	ObtenerDatos obtenerDatos;
 	
 	public Producto(String nombre, double kilos, int stock, double precioUnitario, double precioMayor, double costo, int cantidadPorMayor) {
 		this.nombre = nombre;
@@ -28,6 +30,11 @@ public class Producto {
 		this.cantidadPorMayor = cantidadPorMayor;
 	}
 	
+	public int getCantidadTotalVendidos() throws SQLException {
+		
+		obtenerDatos = new ObtenerDatos();
+		return obtenerDatos.obtenerCantidadTotalVendida(this.prod_id);
+	}
 	
 	
 	public void almacenarProducto() throws SQLException {

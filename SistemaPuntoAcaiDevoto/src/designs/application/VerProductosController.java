@@ -194,7 +194,7 @@ public class VerProductosController implements Initializable {
 		this.colCosto.setCellValueFactory(new PropertyValueFactory<Producto, Double>("costo"));
 		this.colPrecioMayor.setCellValueFactory(new PropertyValueFactory<Producto, Double>("precioMayor"));
 		this.colPrecioUnitario.setCellValueFactory(new PropertyValueFactory<Producto, Double>("precioUnitario"));
-		this.colTotalVendidos.setCellValueFactory(new PropertyValueFactory<Producto, Integer>("cantidadVendidos"));
+		this.colTotalVendidos.setCellValueFactory(new PropertyValueFactory<Producto, Integer>("cantidadTotalVendidos"));
 		this.colStock.setCellValueFactory(new PropertyValueFactory<Producto, Integer>("stock"));
 		
 	}

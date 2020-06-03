@@ -247,6 +247,23 @@ public class ObtenerDatos extends ConexionBd{
 		}
 		return itemsDeVenta;
 	}
+
+	public int obtenerCantidadTotalVendida(int prod_id) throws SQLException {
+		Statement unStmt = null;
+		ResultSet rs;
+		int cantidadVendida=0;
+		sql="SELECT COUNT(item_producto) FROM ITEM_VENTA "
+				+ "WHERE item_producto = '"+prod_id+"'"
+						+ "GROUP BY item_producto";
+		
+		rs=ejecutarQuery(sql, unStmt);
+			
+		while(rs.next()) {
+			cantidadVendida=rs.getInt(1);
+		}	
+		
+		return cantidadVendida;
+	}
 	
 	
 }
