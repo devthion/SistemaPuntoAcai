@@ -66,7 +66,7 @@ public class AgregarProductoController {
     
     public Producto generarProducto() {
     	String nombre = this.txtNombre.getText().toString().toLowerCase();
-    	int kilos = Integer.parseInt(this.txtKilos.getText());
+    	double kilos = Double.parseDouble(this.txtKilos.getText());
     	double costo = Double.parseDouble(txtCosto.getText());
     	double precioUnitario = Double.parseDouble(txtPrecioUnitario.getText());
     	double precioMayor = Double.parseDouble(this.txtPrecioMayor.getText());
