@@ -6,6 +6,8 @@ import java.time.LocalDate;
 
 import java.util.ResourceBundle;
 
+import Alertas.Alerta;
+import Alertas.Validaciones;
 import ConexionBD.ObtenerDatos;
 import Ventas.Venta;
 import javafx.collections.FXCollections;
@@ -206,9 +208,13 @@ public class VerVentasController implements Initializable{
     }
     
     public void mostrarVentasPorMes(int mes) {
-    	ventasPorMes =ventas.filtered(unaVenta-> unaVenta.getMes()==mes && unaVenta.getAnio()==Integer.parseInt(txtAnio.getText()));
-    	this.tblVentas.setItems(ventasPorMes);
-    	lblGananciasVentas.setText(ventasPorMes.stream().mapToDouble(unaVenta-> unaVenta.getVenta_ganancia()).sum()+" $");
-    	lblDineroTotal.setText(ventasPorMes.stream().mapToDouble(unaVenta-> unaVenta.getVenta_precioTotal()).sum()+" $");
+    	if(Validaciones.validarCajaNumerica(txtAnio)) {
+   		 new Alerta().errorAlert("Debe ingresar un año valido", "Error de Datos");
+	   	}else{
+	    	ventasPorMes =ventas.filtered(unaVenta-> unaVenta.getMes()==mes && unaVenta.getAnio()==Integer.parseInt(txtAnio.getText()));
+	    	this.tblVentas.setItems(ventasPorMes);
+	    	lblGananciasVentas.setText(ventasPorMes.stream().mapToDouble(unaVenta-> unaVenta.getVenta_ganancia()).sum()+" $");
+	    	lblDineroTotal.setText(ventasPorMes.stream().mapToDouble(unaVenta-> unaVenta.getVenta_precioTotal()).sum()+" $");
+	   	}
     }
 }

@@ -14,7 +14,7 @@ public class Validaciones {
     	boolean error = false;
     	for(TextField unText: productosAValidar) {
        		try{
-    				Integer.parseInt(unText.getText());
+    				Double.parseDouble(unText.getText());
     			}catch (Exception e){
     				error = true;
     		}
@@ -29,7 +29,7 @@ public class Validaciones {
        				if(txTextField.getText().isEmpty()) {
        					error = true;
        				}
-    				Integer.parseInt(txTextField.getText());
+       				Double.parseDouble(txTextField.getText());
     			}catch (Exception e){
     				error = true;
     		}
