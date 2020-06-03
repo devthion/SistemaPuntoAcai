@@ -139,7 +139,6 @@ public class NuevaVentaController implements Initializable {
 	    		this.tblProductosVenta.refresh();
 	    		
 	    		calcularPrecioFinal(itemsAVender);
-	    	
 	    	}
     	}
 	    
