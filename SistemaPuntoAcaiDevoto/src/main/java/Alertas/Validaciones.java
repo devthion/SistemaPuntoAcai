@@ -35,4 +35,20 @@ public class Validaciones {
     		}
     	return error;
     }
+    
+    public static void ponerVaciosTextsFiels(List<TextField> productosAValidar) {
+    	for(TextField unText: productosAValidar) {
+    		if(unText.getText().isEmpty()) {
+    			unText.setText("");
+    		}
+    	}
+    }
+    
+    public static void ponerVaciosTextsFielsNumericos(List<TextField> productosAValidar) {
+    	for(TextField unText: productosAValidar) {
+    		if(unText.getText().isEmpty()) {
+    			unText.setText("0");
+    		}
+    	}
+    }
 }
