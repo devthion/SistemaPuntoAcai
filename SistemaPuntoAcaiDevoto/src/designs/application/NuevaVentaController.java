@@ -228,7 +228,7 @@ public class NuevaVentaController implements Initializable {
     	Cliente cliente = this.tblClientes.getSelectionModel().getSelectedItem();
     	
     	if(Validaciones.validarCajaNumerica(txtPrecioTotal)) {
-    		new Alerta().errorAlert("El precio Total Venta ingresado no es un valor Correcto", "Erro de Datos");
+    		new Alerta().errorAlert("El precio Total Venta ingresado no es un valor Correcto", "Error de Datos");
     	}else {
     		if(cliente==null || itemsAVender.size() == 0) {
 	    		new Alerta().errorAlert("Debe seleccionar un cliente y minimo un producto", "Nueva Venta");

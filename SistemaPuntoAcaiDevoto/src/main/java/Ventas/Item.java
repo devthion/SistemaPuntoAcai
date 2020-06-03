@@ -34,7 +34,16 @@ public class Item {
 
 	public double getPrecioFinal() {
 		//ACA HACER CUENTAS SEGUN SI ES MAYORISTA O CONSUMIDOR FINAL
-		return cantidad*producto.getPrecioUnitario();
+		if(esCompraMayorista()) {
+			return cantidad*producto.getPrecioMayor();
+		}else {
+			return cantidad*producto.getPrecioUnitario();
+		}
+	
+	}
+	
+	public boolean esCompraMayorista() {
+		return cantidad>= producto.getCantidadPorMayor();
 	}
 	
 	public String getNombreProducto() {
