@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Optional;
 
 import Alertas.Alerta;
+import Alertas.Validaciones;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -41,16 +42,10 @@ public class IngresoController {
     	txtfiles.add(etClave);
     	txtfiles.add(etNombreUsuario);
     	
-    	if (txtfiles.stream().anyMatch(unTxt -> unTxt.getText().isEmpty())){
+    	if (Validaciones.validarCajasDeTextos(txtfiles)){
     		new Alerta().errorAlert("Debe ingresar un nombre y una contraseña", "Error de Ingreso");
     	}else {
-    		try{
-				Integer.parseInt(etClave.getText());
-			}catch (Exception e){
-				new Alerta().informationAlert("adas", "adsdsa");
-			}
-			
-    		
+
     		if(etNombreUsuario.getText().equalsIgnoreCase("admin") && etClave.getText().equalsIgnoreCase("admin")) {
     			verMenuPrincipal("Administrador","Administrador");    
     		}else {
