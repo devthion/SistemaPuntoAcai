@@ -3,6 +3,7 @@ package application;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import Alertas.Alerta;
 import Alertas.Validaciones;
@@ -12,9 +13,9 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 public class CostosController {
@@ -56,25 +57,28 @@ public class CostosController {
     	if(Validaciones.validarCajasDeTextos(generarListTxt()) || Validaciones.validarCajasNumericas(generarListNumericos()) ) {
     		new Alerta().errorAlert("Los datos ingresados son erroneos o faltan completar algunos atributos","Error en el ingreso de Datos");
     	}else {
-    		Gasto unGasto = generarGasto();
-    		unGasto.almacenarGasto();
-    		new Alerta().informationAlert("Se ha agregado el Gasto con exito", "Nuevo Gasto");
-    		try {
-    			FXMLLoader loader = new FXMLLoader();
-    			loader.setLocation(getClass().getResource("Gastos.fxml"));
-    			AnchorPane root = (AnchorPane) loader.load();
-    			Scene scene = new Scene(root,1300,650);
-    			Stage stage = new Stage();
-    			stage.setScene(scene);
-    			stage.resizableProperty().setValue(Boolean.FALSE);
-    			stage.setResizable(false);
-    			stage.setTitle("Gastos");
-    			stage.show();
-    		} catch(Exception e) {
-    			e.printStackTrace();
-    		}
-        	Stage stage = (Stage) btnVolver.getScene().getWindow();
-        	stage.close();
+    		Optional<ButtonType> action =  new Alerta().preguntaConfirmacion("Desea confirmar el gasto "+txtDetalle.getText()+" ?", "Confirmación");
+        	if (action.get() == ButtonType.OK) {
+	    		Gasto unGasto = generarGasto();
+	    		unGasto.almacenarGasto();
+	    		new Alerta().informationAlert("Se ha agregado el Gasto con exito", "Nuevo Gasto");
+	    		try {
+	    			FXMLLoader loader = new FXMLLoader();
+	    			loader.setLocation(getClass().getResource("Gastos.fxml"));
+	    			AnchorPane root = (AnchorPane) loader.load();
+	    			Scene scene = new Scene(root,1300,650);
+	    			Stage stage = new Stage();
+	    			stage.setScene(scene);
+	    			stage.resizableProperty().setValue(Boolean.FALSE);
+	    			stage.setResizable(false);
+	    			stage.setTitle("Gastos");
+	    			stage.show();
+	    		} catch(Exception e) {
+	    			e.printStackTrace();
+	    		}
+	        	Stage stage = (Stage) btnVolver.getScene().getWindow();
+	        	stage.close();
+        	}
     	}
     	
     }

@@ -3,6 +3,7 @@ package application;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import Alertas.Alerta;
 import Alertas.Validaciones;
@@ -10,6 +11,7 @@ import Productos.Producto;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -48,12 +50,15 @@ public class AgregarProductoController {
     	if(Validaciones.validarCajasDeTextos(generarListTxt()) || Validaciones.validarCajasNumericas(generarListNumericos()) ) {
     		new Alerta().errorAlert("Los datos ingresados son erroneos o faltan completar algunos atributos","Error en el ingreso de Datos");
     	}else {
-    		Producto producto = generarProducto();
-    		this.nuevoProducto = producto;
-			producto.almacenarProducto();
-			new Alerta().informationAlert("Se ha añadido correctamente", "Informacion");
-			Stage stage = (Stage) btnAgregarProducto.getScene().getWindow();
-	    	stage.close();
+    		Optional<ButtonType> action =  new Alerta().preguntaConfirmacion("Desea confirmar el ingreso del producto: "+txtNombre.getText()+" ?", "Confirmación");
+        	if (action.get() == ButtonType.OK) {
+	    		Producto producto = generarProducto();
+	    		this.nuevoProducto = producto;
+				producto.almacenarProducto();
+				new Alerta().informationAlert("Se ha añadido correctamente", "Informacion");
+				Stage stage = (Stage) btnAgregarProducto.getScene().getWindow();
+		    	stage.close();
+        	}
 		}
 	    	
     }
