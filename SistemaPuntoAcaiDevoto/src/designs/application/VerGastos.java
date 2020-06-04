@@ -207,7 +207,7 @@ public class VerGastos implements Initializable {
 		this.colFecha.setCellValueFactory(new PropertyValueFactory<Gasto, LocalDate>("fecha"));
 		this.colCantidad.setCellValueFactory(new PropertyValueFactory<Gasto, Double>("monto"));
 		
-		lblGastosMes.setText(gastos.stream().mapToDouble(unGasto-> unGasto.getMonto()).sum()+" $");
+		lblGastosMes.setText(" $");
     	lblGastosTotal.setText(gastos.stream().mapToDouble(unGasto-> unGasto.getMonto()).sum()+" $");
 		
 	}

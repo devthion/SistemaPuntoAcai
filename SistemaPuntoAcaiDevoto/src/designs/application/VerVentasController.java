@@ -9,6 +9,7 @@ import java.util.ResourceBundle;
 import Alertas.Alerta;
 import Alertas.Validaciones;
 import ConexionBD.ObtenerDatos;
+import ModeloGasto.Gasto;
 import Ventas.Venta;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -99,6 +100,8 @@ public class VerVentasController implements Initializable{
     
     private ObservableList<Venta> ventas;
     private ObservableList<Venta> ventasPorMes;
+    private ObservableList<Gasto> gastos;
+    private ObservableList<Gasto> gastosPorMes;
 
     @FXML
     void onVolverClick(ActionEvent event) {
@@ -128,12 +131,12 @@ public class VerVentasController implements Initializable{
 			obtenerDatos = new ObtenerDatos();
 			ventas = FXCollections.observableArrayList();
 			ventas = obtenerDatos.obtenerVentas();
-			System.out.println(ventas.size());
+			gastos = FXCollections.observableArrayList();
+			gastos = obtenerDatos.obtenerGastos();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
 		
 		this.tblVentas.setItems(ventas);
 		
@@ -143,7 +146,7 @@ public class VerVentasController implements Initializable{
 		this.colMontoTotal.setCellValueFactory(new PropertyValueFactory<Venta, Double>("venta_precioTotal"));
 		
 		//HAY QUE RESTARLE LOS COSTOS TOTALES
-		lblGananciasVentas.setText(ventas.stream().mapToDouble(unaVenta-> unaVenta.getVenta_ganancia()).sum()+" $");
+		lblGananciasVentas.setText((ventas.stream().mapToDouble(unaVenta-> unaVenta.getVenta_ganancia()).sum()- gastos.stream().mapToDouble(unGasto-> unGasto.getMonto()).sum())+" $");
     	lblDineroTotal.setText(ventas.stream().mapToDouble(unaVenta-> unaVenta.getVenta_precioTotal()).sum()+" $");
 	}
 	
@@ -212,9 +215,10 @@ public class VerVentasController implements Initializable{
     	if(Validaciones.validarCajaNumerica(txtAnio)) {
    		 new Alerta().errorAlert("Debe ingresar un año valido", "Error de Datos");
 	   	}else{
+	   		gastosPorMes =gastos.filtered(unGasto-> unGasto.getFecha().getMonthValue()==mes && unGasto.getFecha().getYear()==Integer.parseInt(txtAnio.getText()));
 	    	ventasPorMes =ventas.filtered(unaVenta-> unaVenta.getMes()==mes && unaVenta.getAnio()==Integer.parseInt(txtAnio.getText()));
 	    	this.tblVentas.setItems(ventasPorMes);
-	    	lblGananciasVentas.setText(ventasPorMes.stream().mapToDouble(unaVenta-> unaVenta.getVenta_ganancia()).sum()+" $");
+	    	lblGananciasVentas.setText((ventasPorMes.stream().mapToDouble(unaVenta-> unaVenta.getVenta_ganancia()).sum()-gastosPorMes.stream().mapToDouble(unGasto-> unGasto.getMonto()).sum())+" $");
 	    	lblDineroTotal.setText(ventasPorMes.stream().mapToDouble(unaVenta-> unaVenta.getVenta_precioTotal()).sum()+" $");
 	   	}
     }
