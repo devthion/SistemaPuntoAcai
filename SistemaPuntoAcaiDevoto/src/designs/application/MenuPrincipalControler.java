@@ -40,6 +40,12 @@ public class MenuPrincipalControler {
     
     @FXML
     private Button btnCostos;
+    
+    @FXML
+    private Button btnIngresos;
+    
+    @FXML
+    private Button btnCerraCaja;
 
     @FXML
     void verClientes(ActionEvent event) {
@@ -175,5 +181,16 @@ public class MenuPrincipalControler {
     		
     	}
     	
+    }
+    
+
+    @FXML
+    void onCerrarCajaClick(ActionEvent event) {
+
+    }
+    
+    @FXML
+    void onIngresosClick(ActionEvent event) {
+
     }
 }

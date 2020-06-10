@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane prefHeight="650.0" prefWidth="1300.0" stylesheets="@../Styles/Style.css" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="application.VerIngresos">
+   <children>
+      <Separator layoutX="150.0" layoutY="71.0" prefWidth="1000.0" />
+      <Label layoutX="604.0" layoutY="30.0" text="INGRESOS" />
+      <Button fx:id="btnVolver" layoutX="1148.0" layoutY="585.0" mnemonicParsing="false" onAction="#onVolverClick" prefHeight="51.0" prefWidth="138.0" text="VOLVER" textFill="WHITE">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Button>
+      <TextField fx:id="txtAnio" layoutX="896.0" layoutY="143.0" prefHeight="33.0" prefWidth="177.0" />
+      <Label layoutX="963.0" layoutY="113.0" text="AÑO" />
+      <Label layoutX="631.0" layoutY="112.0" text="MES" />
+      <TextField fx:id="txtMes" layoutX="562.0" layoutY="142.0" prefHeight="33.0" prefWidth="177.0" />
+      <TextField fx:id="txtDia" layoutX="228.0" layoutY="143.0" prefHeight="33.0" prefWidth="177.0" />
+      <Label layoutX="300.0" layoutY="113.0" text="DIA" />
+      <Label layoutX="241.0" layoutY="264.0" text="INGRESO DIARIO" />
+      <Label layoutX="562.0" layoutY="264.0" text="INGRESO MENSUAL" />
+      <Label layoutX="909.0" layoutY="264.0" text="INGRESO ANUAL" />
+      <Label layoutX="215.0" layoutY="310.0" text="IDEAL" />
+      <Label layoutX="551.0" layoutY="310.0" text="IDEAL" />
+      <Label layoutX="883.0" layoutY="310.0" text="IDEAL" />
+      <Label layoutX="215.0" layoutY="381.0" text="REAL" />
+      <Label layoutX="551.0" layoutY="381.0" text="REAL" />
+      <Label layoutX="887.0" layoutY="381.0" text="REAL" />
+      <Separator layoutX="217.0" layoutY="294.0" prefWidth="200.0" />
+      <Separator layoutX="551.0" layoutY="293.0" prefWidth="200.0" />
+      <Separator layoutX="885.0" layoutY="293.0" prefWidth="200.0" />
+      <Label fx:id="lblIdelaDia" layoutX="298.0" layoutY="310.0" prefHeight="30.0" prefWidth="119.0" text="Label" />
+      <Label fx:id="lblRealDia" layoutX="298.0" layoutY="381.0" prefHeight="30.0" prefWidth="119.0" text="Label" />
+      <Label fx:id="lblRealMes" layoutX="631.0" layoutY="381.0" prefHeight="30.0" prefWidth="119.0" text="Label" />
+      <Label fx:id="lblIdealMes" layoutX="631.0" layoutY="310.0" prefHeight="30.0" prefWidth="119.0" text="Label" />
+      <Label fx:id="lblIdealAnio" layoutX="966.0" layoutY="310.0" prefHeight="30.0" prefWidth="119.0" text="Label" />
+      <Label fx:id="lblRealAnio" layoutX="966.0" layoutY="381.0" prefHeight="30.0" prefWidth="119.0" text="Label" />
+      <Button fx:id="btnVerIngresos" layoutX="547.0" layoutY="477.0" mnemonicParsing="false" onAction="#onVerIngresosClick" text="VER INGRESOS" />
+   </children>
+</AnchorPane>
