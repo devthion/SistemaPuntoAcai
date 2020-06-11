@@ -11,7 +11,7 @@ public class VentasBuilder {
 	private LocalDate fecha;
 	private ArrayList<Item> items = new ArrayList<>();
 	private double costoEnvio=0;
-	private String estado;
+	private Envio unEnvio =null;
 
 
 	public VentasBuilder() {}
@@ -47,21 +47,30 @@ public class VentasBuilder {
 	public void setItems(ArrayList<Item> items) {
 		this.items = items;
 	}
+
+	public void setEnvio(Envio unEnvio) {
+		this.unEnvio=unEnvio;
+	}
+	
+	public boolean getEstado() {
+		return unEnvio.getEstado();
+	}
+	
 	public double getCostoEnvio() {
-		return costoEnvio;
+		return unEnvio.getPrecio();
 	}
+	
+	public String getHorarioEntrega() {
+		return unEnvio.getHorario();
+	}
+	
+	public LocalDate getFechaEntrega() {
+		return unEnvio.getFechaEntrega();
+	}
+	
+	
 
-	public void setCostoEnvio(double costoEnvio) {
-		this.costoEnvio = costoEnvio;
-	}
-
-	public String getEstado() {
-		return estado;
-	}
-
-	public void setEstado(String estado) {
-		this.estado = estado;
-	}
+	
 	
 	
 	
