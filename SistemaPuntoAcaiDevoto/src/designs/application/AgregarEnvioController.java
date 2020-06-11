@@ -22,7 +22,7 @@ public class AgregarEnvioController {
     @FXML
     private TextField txtCostoEnvio;
     
-    private double costoEnvio;
+    private Envio envio;
 
 	@FXML
     void onVolverClick(ActionEvent event) {

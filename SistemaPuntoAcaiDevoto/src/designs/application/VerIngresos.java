@@ -1,5 +1,10 @@
 package application;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import Alertas.Alerta;
+import Alertas.Validaciones;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -69,6 +74,27 @@ public class VerIngresos {
     @FXML
     void onVerIngresosClick(ActionEvent event) {
     	
+    	if (Validaciones.validarCajasNumericas(generarListNumericos())) {
+    		new Alerta().errorAlert("Puede este ingresando mal los datos", "Error en el ingreso de Datos");
+    	}else {
+    		mostrarIngresos();
+    	}
+    	
+    	
+    }
+    
+    public void mostrarIngresos() {
+    	
+    }
+    
+    public List<TextField> generarListNumericos() {
+    	
+    	List<TextField> productosAValidar = new ArrayList<>();
+    	productosAValidar.add(txtMes);
+    	productosAValidar.add(txtAnio);
+    	productosAValidar.add(txtDia);
+    	
+    	return productosAValidar;
     }
 
 }

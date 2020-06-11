@@ -5,7 +5,9 @@ import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
 
+import Alertas.Alerta;
 import ConexionBD.ObtenerDatos;
+import Productos.Producto;
 import Ventas.Venta;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -54,6 +56,8 @@ public class VerVentas implements Initializable {
     private TableColumn<Venta, Double> colMontoTotal;
     
     private ObservableList<Venta> ventasPendientes;
+    
+    private ObtenerDatos obtenerDatos;
 
     @FXML
     void onVolverClick(ActionEvent event) {
@@ -76,24 +80,22 @@ public class VerVentas implements Initializable {
     }
 
     @FXML
-    void onTerminarVentaClick(ActionEvent event) {
+    void onTerminarVentaClick(ActionEvent event) throws SQLException {
+    	Venta venta = this.tblVentas.getSelectionModel().getSelectedItem();
     	
+    	if(venta==null) {
+    		new Alerta().errorAlert("Debe seleccionar una Venta", "Terminar Venta");
+    	}else {
+    		//venta.cambiarEstadoEnvio();
+    		new Alerta().informationAlert("Se ha cambiado el estado de la venta con exito", "Terminar Venta");
+    		RefrescarTabla();
+    	}
     }
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		// TODO Auto-generated method stub
-		ObtenerDatos obtenerDatos;
-		try {
-			obtenerDatos = new ObtenerDatos();
-			ventasPendientes = FXCollections.observableArrayList();
-			ventasPendientes = obtenerDatos.obtenerVentas();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		this.tblVentas.setItems(ventasPendientes);
+		RefrescarTabla();
 		
 		this.colCliente.setCellValueFactory(new PropertyValueFactory<Venta, String>("datosCliente"));
 		this.colFechaRealizada.setCellValueFactory(new PropertyValueFactory<Venta, LocalDate>("fecha"));
@@ -102,6 +104,18 @@ public class VerVentas implements Initializable {
 		this.colHorario.setCellValueFactory(new PropertyValueFactory<Venta, String>("Horario"));
 		this.colDireccion.setCellValueFactory(new PropertyValueFactory<Venta, String>("DireccionCliente"));
 		//this.colPago.setCellValueFactory(new PropertyValueFactory<Venta, String>("estaPagado"));
+	}
+	
+	public void RefrescarTabla() {
+		try {
+			obtenerDatos = new ObtenerDatos();
+			ventasPendientes = FXCollections.observableArrayList();
+			ventasPendientes = obtenerDatos.obtenerVentas();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		this.tblVentas.setItems(ventasPendientes);
 	}
 
 }
