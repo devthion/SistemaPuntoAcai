@@ -10,7 +10,7 @@ public class VentasBuilder {
 	private Cliente cliente;
 	private LocalDate fecha;
 	private ArrayList<Item> items = new ArrayList<>();
-	private double costoEnvio=0;
+	//private double costoEnvio=0;
 	private Envio unEnvio =null;
 
 
@@ -52,20 +52,8 @@ public class VentasBuilder {
 		this.unEnvio=unEnvio;
 	}
 	
-	public boolean getEstado() {
-		return unEnvio.getEstado();
-	}
-	
-	public double getCostoEnvio() {
-		return unEnvio.getPrecio();
-	}
-	
-	public String getHorarioEntrega() {
-		return unEnvio.getHorario();
-	}
-	
-	public LocalDate getFechaEntrega() {
-		return unEnvio.getFechaEntrega();
+	public Envio getEnvio() {
+		return unEnvio;
 	}
 	
 	
