@@ -110,7 +110,7 @@ public class VerVentas implements Initializable {
 		try {
 			obtenerDatos = new ObtenerDatos();
 			ventasPendientes = FXCollections.observableArrayList();
-			ventasPendientes = obtenerDatos.obtenerVentas();
+			ventasPendientes = obtenerDatos.obtenerVentasPendientes();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
