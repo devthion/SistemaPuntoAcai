@@ -18,7 +18,7 @@ public class Venta {
 	InsertarDatos insertarDatos;
 	//private double venta_envio=0;
 	private double precioModificado=0;
-	Envio unEnvio=null;
+	Envio unEnvio;
 	
 	public Venta(Cliente cliente, LocalDate fecha, List<Item> items) {
 		super();
@@ -39,11 +39,11 @@ public class Venta {
 		this.unEnvio=unEnvio;
 	}
 	
-	public boolean pendienteDeEnvio() {
+	public boolean getEstado() {
 		return unEnvio.getEstado();
 	}
 	
-	public double getEnvio() {
+	public double getEnvioPrecio() {
 		return unEnvio.getPrecio();
 	}
 	
@@ -57,9 +57,9 @@ public class Venta {
 
 	public double getPrecioTotal() {
 		if (precioModificado == 0) {
-			return items.stream().mapToDouble(unItem-> unItem.getPrecioFinal()).sum() + this.getEnvio();
+			return items.stream().mapToDouble(unItem-> unItem.getPrecioFinal()).sum() + this.getEnvioPrecio();
 		}else {
-			return precioModificado + this.getEnvio();
+			return precioModificado + this.getEnvioPrecio();
 		}
 	}
 	
