@@ -41,6 +41,9 @@ public class AgregarProductoController {
     @FXML
     private TextField txtPrecioUnitario;
     
+    @FXML
+    private TextField txtSabor;
+    
     private Producto nuevoProducto;
 
 
@@ -50,7 +53,8 @@ public class AgregarProductoController {
     	if(Validaciones.validarCajasDeTextos(generarListTxt()) || Validaciones.validarCajasNumericas(generarListNumericos()) ) {
     		new Alerta().errorAlert("Los datos ingresados son erroneos o faltan completar algunos atributos","Error en el ingreso de Datos");
     	}else {
-    		Optional<ButtonType> action =  new Alerta().preguntaConfirmacion("Desea confirmar el ingreso del producto: "+txtNombre.getText()+" ?", "Confirmación");
+    		Optional<ButtonType> action =  new Alerta().preguntaConfirmacion("Desea confirmar el ingreso del producto: "+txtNombre.getText()+
+    				" sabor "+ txtSabor.getText()+ " ?", "Confirmación");
         	if (action.get() == ButtonType.OK) {
 	    		Producto producto = generarProducto();
 	    		this.nuevoProducto = producto;
@@ -70,7 +74,7 @@ public class AgregarProductoController {
     }
     
     public Producto generarProducto() {
-    	String nombre = this.txtNombre.getText().toString().toLowerCase();
+    	String nombre = this.txtNombre.getText().toString().toLowerCase()+" "+this.txtSabor.getText().toString().toLowerCase();
     	double kilos = Double.parseDouble(this.txtKilos.getText());
     	double costo = Double.parseDouble(txtCosto.getText());
     	double precioUnitario = Double.parseDouble(txtPrecioUnitario.getText());

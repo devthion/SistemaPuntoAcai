@@ -31,7 +31,6 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 public class NuevaVentaController implements Initializable {
@@ -166,7 +165,7 @@ public class NuevaVentaController implements Initializable {
 			
 			AgregarEnvioController controller = loader.getController();
 			
-			Scene scene = new Scene(root,700,300);
+			Scene scene = new Scene(root,779,340);
 			Stage stage = new Stage();
 			stage.setScene(scene);
 			stage.resizableProperty().setValue(Boolean.FALSE);
@@ -248,6 +247,7 @@ public class NuevaVentaController implements Initializable {
     		if(cliente==null || itemsAVender.size() == 0) {
 	    		new Alerta().errorAlert("Debe seleccionar un cliente y minimo un producto", "Nueva Venta");
 	    	}else {
+	    		new Alerta().informationAlert("El precio de la venta es de "+(ventaBorrador.getCostoEnvio()+Double.parseDouble(txtPrecioTotal.getText()))+" $",  "Precio Final");
 	    		Optional<ButtonType> action =  new Alerta().preguntaConfirmacion("Desea confirmar la venta para "+cliente.getNombre()+" ?", "Confirmación");
 	        	if (action.get() == ButtonType.OK) {
 		    		agregarItems(itemsAVender);

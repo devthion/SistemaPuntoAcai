@@ -9,12 +9,12 @@
    <children>
       <TableView fx:id="tblProductos" layoutX="174.0" layoutY="118.0" prefHeight="342.0" prefWidth="955.0">
         <columns>
-          <TableColumn fx:id="colNombre" prefWidth="130.0" text="NOMBRE" />
-          <TableColumn fx:id="colPrecioUnitario" prefWidth="186.0" text="PRECIO UNITARIO" />
-            <TableColumn fx:id="colPrecioMayor" prefWidth="177.0" text="PRECIO MAYOR" />
-            <TableColumn fx:id="colCosto" prefWidth="128.0" text="COSTO" />
-            <TableColumn fx:id="colTotalVendidos" prefWidth="179.0" text="TOTAL VENDIDOS" />
-            <TableColumn fx:id="colStock" prefWidth="152.0" text="STOCK" />
+          <TableColumn fx:id="colNombre" prefWidth="209.0" text="PRODUCTO" />
+            <TableColumn fx:id="colCosto" prefWidth="97.0" text="COSTO" />
+          <TableColumn fx:id="colPrecioUnitario" prefWidth="174.0" text="PRECIO UNITARIO" />
+            <TableColumn fx:id="colPrecioMayor" prefWidth="167.0" text="PRECIO MAYOR" />
+            <TableColumn fx:id="colStock" prefWidth="143.0" text="STOCK" />
+            <TableColumn fx:id="colTotalVendidos" prefWidth="162.0" text="TOTAL VENDIDOS" />
         </columns>
       </TableView>
       <Button fx:id="btnAgregarNuevoProducto" layoutX="101.0" layoutY="519.0" mnemonicParsing="false" onAction="#onAgregarNuevoProductoClick" prefHeight="49.0" prefWidth="293.0" text="AGREGAR PRODUCTO" />
