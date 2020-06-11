@@ -173,7 +173,7 @@ public class NuevaVentaController implements Initializable {
 			stage.setTitle("Nuevo Cliente");
 			stage.showAndWait();
 			
-			ventaBorrador.setCostoEnvio(controller.getCostoEnvio());
+			ventaBorrador.setEnvio(controller.getEnvio());
 			lblCostoEnvio.setText("Envio: "+ventaBorrador.getCostoEnvio()+" $");
 		} catch(Exception e) {
 			e.printStackTrace();
@@ -253,7 +253,7 @@ public class NuevaVentaController implements Initializable {
 		    		agregarItems(itemsAVender);
 		    		ventaBorrador.setCliente(cliente);
 		        	Venta nuevaVenta = ventaBorrador.crearVenta();
-		        	nuevaVenta.setVenta_envio(ventaBorrador.getCostoEnvio());
+		        	nuevaVenta.setEnvio(ventaBorrador.getEnvio());
 		        	nuevaVenta.getItems().stream().forEach(unItem -> {
 						try {
 							unItem.getProducto().actualizarStock(-unItem.getCantidad());
