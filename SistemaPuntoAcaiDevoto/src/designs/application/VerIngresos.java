@@ -5,6 +5,8 @@ import java.util.List;
 
 import Alertas.Alerta;
 import Alertas.Validaciones;
+import ConexionBD.ObtenerDatos;
+import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -49,6 +51,8 @@ public class VerIngresos {
     
     @FXML
     private Button btnVerIngresos;
+    
+    private List<Venta> cajas
 
     @FXML
     void onVolverClick(ActionEvent event) {
@@ -84,7 +88,9 @@ public class VerIngresos {
     }
     
     public void mostrarIngresos() {
-    	
+		ObtenerDatos obtenerDatos = new ObtenerDatos();
+		productos = FXCollections.observableArrayList();
+		productos = obtenerDatos.obtenerProductos();
     }
     
     public List<TextField> generarListNumericos() {

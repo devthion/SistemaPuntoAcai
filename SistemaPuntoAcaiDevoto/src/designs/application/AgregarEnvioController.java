@@ -5,9 +5,11 @@ import java.util.List;
 
 import Alertas.Alerta;
 import Alertas.Validaciones;
+import Ventas.Envio;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -15,6 +17,12 @@ public class AgregarEnvioController {
 
     @FXML
     private Button btnVolver;
+
+    @FXML
+    private TextField txtHorarioEntrega;
+
+    @FXML
+    private DatePicker txtFechaEntrega;
 
     @FXML
     private Button btnAgregarCosto;
@@ -37,20 +45,19 @@ public class AgregarEnvioController {
     	if(Validaciones.validarCajasNumericas(productosAValidar)) {
     		new Alerta().errorAlert("Debe ingresar un valor numerico", "Error ingreso de Datos");
     	}else {
-    		costoEnvio = Double.parseDouble(txtCostoEnvio.getText());
-        	new Alerta().informationAlert("Se ha agregado el costo de envio con exito", "Envio");
+    		envio = new Envio(txtHorarioEntrega.getText().toString(),Double.parseDouble(txtCostoEnvio.getText()),txtFechaEntrega.getValue());
+        	new Alerta().informationAlert("Se ha registrado el Envio", "Envio");
         	Stage stage = (Stage) btnVolver.getScene().getWindow();
         	stage.close();
     	}
-    
     }
     
-    public double getCostoEnvio() {
-		return costoEnvio;
+	public Envio getEnvio() {
+		return envio;
 	}
 
-	public void setCostoEnvio(double costoEnvio) {
-		this.costoEnvio = costoEnvio;
+	public void setEnvio(Envio envio) {
+		this.envio = envio;
 	}
-
+    
 }
