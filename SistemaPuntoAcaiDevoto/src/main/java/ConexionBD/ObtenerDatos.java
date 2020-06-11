@@ -16,6 +16,7 @@ import ModelosGraficos.ClientesPorBarrio;
 import ModelosGraficos.ComoLlegoUnCliente;
 import ModelosGraficos.VentasPorMes;
 import Productos.Producto;
+import Ventas.Envio;
 import Ventas.Item;
 import Ventas.Venta;
 import javafx.collections.FXCollections;
@@ -157,6 +158,36 @@ public class ObtenerDatos extends ConexionBd{
 		}
 		return id;
 	}
+	public ObservableList<Venta> obtenerVentasPendientes() throws SQLException{
+		Statement unStmt = null;
+		ObservableList<Venta> ventas = FXCollections.observableArrayList();
+		Venta unaVenta;
+		sql = "SELECT * FROM VENTA WHERE venta_estado_envio ='"+true+"'";
+		rsUnaVenta=ejecutarQuery(sql,unStmt);
+		while(rsUnaVenta.next()) {
+			int ventaId=rsUnaVenta.getInt(1);
+		
+			LocalDate date = rsUnaVenta.getDate(3).toLocalDate();
+			
+			int ventaCliente = rsUnaVenta.getInt(2);
+			double ganancia = rsUnaVenta.getDouble(5);
+			double precioTotal = rsUnaVenta.getDouble(4);
+			double precio_envio = rsUnaVenta.getDouble(6);
+			boolean estado_entrega = rsUnaVenta.getBoolean(7);
+			String horario_entrega = rsUnaVenta.getString(8);
+			LocalDate fecha_entrega = rsUnaVenta.getDate(9).toLocalDate();
+			
+			unaVenta = new Venta(obtenerUnCliente(ventaCliente),date,itemsDeVenta(ventaId));
+			unaVenta.setVenta_ganancia(ganancia);
+			unaVenta.setVenta_precioTotal(precioTotal);
+			
+			Envio unEnvio = new Envio(horario_entrega,precio_envio,fecha_entrega);
+			unEnvio.setEstado(estado_entrega);
+			unaVenta.setEnvio(unEnvio);
+			ventas.add(unaVenta);
+			}
+		return ventas;
+	}
 	
 	public ObservableList<Venta> obtenerVentas() throws SQLException{
 		Statement unStmt = null;
@@ -172,12 +203,18 @@ public class ObtenerDatos extends ConexionBd{
 			int ventaCliente = rsUnaVenta.getInt(2);
 			double ganancia = rsUnaVenta.getDouble(5);
 			double precioTotal = rsUnaVenta.getDouble(4);
-			double envio = rsUnaVenta.getDouble(6);
+			double precio_envio = rsUnaVenta.getDouble(6);
+			boolean estado_entrega = rsUnaVenta.getBoolean(7);
+			String horario_entrega = rsUnaVenta.getString(8);
+			LocalDate fecha_entrega = rsUnaVenta.getDate(9).toLocalDate();
 			
 			unaVenta = new Venta(obtenerUnCliente(ventaCliente),date,itemsDeVenta(ventaId));
 			unaVenta.setVenta_ganancia(ganancia);
 			unaVenta.setVenta_precioTotal(precioTotal);
-			unaVenta.setVenta_envio(envio);
+			
+			Envio unEnvio = new Envio(horario_entrega,precio_envio,fecha_entrega);
+			unEnvio.setEstado(estado_entrega);
+			unaVenta.setEnvio(unEnvio);
 			ventas.add(unaVenta);
 			}
 		return ventas;

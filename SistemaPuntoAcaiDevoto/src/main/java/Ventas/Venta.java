@@ -16,8 +16,9 @@ public class Venta {
 	private double venta_precioTotal;
 	private double venta_ganancia;
 	InsertarDatos insertarDatos;
-	private double venta_envio=0;
+	//private double venta_envio=0;
 	private double precioModificado=0;
+	Envio unEnvio=null;
 	
 	public Venta(Cliente cliente, LocalDate fecha, List<Item> items) {
 		super();
@@ -26,12 +27,24 @@ public class Venta {
 		this.items = items;
 	}
 	
-	public void setVenta_envio(double envio) {
-		this.venta_envio=envio;
+	public String getHorario() {
+		return unEnvio.getHorario();
+	}
+	
+	public LocalDate getFechaEntrega() {
+		return unEnvio.getFechaEntrega();
+	}
+	
+	public void setEnvio(Envio unEnvio) {
+		this.unEnvio=unEnvio;
+	}
+	
+	public boolean pendienteDeEnvio() {
+		return unEnvio.getEstado();
 	}
 	
 	public double getEnvio() {
-		return venta_envio;
+		return unEnvio.getPrecio();
 	}
 	
 	public void setVenta_precioTotal(double venta_precioTotal) {
@@ -44,9 +57,9 @@ public class Venta {
 
 	public double getPrecioTotal() {
 		if (precioModificado == 0) {
-			return items.stream().mapToDouble(unItem-> unItem.getPrecioFinal()).sum() + this.venta_envio;
+			return items.stream().mapToDouble(unItem-> unItem.getPrecioFinal()).sum() + this.getEnvio();
 		}else {
-			return precioModificado + this.venta_envio;
+			return precioModificado + this.getEnvio();
 		}
 	}
 	
