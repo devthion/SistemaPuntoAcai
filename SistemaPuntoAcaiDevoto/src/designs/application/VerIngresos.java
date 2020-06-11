@@ -6,6 +6,7 @@ import java.util.List;
 import Alertas.Alerta;
 import Alertas.Validaciones;
 import ConexionBD.ObtenerDatos;
+import Ventas.Venta;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -52,7 +53,7 @@ public class VerIngresos {
     @FXML
     private Button btnVerIngresos;
     
-    private List<Venta> cajas
+    private List<Venta> cajas = new ArrayList<>();
 
     @FXML
     void onVolverClick(ActionEvent event) {
@@ -89,8 +90,7 @@ public class VerIngresos {
     
     public void mostrarIngresos() {
 		ObtenerDatos obtenerDatos = new ObtenerDatos();
-		productos = FXCollections.observableArrayList();
-		productos = obtenerDatos.obtenerProductos();
+		cajas = obtenerDatos.obtenerProductos();
     }
     
     public List<TextField> generarListNumericos() {

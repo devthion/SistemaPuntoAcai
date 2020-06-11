@@ -112,6 +112,7 @@ public class NuevaVentaController implements Initializable {
     
     @FXML
     private Button btnSacarDelCarrito;
+    private Double costoEnvio=0.0;
     
     private int contadorCantidad;
     private ObservableList<Producto> productos;
@@ -174,7 +175,8 @@ public class NuevaVentaController implements Initializable {
 			stage.showAndWait();
 			
 			ventaBorrador.setEnvio(controller.getEnvio());
-			lblCostoEnvio.setText("Envio: "+ventaBorrador.getCostoEnvio()+" $");
+			lblCostoEnvio.setText("Envio: "+ventaBorrador.getEnvio().getPrecio()+" $");
+			costoEnvio=ventaBorrador.getEnvio().getPrecio();
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
@@ -247,7 +249,7 @@ public class NuevaVentaController implements Initializable {
     		if(cliente==null || itemsAVender.size() == 0) {
 	    		new Alerta().errorAlert("Debe seleccionar un cliente y minimo un producto", "Nueva Venta");
 	    	}else {
-	    		new Alerta().informationAlert("El precio de la venta es de "+(ventaBorrador.getCostoEnvio()+Double.parseDouble(txtPrecioTotal.getText()))+" $",  "Precio Final");
+	    		new Alerta().informationAlert("El precio de la venta es de "+(costoEnvio+Double.parseDouble(txtPrecioTotal.getText()))+" $",  "Precio Final");
 	    		Optional<ButtonType> action =  new Alerta().preguntaConfirmacion("Desea confirmar la venta para "+cliente.getNombre()+" ?", "Confirmación");
 	        	if (action.get() == ButtonType.OK) {
 		    		agregarItems(itemsAVender);
