@@ -4,7 +4,7 @@ import java.time.LocalDate;
 
 public class Envio {
 	String horario;
-	LocalDate fecha;
+	LocalDate fecha ;
 	double precio;
 	boolean entregado=false;
 	

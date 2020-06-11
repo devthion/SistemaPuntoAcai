@@ -18,7 +18,7 @@ public class Venta {
 	InsertarDatos insertarDatos;
 	//private double venta_envio=0;
 	private double precioModificado=0;
-	Envio unEnvio;
+	Envio unEnvio = null;
 	
 	public Venta(Cliente cliente, LocalDate fecha, List<Item> items) {
 		super();
@@ -28,11 +28,18 @@ public class Venta {
 	}
 	
 	public String getHorario() {
-		return unEnvio.getHorario();
+		if(unEnvio==null) {
+			return null;
+		}else {
+		return unEnvio.getHorario();}
 	}
 	
 	public LocalDate getFechaEntrega() {
-		return unEnvio.getFechaEntrega();
+		if(unEnvio==null) {
+			return LocalDate.now();
+		}
+		else {
+		return unEnvio.getFechaEntrega();}
 	}
 	
 	public void setEnvio(Envio unEnvio) {
@@ -40,11 +47,22 @@ public class Venta {
 	}
 	
 	public boolean getEstado() {
-		return unEnvio.getEstado();
+		if(unEnvio==null) {
+			return true;
+		}
+		else {
+			return unEnvio.getEstado();
+		}
+		
 	}
 	
 	public double getEnvioPrecio() {
-		return unEnvio.getPrecio();
+		if(unEnvio==null) {
+			return 0;
+		}else {
+			return unEnvio.getPrecio();
+		}
+		
 	}
 	
 	public void setVenta_precioTotal(double venta_precioTotal) {

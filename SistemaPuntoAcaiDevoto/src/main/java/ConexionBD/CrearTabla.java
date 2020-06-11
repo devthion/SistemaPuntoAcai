@@ -47,7 +47,7 @@ public class CrearTabla {
 				+ "venta_envio_precio DOUBLE(10) NULL,"
 				+ "venta_estado_envio BOOLEAN NULL,"
 				+ "venta_horario_envio varchar(255) NULL,"
-				+ "venta_fecha_entrega DATE NULL,"
+				+ "venta_fecha_entrega DATE ,"
 				+"PRIMARY KEY (venta_id),"
 				+"FOREIGN KEY (venta_cliente) REFERENCES CLIENTE(clie_dni))";
 			stmt.executeUpdate(sql);

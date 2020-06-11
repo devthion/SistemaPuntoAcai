@@ -162,7 +162,7 @@ public class ObtenerDatos extends ConexionBd{
 		Statement unStmt = null;
 		ObservableList<Venta> ventas = FXCollections.observableArrayList();
 		Venta unaVenta;
-		sql = "SELECT * FROM VENTA WHERE venta_estado_envio ='"+true+"'";
+		sql = "SELECT * FROM VENTA WHERE venta_estado_envio ='"+false+"'";
 		rsUnaVenta=ejecutarQuery(sql,unStmt);
 		while(rsUnaVenta.next()) {
 			int ventaId=rsUnaVenta.getInt(1);
