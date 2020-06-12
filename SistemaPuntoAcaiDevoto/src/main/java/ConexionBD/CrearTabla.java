@@ -12,6 +12,25 @@ public class CrearTabla {
 		crearTablaVenta();
 		crearTablaItem_Venta();
 		crearTablaGasto();
+		crearTablaCajaCerrada();
+	}
+	
+	public static void crearTablaCajaCerrada() {
+		try 
+		{
+			Connection con = DriverManager.getConnection("jdbc:h2:"+"~/test", "root", "devthion");
+			Statement stmt= con.createStatement();
+			String sql = "CREATE TABLE IF NOT EXISTS CAJACERRADA" 
+				+"(caja_cerrada_fecha DATE,"
+				+"caja_cerrada_monto_real DOUBLE,"
+				+"caja_cerrada_monto_ideal DOUBLE,"
+				+"PRIMARY KEY (caja_cerrada_fecha))";
+			stmt.executeUpdate(sql);
+			System.out.println("Tabla CAJACERRADA creada");
+		}
+		catch(Exception e) {
+			System.err.println(e.getMessage());
+		}
 	}
 	
 	public static void crearTablaGasto() {

@@ -7,6 +7,7 @@ import java.util.List;
 import ModeloGasto.Gasto;
 import ModelosClientes.Cliente;
 import Productos.Producto;
+import Ventas.CajaCerrada;
 import Ventas.Item;
 import Ventas.Venta;
 
@@ -16,6 +17,14 @@ public class InsertarDatos extends ConexionBd{
 		super();
 	}
 	
+	public void insertarCajaCerrada(CajaCerrada unaCajaCerrada) {
+		String sql="INSERT INTO CAJACERRADA"
+				+ "(caja_cerrada_fecha,"
+				+ "caja_cerrada_monto_real,"
+				+ "caja_cerrada_monto_ideal)"
+				+ "values('"+unaCajaCerrada.getFecha()+"','"+unaCajaCerrada.getMonto_real()+"','"+unaCajaCerrada.getMonto_ideal()+"')";
+		ejecutarUpdate(sql, "Caja Cerrada");
+	}
 	
 	public void insertarGasto(Gasto unGasto) {
 		String sql = "insert into GASTO"
