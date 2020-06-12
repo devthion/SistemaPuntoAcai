@@ -2,12 +2,26 @@ package ConexionBD;
 
 import java.sql.SQLException;
 import ModelosClientes.Cliente;
+import Ventas.Venta;
 
 
 public class ModificarDatos extends ConexionBd {
 	
 	public ModificarDatos() throws SQLException {
 		super();
+	}
+	
+	public void eliminarVenta(Venta unaVenta) {
+		eliminarItemsDeUnaVenta(unaVenta.getVenta_id());
+		String sql = "DELETE FROM VENTA "
+				+ "WHERE venta_id= '"+unaVenta.getVenta_id()+"'";
+		ejecutarUpdate(sql, "Venta: "+unaVenta.getVenta_id()+", eliminada");
+	}
+	
+	public void eliminarItemsDeUnaVenta(int ventaid) {
+		String sql ="DELETE FROM ITEM_VENTA "
+				+ "WHERE item_venta = '"+ventaid+"'";
+		ejecutarUpdate(sql,"Items de venta: "+ventaid+", eliminados");
 	}
 
 	public void editarCliente(int dniCliente, Cliente clienteEditado){
