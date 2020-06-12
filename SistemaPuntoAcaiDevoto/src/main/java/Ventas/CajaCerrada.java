@@ -1,12 +1,16 @@
 package Ventas;
 
+import java.sql.SQLException;
 import java.time.LocalDate;
+
+import ConexionBD.InsertarDatos;
 
 public class CajaCerrada {
 	
 	LocalDate fecha;
 	double monto_real;
 	double monto_ideal;
+	InsertarDatos insertarDatos;
 	
 	public CajaCerrada(LocalDate fecha,double monto_real,double monto_ideal) {
 		this.fecha=fecha;
@@ -22,6 +26,11 @@ public class CajaCerrada {
 	}
 	public double getMonto_ideal() {
 		return monto_ideal;
+	}
+	
+	public void almacenarCajaCerrada() throws SQLException {
+		insertarDatos = new InsertarDatos();
+		insertarDatos.insertarCajaCerrada(this);
 	}
 	
 	

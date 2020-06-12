@@ -8,6 +8,7 @@ import java.util.ResourceBundle;
 import Alertas.Alerta;
 import Alertas.Validaciones;
 import ConexionBD.ObtenerDatos;
+import Ventas.CajaCerrada;
 import Ventas.Venta;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -54,6 +55,9 @@ public class CerrarCaja implements Initializable{
     private TableColumn<Venta, Double> colMontoTotal;
     
     private ObservableList<Venta> ventas;
+    
+    private CajaCerrada cajaDelDia;
+    
 
     @FXML
     void onVolverClick(ActionEvent event) {
@@ -76,13 +80,13 @@ public class CerrarCaja implements Initializable{
     }
 
     @FXML
-    void onCerrarCajaClick(ActionEvent event) {
+    void onCerrarCajaClick(ActionEvent event) throws SQLException {
     	
     	if (Validaciones.validarCajaNumerica(txtMontoReal)) {
     		new Alerta().errorAlert("Ingreso un montoReal no Valido", "Error en el ingreso de Datos");
     	}else {
-    		//cajaDelDia = new CerraCaja(LocalDate.now(),txtMontoReal, txtMontoIdeal)
-    		//cajaDelDia.almacenarCaja();
+    		cajaDelDia = new CajaCerrada(LocalDate.now(),Double.parseDouble(txtMontoReal.getText()) ,Double.parseDouble(txtMontoIdeal.getText()));
+    		cajaDelDia.almacenarCajaCerrada();
     		
     		new Alerta().informationAlert("Caja Cerrada Correctamente","Cierre de Caja");
     	}
@@ -110,7 +114,7 @@ public class CerrarCaja implements Initializable{
 		this.colGanancia.setCellValueFactory(new PropertyValueFactory<Venta, Double>("venta_ganancia"));
 		this.colMontoTotal.setCellValueFactory(new PropertyValueFactory<Venta, Double>("venta_precioTotal"));
 		
-		txtMontoIdeal.setText(ventas.stream().mapToDouble(unaVenta-> unaVenta.getVenta_precioTotal()).sum()+" $");
+		txtMontoIdeal.setText(""+ventas.stream().mapToDouble(unaVenta-> unaVenta.getVenta_precioTotal()).sum());
 		
 	}
 

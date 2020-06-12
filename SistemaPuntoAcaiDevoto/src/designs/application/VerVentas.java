@@ -37,9 +37,6 @@ public class VerVentas implements Initializable {
     private TableColumn<Venta, LocalDate> colFechaRealizada;
 
     @FXML
-    private TableColumn<Venta, Double> colPago;
-
-    @FXML
     private Button btnVolver;
 
     @FXML

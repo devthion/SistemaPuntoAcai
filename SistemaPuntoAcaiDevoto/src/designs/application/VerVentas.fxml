@@ -19,12 +19,11 @@
       <TableView fx:id="tblVentas" layoutX="78.0" layoutY="124.0" prefHeight="347.0" prefWidth="1165.0" AnchorPane.bottomAnchor="179.0" AnchorPane.leftAnchor="78.0" AnchorPane.rightAnchor="57.0" AnchorPane.topAnchor="124.0">
          <columns>
             <TableColumn fx:id="colFechaRealizada" maxWidth="1.7976931348623157E308" prefWidth="167.0" text="FECHA REALIZADA" />
-            <TableColumn fx:id="colCliente" maxWidth="1.7976931348623157E308" prefWidth="165.0" text="CLIENTE" />
-            <TableColumn fx:id="colMontoTotal" prefWidth="167.0" text="MONTO TOTAL" />
-            <TableColumn fx:id="colFechaEntrega" prefWidth="161.0" text="FECHA ENTREGA" />
-            <TableColumn fx:id="colHorario" prefWidth="113.0" text="HORARIO" />
-            <TableColumn fx:id="colDireccion" maxWidth="440.0" prefWidth="242.0" text="DIRECCION" />
-            <TableColumn fx:id="colPago" maxWidth="440.0" prefWidth="148.0" text="PAGO" />
+            <TableColumn fx:id="colCliente" maxWidth="1.7976931348623157E308" prefWidth="234.0" text="CLIENTE" />
+            <TableColumn fx:id="colMontoTotal" prefWidth="150.0" text="MONTO TOTAL" />
+            <TableColumn fx:id="colFechaEntrega" prefWidth="192.0" text="FECHA ENTREGA" />
+            <TableColumn fx:id="colHorario" prefWidth="142.0" text="HORARIO" />
+            <TableColumn fx:id="colDireccion" maxWidth="440.0" prefWidth="278.0" text="DIRECCION" />
          </columns>
       </TableView>
       <Button fx:id="btnTerminarVenta" layoutX="520.0" layoutY="519.0" mnemonicParsing="false" onAction="#onTerminarVentaClick" prefHeight="49.0" prefWidth="260.0" text="ENVIO REALIZADO" />

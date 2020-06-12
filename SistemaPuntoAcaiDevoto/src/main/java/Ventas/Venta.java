@@ -26,14 +26,10 @@ public class Venta {
 		this.fecha = fecha;
 		this.items = items;
 	}
-	
-	
-	
+
 	public int getVenta_id() {
 		return venta_id;
 	}
-
-
 
 	public String getHorario() {
 		if(unEnvio==null) {
@@ -141,6 +137,10 @@ public class Venta {
 	public void concretarVenta() throws SQLException {
 		InsertarDatos insertarDatos = new InsertarDatos();
 		insertarDatos.concretarVenta(this);
+	}
+	
+	public String getDireccionCliente() {
+		return cliente.getDireccionCompleta();
 	}
 
 
