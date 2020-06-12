@@ -99,6 +99,13 @@ public class InsertarDatos extends ConexionBd{
 				
 		
 	}
+
+	public void concretarVenta(Venta venta) {
+		String sql= "UPDATE VENTA "
+				+ "SET venta_estado_envio='"+true+"'"
+						+ "WHERE venta_id='"+venta.getVenta_id()+"'";
+		ejecutarUpdate(sql,"Venta '"+venta.getVenta_id()+"' concretada");
+	}
 	
 	
 

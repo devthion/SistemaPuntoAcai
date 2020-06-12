@@ -204,6 +204,7 @@ public class ObtenerDatos extends ConexionBd{
 			Envio unEnvio = new Envio(horario_entrega,precio_envio,fecha_entrega);
 			unEnvio.setEstado(estado_entrega);
 			unaVenta.setEnvio(unEnvio);
+			unaVenta.setVentaId(ventaId);
 			ventas.add(unaVenta);
 			}
 		return ventas;

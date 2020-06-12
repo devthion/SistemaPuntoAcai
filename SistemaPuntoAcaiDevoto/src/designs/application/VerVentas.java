@@ -85,7 +85,7 @@ public class VerVentas implements Initializable {
     	if(venta==null) {
     		new Alerta().errorAlert("Debe seleccionar una Venta", "Terminar Venta");
     	}else {
-    		//venta.cambiarEstadoEnvio();
+    		venta.concretarVenta();
     		new Alerta().informationAlert("Se ha cambiado el estado de la venta con exito", "Terminar Venta");
     		RefrescarTabla();
     	}

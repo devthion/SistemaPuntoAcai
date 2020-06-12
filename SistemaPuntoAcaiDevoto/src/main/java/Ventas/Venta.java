@@ -27,6 +27,14 @@ public class Venta {
 		this.items = items;
 	}
 	
+	
+	
+	public int getVenta_id() {
+		return venta_id;
+	}
+
+
+
 	public String getHorario() {
 		if(unEnvio==null) {
 			return null;
@@ -128,5 +136,16 @@ public class Venta {
 	
 	public String getDatosCliente() {
 		return cliente.getNombre()+" "+cliente.getApellido() +", DNI: "+cliente.getDni();
+	}
+
+	public void concretarVenta() throws SQLException {
+		InsertarDatos insertarDatos = new InsertarDatos();
+		insertarDatos.concretarVenta(this);
+	}
+
+
+
+	public void setVentaId(int ventaId) {
+		this.venta_id=ventaId;
 	}
 }
