@@ -174,7 +174,7 @@ public class ExportarExcel {
 	}
 
 	private static void insertarDatosEnSheetVentas(Sheet sheet1, List<Venta> ventas, CellStyle headerCellStyle) {
-		String[] columnas = {"comprador", "fecha_venta", "precio_total_venta","ganancia_venta","costo_envio_venta"};
+		String[] columnas = {"comprador", "fecha_venta", "precio_total_venta","ganancia_venta","costo_envio_venta","estado_envio","horario_entrega_envio","fecha_entrega_envio"};
 		// Create a Row
 		Row headerRow = sheet1.createRow(0);
 		
@@ -195,7 +195,16 @@ public class ExportarExcel {
             .setCellValue(unaVenta.getVenta_ganancia());
             
             row.createCell(4)
-            .setCellValue(unaVenta.getEnvio());
+            .setCellValue(unaVenta.getEnvioPrecio());
+            
+            row.createCell(5)
+            .setCellValue(""+unaVenta.getEstado());
+            
+            row.createCell(6)
+            .setCellValue(unaVenta.getHorario());
+            
+            row.createCell(7)
+            .setCellValue(unaVenta.getFechaEntrega().toString());
         }
         
         // Resize all columns to fit the content size
