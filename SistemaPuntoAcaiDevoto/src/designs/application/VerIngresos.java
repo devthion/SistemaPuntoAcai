@@ -1,5 +1,6 @@
 package application;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,7 +31,7 @@ public class VerIngresos {
     private Button btnVolver;
 
     @FXML
-    private Label lblIdelaDia;
+    private Label lblIdealDia;
 
     @FXML
     private Label lblRealDia;
@@ -53,7 +54,7 @@ public class VerIngresos {
     @FXML
     private Button btnVerIngresos;
     
-    private List<Venta> cajas = new ArrayList<>();
+    private List<Object> cajas = new ArrayList<>();
 
     @FXML
     void onVolverClick(ActionEvent event) {
@@ -89,8 +90,22 @@ public class VerIngresos {
     }
     
     public void mostrarIngresos() {
-		ObtenerDatos obtenerDatos = new ObtenerDatos();
-		cajas = obtenerDatos.obtenerProductos();
+		//ObtenerDatos obtenerDatos = new ObtenerDatos();
+		//cajas = obtenerDatos.obtenerCajasCerradas();
+    	
+    	int dia=Integer.parseInt(txtDia.getText());
+    	int mes=Integer.parseInt(txtMes.getText());
+    	int anio=Integer.parseInt(txtAnio.getText());
+		
+    	lblIdealDia= cajas.stream().filter(unaCaja -> unaCaja.getFecha.getDay().equals(dia) && unaCaja.getFecha.getMonth().equals(mes) && unaCaja.getFecha.getYear().equals(anio)).map(unaCaja -> unaCaja.getPrecioIdeal).sum;
+    	lblRealDia= cajas.stream().filter(unaCaja -> unaCaja.getFecha.getDay().equals(dia) && unaCaja.getFecha.getMonth().equals(mes) && unaCaja.getFecha.getYear().equals(anio)).map(unaCaja -> unaCaja.getPrecioReal).sum;
+    	
+    	lblIdealMes= cajas.stream().filter(unaCaja -> unaCaja.getFecha.getMonth().equals(mes) && unaCaja.getFecha.getYear().equals(anio)).map(unaCaja -> unaCaja.getPrecioIdeal).sum;
+    	lblIdealMes= cajas.stream().filter(unaCaja -> unaCaja.getFecha.getMonth().equals(mes) && unaCaja.getFecha.getYear().equals(anio)).map(unaCaja -> unaCaja.getPrecioReal).sum;
+    	
+    	lblIdealAnio= cajas.stream().filter(unaCaja -> unaCaja.getFecha.getYear().equals(anio)).map(unaCaja -> unaCaja.getPrecioIdeal).sum;
+    	lblIdealAnio= cajas.stream().filter(unaCaja -> unaCaja.getFecha.getYear().equals(anio)).map(unaCaja -> unaCaja.getPrecioReal).sum;
+		
     }
     
     public List<TextField> generarListNumericos() {

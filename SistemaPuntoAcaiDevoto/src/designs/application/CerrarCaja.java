@@ -1,20 +1,33 @@
 package application;
 
+import java.net.URL;
+import java.sql.SQLException;
+import java.time.LocalDate;
+import java.util.ResourceBundle;
+
+import Alertas.Alerta;
+import Alertas.Validaciones;
+import ConexionBD.ObtenerDatos;
+import Ventas.Venta;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
-public class CerrarCaja {
+public class CerrarCaja implements Initializable{
 
     @FXML
-    private TableColumn<?, ?> colFecha;
+    private TableColumn<Venta, LocalDate> colFecha;
 
     @FXML
     private TextField txtMontoReal;
@@ -29,16 +42,18 @@ public class CerrarCaja {
     private Button btnCerrarCaja;
 
     @FXML
-    private TableColumn<?, ?> colGanancia;
+    private TableColumn<Venta, Double> colGanancia;
 
     @FXML
-    private TableView<?> tblVentas;
+    private TableView<Venta> tblVentas;
 
     @FXML
-    private TableColumn<?, ?> colCliente;
+    private TableColumn<Venta, String> colCliente;
 
     @FXML
-    private TableColumn<?, ?> colMontoTotal;
+    private TableColumn<Venta, Double> colMontoTotal;
+    
+    private ObservableList<Venta> ventas;
 
     @FXML
     void onVolverClick(ActionEvent event) {
@@ -62,7 +77,41 @@ public class CerrarCaja {
 
     @FXML
     void onCerrarCajaClick(ActionEvent event) {
-
+    	
+    	if (Validaciones.validarCajaNumerica(txtMontoReal)) {
+    		new Alerta().errorAlert("Ingreso un montoReal no Valido", "Error en el ingreso de Datos");
+    	}else {
+    		//cajaDelDia = new CerraCaja(LocalDate.now(),txtMontoReal, txtMontoIdeal)
+    		//cajaDelDia.almacenarCaja();
+    		
+    		new Alerta().informationAlert("Caja Cerrada Correctamente","Cierre de Caja");
+    	}
+    	
     }
+
+	@Override
+	public void initialize(URL arg0, ResourceBundle arg1) {
+		ObtenerDatos obtenerDatos;
+		try {
+			obtenerDatos = new ObtenerDatos();
+			ventas = FXCollections.observableArrayList();
+			ventas = obtenerDatos.obtenerVentas();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		ventas = ventas.filtered(unaVenta -> unaVenta.getFecha().equals(LocalDate.now()) && (unaVenta.getEstado() == true));
+		
+		this.tblVentas.setItems(ventas);
+		
+		this.colCliente.setCellValueFactory(new PropertyValueFactory<Venta, String>("datosCliente"));
+		this.colFecha.setCellValueFactory(new PropertyValueFactory<Venta, LocalDate>("fecha"));
+		this.colGanancia.setCellValueFactory(new PropertyValueFactory<Venta, Double>("venta_ganancia"));
+		this.colMontoTotal.setCellValueFactory(new PropertyValueFactory<Venta, Double>("venta_precioTotal"));
+		
+		txtMontoIdeal.setText(ventas.stream().mapToDouble(unaVenta-> unaVenta.getVenta_precioTotal()).sum()+" $");
+		
+	}
 
 }
