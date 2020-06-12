@@ -115,7 +115,7 @@ public class VerIngresos implements Initializable {
     	
     	lblIdealAnio.setText(""+cajas.stream().filter(unaCaja ->unaCaja.getFecha().getYear() == anio).mapToDouble(unaCaja -> unaCaja.getMonto_ideal()).sum());
     	
-    	lblIdealAnio.setText(""+cajas.stream().filter(unaCaja ->unaCaja.getFecha().getYear() == anio).mapToDouble(unaCaja -> unaCaja.getMonto_real()).sum());
+    	lblRealAnio.setText(""+cajas.stream().filter(unaCaja ->unaCaja.getFecha().getYear() == anio).mapToDouble(unaCaja -> unaCaja.getMonto_real()).sum());
 		
     }
     

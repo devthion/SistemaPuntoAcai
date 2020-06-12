@@ -10,20 +10,20 @@
       <Label layoutX="381.0" layoutY="120.0" text="TIPO" />
       <Label layoutX="861.0" layoutY="120.0" text="GRAMOS" />
       <Label layoutX="227.0" layoutY="304.0" text="COSTO" />
-      <Label layoutX="446.0" layoutY="304.0" text="PRECIO UNITARIO" />
-      <Label layoutX="950.0" layoutY="303.0" text="PRECIO POR MAYOR" />
-      <Label layoutX="667.0" layoutY="304.0" text="CANTIDAD POR MAYOR" />
+      <Label layoutX="437.0" layoutY="304.0" text="PRECIO UNITARIO" />
+      <Label layoutX="691.0" layoutY="303.0" text="PRECIO POR MAYOR" />
+      <Label layoutX="944.0" layoutY="303.0" text="CANTIDAD POR MAYOR" />
       <TextField fx:id="txtNombre" layoutX="294.0" layoutY="150.0" prefHeight="30.0" prefWidth="216.0" />
+      <TextField fx:id="txtSabor" layoutX="542.0" layoutY="149.0" prefHeight="30.0" prefWidth="216.0" />
       <TextField fx:id="txtKilos" layoutX="794.0" layoutY="150.0" prefHeight="30.0" prefWidth="216.0" />
       <TextField fx:id="txtCosto" layoutX="151.0" layoutY="333.0" prefHeight="30.0" prefWidth="216.0" />
-      <TextField fx:id="txtPrecioUnitario" layoutX="419.0" layoutY="333.0" prefHeight="30.0" prefWidth="216.0" />
-      <TextField fx:id="txtPrecioMayor" layoutX="935.0" layoutY="333.0" prefHeight="30.0" prefWidth="216.0" />
-      <TextField fx:id="txtCantidadMayor" layoutX="667.0" layoutY="333.0" prefHeight="30.0" prefWidth="216.0" />
+      <TextField fx:id="txtPrecioUnitario" layoutX="410.0" layoutY="333.0" prefHeight="30.0" prefWidth="216.0" />
+      <TextField fx:id="txtPrecioMayor" layoutX="676.0" layoutY="333.0" prefHeight="30.0" prefWidth="216.0" />
+      <TextField fx:id="txtCantidadMayor" layoutX="944.0" layoutY="332.0" prefHeight="30.0" prefWidth="216.0" />
       <Button fx:id="btnAgregarProducto" layoutX="508.0" layoutY="519.0" mnemonicParsing="false" onAction="#onAgregarProductoClick" text="AGREGAR PRODUCTO" />
       <Button fx:id="btnVolver" layoutX="1152.0" layoutY="587.0" mnemonicParsing="false" onAction="#onVolverClick" text="VOLVER" />
       <Label layoutX="563.0" layoutY="30.0" text="NUEVO PRODUCTO" />
       <Separator layoutX="151.0" layoutY="71.0" prefWidth="1000.0" />
-      <TextField fx:id="txtSabor" layoutX="542.0" layoutY="149.0" prefHeight="30.0" prefWidth="216.0" />
       <Label layoutX="619.0" layoutY="120.0" text="SABOR" />
    </children>
 </AnchorPane>

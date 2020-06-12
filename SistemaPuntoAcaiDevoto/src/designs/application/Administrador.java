@@ -64,7 +64,7 @@ public class Administrador {
     	CrearTabla.crearTablaVenta();
     	CrearTabla.crearTablaItem_Venta();
     	CrearTabla.crearTablaGasto();
-    	
+    	CrearTabla.crearTablaCajaCerrada();
     	new Alerta().informationAlert("Las tablas de la BD han sido creadas con Exito", "Creacion Tablas");
     }
     

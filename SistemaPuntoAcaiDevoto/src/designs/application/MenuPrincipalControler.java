@@ -2,10 +2,16 @@ package application;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 import Alertas.Alerta;
+import ConexionBD.ObtenerDatos;
 import ManejoArchivos.ExportarExcel;
+import Ventas.CajaCerrada;
+import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -185,23 +191,35 @@ public class MenuPrincipalControler {
     
 
     @FXML
-    void onCerrarCajaClick(ActionEvent event) {
-    	try {
-			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(getClass().getResource("CerrarCaja.fxml"));
-			AnchorPane root = (AnchorPane) loader.load();
-			Scene scene = new Scene(root,1300,650);
-			Stage stage = new Stage();
-			stage.setScene(scene);
-			stage.resizableProperty().setValue(Boolean.FALSE);
-			stage.setResizable(false);
-			stage.setTitle("Cerrar Caja");
-			stage.show();
-		} catch(Exception e) {
-			e.printStackTrace();
-		}
-    	Stage stage = (Stage) btnCostos.getScene().getWindow();
-    	stage.close();
+    void onCerrarCajaClick(ActionEvent event) throws SQLException {
+    	List<CajaCerrada> cajas = new ArrayList<>();
+    	
+    	ObtenerDatos obtenerDatos = new ObtenerDatos();
+		cajas = obtenerDatos.obtenerCajasCerradas();
+		
+		
+    	if(cajas.stream().anyMatch(unaCaja -> unaCaja.getFecha().equals(LocalDate.now()))) {
+    		new Alerta().errorAlert("Ya se cerro la caja del dia de hoy", "Caja Cerrada");
+    	}else {
+    		try {
+    			FXMLLoader loader = new FXMLLoader();
+    			loader.setLocation(getClass().getResource("CerrarCaja.fxml"));
+    			AnchorPane root = (AnchorPane) loader.load();
+    			Scene scene = new Scene(root,1300,650);
+    			Stage stage = new Stage();
+    			stage.setScene(scene);
+    			stage.resizableProperty().setValue(Boolean.FALSE);
+    			stage.setResizable(false);
+    			stage.setTitle("Cerrar Caja");
+    			stage.show();
+    		} catch(Exception e) {
+    			e.printStackTrace();
+    		}
+        	Stage stage = (Stage) btnCostos.getScene().getWindow();
+        	stage.close();
+    	}
+    	
+    
     }
     
     @FXML
