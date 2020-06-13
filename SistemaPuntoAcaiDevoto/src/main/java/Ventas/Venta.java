@@ -5,6 +5,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 import ConexionBD.InsertarDatos;
+import ConexionBD.ModificarDatos;
 import ModelosClientes.Cliente;
 
 public class Venta {
@@ -141,6 +142,18 @@ public class Venta {
 	
 	public String getDireccionCliente() {
 		return cliente.getDireccionCompleta();
+	}
+	
+	public void cancelarVenta() throws SQLException 
+	{
+		this.getItems().stream().forEach(unItem -> {
+			try {
+				unItem.getProducto().actualizarStock(-unItem.getCantidad());
+			} catch (SQLException e2) {
+				e2.printStackTrace();
+			}
+		});
+		new ModificarDatos().eliminarVenta(this);
 	}
 
 

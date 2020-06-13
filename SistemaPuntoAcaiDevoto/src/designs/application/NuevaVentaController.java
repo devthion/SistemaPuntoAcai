@@ -263,7 +263,7 @@ public class NuevaVentaController implements Initializable {
 							e2.printStackTrace();
 						}
 					});
-		        	
+		   
 		        	double precio = 0;
 		        	for (Item item : itemsAVender) {
 		        		precio += item.getPrecioFinal();

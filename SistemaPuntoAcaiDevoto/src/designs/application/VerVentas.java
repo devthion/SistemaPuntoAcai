@@ -3,6 +3,7 @@ package application;
 import java.net.URL;
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 import Alertas.Alerta;
@@ -16,6 +17,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -41,6 +43,9 @@ public class VerVentas implements Initializable {
 
     @FXML
     private Button btnTerminarVenta;
+    
+    @FXML
+    private Button btnCancelarVenta;
 
     @FXML
     private TableView<Venta> tblVentas;
@@ -113,5 +118,27 @@ public class VerVentas implements Initializable {
 		
 		this.tblVentas.setItems(ventasPendientes);
 	}
+	
+
+    @FXML
+    void onCancelarVentaClick(ActionEvent event) throws SQLException {
+    	Venta venta = this.tblVentas.getSelectionModel().getSelectedItem();
+    	
+    	if(venta==null) {
+    		new Alerta().errorAlert("Debe seleccionar una Venta", "Cancelar Venta");
+    	}else {
+    		
+    		Optional<ButtonType> action =  new Alerta().preguntaConfirmacion("Desea cancelar la Venta ?", "Confirmación");
+        	if (action.get() == ButtonType.OK) {
+        	
+        	
+        		
+        		venta.cancelarVenta();
+        		new Alerta().informationAlert("Se ha cancelado la venta con exito", "Cancelar Venta");
+        		RefrescarTabla();
+        	}
+    		
+    	}
+    }
 
 }

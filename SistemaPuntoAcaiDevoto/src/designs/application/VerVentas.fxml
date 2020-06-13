@@ -26,6 +26,7 @@
             <TableColumn fx:id="colDireccion" maxWidth="440.0" prefWidth="278.0" text="DIRECCION" />
          </columns>
       </TableView>
-      <Button fx:id="btnTerminarVenta" layoutX="520.0" layoutY="519.0" mnemonicParsing="false" onAction="#onTerminarVentaClick" prefHeight="49.0" prefWidth="260.0" text="ENVIO REALIZADO" />
+      <Button fx:id="btnTerminarVenta" layoutX="278.0" layoutY="527.0" mnemonicParsing="false" onAction="#onTerminarVentaClick" prefHeight="49.0" prefWidth="260.0" text="ENVIO REALIZADO" />
+      <Button fx:id="btnCancelarVenta" layoutX="763.0" layoutY="527.0" mnemonicParsing="false" onAction="#onCancelarVentaClick" prefHeight="49.0" prefWidth="260.0" text="CANCELAR VENTA" />
    </children>
 </AnchorPane>
