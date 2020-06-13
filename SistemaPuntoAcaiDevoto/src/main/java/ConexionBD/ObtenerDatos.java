@@ -282,6 +282,7 @@ public class ObtenerDatos extends ConexionBd{
 		rsUnProd=ejecutarQuery(sql,unStmt);
 		while(rsUnProd.next()) {
 			 unProducto = new Producto(rsUnProd.getString(2),rsUnProd.getDouble(3),rsUnProd.getInt(4),rsUnProd.getDouble(5),rsUnProd.getDouble(6),rsUnProd.getDouble(7), rsUnProd.getInt(8));
+			 unProducto.setProd_id(rsUnProd.getInt(1));
 		}
 		return unProducto;
 	}	
