@@ -148,7 +148,7 @@ public class Venta {
 	{
 		this.getItems().stream().forEach(unItem -> {
 			try {
-				unItem.getProducto().actualizarStock(-unItem.getCantidad());
+				unItem.getProducto().actualizarStock(unItem.getCantidad());
 			} catch (SQLException e2) {
 				e2.printStackTrace();
 			}

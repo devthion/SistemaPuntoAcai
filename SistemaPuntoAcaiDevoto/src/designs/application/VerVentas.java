@@ -130,8 +130,6 @@ public class VerVentas implements Initializable {
     		
     		Optional<ButtonType> action =  new Alerta().preguntaConfirmacion("Desea cancelar la Venta ?", "Confirmación");
         	if (action.get() == ButtonType.OK) {
-        	
-        	
         		
         		venta.cancelarVenta();
         		new Alerta().informationAlert("Se ha cancelado la venta con exito", "Cancelar Venta");
