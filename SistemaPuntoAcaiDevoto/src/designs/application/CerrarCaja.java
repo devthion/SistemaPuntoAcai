@@ -63,7 +63,7 @@ public class CerrarCaja implements Initializable{
     void onVolverClick(ActionEvent event) {
     	try {
 			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(getClass().getResource("MenuPrincipal.fxml"));
+			loader.setLocation(getClass().getResource("CerrarCajaMenu.fxml"));
 			AnchorPane root = (AnchorPane) loader.load();
 			Scene scene = new Scene(root,1300,650);
 			Stage stage = new Stage();
