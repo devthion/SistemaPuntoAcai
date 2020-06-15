@@ -19,8 +19,8 @@ public class Venta {
 	InsertarDatos insertarDatos;
 	//private double venta_envio=0;
 	private double precioModificado=0;
-	Envio unEnvio = null;
-	
+	private Envio unEnvio = null;
+
 	public Venta(Cliente cliente, LocalDate fecha, List<Item> items) {
 		super();
 		this.cliente = cliente;
@@ -155,8 +155,10 @@ public class Venta {
 		});
 		new ModificarDatos().eliminarVenta(this);
 	}
-
-
+	
+	public Envio getUnEnvio() {
+		return unEnvio;
+	}
 
 	public void setVentaId(int ventaId) {
 		this.venta_id=ventaId;

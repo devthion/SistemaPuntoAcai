@@ -11,6 +11,9 @@ import Alertas.Alerta;
 import Alertas.Validaciones;
 import ConexionBD.ObtenerDatos;
 import Ventas.CajaCerrada;
+import Ventas.Venta;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -57,7 +60,20 @@ public class VerIngresos implements Initializable {
     @FXML
     private Button btnVerIngresos;
     
+    @FXML
+    private Label lblGananciaMes;
+
+    @FXML
+    private Label lblGananciaDia;
+
+    @FXML
+    private Label lblGananciaAnio;
+    
     private List<CajaCerrada> cajas = new ArrayList<>();
+    private ObservableList<Venta> ventas;
+    private ObservableList<Venta> ventasPorDia;
+    private ObservableList<Venta> ventasPorMes;
+    private ObservableList<Venta> ventasPorAnio;
 
     @FXML
     void onVolverClick(ActionEvent event) {
@@ -106,16 +122,33 @@ public class VerIngresos implements Initializable {
     	lblRealDia.setText(""+cajas.stream().filter(unaCaja -> (unaCaja.getFecha().getDayOfMonth()== dia) &&
     			unaCaja.getFecha().getMonthValue() == mes && unaCaja.getFecha().getYear() == anio).mapToDouble(unaCaja -> unaCaja.getMonto_real()).sum());
     	
+    	ventasPorDia = ventas.filtered(unaVenta -> unaVenta.getUnEnvio().getFechaEntrega().getDayOfMonth()==dia
+    			&& unaVenta.getUnEnvio().getFechaEntrega().getMonthValue()==mes
+    			&& unaVenta.getUnEnvio().getFechaEntrega().getYear() ==anio
+    			&& unaVenta.getUnEnvio().getEstado()==true);
+    	
+    	lblGananciaDia.setText(ventasPorDia.stream().mapToDouble(unaVenta -> unaVenta.getVenta_ganancia()).sum()+" $");
+    	
     	lblIdealMes.setText(""+cajas.stream().filter(unaCaja ->unaCaja.getFecha().getMonthValue() == mes 
     			&& unaCaja.getFecha().getYear() == anio).mapToDouble(unaCaja -> unaCaja.getMonto_ideal()).sum());
     	
     	lblRealMes.setText(""+cajas.stream().filter(unaCaja ->unaCaja.getFecha().getMonthValue() == mes 
     			&& unaCaja.getFecha().getYear() == anio).mapToDouble(unaCaja -> unaCaja.getMonto_real()).sum());
-    
+    	
+    	ventasPorMes = ventas.filtered(unaVenta -> unaVenta.getUnEnvio().getFechaEntrega().getYear()==anio
+    			&& unaVenta.getUnEnvio().getFechaEntrega().getMonthValue()==mes
+    			&& unaVenta.getUnEnvio().getEstado()==true);
+    	
+    	lblGananciaMes.setText(ventasPorMes.stream().mapToDouble(unaVenta -> unaVenta.getVenta_ganancia()).sum()+" $");
     	
     	lblIdealAnio.setText(""+cajas.stream().filter(unaCaja ->unaCaja.getFecha().getYear() == anio).mapToDouble(unaCaja -> unaCaja.getMonto_ideal()).sum());
     	
     	lblRealAnio.setText(""+cajas.stream().filter(unaCaja ->unaCaja.getFecha().getYear() == anio).mapToDouble(unaCaja -> unaCaja.getMonto_real()).sum());
+    	
+    	ventasPorAnio = ventas.filtered(unaVenta -> unaVenta.getUnEnvio().getFechaEntrega().getYear()==anio
+    			&& unaVenta.getUnEnvio().getEstado()==true);
+    	
+    	lblGananciaAnio.setText(ventasPorAnio.stream().mapToDouble(unaVenta -> unaVenta.getVenta_ganancia()).sum()+" $");
 		
     }
     
@@ -133,6 +166,17 @@ public class VerIngresos implements Initializable {
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		// TODO Auto-generated method stub
+		ObtenerDatos obtenerDatos;
+		try {
+			obtenerDatos = new ObtenerDatos();
+			ventas = FXCollections.observableArrayList();
+			ventas = obtenerDatos.obtenerVentas();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
 		txtDia.setText(""+LocalDate.now().getDayOfMonth());
 		txtMes.setText(""+LocalDate.now().getMonthValue());
 		txtAnio.setText(""+LocalDate.now().getYear());
