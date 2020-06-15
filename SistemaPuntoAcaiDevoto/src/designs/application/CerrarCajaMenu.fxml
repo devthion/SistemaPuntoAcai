@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane prefHeight="650.0" prefWidth="1300.0" stylesheets="@../Styles/Style.css" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="application.CerrarCajaMenu">
+   <children>
+      <Separator layoutX="160.0" layoutY="71.0" prefWidth="1000.0" />
+      <Label layoutX="589.0" layoutY="30.0" text="CERRAR CAJA" />
+      <Button fx:id="btnVolver" layoutX="1148.0" layoutY="585.0" mnemonicParsing="false" onAction="#onVolverClick" prefHeight="51.0" prefWidth="138.0" text="VOLVER" textFill="WHITE">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Button>
+      <Button fx:id="btnCerrarCajaDiaria" layoutX="235.0" layoutY="276.0" mnemonicParsing="false" onAction="#onCerrarDiaria" prefHeight="98.0" prefWidth="315.0" text="CERRAR CAJA DIARIA" />
+      <Button fx:id="btnCerrarCajaPasada" layoutX="751.0" layoutY="276.0" mnemonicParsing="false" onAction="#onCerrarPasada" prefHeight="98.0" prefWidth="315.0" text="CERRAR CAJA PASADA" />
+   </children>
+</AnchorPane>
