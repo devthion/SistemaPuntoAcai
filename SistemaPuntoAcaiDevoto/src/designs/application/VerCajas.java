@@ -108,8 +108,8 @@ public class VerCajas implements Initializable{
 		this.tblCajas.setItems(cajas);
 		
 		this.colFechaCaja.setCellValueFactory(new PropertyValueFactory<CajaCerrada, LocalDate>("fecha"));
-		this.colMontoIdeal.setCellValueFactory(new PropertyValueFactory<CajaCerrada, Double>("venta_ganancia"));
-		this.colMontoReal.setCellValueFactory(new PropertyValueFactory<CajaCerrada, Double>("venta_precioTotal"));
+		this.colMontoIdeal.setCellValueFactory(new PropertyValueFactory<CajaCerrada, Double>("monto_ideal"));
+		this.colMontoReal.setCellValueFactory(new PropertyValueFactory<CajaCerrada, Double>("monto_real"));
 		
 	}
 	
