@@ -26,6 +26,9 @@ public class CerrarCajaMenu {
 
     @FXML
     private Button btnVolver;
+    
+    @FXML
+    private Button btnVerCajas;
 
     @FXML
     void onVolverClick(ActionEvent event) {
@@ -95,6 +98,11 @@ public class CerrarCajaMenu {
 		}
     	Stage stage = (Stage) btnCerrarCajaDiaria.getScene().getWindow();
     	stage.close();
+    }
+    
+    @FXML
+    void onVerCajasClick(ActionEvent event) {
+    	
     }
 
 }

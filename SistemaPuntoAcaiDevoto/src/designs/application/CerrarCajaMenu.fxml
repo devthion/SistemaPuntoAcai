@@ -6,8 +6,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane prefHeight="650.0" prefWidth="1300.0" stylesheets="@../Styles/Style.css" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="application.CerrarCajaMenu">
+<AnchorPane prefHeight="650.0" prefWidth="1300.0" stylesheets="@../Styles/Style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.CerrarCajaMenu">
    <children>
       <Separator layoutX="160.0" layoutY="71.0" prefWidth="1000.0" />
       <Label layoutX="589.0" layoutY="30.0" text="CERRAR CAJA" />
@@ -16,7 +15,8 @@
             <Font size="24.0" />
          </font>
       </Button>
-      <Button fx:id="btnCerrarCajaDiaria" layoutX="235.0" layoutY="276.0" mnemonicParsing="false" onAction="#onCerrarDiaria" prefHeight="98.0" prefWidth="315.0" text="CERRAR CAJA DIARIA" />
-      <Button fx:id="btnCerrarCajaPasada" layoutX="751.0" layoutY="276.0" mnemonicParsing="false" onAction="#onCerrarPasada" prefHeight="98.0" prefWidth="315.0" text="CERRAR CAJA PASADA" />
+      <Button fx:id="btnCerrarCajaDiaria" layoutX="160.0" layoutY="276.0" mnemonicParsing="false" onAction="#onCerrarDiaria" prefHeight="98.0" prefWidth="292.0" text="CERRAR CAJA DIARIA" />
+      <Button fx:id="btnCerrarCajaPasada" layoutX="514.0" layoutY="276.0" mnemonicParsing="false" onAction="#onCerrarPasada" prefHeight="98.0" prefWidth="292.0" text="CERRAR CAJA PASADA" />
+      <Button fx:id="btnVerCajas" layoutX="868.0" layoutY="276.0" mnemonicParsing="false" onAction="#onVerCajasClick" prefHeight="98.0" prefWidth="292.0" text="VER CIERRES DE CAJA" />
    </children>
 </AnchorPane>

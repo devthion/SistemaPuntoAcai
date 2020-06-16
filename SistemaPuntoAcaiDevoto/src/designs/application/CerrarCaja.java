@@ -147,7 +147,7 @@ public class CerrarCaja implements Initializable{
     		new Alerta().errorAlert("Debe seleccionar una Venta", "Cancelar Venta");
     	}else {
     		
-    		Optional<ButtonType> action =  new Alerta().preguntaConfirmacion("Desea cancelar la Venta ?" +venta.getCliente().getNombre(), "Confirmación");
+    		Optional<ButtonType> action =  new Alerta().preguntaConfirmacion("Desea cancelar la Venta ?", "Confirmación");
         	if (action.get() == ButtonType.OK) {
         		System.out.println(venta.getVenta_id());
         		venta.cancelarVenta();

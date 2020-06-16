@@ -3,6 +3,7 @@ package application;
 
 import java.net.URL;
 import java.sql.SQLException;
+import java.util.Objects;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
@@ -173,10 +174,15 @@ public class NuevaVentaController implements Initializable {
 			stage.setResizable(false);
 			stage.setTitle("Nuevo Cliente");
 			stage.showAndWait();
-			
-			ventaBorrador.setEnvio(controller.getEnvio());
-			lblCostoEnvio.setText("Envio: "+ventaBorrador.getEnvio().getPrecio()+" $");
-			costoEnvio=ventaBorrador.getEnvio().getPrecio();
+			if(Objects.isNull(controller.getEnvio())) {
+				costoEnvio=0.0;
+				lblCostoEnvio.setText("Envio: "+costoEnvio+" $");
+			}else {
+				ventaBorrador.setEnvio(controller.getEnvio());
+				lblCostoEnvio.setText("Envio: "+ventaBorrador.getEnvio().getPrecio()+" $");
+				costoEnvio=ventaBorrador.getEnvio().getPrecio();
+			}
+				
 		} catch(Exception e) {
 			e.printStackTrace();
 		}

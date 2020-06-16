@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane prefHeight="650.0" prefWidth="1300.0" stylesheets="@../Styles/Style.css" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="application.VerCajas">
+   <children>
+      <TableView fx:id="tblCajas" layoutX="154.0" layoutY="124.0" prefHeight="347.0" prefWidth="649.0">
+         <columns>
+            <TableColumn fx:id="colFechaCaja" maxWidth="1.7976931348623157E308" prefWidth="231.0" text="FECHA CAJA" />
+            <TableColumn fx:id="colMontoReal" maxWidth="1.7976931348623157E308" prefWidth="195.0" text="MONTO REAL" />
+            <TableColumn fx:id="colMontoIdeal" prefWidth="212.0" text="MONTO IDEAL" />
+         </columns>
+      </TableView>
+      <Button fx:id="btnVolver" layoutX="1148.0" layoutY="585.0" mnemonicParsing="false" onAction="#onVolverClick" prefHeight="51.0" prefWidth="138.0" text="VOLVER" textFill="WHITE">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Button>
+      <Label layoutX="554.0" layoutY="30.0" prefHeight="30.0" prefWidth="192.0" text="CAJAS CERRADAS" />
+      <Separator layoutX="160.0" layoutY="71.0" prefWidth="1000.0" />
+      <Button fx:id="btnEliminarCaja" layoutX="892.0" layoutY="273.0" mnemonicParsing="false" onAction="#onEliminarCaja" text="ELIMINAR CAJA" />
+   </children>
+</AnchorPane>

@@ -12,6 +12,7 @@ public class DropTable {
 		dropTablaVenta();
 		dropTablaCliente();
 		dropTablaGasto();
+		dropTablaCerrarCaja();
 	}
 	
 	public static void dropTablaGasto() {
@@ -74,6 +75,19 @@ public class DropTable {
 			String sql = "DROP TABLE ITEM_VENTA";
 			stmt.executeUpdate(sql);
 			System.out.println("Tabla ITEM_VENTA eliminada");
+		}
+		catch(Exception e) {
+			System.err.println(e.getMessage());
+		}
+	}
+	public static void dropTablaCerrarCaja() {
+		try 
+		{
+			Connection con = DriverManager.getConnection("jdbc:h2:"+"./Database/bd", "root", "devthion");
+			Statement stmt= con.createStatement();
+			String sql = "DROP TABLE CAJACERRADA";
+			stmt.executeUpdate(sql);
+			System.out.println("Tabla CAJACERRADA eliminada");
 		}
 		catch(Exception e) {
 			System.err.println(e.getMessage());

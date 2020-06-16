@@ -67,6 +67,14 @@ public class InsertarDatos extends ConexionBd{
 	
 	
 	public void insertarVenta(Venta unaVenta) throws SQLException {
+		
+		boolean estado;
+		if(unaVenta.getUnEnvio().getFechaEntrega().isBefore(LocalDate.now())) {
+			estado = true;
+		}else {
+			estado = false;
+		}
+		
 		String sql = "INSERT INTO VENTA"
 				+ "(venta_cliente,"
 				+ "venta_fecha,"
@@ -76,7 +84,7 @@ public class InsertarDatos extends ConexionBd{
 				+ "venta_estado_envio,"
 				+ "venta_horario_envio,"
 				+ "venta_fecha_entrega)"
-				+ "values('"+unaVenta.getCliente().getDni()+"','"+unaVenta.getFecha()+"','"+unaVenta.getPrecioTotal()+"','"+unaVenta.getGanancia()+"','"+unaVenta.getEnvioPrecio()+"','"+unaVenta.getEstado()+"','"+unaVenta.getHorario()+"','"+unaVenta.getFechaEntrega()+"')";
+				+ "values('"+unaVenta.getCliente().getDni()+"','"+unaVenta.getFecha()+"','"+unaVenta.getPrecioTotal()+"','"+unaVenta.getGanancia()+"','"+unaVenta.getEnvioPrecio()+"','"+estado+"','"+unaVenta.getHorario()+"','"+unaVenta.getFechaEntrega()+"')";
 		ejecutarUpdate(sql, "Venta ingresada");
 		cerrarConexion();
 
@@ -102,8 +110,15 @@ public class InsertarDatos extends ConexionBd{
 	}
 
 	public void concretarVenta(Venta venta) {
+		LocalDate fechaEntrega;
+		if(venta.getUnEnvio().getFechaEntrega().isBefore(LocalDate.now())) {
+			fechaEntrega = venta.getUnEnvio().getFechaEntrega();
+		}else {
+			fechaEntrega =LocalDate.now();
+		}
+		
 		String sql= "UPDATE VENTA "
-				+ "SET venta_estado_envio='"+true+"', venta_fecha_entrega = '"+LocalDate.now()+"'"
+				+ "SET venta_estado_envio='"+true+"', venta_fecha_entrega = '"+fechaEntrega+"'"
 						+ "WHERE venta_id='"+venta.getVenta_id()+"'";
 		ejecutarUpdate(sql,"Venta '"+venta.getVenta_id()+"' concretada");
 	}
