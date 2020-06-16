@@ -1,6 +1,8 @@
 package ConexionBD;
 
 import java.sql.SQLException;
+import java.time.LocalDate;
+
 import ModelosClientes.Cliente;
 import Ventas.Venta;
 
@@ -16,6 +18,12 @@ public class ModificarDatos extends ConexionBd {
 		String sql = "DELETE FROM VENTA "
 				+ "WHERE venta_id= '"+unaVenta.getVenta_id()+"'";
 		ejecutarUpdate(sql, "Venta: "+unaVenta.getVenta_id()+", eliminada");
+	}
+	
+	public void eliminarCajaCerrada(LocalDate unaFecha) {
+		String sql= "DELETE FROM CAJACERRADA "
+				+ "WHERE caja_cerrada_fecha = '"+unaFecha+"'";
+		ejecutarUpdate(sql, "CAJACERRADA DE LA FECHA "+unaFecha+", ELIMINADA");
 	}
 	
 	public void eliminarItemsDeUnaVenta(int ventaid) {
