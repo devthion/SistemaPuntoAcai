@@ -54,6 +54,25 @@ public class ObtenerDatos extends ConexionBd{
 		
 	}
 	
+	public ObservableList<CajaCerrada> obtenerCajasObs() throws SQLException{
+		ObservableList<CajaCerrada> cajasCerradas = FXCollections.observableArrayList();	
+		ResultSet rs;
+		Statement unStmt = null;
+		
+		sql="SELECT * FROM CAJACERRADA";
+		rs=ejecutarQuery(sql, unStmt);
+		while(rs.next()) {
+			LocalDate fecha = rs.getDate(1).toLocalDate();
+			double monto_real = rs.getDouble(2);
+			double monto_ideal = rs.getDouble(3);
+			
+			CajaCerrada unaCaja = new CajaCerrada(fecha,monto_real,monto_ideal);
+			cajasCerradas.add(unaCaja);
+		}
+		return cajasCerradas;
+		
+	}
+	
 	public List<VentasPorMes> obtenerVentasPorMes() throws SQLException{
 		List<VentasPorMes> ventasPorMes = new ArrayList<VentasPorMes>();
 		ResultSet rs;

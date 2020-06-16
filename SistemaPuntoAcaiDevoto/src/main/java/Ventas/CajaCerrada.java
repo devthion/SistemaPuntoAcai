@@ -4,6 +4,7 @@ import java.sql.SQLException;
 import java.time.LocalDate;
 
 import ConexionBD.InsertarDatos;
+import ConexionBD.ModificarDatos;
 
 public class CajaCerrada {
 	
@@ -11,6 +12,7 @@ public class CajaCerrada {
 	double monto_real;
 	double monto_ideal;
 	InsertarDatos insertarDatos;
+	ModificarDatos modificarDatos;
 	
 	public CajaCerrada(LocalDate fecha,double monto_real,double monto_ideal) {
 		this.fecha=fecha;
@@ -31,6 +33,11 @@ public class CajaCerrada {
 	public void almacenarCajaCerrada() throws SQLException {
 		insertarDatos = new InsertarDatos();
 		insertarDatos.insertarCajaCerrada(this);
+	}
+	
+	public void eliminarCaja() throws SQLException {
+		modificarDatos = new ModificarDatos();
+		modificarDatos.eliminarCajaCerrada(this.fecha);
 	}
 	
 	

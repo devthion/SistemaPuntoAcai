@@ -68,7 +68,7 @@ public class VerCajas implements Initializable{
     }
 
     @FXML
-    void onEliminarCaja(ActionEvent event) {
+    void onEliminarCaja(ActionEvent event) throws SQLException {
     	CajaCerrada caja = this.tblCajas.getSelectionModel().getSelectedItem();
     	
     	if(caja==null) {
@@ -77,12 +77,12 @@ public class VerCajas implements Initializable{
     		
     		Optional<ButtonType> action =  new Alerta().preguntaConfirmacion("Desea eliminar la Caja ?", "Confirmación");
         	if (action.get() == ButtonType.OK) {
-//        		caja.eliminarCaja();
+        		caja.eliminarCaja();
         		new Alerta().informationAlert("Se ha eliminado la caja con exito", "Cancelar Caja");
         		try {
         			obtenerDatos = new ObtenerDatos();
         			cajas = FXCollections.observableArrayList();
-//        			cajas = obtenerDatos.obtenerCajas;
+        			cajas = obtenerDatos.obtenerCajasObs();
         		} catch (SQLException e) {
         			// TODO Auto-generated catch block
         			e.printStackTrace();
@@ -100,7 +100,7 @@ public class VerCajas implements Initializable{
 		try {
 			obtenerDatos = new ObtenerDatos();
 			cajas = FXCollections.observableArrayList();
-//			cajas = obtenerDatos.obtenerCajas;
+			cajas = obtenerDatos.obtenerCajasObs();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
