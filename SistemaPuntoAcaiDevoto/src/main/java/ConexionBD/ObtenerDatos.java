@@ -1,6 +1,7 @@
 package ConexionBD;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -183,6 +184,38 @@ public class ObtenerDatos extends ConexionBd{
 		ObservableList<Venta> ventas = FXCollections.observableArrayList();
 		Venta unaVenta;
 		sql = "SELECT * FROM VENTA WHERE venta_estado_envio ='"+false+"'";
+		rsUnaVenta=ejecutarQuery(sql,unStmt);
+		while(rsUnaVenta.next()) {
+			int ventaId=rsUnaVenta.getInt(1);
+		
+			LocalDate date = rsUnaVenta.getDate(3).toLocalDate();
+			
+			int ventaCliente = rsUnaVenta.getInt(2);
+			double ganancia = rsUnaVenta.getDouble(5);
+			double precioTotal = rsUnaVenta.getDouble(4);
+			double precio_envio = rsUnaVenta.getDouble(6);
+			boolean estado_entrega = rsUnaVenta.getBoolean(7);
+			String horario_entrega = rsUnaVenta.getString(8);
+			LocalDate fecha_entrega = rsUnaVenta.getDate(9).toLocalDate();
+			
+			unaVenta = new Venta(obtenerUnCliente(ventaCliente),date,itemsDeVenta(ventaId));
+			unaVenta.setVenta_ganancia(ganancia);
+			unaVenta.setVenta_precioTotal(precioTotal);
+			
+			Envio unEnvio = new Envio(horario_entrega,precio_envio,fecha_entrega);
+			unEnvio.setEstado(estado_entrega);
+			unaVenta.setEnvio(unEnvio);
+			unaVenta.setVentaId(ventaId);
+			ventas.add(unaVenta);
+			}
+		return ventas;
+	}
+	
+	public ObservableList<Venta> obtenerVentasDeldia(LocalDate dia) throws SQLException{
+		Statement unStmt = null;
+		ObservableList<Venta> ventas = FXCollections.observableArrayList();
+		Venta unaVenta;
+		sql = "SELECT * FROM VENTA WHERE venta_fecha_entrega ='"+dia+"' and venta_estado_envio ='"+true+"'";
 		rsUnaVenta=ejecutarQuery(sql,unStmt);
 		while(rsUnaVenta.next()) {
 			int ventaId=rsUnaVenta.getInt(1);

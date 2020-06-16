@@ -2,6 +2,7 @@ package ConexionBD;
 
 
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.List;
 
 import ModeloGasto.Gasto;
@@ -102,7 +103,7 @@ public class InsertarDatos extends ConexionBd{
 
 	public void concretarVenta(Venta venta) {
 		String sql= "UPDATE VENTA "
-				+ "SET venta_estado_envio='"+true+"'"
+				+ "SET venta_estado_envio='"+true+"', venta_fecha_entrega = '"+LocalDate.now()+"'"
 						+ "WHERE venta_id='"+venta.getVenta_id()+"'";
 		ejecutarUpdate(sql,"Venta '"+venta.getVenta_id()+"' concretada");
 	}

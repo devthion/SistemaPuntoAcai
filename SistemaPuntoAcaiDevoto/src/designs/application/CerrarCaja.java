@@ -1,8 +1,10 @@
 package application;
 
 import java.net.URL;
+import java.sql.Date;
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 import Alertas.Alerta;
@@ -18,6 +20,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -52,11 +55,16 @@ public class CerrarCaja implements Initializable{
     private TableColumn<Venta, String> colCliente;
 
     @FXML
+    private Button btnEliminarVenta;
+
+    @FXML
     private TableColumn<Venta, Double> colMontoTotal;
     
     private ObservableList<Venta> ventas;
     
     private CajaCerrada cajaDelDia;
+    
+	ObtenerDatos obtenerDatos;
     
 
     @FXML
@@ -111,17 +119,14 @@ public class CerrarCaja implements Initializable{
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		ObtenerDatos obtenerDatos;
 		try {
 			obtenerDatos = new ObtenerDatos();
 			ventas = FXCollections.observableArrayList();
-			ventas = obtenerDatos.obtenerVentas();
+			ventas = obtenerDatos.obtenerVentasDeldia(LocalDate.now());
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		ventas = ventas.filtered(unaVenta -> unaVenta.getUnEnvio().getFechaEntrega().equals(LocalDate.now()) && (unaVenta.getEstado() == true));
 		
 		this.tblVentas.setItems(ventas);
 		
@@ -133,5 +138,34 @@ public class CerrarCaja implements Initializable{
 		txtMontoIdeal.setText(""+ventas.stream().mapToDouble(unaVenta-> unaVenta.getVenta_precioTotal()).sum());
 		
 	}
+	
+    @FXML
+    void onEliminarVentaClick(ActionEvent event) throws SQLException {
+    	Venta venta = this.tblVentas.getSelectionModel().getSelectedItem();
+    	
+    	if(venta==null) {
+    		new Alerta().errorAlert("Debe seleccionar una Venta", "Cancelar Venta");
+    	}else {
+    		
+    		Optional<ButtonType> action =  new Alerta().preguntaConfirmacion("Desea cancelar la Venta ?" +venta.getCliente().getNombre(), "Confirmación");
+        	if (action.get() == ButtonType.OK) {
+        		System.out.println(venta.getVenta_id());
+        		venta.cancelarVenta();
+        		new Alerta().informationAlert("Se ha cancelado la venta con exito", "Cancelar Venta");
+        		try {
+        			obtenerDatos = new ObtenerDatos();
+        			ventas = FXCollections.observableArrayList();
+        			ventas = obtenerDatos.obtenerVentasDeldia(LocalDate.now());
+        		} catch (SQLException e) {
+        			// TODO Auto-generated catch block
+        			e.printStackTrace();
+        		}
+
+        		
+        		this.tblVentas.setItems(ventas);
+        	}
+    		
+    	}
+    }
 
 }

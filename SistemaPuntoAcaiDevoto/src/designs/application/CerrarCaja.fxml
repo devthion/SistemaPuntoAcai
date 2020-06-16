@@ -6,8 +6,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane prefHeight="650.0" prefWidth="1300.0" stylesheets="@../Styles/Style.css" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="application.CerrarCaja">
+<AnchorPane prefHeight="650.0" prefWidth="1300.0" stylesheets="@../Styles/Style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.CerrarCaja">
    <children>
       <TableView fx:id="tblVentas" layoutX="160.0" layoutY="124.0" prefHeight="402.0" prefWidth="711.0">
          <columns>
@@ -30,5 +29,6 @@
       <Label layoutX="994.0" layoutY="184.0" text="MONTO REAL" />
       <Label layoutX="991.0" layoutY="269.0" text="MONTO IDEAL" />
       <Label layoutX="160.0" layoutY="94.0" text="VENTAS DEL DIA" />
+      <Button fx:id="btnEliminarVenta" layoutX="399.0" layoutY="561.0" mnemonicParsing="false" onAction="#onEliminarVentaClick" text="ELIMINAR VENTA" />
    </children>
 </AnchorPane>

@@ -53,7 +53,7 @@ public class Venta {
 	
 	public boolean getEstado() {
 		if(unEnvio==null) {
-			return true;
+			return false;
 		}
 		else {
 			return unEnvio.getEstado();
