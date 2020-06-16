@@ -11,7 +11,7 @@ public class ConexionBd {
 	Connection con;
 	Statement stmt;
 	public ConexionBd() throws SQLException {
-		this.con = DriverManager.getConnection("jdbc:h2:"+"~/test", "root", "devthion");
+		this.con = DriverManager.getConnection("jdbc:h2:"+"./Database/bd", "root", "devthion");
 		this.stmt= con.createStatement();
 	}
 	

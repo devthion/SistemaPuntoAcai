@@ -17,7 +17,7 @@ public class DropTable {
 	public static void dropTablaGasto() {
 		try 
 		{
-			Connection con = DriverManager.getConnection("jdbc:h2:"+"~/test", "root", "devthion");
+			Connection con = DriverManager.getConnection("jdbc:h2:"+"./Database/bd", "root", "devthion");
 			Statement stmt= con.createStatement();
 			String sql = "DROP TABLE GASTO";
 			stmt.executeUpdate(sql);
@@ -30,7 +30,7 @@ public class DropTable {
 	public static void dropTablaVenta() {
 		try 
 		{
-			Connection con = DriverManager.getConnection("jdbc:h2:"+"~/test", "root", "devthion");
+			Connection con = DriverManager.getConnection("jdbc:h2:"+"./Database/bd", "root", "devthion");
 			Statement stmt= con.createStatement();
 			String sql = "DROP TABLE VENTA";
 			stmt.executeUpdate(sql);
@@ -43,7 +43,7 @@ public class DropTable {
 	public static void dropTablaCliente() {
 		try 
 		{
-			Connection con = DriverManager.getConnection("jdbc:h2:"+"~/test", "root", "devthion");
+			Connection con = DriverManager.getConnection("jdbc:h2:"+"./Database/bd", "root", "devthion");
 			Statement stmt= con.createStatement();
 			String sql = "DROP TABLE CLIENTE";
 			stmt.executeUpdate(sql);
@@ -56,7 +56,7 @@ public class DropTable {
 	public static void dropTablaProducto() {
 		try 
 		{
-			Connection con = DriverManager.getConnection("jdbc:h2:"+"~/test", "root", "devthion");
+			Connection con = DriverManager.getConnection("jdbc:h2:"+"./Database/bd", "root", "devthion");
 			Statement stmt= con.createStatement();
 			String sql = "DROP TABLE PRODUCTO";
 			stmt.executeUpdate(sql);
@@ -69,7 +69,7 @@ public class DropTable {
 	public static void dropTablaItem_Venta() {
 		try 
 		{
-			Connection con = DriverManager.getConnection("jdbc:h2:"+"~/test", "root", "devthion");
+			Connection con = DriverManager.getConnection("jdbc:h2:"+"./Database/bd", "root", "devthion");
 			Statement stmt= con.createStatement();
 			String sql = "DROP TABLE ITEM_VENTA";
 			stmt.executeUpdate(sql);

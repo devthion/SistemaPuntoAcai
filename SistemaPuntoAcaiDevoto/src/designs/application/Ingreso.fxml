@@ -13,6 +13,7 @@
             <Font size="24.0" />
          </font></Button>
       <TextField fx:id="etNombreUsuario" layoutX="528.0" layoutY="180.0" prefHeight="40.0" prefWidth="250.0" />
+      <PasswordField fx:id="etClave" layoutX="528.0" layoutY="285.0" prefHeight="40.0" prefWidth="250.0" />
       <Label fx:id="txtNombreUsuario" layoutX="564.0" layoutY="145.0" prefHeight="35.0" prefWidth="178.0" text="Nombre de Usuario" textFill="WHITE">
          <font>
             <Font size="24.0" />
@@ -24,6 +25,5 @@
       <Label layoutX="612.0" layoutY="30.0" text="INGRESO" />
       <Separator layoutX="152.0" layoutY="71.0" prefWidth="1000.0" />
       <Button fx:id="btnSalir" layoutX="1030.0" layoutY="587.0" mnemonicParsing="false" onAction="#onSalirClick" text="SALIR DEL SISTEMA" />
-      <PasswordField fx:id="etClave" layoutX="528.0" layoutY="285.0" prefHeight="40.0" prefWidth="250.0" />
    </children>
 </AnchorPane>

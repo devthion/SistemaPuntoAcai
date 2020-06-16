@@ -48,9 +48,6 @@ public class VerClientesMayoristas implements Initializable {
     private TableView<Cliente> tblClientes;
 
     @FXML
-    private TableColumn<Cliente, Integer> colCodPostal;
-
-    @FXML
     private TextField txtBusqueda;
 
     @FXML
@@ -154,7 +151,6 @@ public class VerClientesMayoristas implements Initializable {
 		this.colCalle.setCellValueFactory(new PropertyValueFactory<Cliente, String>("calle"));
 		this.colNumero.setCellValueFactory(new PropertyValueFactory<Cliente, Integer>("numero"));
 		this.colBarrio.setCellValueFactory(new PropertyValueFactory<Cliente, String>("barrio"));
-		this.colCodPostal.setCellValueFactory(new PropertyValueFactory<Cliente, Integer>("codPostal"));
 		this.ColTipoCliente.setCellValueFactory(new PropertyValueFactory<Cliente, String>("rubro"));
 		this.colIngresos.setCellValueFactory(new PropertyValueFactory<Cliente, Double>("ingresos"));	
 	}

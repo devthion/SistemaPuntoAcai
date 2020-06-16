@@ -121,7 +121,7 @@ public class CerrarCaja implements Initializable{
 			e.printStackTrace();
 		}
 		
-		ventas = ventas.filtered(unaVenta -> unaVenta.getFecha().equals(LocalDate.now()) && (unaVenta.getEstado() == true));
+		ventas = ventas.filtered(unaVenta -> unaVenta.getUnEnvio().getFechaEntrega().equals(LocalDate.now()) && (unaVenta.getEstado() == true));
 		
 		this.tblVentas.setItems(ventas);
 		

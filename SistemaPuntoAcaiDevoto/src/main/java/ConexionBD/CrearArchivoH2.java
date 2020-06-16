@@ -12,7 +12,7 @@ public class CrearArchivoH2 {
 	
 	public static void crearArchivo() throws InstantiationException, IllegalAccessException, ClassNotFoundException, SQLException {
 		Class.forName("org.h2.Driver").newInstance();
-		Connection con = DriverManager.getConnection("jdbc:h2:"+"~/test", "root", "devthion");
+		Connection con = DriverManager.getConnection("jdbc:h2:"+"./Database/bd", "root", "devthion");
 		System.out.println("Database creada");
 	}
 	

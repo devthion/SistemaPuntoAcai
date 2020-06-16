@@ -127,28 +127,44 @@ public class VerIngresos implements Initializable {
     			&& unaVenta.getUnEnvio().getFechaEntrega().getYear() ==anio
     			&& unaVenta.getUnEnvio().getEstado()==true);
     	
-    	lblGananciaDia.setText(ventasPorDia.stream().mapToDouble(unaVenta -> unaVenta.getVenta_ganancia()).sum()+" $");
+    	Double diferenciaDia = Double.parseDouble(lblIdealDia.getText())  - Double.parseDouble(lblRealDia.getText());
+    	
+    	if(diferenciaDia>0) {
+    		lblGananciaDia.setText((ventasPorDia.stream().mapToDouble(unaVenta -> unaVenta.getVenta_ganancia()).sum() - diferenciaDia )+" $");
+    	}else {
+    		lblGananciaDia.setText((ventasPorDia.stream().mapToDouble(unaVenta -> unaVenta.getVenta_ganancia()).sum()+ diferenciaDia )+" $");
+    	}
+
     	
     	lblIdealMes.setText(""+cajas.stream().filter(unaCaja ->unaCaja.getFecha().getMonthValue() == mes 
     			&& unaCaja.getFecha().getYear() == anio).mapToDouble(unaCaja -> unaCaja.getMonto_ideal()).sum());
-    	
     	lblRealMes.setText(""+cajas.stream().filter(unaCaja ->unaCaja.getFecha().getMonthValue() == mes 
     			&& unaCaja.getFecha().getYear() == anio).mapToDouble(unaCaja -> unaCaja.getMonto_real()).sum());
-    	
     	ventasPorMes = ventas.filtered(unaVenta -> unaVenta.getUnEnvio().getFechaEntrega().getYear()==anio
     			&& unaVenta.getUnEnvio().getFechaEntrega().getMonthValue()==mes
     			&& unaVenta.getUnEnvio().getEstado()==true);
     	
-    	lblGananciaMes.setText(ventasPorMes.stream().mapToDouble(unaVenta -> unaVenta.getVenta_ganancia()).sum()+" $");
+    	Double diferenciaMes = Double.parseDouble(lblIdealMes.getText())  - Double.parseDouble(lblRealMes.getText());
     	
-    	lblIdealAnio.setText(""+cajas.stream().filter(unaCaja ->unaCaja.getFecha().getYear() == anio).mapToDouble(unaCaja -> unaCaja.getMonto_ideal()).sum());
-    	
+    	if(diferenciaMes>0) {
+    		lblGananciaMes.setText((ventasPorMes.stream().mapToDouble(unaVenta -> unaVenta.getVenta_ganancia()).sum() - diferenciaMes) +" $");
+    	}else {
+    		lblGananciaMes.setText((ventasPorMes.stream().mapToDouble(unaVenta -> unaVenta.getVenta_ganancia()).sum() + diferenciaMes) +" $");
+    	}
+
+    	lblIdealAnio.setText(""+cajas.stream().filter(unaCaja ->unaCaja.getFecha().getYear() == anio).mapToDouble(unaCaja -> unaCaja.getMonto_ideal()).sum()); 	
     	lblRealAnio.setText(""+cajas.stream().filter(unaCaja ->unaCaja.getFecha().getYear() == anio).mapToDouble(unaCaja -> unaCaja.getMonto_real()).sum());
     	
     	ventasPorAnio = ventas.filtered(unaVenta -> unaVenta.getUnEnvio().getFechaEntrega().getYear()==anio
     			&& unaVenta.getUnEnvio().getEstado()==true);
     	
-    	lblGananciaAnio.setText(ventasPorAnio.stream().mapToDouble(unaVenta -> unaVenta.getVenta_ganancia()).sum()+" $");
+    	Double diferenciaAnio = Double.parseDouble(lblIdealAnio.getText())  - Double.parseDouble(lblRealAnio.getText());
+    	
+    	if(diferenciaAnio>0) {
+    		lblGananciaAnio.setText((ventasPorAnio.stream().mapToDouble(unaVenta -> unaVenta.getVenta_ganancia()).sum() - diferenciaAnio) +" $");
+    	}else {
+    		lblGananciaAnio.setText((ventasPorAnio.stream().mapToDouble(unaVenta -> unaVenta.getVenta_ganancia()).sum() + diferenciaAnio) +" $");
+    	}
 		
     }
     
