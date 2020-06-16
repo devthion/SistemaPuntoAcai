@@ -11,11 +11,11 @@
       <Label layoutX="160.0" layoutY="94.0" text="VENTAS DEL DIA" />
       <Label layoutX="947.0" layoutY="315.0" text="MONTO IDEAL" />
       <Label layoutX="950.0" layoutY="230.0" text="MONTO REAL" />
-      <Button fx:id="btnCerrarCaja" layoutX="914.0" layoutY="452.0" mnemonicParsing="false" onAction="#onCerrarCajaClick" text="CERRAR CAJA" />
+      <Button fx:id="btnCerrarCaja" layoutX="908.0" layoutY="419.0" mnemonicParsing="false" onAction="#onCerrarCajaClick" prefHeight="68.0" prefWidth="208.0" text="CERRAR CAJA" />
       <TextField fx:id="txtMontoIdeal" layoutX="908.0" layoutY="345.0" />
       <TextField fx:id="txtMontoReal" layoutX="908.0" layoutY="260.0" />
       <Separator layoutX="160.0" layoutY="71.0" prefWidth="1000.0" />
-      <Label layoutX="549.0" layoutY="26.0" text="CERRAR CAJA PASADA" />
+      <Label layoutX="500.0" layoutY="25.0" prefHeight="30.0" prefWidth="301.0" text="CERRAR CAJA PASADA" />
       <Button fx:id="btnVolver" layoutX="1148.0" layoutY="585.0" mnemonicParsing="false" onAction="#onVolverClick" prefHeight="51.0" prefWidth="138.0" text="VOLVER" textFill="WHITE">
          <font>
             <Font size="24.0" />
@@ -32,5 +32,6 @@
       <DatePicker fx:id="dateFechaCaja" layoutX="908.0" layoutY="181.0" prefHeight="33.0" prefWidth="208.0" style="-fx-background-color: #FFFFFF;" />
       <Label layoutX="956.0" layoutY="151.0" text="FECHA CAJA" />
       <Button fx:id="btnBuscarVentas" layoutX="1134.0" layoutY="157.0" mnemonicParsing="false" onAction="#onBuscarVentasClick" prefHeight="49.0" prefWidth="138.0" text="BUSCAR" />
+      <Button fx:id="btnEliminarVenta" layoutX="399.0" layoutY="561.0" mnemonicParsing="false" onAction="#onEliminarVentaClick" text="ELIMINAR VENTA" />
    </children>
 </AnchorPane>

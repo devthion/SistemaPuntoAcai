@@ -5,6 +5,7 @@ import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 import Alertas.Alerta;
@@ -20,6 +21,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -63,9 +65,14 @@ public class CerrarCajaPasada implements Initializable {
     @FXML
     private Button btnBuscarVentas;
     
+    @FXML
+    private Button btnEliminarVenta;
+    
     private ObservableList<Venta> ventas;
     
     private CajaCerrada cajaDelDia;
+    
+	ObtenerDatos obtenerDatos;
 
     @FXML
     void onCerrarCajaClick(ActionEvent event) throws SQLException {
@@ -118,17 +125,16 @@ public class CerrarCajaPasada implements Initializable {
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		
-		ObtenerDatos obtenerDatos;
+
 		try {
 			obtenerDatos = new ObtenerDatos();
 			ventas = FXCollections.observableArrayList();
-			ventas = obtenerDatos.obtenerVentas();
+			dateFechaCaja.setValue(LocalDate.now());
+			ventas = obtenerDatos.obtenerVentasDeldia(dateFechaCaja.getValue());
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		ventas = ventas.filtered(unaVenta -> unaVenta.getUnEnvio().getFechaEntrega().equals(dateFechaCaja.getValue()) && (unaVenta.getEstado() == true));
 		
 		this.tblVentas.setItems(ventas);
 		
@@ -153,27 +159,53 @@ public class CerrarCajaPasada implements Initializable {
     	if(cajas.stream().anyMatch(unaCaja -> unaCaja.getFecha().equals(dateFechaCaja.getValue()))) {
     		new Alerta().errorAlert("Ya se cerro la caja del dia: "+dateFechaCaja.getValue(), "Caja Cerrada");
     	}else {
-			try {
-				obtenerDatos = new ObtenerDatos();
-				ventas = FXCollections.observableArrayList();
-				ventas = obtenerDatos.obtenerVentas();
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			
-	    	ventas = ventas.filtered(unaVenta -> unaVenta.getUnEnvio().getFechaEntrega().equals(dateFechaCaja.getValue()) && (unaVenta.getEstado() == true));
-	    	System.out.println(dateFechaCaja.getValue());
-			
-			this.tblVentas.setItems(ventas);
-			
-			this.colCliente.setCellValueFactory(new PropertyValueFactory<Venta, String>("datosCliente"));
-			this.colFecha.setCellValueFactory(new PropertyValueFactory<Venta, LocalDate>("fecha"));
-			this.colGanancia.setCellValueFactory(new PropertyValueFactory<Venta, Double>("venta_ganancia"));
-			this.colMontoTotal.setCellValueFactory(new PropertyValueFactory<Venta, Double>("venta_precioTotal"));
-			
-			txtMontoIdeal.setText(""+ventas.stream().mapToDouble(unaVenta-> unaVenta.getVenta_precioTotal()).sum());
+    		try {
+    			obtenerDatos = new ObtenerDatos();
+    			ventas = FXCollections.observableArrayList();
+    			ventas = obtenerDatos.obtenerVentasDeldia(dateFechaCaja.getValue());
+    		} catch (SQLException e) {
+    			// TODO Auto-generated catch block
+    			e.printStackTrace();
+    		}
+    		
+    		this.tblVentas.setItems(ventas);
+    		
+    		this.colCliente.setCellValueFactory(new PropertyValueFactory<Venta, String>("datosCliente"));
+    		this.colFecha.setCellValueFactory(new PropertyValueFactory<Venta, LocalDate>("fecha"));
+    		this.colGanancia.setCellValueFactory(new PropertyValueFactory<Venta, Double>("venta_ganancia"));
+    		this.colMontoTotal.setCellValueFactory(new PropertyValueFactory<Venta, Double>("venta_precioTotal"));
+    		
+    		txtMontoIdeal.setText(""+ventas.stream().mapToDouble(unaVenta-> unaVenta.getVenta_precioTotal()).sum());
 	    }
+    }
+    
+    @FXML
+    void onEliminarVentaClick(ActionEvent event) throws SQLException {
+    	Venta venta = this.tblVentas.getSelectionModel().getSelectedItem();
+    	
+    	if(venta==null) {
+    		new Alerta().errorAlert("Debe seleccionar una Venta", "Cancelar Venta");
+    	}else {
+    		
+    		Optional<ButtonType> action =  new Alerta().preguntaConfirmacion("Desea cancelar la Venta ?", "Confirmación");
+        	if (action.get() == ButtonType.OK) {
+        		System.out.println(venta.getVenta_id());
+        		venta.cancelarVenta();
+        		new Alerta().informationAlert("Se ha cancelado la venta con exito", "Cancelar Venta");
+        		try {
+        			obtenerDatos = new ObtenerDatos();
+        			ventas = FXCollections.observableArrayList();
+        			ventas = obtenerDatos.obtenerVentasDeldia(dateFechaCaja.getValue());
+        		} catch (SQLException e) {
+        			// TODO Auto-generated catch block
+        			e.printStackTrace();
+        		}
+
+        		
+        		this.tblVentas.setItems(ventas);
+        	}
+    		
+    	}
     }
 
 }

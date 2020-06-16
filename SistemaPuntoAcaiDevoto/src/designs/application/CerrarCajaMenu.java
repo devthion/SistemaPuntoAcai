@@ -102,7 +102,22 @@ public class CerrarCajaMenu {
     
     @FXML
     void onVerCajasClick(ActionEvent event) {
-    	
+    	try {
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(getClass().getResource("VerCajasCerradas.fxml"));
+			AnchorPane root = (AnchorPane) loader.load();
+			Scene scene = new Scene(root,1300,650);
+			Stage stage = new Stage();
+			stage.setScene(scene);
+			stage.resizableProperty().setValue(Boolean.FALSE);
+			stage.setResizable(false);
+			stage.setTitle("Cerrar Caja");
+			stage.show();
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+    	Stage stage = (Stage) btnCerrarCajaDiaria.getScene().getWindow();
+    	stage.close();
     }
 
 }

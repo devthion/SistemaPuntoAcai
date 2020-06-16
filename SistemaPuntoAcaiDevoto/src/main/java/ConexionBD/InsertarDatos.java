@@ -4,6 +4,7 @@ package ConexionBD;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Objects;
 
 import ModeloGasto.Gasto;
 import ModelosClientes.Cliente;
@@ -69,7 +70,7 @@ public class InsertarDatos extends ConexionBd{
 	public void insertarVenta(Venta unaVenta) throws SQLException {
 		
 		boolean estado;
-		if(unaVenta.getUnEnvio().getFechaEntrega().isBefore(LocalDate.now())) {
+		if((!Objects.isNull(unaVenta.getUnEnvio())) && unaVenta.getUnEnvio().getFechaEntrega().isBefore(LocalDate.now())) {
 			estado = true;
 		}else {
 			estado = false;
