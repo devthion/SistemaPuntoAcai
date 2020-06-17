@@ -79,11 +79,8 @@ public class Venta {
 	}
 
 	public double getPrecioTotal() {
-		if (precioModificado == 0) {
-			return items.stream().mapToDouble(unItem-> unItem.getPrecioFinal()).sum() + this.getEnvioPrecio();
-		}else {
+
 			return precioModificado + this.getEnvioPrecio();
-		}
 	}
 	
 	public double getCostoDeLaVenta() {

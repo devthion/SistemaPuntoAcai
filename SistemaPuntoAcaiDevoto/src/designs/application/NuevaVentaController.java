@@ -270,15 +270,11 @@ public class NuevaVentaController implements Initializable {
 						}
 					});
 		   
-		        	double precio = 0;
-		        	for (Item item : itemsAVender) {
-		        		precio += item.getPrecioFinal();
-		    		}
+
 		        	double precioModificado = Double.parseDouble(txtPrecioTotal.getText());
-		        	
-		        	if(precio!=precioModificado) {
+
 		        		nuevaVenta.setPrecioModificado(precioModificado);
-		        	}
+
 		        	try {
 						nuevaVenta.almacenarVenta();
 					} catch (SQLException e1) {
