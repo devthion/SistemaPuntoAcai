@@ -9,21 +9,29 @@
 
 <AnchorPane maxHeight="Infinity" maxWidth="Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1300.0" stylesheets="@../Styles/Style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.VerGraficoClientesPorBarrio">
    <children>
-  
-      <BarChart fx:id="barchart" layoutX="61.0" layoutY="72.0" prefHeight="504.0" prefWidth="1179.0" title="Barrios por cliente" AnchorPane.bottomAnchor="74.0" AnchorPane.rightAnchor="60.0" AnchorPane.topAnchor="72.0">
-        <xAxis>
-          <CategoryAxis side="BOTTOM" fx:id="x" />
-        </xAxis>
-        <yAxis>
-          <NumberAxis fx:id="y" nodeOrientation="LEFT_TO_RIGHT" side="LEFT" />
-        </yAxis>
-      </BarChart>
-      <Label layoutX="587.0" layoutY="20.0" text="ESTADISTICAS" />
+      <Label layoutX="528.0" layoutY="20.0" text="ESTADISTICAS POR BARRIO" />
       <Separator layoutX="150.0" layoutY="57.0" prefWidth="1000.0" />
       <Button fx:id="btnVolver" layoutX="1148.0" layoutY="585.0" mnemonicParsing="false" onAction="#onVolverClick" prefHeight="51.0" prefWidth="138.0" text="VOLVER" textFill="WHITE">
          <font>
             <Font size="24.0" />
          </font>
       </Button>
+      <ScrollPane layoutX="14.0" layoutY="81.0" prefHeight="488.0" prefWidth="1272.0">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="481.0" prefWidth="6550.0">
+               <children>
+              
+                  <BarChart fx:id="barchart" layoutX="14.0" layoutY="14.0" prefHeight="439.0" prefWidth="6500.0" AnchorPane.bottomAnchor="28.0" AnchorPane.rightAnchor="36.0" AnchorPane.topAnchor="14.0">
+                    <xAxis>
+                      <CategoryAxis prefHeight="0.0" prefWidth="1443.0" side="BOTTOM" fx:id="x" />
+                    </xAxis>
+                    <yAxis>
+                      <NumberAxis fx:id="y" nodeOrientation="LEFT_TO_RIGHT" side="LEFT" />
+                    </yAxis>
+                  </BarChart>
+               </children>
+            </AnchorPane>
+        </content>
+      </ScrollPane>
    </children>
 </AnchorPane>
