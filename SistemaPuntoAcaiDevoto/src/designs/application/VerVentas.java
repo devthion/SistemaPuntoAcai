@@ -15,12 +15,15 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
@@ -52,13 +55,21 @@ public class VerVentas implements Initializable {
 
     @FXML
     private TableColumn<Venta, String> colCliente;
+    
+    @FXML
+    private TableColumn<Venta, Double> colEnvio;
 
     @FXML
     private TableColumn<Venta, Double> colMontoTotal;
     
+    @FXML
+    private Label lblItems;
+    
     private ObservableList<Venta> ventasPendientes;
     
     private ObtenerDatos obtenerDatos;
+    
+    String productos;
 
     @FXML
     void onVolverClick(ActionEvent event) {
@@ -104,7 +115,18 @@ public class VerVentas implements Initializable {
 		this.colMontoTotal.setCellValueFactory(new PropertyValueFactory<Venta, Double>("venta_precioTotal"));
 		this.colHorario.setCellValueFactory(new PropertyValueFactory<Venta, String>("Horario"));
 		this.colDireccion.setCellValueFactory(new PropertyValueFactory<Venta, String>("DireccionCliente"));
+		this.colEnvio.setCellValueFactory(new PropertyValueFactory<Venta, Double>("PrecioEnvio"));
 		//this.colPago.setCellValueFactory(new PropertyValueFactory<Venta, String>("estaPagado"));
+		
+		lblItems.setMinWidth(600);
+		lblItems.setMinHeight(5);
+	    
+		tblVentas.setOnMouseClicked((MouseEvent eve) ->{ 
+			productos = "";
+			Venta venta = this.tblVentas.getSelectionModel().getSelectedItem();
+			venta.getItems().forEach(unItem -> productos += unItem.getNombreProducto()+" \nCantidad: "+unItem.getCantidad()+" \nPrecio: "+unItem.getItemPrecio()+" \n---------------------------------\n");
+			lblItems.setText(productos);
+		});
 	}
 	
 	public void RefrescarTabla() {
@@ -117,6 +139,7 @@ public class VerVentas implements Initializable {
 		}
 		
 		this.tblVentas.setItems(ventasPendientes);
+		
 	}
 	
 
@@ -138,5 +161,8 @@ public class VerVentas implements Initializable {
     		
     	}
     }
+    
+
+    
 
 }

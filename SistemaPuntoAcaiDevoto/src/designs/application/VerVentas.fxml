@@ -16,17 +16,28 @@
             <Font size="24.0" />
          </font>
       </Button>
-      <TableView fx:id="tblVentas" layoutX="78.0" layoutY="124.0" prefHeight="347.0" prefWidth="1165.0" AnchorPane.bottomAnchor="179.0" AnchorPane.leftAnchor="78.0" AnchorPane.rightAnchor="57.0" AnchorPane.topAnchor="124.0">
+      <TableView fx:id="tblVentas" layoutX="12.0" layoutY="124.0" prefHeight="347.0" prefWidth="1032.0" AnchorPane.bottomAnchor="179.0" AnchorPane.leftAnchor="12.0" AnchorPane.rightAnchor="256.0" AnchorPane.topAnchor="124.0">
          <columns>
-            <TableColumn fx:id="colFechaRealizada" maxWidth="1.7976931348623157E308" prefWidth="167.0" text="FECHA REALIZADA" />
-            <TableColumn fx:id="colCliente" maxWidth="1.7976931348623157E308" prefWidth="234.0" text="CLIENTE" />
-            <TableColumn fx:id="colMontoTotal" prefWidth="150.0" text="MONTO TOTAL" />
-            <TableColumn fx:id="colFechaEntrega" prefWidth="192.0" text="FECHA ENTREGA" />
-            <TableColumn fx:id="colHorario" prefWidth="142.0" text="HORARIO" />
-            <TableColumn fx:id="colDireccion" maxWidth="440.0" prefWidth="278.0" text="DIRECCION" />
+            <TableColumn fx:id="colFechaRealizada" maxWidth="1.7976931348623157E308" prefWidth="115.0" text="FECHA REALIZADA" />
+            <TableColumn fx:id="colCliente" maxWidth="1.7976931348623157E308" prefWidth="168.0" text="CLIENTE" />
+            <TableColumn fx:id="colFechaEntrega" prefWidth="135.0" text="FECHA ENTREGA" />
+            <TableColumn fx:id="colHorario" prefWidth="116.0" text="HORARIO" />
+            <TableColumn fx:id="colDireccion" maxWidth="495.0" prefWidth="212.0" text="DIRECCION" />
+            <TableColumn fx:id="colMontoTotal" prefWidth="132.0" text="MONTO TOTAL" />
+            <TableColumn fx:id="colEnvio" prefWidth="133.0" text="MONTO ENVIO" />
          </columns>
       </TableView>
       <Button fx:id="btnTerminarVenta" layoutX="278.0" layoutY="527.0" mnemonicParsing="false" onAction="#onTerminarVentaClick" prefHeight="49.0" prefWidth="260.0" text="ENVIO REALIZADO" />
       <Button fx:id="btnCancelarVenta" layoutX="763.0" layoutY="527.0" mnemonicParsing="false" onAction="#onCancelarVentaClick" prefHeight="49.0" prefWidth="260.0" text="CANCELAR VENTA" />
+      <Label layoutX="1103.0" layoutY="94.0" text="PRODUCTOS" />
+      <ScrollPane layoutX="1061.0" layoutY="123.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="357.0" prefWidth="221.0">
+        <content>
+          <AnchorPane prefHeight="357.0" prefWidth="224.0">
+               <children>
+                  <Label fx:id="lblItems" alignment="TOP_LEFT" contentDisplay="TOP" layoutX="4.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="2000.0" prefWidth="215.0" />
+               </children>
+            </AnchorPane>
+        </content>
+      </ScrollPane>
    </children>
 </AnchorPane>

@@ -10,7 +10,6 @@
 .label {
     -fx-font-size: 20px;
     -fx-text-fill: #481862;
-    -fx-alignment: center ;
 }
 
 .label-header {

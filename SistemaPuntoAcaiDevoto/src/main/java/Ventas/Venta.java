@@ -156,6 +156,11 @@ public class Venta {
 	public Envio getUnEnvio() {
 		return unEnvio;
 	}
+	
+	public Double getPrecioEnvio() {
+		return unEnvio.getPrecio();
+	}
+	
 
 	public void setVentaId(int ventaId) {
 		this.venta_id=ventaId;
