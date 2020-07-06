@@ -59,6 +59,9 @@ public class CerrarCaja implements Initializable{
     @FXML
     private TableColumn<Venta, Double> colMontoTotal;
     
+    @FXML
+    private TableColumn<Venta, String> colDireccionCliente;
+    
     private ObservableList<Venta> ventas;
     
     private CajaCerrada cajaDelDia;
@@ -133,6 +136,7 @@ public class CerrarCaja implements Initializable{
 		this.colFecha.setCellValueFactory(new PropertyValueFactory<Venta, LocalDate>("fecha"));
 		this.colGanancia.setCellValueFactory(new PropertyValueFactory<Venta, Double>("venta_ganancia"));
 		this.colMontoTotal.setCellValueFactory(new PropertyValueFactory<Venta, Double>("venta_precioTotal"));
+		this.colDireccionCliente.setCellValueFactory(new PropertyValueFactory<Venta, String>("direccionCliente"));
 		
 		txtMontoIdeal.setText(""+ventas.stream().mapToDouble(unaVenta-> unaVenta.getVenta_precioTotal()).sum());
 		
