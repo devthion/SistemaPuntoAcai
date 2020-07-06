@@ -38,9 +38,6 @@ public class AgregarCliente {
 
     @FXML
     private TextField txtEmail;
-
-    @FXML
-    private TextField txtCodigoPostal;
     
     @FXML
     private TextField txtRubro;
@@ -139,7 +136,6 @@ public class AgregarCliente {
     	this.txtNumero.setText(""+clienteEditable.getNumero());
     	this.txtCalle.setText(clienteEditable.getCalle());
     	this.txtBarrio.setText(clienteEditable.getBarrio());
-    	this.txtCodigoPostal.setText(""+clienteEditable.getCodPostal());
     	this.txtEmail.setText(clienteEditable.getEmail());
     	this.txtTelefono.setText(""+clienteEditable.getTelefono());
     	this.slipTipoCliente.setText(clienteEditable.getTipo().toLowerCase());
@@ -163,14 +159,13 @@ public class AgregarCliente {
     	int numero = Integer.parseInt(txtNumero.getText());
     	String calle = this.txtCalle.getText().toLowerCase();
     	String barrio = this.txtBarrio.getText().toLowerCase();
-    	int codPostal = Integer.parseInt(this.txtCodigoPostal.getText());
     	String email=this.txtEmail.getText().toLowerCase();
     	int telefono=Integer.parseInt(txtTelefono.getText());
     	String tipo = slipTipoCliente.getText().toLowerCase();
     	String comoLlego = slipComoLlego.getText().toLowerCase();
     	String rubro = txtRubro.getText().toLowerCase();
     	
-    	Direccion direccion = new Direccion(calle, numero, barrio, codPostal);
+    	Direccion direccion = new Direccion(calle, numero, barrio, 0);
     	return new Cliente(dni, nombre, apellido, telefono, email, direccion, tipo, comoLlego, rubro);
     }
     
@@ -195,7 +190,6 @@ public class AgregarCliente {
     	List<TextField> productosAValidar = new ArrayList<>();
     	productosAValidar.add(txtDni);
     	productosAValidar.add(txtNumero);
-    	productosAValidar.add(txtCodigoPostal);
     	productosAValidar.add(txtTelefono);
     	
     	return productosAValidar;
@@ -216,7 +210,6 @@ public class AgregarCliente {
     	
     	List<TextField> productosAValidar = new ArrayList<>();
     	productosAValidar.add(txtNumero);
-    	productosAValidar.add(txtCodigoPostal);
     	productosAValidar.add(txtTelefono);
     	
     	return productosAValidar;
