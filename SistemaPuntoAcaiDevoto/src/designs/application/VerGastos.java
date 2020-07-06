@@ -92,8 +92,49 @@ public class VerGastos implements Initializable {
     @FXML
     private MenuItem slipDiciembre;
     
+    @FXML
+    private Button btnEditarGasto;
+    
     private ObservableList<Gasto> gastos;
     private ObservableList<Gasto> gastosPorMes;
+    
+    @FXML
+    void onEditarGastoClick(ActionEvent event) throws SQLException {
+    	Gasto gasto = this.tblGastos.getSelectionModel().getSelectedItem();
+    	
+    	if(gasto==null) {
+    		new Alerta().errorAlert("Debe seleccionar un cliente", "Editar Cliente");
+    	}else {
+    		try {
+    			FXMLLoader loader = new FXMLLoader();
+    			loader.setLocation(getClass().getResource("EditarGasto.fxml"));
+    			AnchorPane root = (AnchorPane) loader.load();
+    			
+    			EditarCostoController controller = loader.getController();
+    			controller.initEditar(gasto);
+    			
+    			Scene scene = new Scene(root,1300,650);
+    			Stage stage = new Stage();
+    			stage.setScene(scene);
+    			stage.resizableProperty().setValue(Boolean.FALSE);
+    			stage.setResizable(false);
+    			stage.setTitle("Gastos");
+    			stage.showAndWait();
+    			
+    			
+    			
+    		} catch(Exception e) {
+    			e.printStackTrace();
+    		}
+    		ObtenerDatos obtenerDatos = new ObtenerDatos();
+			obtenerDatos = new ObtenerDatos();
+			gastos = FXCollections.observableArrayList();
+			gastos = obtenerDatos.obtenerGastos();
+			
+			this.tblGastos.setItems(gastos);
+			this.tblGastos.refresh();
+    	}
+    }
 
     @FXML
     void onEneroClick(ActionEvent event) {
