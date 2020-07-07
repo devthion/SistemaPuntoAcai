@@ -16,5 +16,6 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="lib" path="h2/bin/h2-1.4.200.jar"/>
+	<classpathentry kind="lib" path="itextpdf-5.5.13.1.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
