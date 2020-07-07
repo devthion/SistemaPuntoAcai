@@ -8,12 +8,13 @@
 
 <AnchorPane prefHeight="650.0" prefWidth="1300.0" stylesheets="@../Styles/Style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.CerrarCaja">
    <children>
-      <TableView fx:id="tblVentas" layoutX="160.0" layoutY="124.0" prefHeight="402.0" prefWidth="711.0">
+      <TableView fx:id="tblVentas" layoutX="20.0" layoutY="124.0" prefHeight="402.0" prefWidth="907.0">
          <columns>
-            <TableColumn fx:id="colFecha" maxWidth="1.7976931348623157E308" prefWidth="167.0" text="FECHA" />
-            <TableColumn fx:id="colCliente" maxWidth="1.7976931348623157E308" prefWidth="202.0" text="CLIENTE" />
-            <TableColumn fx:id="colMontoTotal" prefWidth="163.0" text="MONTO TOTAL" />
-            <TableColumn fx:id="colGanancia" maxWidth="440.0" prefWidth="164.0" text="GANANCIA" />
+            <TableColumn fx:id="colFecha" maxWidth="1.7976931348623157E308" prefWidth="120.0" text="FECHA" />
+            <TableColumn fx:id="colCliente" maxWidth="1.7976931348623157E308" prefWidth="165.0" text="CLIENTE" />
+            <TableColumn fx:id="colMontoTotal" prefWidth="167.0" text="MONTO TOTAL" />
+            <TableColumn fx:id="colGanancia" maxWidth="440.0" prefWidth="130.0" text="GANANCIA" />
+            <TableColumn fx:id="colDireccionCliente" prefWidth="210.0" text="DIRECCION CLIENTE" />
          </columns>
       </TableView>
       <Button fx:id="btnVolver" layoutX="1148.0" layoutY="585.0" mnemonicParsing="false" onAction="#onVolverClick" prefHeight="51.0" prefWidth="138.0" text="VOLVER" textFill="WHITE">
@@ -28,7 +29,7 @@
       <Button fx:id="btnCerrarCaja" layoutX="959.0" layoutY="418.0" mnemonicParsing="false" onAction="#onCerrarCajaClick" text="CERRAR CAJA" />
       <Label layoutX="994.0" layoutY="184.0" text="MONTO REAL" />
       <Label layoutX="991.0" layoutY="269.0" text="MONTO IDEAL" />
-      <Label layoutX="160.0" layoutY="94.0" text="VENTAS DEL DIA" />
+      <Label layoutX="20.0" layoutY="94.0" text="VENTAS DEL DIA" />
       <Button fx:id="btnEliminarVenta" layoutX="399.0" layoutY="561.0" mnemonicParsing="false" onAction="#onEliminarVentaClick" text="ELIMINAR VENTA" />
    </children>
 </AnchorPane>

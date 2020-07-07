@@ -78,9 +78,9 @@ public class ObtenerDatos extends ConexionBd{
 		ResultSet rs;
 		Statement unStmt = null;
 		
-		sql="SELECT MONTH(venta_fecha),isnull(COUNT(venta_fecha),0) FROM VENTA "
-				+ "WHERE YEAR(venta_fecha)= '"+LocalDate.now().getYear()+"'"
-						+ "GROUP BY MONTH(venta_fecha)";
+		sql="SELECT MONTH(venta_fecha_entrega),isnull(COUNT(venta_fecha_entrega),0) FROM VENTA "
+				+ "WHERE YEAR(venta_fecha_entrega)= '"+LocalDate.now().getYear()+"'"
+						+ "GROUP BY MONTH(venta_fecha_entrega)";
 		rs=ejecutarQuery(sql, unStmt);
 		while(rs.next()) {
 			VentasPorMes unMesConVentas = new VentasPorMes(rs.getInt(1), rs.getInt(2));

@@ -20,6 +20,13 @@ public class ModificarDatos extends ConexionBd {
 		ejecutarUpdate(sql, "Venta: "+unaVenta.getVenta_id()+", eliminada");
 	}
 	
+	public void cambiarDirecciones() {
+		String sql = "ALTER TABLE CLIENTE ALTER COLUMN dire_calle VARCHAR(255) ";
+		ejecutarUpdate(sql, "La Direccion de la tabla ha sido modificada.");
+	}
+	
+	
+	
 	public void eliminarCajaCerrada(LocalDate unaFecha) {
 		String sql= "DELETE FROM CAJACERRADA "
 				+ "WHERE caja_cerrada_fecha = '"+unaFecha+"'";
