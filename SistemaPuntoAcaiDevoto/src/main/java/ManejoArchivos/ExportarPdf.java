@@ -5,13 +5,22 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.List;
+
 
 import com.itextpdf.awt.geom.Rectangle;
+import com.itextpdf.text.BaseColor;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Element;
+import com.itextpdf.text.ElementListener;
+import com.itextpdf.text.Font;
+import com.itextpdf.text.FontFactory;
+import com.itextpdf.text.List;
+import com.itextpdf.text.ListItem;
 import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.Phrase;
 import com.itextpdf.text.TabStop;
+import com.itextpdf.text.pdf.FontSelector;
 import com.itextpdf.text.pdf.PdfAnnotation;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
@@ -30,66 +39,92 @@ public class ExportarPdf {
 		PdfWriter writer = PdfWriter.getInstance(document, new FileOutputStream("prueba.pdf"));
 		document.open();
 		//--------TABLA DE PRODUCTOS
-		PdfPTable table = new PdfPTable(3);
+		PdfPTable table = new PdfPTable(4);
 		table.setWidthPercentage(105);
 		table.setSpacingBefore(11f);
 		table.setSpacingAfter(11f);
 		
-		float[] colWidth= {2f,2f,2f};
+		float[] colWidth= {1.5f,1.5f,1.5f,1.5f};
 		table.setWidths(colWidth);
 		//COLUMNA NOMBRE
-		PdfPCell c1 = new PdfPCell(new Paragraph("VentaNro"));
-		PdfPCell c2 = new PdfPCell(new Paragraph("Cliente"));
-		PdfPCell c3 = new PdfPCell(new Paragraph("Precio"));
+		PdfPCell c1 = new PdfPCell(new Paragraph("DESCRIPCION"));
+		PdfPCell c2 = new PdfPCell(new Paragraph("CANT.TOTAL"));
+		PdfPCell c3 = new PdfPCell(new Paragraph("PRECIO UNITARIO"));
+		PdfPCell c4 = new PdfPCell(new Paragraph("PRECIO TOTAL"));
 		table.addCell(c1);
 		table.addCell(c2);
 		table.addCell(c3);
+		table.addCell(c4);
 		
 		//COLUMNA VALORES
-		c1=new PdfPCell(new Paragraph("194242")); 
-		c2=new PdfPCell(new Paragraph("ElDiegui")); 
-		c3=new PdfPCell(new Paragraph("$5000")); 
+		c1=new PdfPCell(new Paragraph("Pote de Frutilla")); 
+		c2=new PdfPCell(new Paragraph("1")); 
+		c3=new PdfPCell(new Paragraph("$600")); 
+		c4=new PdfPCell(new Paragraph("$600")); 
 		table.addCell(c1);
 		table.addCell(c2);
 		table.addCell(c3);
+		table.addCell(c4);
 		
-		c1=new PdfPCell(new Paragraph("194242")); 
-		c2=new PdfPCell(new Paragraph("ElDiegui")); 
-		c3=new PdfPCell(new Paragraph("$5000")); 
+		c1=new PdfPCell(new Paragraph("Pote de Limon")); 
+		c2=new PdfPCell(new Paragraph("2")); 
+		c3=new PdfPCell(new Paragraph("$450")); 
+		c4=new PdfPCell(new Paragraph("$900")); 
 		table.addCell(c1);
 		table.addCell(c2);
 		table.addCell(c3);
+		table.addCell(c4);
+		
 		
 		c1=new PdfPCell(new Paragraph("")); 
 		c2=new PdfPCell(new Paragraph("")); 
 		c3=new PdfPCell(new Paragraph("")); 
+		c4=new PdfPCell(new Paragraph("")); 
 		table.addCell(c1);
 		table.addCell(c2);
 		table.addCell(c3);
+		table.addCell(c4);
 		//------------------------------
 		
 
 		//DETELLA PRODUCTOS
-		Paragraph detalleProducto = new Paragraph("Total: $34");
+		Paragraph detalleProducto = new Paragraph("TOTAL: $34");
 		//------------------
 		
-		//DETALLE CLIENTE
-
+		//DETALLE VENDEDOR
+		FontSelector selector1 = new FontSelector();
+		Font f1 = FontFactory.getFont(FontFactory.TIMES_ROMAN, 18);
+		f1.setColor(BaseColor.BLACK);
+		selector1.addFont(f1);
+		
+		Paragraph titulo = new Paragraph(selector1.process("ACAI DEVOTO \n"));
+		titulo.setAlignment(Element.ALIGN_CENTER);
+		document.add(titulo);
+		
+		Phrase phrase = new Phrase();
+		phrase.add("DIRECCION: \n\n");
+		phrase.add("TELEFONO: \n\n");
+		phrase.add("FECHA: \n\n");
+		
+		
 		//------------------------
 
 		//CUADRO PRINCIPAL------------
+		
 		PdfPTable framePrincipal = new PdfPTable(1);
 		framePrincipal.setWidthPercentage(105);
 		framePrincipal.setSpacingBefore(11f);
 		framePrincipal.setSpacingAfter(11f);
-		PdfPCell primerCuadro =new PdfPCell(new Paragraph("ACAI DEVOTO"));
-		primerCuadro.setFixedHeight(150);
+		PdfPCell primerCuadro =new PdfPCell(phrase);
+		primerCuadro.setFixedHeight(100);
 		PdfPCell segundoCuadro = new PdfPCell(table);
 		segundoCuadro.setFixedHeight(300);
+		PdfPCell tercerCuadro = new PdfPCell(detalleProducto);
+		tercerCuadro.setFixedHeight(80);
 		
 		framePrincipal.addCell(primerCuadro);
 		framePrincipal.addCell(segundoCuadro);
-		framePrincipal.addCell(detalleProducto);
+		framePrincipal.addCell(tercerCuadro);
 		//-----------------
 		
 	
