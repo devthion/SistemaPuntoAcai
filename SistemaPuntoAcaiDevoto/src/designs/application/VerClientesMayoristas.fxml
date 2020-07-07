@@ -15,12 +15,12 @@
             <Font size="24.0" />
          </font>
       </Button>
-      <Button fx:id="btnEditarCliente" layoutX="480.0" layoutY="533.0" mnemonicParsing="false" onAction="#editarCliente" prefHeight="51.0" prefWidth="340.0" stylesheets="@../Styles/Style.css" text="EDITAR CLIENTE" textFill="WHITE">
+      <Button fx:id="btnEditarCliente" layoutX="481.0" layoutY="543.0" mnemonicParsing="false" onAction="#editarCliente" prefHeight="51.0" prefWidth="340.0" stylesheets="@../Styles/Style.css" text="EDITAR CLIENTE" textFill="WHITE">
          <font>
             <Font size="24.0" />
          </font>
       </Button>
-      <TableView fx:id="tblClientes" layoutX="32.0" layoutY="103.0" prefHeight="402.0" prefWidth="1236.0">
+      <TableView fx:id="tblClientes" layoutX="92.0" layoutY="103.0" prefHeight="340.0" prefWidth="1117.0">
          <columns>
             <TableColumn fx:id="colNombre" prefWidth="119.0" text="Nombre" />
             <TableColumn fx:id="colApellido" prefWidth="100.0" text="Apellido" />
@@ -34,5 +34,6 @@
             <TableColumn fx:id="colIngresos" prefWidth="161.0" text="Ingresos Generados" />
          </columns>
       </TableView>
+      <TextField fx:id="txtNombreABuscar" alignment="CENTER" layoutX="481.0" layoutY="468.0" prefHeight="49.0" prefWidth="340.0" promptText="NOMBRE A BUSCAR" />
    </children>
 </AnchorPane>
