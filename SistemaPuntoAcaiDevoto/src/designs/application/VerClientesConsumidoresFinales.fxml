@@ -8,7 +8,7 @@
 
 <AnchorPane prefHeight="650.0" prefWidth="1300.0" stylesheets="@../Styles/Style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.VerClientesConsumidoresFinales">
    <children>
-      <TableView fx:id="tblClientes" layoutX="92.0" layoutY="99.0" prefHeight="402.0" prefWidth="1117.0">
+      <TableView fx:id="tblClientes" layoutX="92.0" layoutY="99.0" prefHeight="340.0" prefWidth="1117.0">
         <columns>
           <TableColumn fx:id="colNombre" prefWidth="133.0" text="Nombre" />
           <TableColumn fx:id="colApellido" prefWidth="106.0" text="Apellido" />
@@ -33,5 +33,6 @@
       </Button>
       <Label layoutX="490.0" layoutY="30.0" text="CLIENTES CONSUMIDORES FINALES" />
       <Separator layoutX="150.0" layoutY="71.0" prefWidth="1000.0" />
+      <TextField fx:id="txtNombreABuscar" alignment="CENTER" layoutX="480.0" layoutY="459.0" prefHeight="49.0" prefWidth="340.0" promptText="NOMBRE A BUSCAR" />
    </children>
 </AnchorPane>

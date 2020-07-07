@@ -10,6 +10,7 @@ import ConexionBD.Querys;
 import ModelosClientes.Cliente;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -63,6 +64,9 @@ public class VerClientesConsumidoresFinales implements Initializable {
 
     @FXML
     private TableColumn<Cliente, Integer> colTelefono;
+
+    @FXML
+    private TextField txtNombreABuscar;
 
     
     private ObservableList<Cliente> clientes;
@@ -148,6 +152,19 @@ public class VerClientesConsumidoresFinales implements Initializable {
 		this.colNumero.setCellValueFactory(new PropertyValueFactory<Cliente, Integer>("numero"));
 		this.colBarrio.setCellValueFactory(new PropertyValueFactory<Cliente, String>("barrio"));
 		this.colIngresos.setCellValueFactory(new PropertyValueFactory<Cliente, Double>("ingresos"));
+		
+		FilteredList<Cliente> filteredData = new FilteredList<>(clientes, p -> true);
+    	tblClientes.setItems(filteredData);
+    	
+    	txtNombreABuscar.setPromptText("Buscar...");
+    	txtNombreABuscar.textProperty().addListener((prop, old, text) -> {
+    	    filteredData.setPredicate(unCliente -> {
+    	        if(text == null || text.isEmpty()) return true;
+    	        
+    	        String name = unCliente.getNombre().toLowerCase();  
+    	        return name.contains(text.toLowerCase());
+    	    });
+    	});
 		
 		
 	}
