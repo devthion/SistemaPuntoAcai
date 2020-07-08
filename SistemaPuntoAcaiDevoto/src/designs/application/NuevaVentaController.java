@@ -1,16 +1,20 @@
 package application;
 
 
+import java.io.FileNotFoundException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
+import com.itextpdf.text.DocumentException;
+
 import Alertas.Alerta;
 import Alertas.Validaciones;
 import ConexionBD.ObtenerDatos;
 import ConexionBD.Querys;
+import ManejoArchivos.ExportarPdf;
 import ModelosClientes.Cliente;
 import Productos.Producto;
 import Ventas.Item;
@@ -246,7 +250,7 @@ public class NuevaVentaController implements Initializable {
     }
 
     @FXML
-    void onRealizarVentaClick(ActionEvent event) {
+    void onRealizarVentaClick(ActionEvent event) throws FileNotFoundException, DocumentException {
     	Cliente cliente = this.tblClientes.getSelectionModel().getSelectedItem();
     	
     	if(Validaciones.validarCajaNumerica(txtPrecioTotal)) {
@@ -277,11 +281,14 @@ public class NuevaVentaController implements Initializable {
 
 		        	try {
 						nuevaVenta.almacenarVenta();
+						ExportarPdf exportarPdf = new ExportarPdf();
+			        	exportarPdf.exportar(nuevaVenta);
 						
 					} catch (SQLException e1) {
 						e1.printStackTrace();
 					}
 		        	//CREO QUE ACA IRIA EL TEMA DE LA FACTURA con nuevaVenta
+		        	
 		        	new Alerta().informationAlert("Se ha registrado la venta", "Nueva Venta");
 		        	try {
 		    			FXMLLoader loader = new FXMLLoader();

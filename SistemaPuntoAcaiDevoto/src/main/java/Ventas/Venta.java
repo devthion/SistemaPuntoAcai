@@ -79,7 +79,6 @@ public class Venta {
 	}
 
 	public double getPrecioTotal() {
-
 			return precioModificado + this.getEnvioPrecio();
 	}
 	
@@ -93,6 +92,23 @@ public class Venta {
 
 	public Cliente getCliente() {
 		return cliente;
+	}
+	
+	public String getNombreCliente() {
+		return this.cliente.getNombre();
+	}
+	
+	public String getClienteContacto() {
+		if(Integer.toString(this.cliente.getTelefono()).isEmpty()) {
+			if(this.cliente.getEmail().isEmpty()) {
+				return "sin contacto";
+			}else {
+				return this.cliente.getEmail();
+			}
+		}else {
+			return Integer.toString(this.cliente.getTelefono());
+		}
+		
 	}
 
 	public LocalDate getFecha() {
@@ -129,7 +145,7 @@ public class Venta {
 	}
 	
 	public String getDatosCliente() {
-		return cliente.getNombre()+" "+cliente.getApellido() +", DNI: "+cliente.getDni();
+		return cliente.getNombre()+" "+cliente.getApellido();
 	}
 
 	public void concretarVenta() throws SQLException {
@@ -158,7 +174,12 @@ public class Venta {
 	}
 	
 	public Double getPrecioEnvio() {
-		return unEnvio.getPrecio();
+		if(unEnvio !=null) {
+			return unEnvio.getPrecio();
+		}else {
+			return 0.0;
+		}
+		
 	}
 	
 

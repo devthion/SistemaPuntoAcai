@@ -30,14 +30,21 @@ public class Item {
 		this.item_venta = item_venta;
 	}
 
+	public double getPrecioUnitarioProducto() {
+		return producto.getPrecioUnitario();
+	}
+	
+	public double getPrecioMayoristaProducto() {
+		return producto.getPrecioMayor();
+	}
 
 
 	public double getPrecioFinal() {
 		//ACA HACER CUENTAS SEGUN SI ES MAYORISTA O CONSUMIDOR FINAL
 		if(esCompraMayorista()) {
-			return cantidad*producto.getPrecioMayor();
+			return cantidad*this.getPrecioMayoristaProducto();
 		}else {
-			return cantidad*producto.getPrecioUnitario();
+			return cantidad*this.getPrecioUnitarioProducto();
 		}
 	
 	}
