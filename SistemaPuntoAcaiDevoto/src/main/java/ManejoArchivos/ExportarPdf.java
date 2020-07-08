@@ -88,7 +88,10 @@ public class ExportarPdf {
 		
 
 		//DETELLA PRODUCTOS
-		Paragraph detalleProducto = new Paragraph("TOTAL: $34");
+		PdfPTable precioTotal = new PdfPTable(1);
+		precioTotal.setWidthPercentage(100);
+		precioTotal.addCell(getCell("Total: ", PdfPCell.ALIGN_RIGHT));
+		
 		//------------------
 		
 		//DETALLE VENDEDOR
@@ -101,11 +104,39 @@ public class ExportarPdf {
 		titulo.setAlignment(Element.ALIGN_CENTER);
 		document.add(titulo);
 		
-		Phrase phrase = new Phrase();
-		phrase.add("DIRECCION: \n\n");
-		phrase.add("TELEFONO: \n\n");
-		phrase.add("FECHA: \n\n");
 		
+		
+		PdfPTable table2 = new PdfPTable(3);
+		table2.setWidthPercentage(100);
+		table2.addCell(getCell("Fecha: ", PdfPCell.ALIGN_LEFT));
+		table2.addCell(getCell("", PdfPCell.ALIGN_CENTER));
+		table2.addCell(getCell("Remito Nro: ", PdfPCell.ALIGN_RIGHT));
+
+		table2.addCell(getCell(" ", PdfPCell.ALIGN_LEFT));
+		table2.addCell(getCell(" ", PdfPCell.ALIGN_CENTER));
+		table2.addCell(getCell(" ", PdfPCell.ALIGN_RIGHT));
+		
+		table2.addCell(getCell("Direccion: ", PdfPCell.ALIGN_LEFT));
+		table2.addCell(getCell("", PdfPCell.ALIGN_CENTER));
+		table2.addCell(getCell("", PdfPCell.ALIGN_RIGHT));
+		
+		table2.addCell(getCell("Telefono:", PdfPCell.ALIGN_LEFT));
+		table2.addCell(getCell("", PdfPCell.ALIGN_CENTER));
+		table2.addCell(getCell("", PdfPCell.ALIGN_RIGHT));
+		
+		table2.addCell(getCell(" ", PdfPCell.ALIGN_LEFT));
+		table2.addCell(getCell(" ", PdfPCell.ALIGN_CENTER));
+		table2.addCell(getCell(" ", PdfPCell.ALIGN_RIGHT));
+		
+		table2.addCell(getCell(" ", PdfPCell.ALIGN_LEFT));
+		table2.addCell(getCell(" ", PdfPCell.ALIGN_CENTER));
+		table2.addCell(getCell(" ", PdfPCell.ALIGN_RIGHT));
+		
+		table2.addCell(getCell("Cliente: ", PdfPCell.ALIGN_LEFT));
+		table2.addCell(getCell("Contacto: ", PdfPCell.ALIGN_CENTER));
+		table2.addCell(getCell("", PdfPCell.ALIGN_RIGHT));
+
+
 		
 		//------------------------
 
@@ -115,21 +146,39 @@ public class ExportarPdf {
 		framePrincipal.setWidthPercentage(105);
 		framePrincipal.setSpacingBefore(11f);
 		framePrincipal.setSpacingAfter(11f);
-		PdfPCell primerCuadro =new PdfPCell(phrase);
+		
+		
+		PdfPCell primerCuadro =new PdfPCell(table2);
 		primerCuadro.setFixedHeight(100);
 		PdfPCell segundoCuadro = new PdfPCell(table);
 		segundoCuadro.setFixedHeight(300);
-		PdfPCell tercerCuadro = new PdfPCell(detalleProducto);
+		PdfPCell tercerCuadro = new PdfPCell(precioTotal);
 		tercerCuadro.setFixedHeight(80);
+		
+		
+
+		
 		
 		framePrincipal.addCell(primerCuadro);
 		framePrincipal.addCell(segundoCuadro);
 		framePrincipal.addCell(tercerCuadro);
+		
+		
+		
+		
 		//-----------------
 		
 	
 		document.add(framePrincipal);
 		document.close();
 		writer.close();
+	}
+	
+	public static PdfPCell getCell(String text, int alignment) {
+	    PdfPCell cell = new PdfPCell(new Phrase(text));
+	    cell.setPadding(0);
+	    cell.setHorizontalAlignment(alignment);
+	    cell.setBorder(PdfPCell.NO_BORDER);
+	    return cell;
 	}
 }

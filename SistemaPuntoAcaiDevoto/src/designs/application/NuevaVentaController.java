@@ -277,9 +277,11 @@ public class NuevaVentaController implements Initializable {
 
 		        	try {
 						nuevaVenta.almacenarVenta();
+						
 					} catch (SQLException e1) {
 						e1.printStackTrace();
 					}
+		        	//CREO QUE ACA IRIA EL TEMA DE LA FACTURA con nuevaVenta
 		        	new Alerta().informationAlert("Se ha registrado la venta", "Nueva Venta");
 		        	try {
 		    			FXMLLoader loader = new FXMLLoader();
