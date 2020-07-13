@@ -54,7 +54,7 @@ public class Item {
 	}
 	
 	public String getNombreProducto() {
-		return producto.getNombre()+" "+producto.getKilos() +" gramos";
+		return producto.getNombre()+" "+producto.getKilos() +" cc";
 	}
 	
 	public void setItemPrecio(double precio) {

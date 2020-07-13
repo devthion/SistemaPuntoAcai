@@ -1,8 +1,10 @@
 package application;
 
+import java.sql.SQLException;
 import java.time.LocalDate;
 
 import Alertas.Alerta;
+import ConexionBD.ModificarDatos;
 import ModeloGasto.Gasto;
 import ModelosClientes.Cliente;
 import javafx.event.ActionEvent;
@@ -33,19 +35,23 @@ public class EditarCostoController {
     private DatePicker dateCosto;
     
     private Gasto gastoEditable;
+    private Gasto gastoNuevo;
 
     @FXML
     void onGuardarGastoClick(ActionEvent event) {
-    	Gasto nuevoGasto = generarGasto();
+    	gastoNuevo = generarGasto();
     	//IF YA EXISTE EN LA BD
-    	if(2>1) {
-    		//gastoEditable.modificarGasto(nuevoGasto);
-        	new Alerta().informationAlert("Se ha editado el gasto", "Informacion");
+    		try {
+				new ModificarDatos().editarGasto(gastoEditable, gastoNuevo);
+				new Alerta().informationAlert("Se ha editado el gasto", "Informacion");
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				new Alerta().errorAlert("Error al modificar el gasto", "Error en la modificacion");
+			}
+        	
         	Stage stage = (Stage) btnNuevoGasto.getScene().getWindow();
         	stage.close();
-    	}else {
-    		new Alerta().errorAlert("Error al modificar el gasto", "Error en la modificacion");
-    	}
     }
     
     public void initEditar(Gasto gasto) {

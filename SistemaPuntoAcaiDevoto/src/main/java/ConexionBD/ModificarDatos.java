@@ -3,6 +3,7 @@ package ConexionBD;
 import java.sql.SQLException;
 import java.time.LocalDate;
 
+import ModeloGasto.Gasto;
 import ModelosClientes.Cliente;
 import Ventas.Venta;
 
@@ -55,6 +56,16 @@ public class ModificarDatos extends ConexionBd {
 					+ "clie_dni = '"+clienteEditado.getDni()+"'"
 							+ "WHERE clie_dni = '"+dniCliente+"'";
 			ejecutarUpdate(sql, "cliente editado");
+	}
+	
+	public void editarGasto(Gasto gastoViejo, Gasto gastoNuevo){
+		
+		String sql = "UPDATE GASTO SET "
+				+ "gasto_fecha = '"+gastoNuevo.getFecha()+"',"
+				+"gasto_monto = '"+gastoNuevo.getMonto() +"',"
+				+ "gasto_detalle = '"+gastoNuevo.getDetalle()+"'"
+						+ "WHERE gasto_fecha = '"+gastoViejo.getFecha()+"' AND gasto_monto ='"+gastoViejo.getMonto()+"' AND  gasto_detalle ='"+gastoViejo.getDetalle()+"'";
+		ejecutarUpdate(sql, "GASTO EDITADO");
 	}
 	
 	

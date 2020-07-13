@@ -97,7 +97,7 @@ public class Producto {
 	}
 	
 	public String getNombreProducto() {
-		return this.getNombre()+" "+this.getKilos() +" gramos";
+		return this.getNombre()+" "+this.getKilos() +" cc";
 	}
 
 	public int getCantidadVendidos() {
