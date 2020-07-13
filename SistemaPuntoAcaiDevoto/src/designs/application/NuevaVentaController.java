@@ -2,6 +2,8 @@ package application;
 
 
 import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.Objects;
@@ -282,7 +284,18 @@ public class NuevaVentaController implements Initializable {
 		        	try {
 						nuevaVenta.almacenarVenta();
 						ExportarPdf exportarPdf = new ExportarPdf();
-			        	exportarPdf.exportar(nuevaVenta);
+			        	try {
+							exportarPdf.exportar(nuevaVenta);
+						} catch (MalformedURLException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						} catch (DocumentException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						} catch (IOException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
 						
 					} catch (SQLException e1) {
 						e1.printStackTrace();
