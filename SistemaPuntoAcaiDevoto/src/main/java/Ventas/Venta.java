@@ -58,7 +58,6 @@ public class Venta {
 		else {
 			return unEnvio.getEstado();
 		}
-		
 	}
 	
 	public double getEnvioPrecio() {
@@ -67,7 +66,14 @@ public class Venta {
 		}else {
 			return unEnvio.getPrecio();
 		}
-		
+	}
+	
+	public String getObservacion() {
+		if(unEnvio==null) {
+			return "";
+		}else {
+			return unEnvio.getObservacion();
+		}
 	}
 	
 	public void setVenta_precioTotal(double venta_precioTotal) {
@@ -179,8 +185,9 @@ public class Venta {
 		}else {
 			return 0.0;
 		}
-		
 	}
+	
+
 	
 
 	public void setVentaId(int ventaId) {

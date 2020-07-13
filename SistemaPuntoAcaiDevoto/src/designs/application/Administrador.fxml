@@ -16,9 +16,12 @@
             <Font size="24.0" />
          </font>
       </Button>
-      <Button fx:id="btnCrearBd" layoutX="322.0" layoutY="154.0" mnemonicParsing="false" onAction="#onCrearBDClick" prefHeight="125.0" prefWidth="253.0" text="CREAR BD" />
-      <Button fx:id="btnCrearTablas" layoutX="725.0" layoutY="154.0" mnemonicParsing="false" onAction="#onCrearTablasClcik" prefHeight="125.0" prefWidth="253.0" text="CREAR TABLAS" />
-      <Button fx:id="btnEliminarTablas" layoutX="322.0" layoutY="350.0" mnemonicParsing="false" onAction="#onEliminarTablas" prefHeight="125.0" prefWidth="253.0" text="ELIMINAR TABLAS" />
-      <Button fx:id="btnTraerDatos" layoutX="725.0" layoutY="350.0" mnemonicParsing="false" onAction="#onTraerDatosClick" prefHeight="125.0" prefWidth="253.0" text="TRAER DATOS" />
+      <Button fx:id="btnCrearBd" layoutX="62.0" layoutY="126.0" mnemonicParsing="false" onAction="#onCrearBDClick" prefHeight="125.0" prefWidth="253.0" text="CREAR BD" />
+      <Button fx:id="btnCrearTablas" layoutX="359.0" layoutY="126.0" mnemonicParsing="false" onAction="#onCrearTablasClcik" prefHeight="125.0" prefWidth="253.0" text="CREAR TABLAS" />
+      <Button fx:id="btnEliminarTablas" layoutX="674.0" layoutY="126.0" mnemonicParsing="false" onAction="#onEliminarTablas" prefHeight="125.0" prefWidth="253.0" text="ELIMINAR TABLAS" />
+      <Button fx:id="btnTraerDatos" layoutX="964.0" layoutY="126.0" mnemonicParsing="false" onAction="#onTraerDatosClick" prefHeight="125.0" prefWidth="253.0" text="TRAER DATOS" />
+      <Button fx:id="btnModificarDirecciones" layoutX="94.0" layoutY="351.0" mnemonicParsing="false" onAction="#onModificarDireccionesClick" prefHeight="125.0" prefWidth="335.0" text="MODIFICAR DIRECCIONES" />
+      <Button fx:id="btnAgregarInversiones" layoutX="495.0" layoutY="351.0" mnemonicParsing="false" onAction="#onAgregarInversionesClick" prefHeight="125.0" prefWidth="335.0" text="AGREGAR INVERSIONES" />
+      <Button fx:id="btnAgregarDescripcion" layoutX="882.0" layoutY="351.0" mnemonicParsing="false" onAction="#onAgregarDescripcionClick" prefHeight="125.0" prefWidth="335.0" text="AGREGAR DESCRIPCION" />
    </children>
 </AnchorPane>

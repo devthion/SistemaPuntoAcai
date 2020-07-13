@@ -67,6 +67,9 @@ public class VerVentas implements Initializable {
     
     private ObservableList<Venta> ventasPendientes;
     
+    @FXML
+    private Label lblObservacion;
+    
     private ObtenerDatos obtenerDatos;
     
     String productos;
@@ -126,6 +129,7 @@ public class VerVentas implements Initializable {
 			Venta venta = this.tblVentas.getSelectionModel().getSelectedItem();
 			venta.getItems().forEach(unItem -> productos += unItem.getNombreProducto()+" \nCantidad: "+unItem.getCantidad()+" \nPrecio: "+unItem.getItemPrecio()+" \n---------------------------------\n");
 			lblItems.setText(productos);
+			lblObservacion.setText(""+venta.getObservacion());
 		});
 	}
 	

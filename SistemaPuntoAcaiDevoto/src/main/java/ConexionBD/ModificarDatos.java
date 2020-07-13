@@ -26,7 +26,10 @@ public class ModificarDatos extends ConexionBd {
 		ejecutarUpdate(sql, "La Direccion de la tabla ha sido modificada.");
 	}
 	
-	
+	public void agregarObservacion() {
+		String sql = "ALTER TABLE Venta ADD venta_observacion varchar(255)";
+		ejecutarUpdate(sql, "Tabla observacion agregada");
+	}
 	
 	public void eliminarCajaCerrada(LocalDate unaFecha) {
 		String sql= "DELETE FROM CAJACERRADA "

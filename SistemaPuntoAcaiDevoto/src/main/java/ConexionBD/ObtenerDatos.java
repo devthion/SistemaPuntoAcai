@@ -215,12 +215,14 @@ public class ObtenerDatos extends ConexionBd{
 			boolean estado_entrega = rsUnaVenta.getBoolean(7);
 			String horario_entrega = rsUnaVenta.getString(8);
 			LocalDate fecha_entrega = rsUnaVenta.getDate(9).toLocalDate();
+			
+			String observacion = rsUnaVenta.getString(10);
 
 			unaVenta = new Venta(obtenerUnCliente(ventaCliente),date,itemsDeVenta(ventaId));
 			unaVenta.setVenta_ganancia(ganancia);
 			unaVenta.setVenta_precioTotal(precioTotal);
 
-			Envio unEnvio = new Envio(horario_entrega,precio_envio,fecha_entrega);
+			Envio unEnvio = new Envio(horario_entrega,precio_envio,fecha_entrega,observacion);
 			unEnvio.setEstado(estado_entrega);
 			unaVenta.setEnvio(unEnvio);
 			unaVenta.setVentaId(ventaId);
@@ -247,11 +249,13 @@ public class ObtenerDatos extends ConexionBd{
 			String horario_entrega = rsUnaVenta.getString(8);
 			LocalDate fecha_entrega = rsUnaVenta.getDate(9).toLocalDate();
 			
+			String observacion = rsUnaVenta.getString(10);
+			
 			unaVenta = new Venta(obtenerUnCliente(ventaCliente),date,itemsDeVenta(ventaId));
 			unaVenta.setVenta_ganancia(ganancia);
 			unaVenta.setVenta_precioTotal(precioTotal);
 			
-			Envio unEnvio = new Envio(horario_entrega,precio_envio,fecha_entrega);
+			Envio unEnvio = new Envio(horario_entrega,precio_envio,fecha_entrega,observacion);
 			unEnvio.setEstado(estado_entrega);
 			unaVenta.setEnvio(unEnvio);
 			unaVenta.setVentaId(ventaId);
@@ -279,11 +283,13 @@ public class ObtenerDatos extends ConexionBd{
 			String horario_entrega = rsUnaVenta.getString(8);
 			LocalDate fecha_entrega = rsUnaVenta.getDate(9).toLocalDate();
 			
+			String observacion = rsUnaVenta.getString(10);
+			
 			unaVenta = new Venta(obtenerUnCliente(ventaCliente),date,itemsDeVenta(ventaId));
 			unaVenta.setVenta_ganancia(ganancia);
 			unaVenta.setVenta_precioTotal(precioTotal);
 			
-			Envio unEnvio = new Envio(horario_entrega,precio_envio,fecha_entrega);
+			Envio unEnvio = new Envio(horario_entrega,precio_envio,fecha_entrega,observacion);
 			unEnvio.setEstado(estado_entrega);
 			unaVenta.setEnvio(unEnvio);
 			ventas.add(unaVenta);

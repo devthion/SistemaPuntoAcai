@@ -30,6 +30,9 @@ public class AgregarEnvioController {
     @FXML
     private TextField txtCostoEnvio;
     
+    @FXML
+    private TextField txtObservacion;
+    
     private Envio envio;
 
 	@FXML
@@ -41,11 +44,14 @@ public class AgregarEnvioController {
     @FXML
     void onActualizarClick(ActionEvent event) {
     	List<TextField> productosAValidar = new ArrayList<>();
+    	List<TextField> productosALlenar = new ArrayList<>();
+    	productosALlenar.add(txtObservacion);
+    	Validaciones.ponerVaciosTextsFiels(productosALlenar);
     	productosAValidar.add(txtCostoEnvio);
     	if(Validaciones.validarCajasNumericas(productosAValidar)) {
     		new Alerta().errorAlert("Debe ingresar un valor numerico", "Error ingreso de Datos");
     	}else {
-    		envio = new Envio(txtHorarioEntrega.getText().toString(),Double.parseDouble(txtCostoEnvio.getText()),txtFechaEntrega.getValue());
+    		envio = new Envio(txtHorarioEntrega.getText().toString(),Double.parseDouble(txtCostoEnvio.getText()),txtFechaEntrega.getValue(),txtObservacion.getText().toString());
         	new Alerta().informationAlert("Se ha registrado el Envio", "Envio");
         	Stage stage = (Stage) btnVolver.getScene().getWindow();
         	stage.close();

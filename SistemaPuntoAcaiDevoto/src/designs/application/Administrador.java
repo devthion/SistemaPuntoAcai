@@ -6,6 +6,7 @@ import Alertas.Alerta;
 import ConexionBD.CrearArchivoH2;
 import ConexionBD.CrearTabla;
 import ConexionBD.DropTable;
+import ConexionBD.ModificarDatos;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -30,6 +31,15 @@ public class Administrador {
     
     @FXML
     private Button btnTraerDatos;
+    
+    @FXML
+    private Button btnModificarDirecciones;
+
+    @FXML
+    private Button btnAgregarInversiones;
+
+    @FXML
+    private Button btnAgregarDescripcion;
 
     @FXML
     void onVolverClick(ActionEvent event) {
@@ -77,6 +87,32 @@ public class Administrador {
     @FXML
     void onTraerDatosClick(ActionEvent event) {
     	//DragAndDrop;
+    }
+    
+    @FXML
+    void onModificarDireccionesClick(ActionEvent event) {
+		try {	
+			new ModificarDatos().cambiarDirecciones();
+		} catch (Exception e) {
+		// TODO: handle exception
+		System.out.println("ERROR");
+	}
+    }
+
+    @FXML
+    void onAgregarInversionesClick(ActionEvent event) {
+
+    }
+
+    @FXML
+    void onAgregarDescripcionClick(ActionEvent event) {
+		try {
+			
+			new ModificarDatos().agregarObservacion();
+		} catch (Exception e) {
+			// TODO: handle exception
+			System.out.println("ERROR");
+		}
     }
 
 }
