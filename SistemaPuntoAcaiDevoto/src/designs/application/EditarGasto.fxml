@@ -5,8 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane prefHeight="650.0" prefWidth="1300.0" stylesheets="@../Styles/Style.css" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="application.EditarCostoController">
+<AnchorPane prefHeight="650.0" prefWidth="1300.0" stylesheets="@../Styles/Style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.EditarCostoController">
    <children>
       <Button fx:id="btnNuevoGasto" layoutX="546.0" layoutY="476.0" mnemonicParsing="false" onAction="#onGuardarGastoClick" text="EDITAR GASTO" />
       <Label layoutX="614.0" layoutY="235.0" text="MONTO" />
@@ -14,7 +13,7 @@
       <TextField fx:id="txtMonto" layoutX="547.0" layoutY="265.0" />
       <TextField fx:id="txtDetalle" layoutX="482.0" layoutY="161.0" prefHeight="33.0" prefWidth="337.0" />
       <Separator layoutX="150.0" layoutY="72.0" prefWidth="1000.0" />
-      <Label layoutX="583.0" layoutY="31.0" text="NUEVO GASTO" />
+      <Label layoutX="583.0" layoutY="31.0" text="EDITAR GASTO" />
       <Button fx:id="btnVolver" layoutX="1152.0" layoutY="588.0" mnemonicParsing="false" onAction="#onVolverClick" text="VOLVER" />
       <DatePicker fx:id="dateCosto" layoutX="547.0" layoutY="367.0" prefHeight="33.0" prefWidth="208.0" style="-fx-background-color: #FFFFFF;" />
       <Label layoutX="620.0" layoutY="337.0" text="FECHA" />

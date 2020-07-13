@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane prefHeight="650.0" prefWidth="1300.0" stylesheets="@../Styles/Style.css" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="application.VerInversiones">
+   <children>
+      <Button fx:id="btnEditarInversion" layoutX="409.0" layoutY="515.0" mnemonicParsing="false" onAction="#onEditarInversionClick" text="EDITAR INVERSION" />
+      <Label layoutX="911.0" layoutY="362.0" text="INVERSIONES TOTALES:" />
+      <Label layoutX="909.0" layoutY="325.0" text="INVERSIONES DEL MES:" />
+      <TableView fx:id="tblInversiones" layoutX="150.0" layoutY="130.0" prefHeight="334.0" prefWidth="725.0">
+         <columns>
+            <TableColumn fx:id="colDetalle" prefWidth="249.0" text="DETALLE" />
+            <TableColumn fx:id="colCantidad" minWidth="0.0" prefWidth="225.0" text="CANTIDAD" />
+            <TableColumn fx:id="colFecha" prefWidth="249.0" text="FECHA" />
+         </columns>
+      </TableView>
+      <Separator layoutX="150.0" layoutY="71.0" prefWidth="1000.0" />
+      <Label layoutX="589.0" layoutY="32.0" text="INVERSIONES" />
+      <Button fx:id="btnVolver" layoutX="1148.0" layoutY="585.0" mnemonicParsing="false" onAction="#onVolverClick" prefHeight="51.0" prefWidth="138.0" text="VOLVER" textFill="WHITE">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Button>
+      <Label layoutX="911.0" layoutY="137.0" text="MES" />
+      <Label layoutX="909.0" layoutY="206.0" text="AÑO" />
+      <SplitMenuButton fx:id="slipMenuMes" layoutX="973.0" layoutY="130.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="177.0">
+         <items>
+            <MenuItem fx:id="slipEnero" mnemonicParsing="false" onAction="#onEneroClick" text="ENERO" />
+            <MenuItem fx:id="slipFebrero" mnemonicParsing="false" onAction="#onFebreroClick" text="FEBRERO" />
+            <MenuItem fx:id="slipMarzo" mnemonicParsing="false" onAction="#onMarzoClick" text="MARZO" />
+            <MenuItem fx:id="slipAbril" mnemonicParsing="false" onAction="#onAbrilClick" text="ABRIL" />
+            <MenuItem fx:id="slipMayo" mnemonicParsing="false" onAction="#onMayoClick" text="MAYO" />
+            <MenuItem fx:id="slipJunio" mnemonicParsing="false" onAction="#onJunioClick" text="JUNIO" />
+            <MenuItem fx:id="slipJulio" mnemonicParsing="false" onAction="#onJulioClick" text="JULIO" />
+            <MenuItem fx:id="slipAgosto" mnemonicParsing="false" onAction="#onAgostoClick" text="AGOSTO" />
+            <MenuItem fx:id="slipSeptiembre" mnemonicParsing="false" onAction="#onSeptiembreClick" text="SEPTIEMBRE" />
+            <MenuItem fx:id="slipOctubre" mnemonicParsing="false" onAction="#onOctubreClick" text="OCTUBRE" />
+            <MenuItem fx:id="slipNoviembre" mnemonicParsing="false" onAction="#onNoviembreClick" text="NOVIEMBRE" />
+            <MenuItem fx:id="slipDiciembre" mnemonicParsing="false" onAction="#onDiciembreClick" text="DICIEMBRE" />
+         </items>
+      </SplitMenuButton>
+      <TextField fx:id="txtAnio" layoutX="973.0" layoutY="205.0" prefHeight="33.0" prefWidth="177.0" />
+      <Label fx:id="lblInversionesTotal" layoutX="1121.0" layoutY="359.0" prefHeight="30.0" prefWidth="153.0" />
+      <Label fx:id="lblInversionesMes" layoutX="1119.0" layoutY="322.0" prefHeight="30.0" prefWidth="153.0" />
+   </children>
+</AnchorPane>

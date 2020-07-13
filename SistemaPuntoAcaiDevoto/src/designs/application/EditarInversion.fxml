@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane prefHeight="650.0" prefWidth="1300.0" stylesheets="@../Styles/Style.css" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="application.EditarInversionController">
+   <children>
+      <Label layoutX="620.0" layoutY="336.0" text="FECHA" />
+      <DatePicker fx:id="dateInversion" layoutX="547.0" layoutY="366.0" prefHeight="33.0" prefWidth="208.0" style="-fx-background-color: #FFFFFF;" />
+      <Button fx:id="btnVolver" layoutX="1152.0" layoutY="587.0" mnemonicParsing="false" onAction="#onVolverClick" text="VOLVER" />
+      <Label layoutX="565.0" layoutY="28.0" text="EDITAR INVERSION" />
+      <Separator layoutX="150.0" layoutY="71.0" prefWidth="1000.0" />
+      <TextField fx:id="txtDetalle" layoutX="482.0" layoutY="160.0" prefHeight="33.0" prefWidth="337.0" />
+      <TextField fx:id="txtMonto" layoutX="547.0" layoutY="264.0" />
+      <Label layoutX="531.0" layoutY="130.0" text="DETALLE DE LA INVERSION" />
+      <Label layoutX="614.0" layoutY="234.0" text="MONTO" />
+      <Button fx:id="btnEditarInversion" layoutX="523.0" layoutY="473.0" mnemonicParsing="false" onAction="#onEditarInversionClick" text="EDITAR INVERSION" />
+   </children>
+</AnchorPane>
