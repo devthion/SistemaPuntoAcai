@@ -3,6 +3,7 @@ package ManejoArchivos;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.net.MalformedURLException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -15,6 +16,7 @@ import com.itextpdf.text.Element;
 import com.itextpdf.text.ElementListener;
 import com.itextpdf.text.Font;
 import com.itextpdf.text.FontFactory;
+import com.itextpdf.text.Image;
 import com.itextpdf.text.List;
 import com.itextpdf.text.ListItem;
 import com.itextpdf.text.Paragraph;
@@ -26,6 +28,7 @@ import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 
+
 import ConexionBD.ObtenerDatos;
 import Ventas.Item;
 import Ventas.Venta;
@@ -36,12 +39,12 @@ public class ExportarPdf {
 		//exportar();
 	}
 	
-	public static void exportar(Venta unaVenta) throws FileNotFoundException, DocumentException, SQLException {
+	public static void exportar(Venta unaVenta) throws DocumentException, SQLException, MalformedURLException, IOException {
 	
 	Document document = new Document();
 	ObtenerDatos obtenerDatosBd = new ObtenerDatos();
 	
-		PdfWriter writer = PdfWriter.getInstance(document, new FileOutputStream(""+unaVenta.getDatosCliente().toUpperCase()+""+obtenerDatosBd.obtenerIdUltimaVentaIngresada()+".pdf"));
+		PdfWriter writer = PdfWriter.getInstance(document, new FileOutputStream(""+unaVenta.getFechaEntrega().toString()+unaVenta.getDatosCliente().toUpperCase()+""+obtenerDatosBd.obtenerIdUltimaVentaIngresada()+".pdf"));
 		document.open();
 		//--------TABLA DE PRODUCTOS
 		PdfPTable table = new PdfPTable(5);
@@ -101,46 +104,40 @@ public class ExportarPdf {
 		titulo.setAlignment(Element.ALIGN_CENTER);
 		document.add(titulo);
 		
+	
 		
+		PdfPCell nro_remito = new PdfPCell(new Paragraph("Remito Nro: "+obtenerDatosBd.obtenerIdUltimaVentaIngresada()));
+		PdfPCell fecha = new PdfPCell(new Paragraph("Fecha: "+unaVenta.getFechaEntrega().toString()));
 		
-		PdfPTable table2 = new PdfPTable(3);
-		table2.setWidthPercentage(100);
-		table2.addCell(getCell("Fecha: "+unaVenta.getFechaEntrega().toString(), PdfPCell.ALIGN_LEFT));
-		table2.addCell(getCell("", PdfPCell.ALIGN_CENTER));
-		table2.addCell(getCell("Remito Nro: "+obtenerDatosBd.obtenerIdUltimaVentaIngresada(), PdfPCell.ALIGN_RIGHT));
+		PdfPTable table2 = new PdfPTable(2);
+		 
+		// Set First row as header
+		table2.setHeaderRows(1);
+		// Add header details
+		table2.addCell(nro_remito);
+		table2.addCell("           Documento no valido como factura");
 
-		table2.addCell(getCell(" ", PdfPCell.ALIGN_LEFT));
-		table2.addCell(getCell(" ", PdfPCell.ALIGN_CENTER));
-		table2.addCell(getCell(" ", PdfPCell.ALIGN_RIGHT));
+		// Add the data
 		
-		table2.addCell(getCell("", PdfPCell.ALIGN_LEFT));
-		table2.addCell(getCell("", PdfPCell.ALIGN_CENTER));
-		table2.addCell(getCell("", PdfPCell.ALIGN_RIGHT));
-		
-		table2.addCell(getCell("", PdfPCell.ALIGN_LEFT));
-		table2.addCell(getCell("", PdfPCell.ALIGN_CENTER));
-		table2.addCell(getCell("", PdfPCell.ALIGN_RIGHT));
-		
-		table2.addCell(getCell(" ", PdfPCell.ALIGN_LEFT));
-		table2.addCell(getCell(" ", PdfPCell.ALIGN_CENTER));
-		table2.addCell(getCell(" ", PdfPCell.ALIGN_RIGHT));
-		
-		table2.addCell(getCell(" ", PdfPCell.ALIGN_LEFT));
-		table2.addCell(getCell(" ", PdfPCell.ALIGN_CENTER));
-		table2.addCell(getCell(" ", PdfPCell.ALIGN_RIGHT));
-		
-		table2.addCell(getCell(" ", PdfPCell.ALIGN_LEFT));
-		table2.addCell(getCell(" ", PdfPCell.ALIGN_CENTER));
-		table2.addCell(getCell(" ", PdfPCell.ALIGN_RIGHT));
-		
-		
-		table2.addCell(getCell("Cliente: " + unaVenta.getDatosCliente().toUpperCase(), PdfPCell.ALIGN_LEFT));
-		table2.addCell(getCell("Contacto: " +unaVenta.getClienteContacto(), PdfPCell.ALIGN_CENTER));
-		table2.addCell(getCell("Direccion: "+unaVenta.getDireccionCliente(), PdfPCell.ALIGN_RIGHT));
-
-
+		Image image1 = Image
+				.getInstance("./imagen_acai/acai.jpg");
+		image1.scaleAbsolute(50,50);
+		table2.addCell(image1);
+		table2.addCell(fecha);
 		
 		//------------------------
+		
+		
+		// DATOS CLIENTE
+		
+		PdfPTable tableCliente = new PdfPTable(3);
+		tableCliente.setWidthPercentage(100);
+		tableCliente.addCell(getCell("Cliente: " + unaVenta.getDatosCliente().toUpperCase(), PdfPCell.ALIGN_LEFT));
+		tableCliente.addCell(getCell("Contacto: " +unaVenta.getClienteContacto(), PdfPCell.ALIGN_CENTER));
+		tableCliente.addCell(getCell("Direccion: "+unaVenta.getDireccionCliente(), PdfPCell.ALIGN_RIGHT));
+
+		
+		//--------------
 
 		//CUADRO PRINCIPAL------------
 		
@@ -151,11 +148,13 @@ public class ExportarPdf {
 		
 		
 		PdfPCell primerCuadro =new PdfPCell(table2);
-		primerCuadro.setFixedHeight(100);
-		PdfPCell segundoCuadro = new PdfPCell(table);
-		segundoCuadro.setFixedHeight(300);
-		PdfPCell tercerCuadro = new PdfPCell(precioTotal);
-		tercerCuadro.setFixedHeight(80);
+		primerCuadro.setFixedHeight(180);
+		PdfPCell segundoCuadro =new PdfPCell(tableCliente);
+		segundoCuadro.setFixedHeight(50);
+		PdfPCell tercerCuadro = new PdfPCell(table);
+		tercerCuadro.setFixedHeight(300);
+		PdfPCell cuartoCuadro = new PdfPCell(precioTotal);
+		cuartoCuadro.setFixedHeight(80);
 		
 		
 
@@ -164,6 +163,7 @@ public class ExportarPdf {
 		framePrincipal.addCell(primerCuadro);
 		framePrincipal.addCell(segundoCuadro);
 		framePrincipal.addCell(tercerCuadro);
+		framePrincipal.addCell(cuartoCuadro);
 		
 		
 		
