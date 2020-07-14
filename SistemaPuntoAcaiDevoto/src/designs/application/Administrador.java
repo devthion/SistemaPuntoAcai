@@ -101,7 +101,7 @@ public class Administrador {
 
     @FXML
     void onAgregarInversionesClick(ActionEvent event) {
-
+    	CrearTabla.crearTablaInversion();
     }
 
     @FXML
