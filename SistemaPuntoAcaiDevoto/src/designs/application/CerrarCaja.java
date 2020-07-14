@@ -1,5 +1,6 @@
 package application;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.time.LocalDate;
@@ -9,6 +10,7 @@ import java.util.ResourceBundle;
 import Alertas.Alerta;
 import Alertas.Validaciones;
 import ConexionBD.ObtenerDatos;
+import ManejoArchivos.ExportarExcel;
 import Ventas.CajaCerrada;
 import Ventas.Venta;
 import javafx.collections.FXCollections;
@@ -90,7 +92,7 @@ public class CerrarCaja implements Initializable{
     }
 
     @FXML
-    void onCerrarCajaClick(ActionEvent event) throws SQLException {
+    void onCerrarCajaClick(ActionEvent event) throws SQLException, IOException {
     	
     	if (Validaciones.validarCajaNumerica(txtMontoReal)) {
     		new Alerta().errorAlert("Ingreso un montoReal no Valido", "Error en el ingreso de Datos");
@@ -115,6 +117,10 @@ public class CerrarCaja implements Initializable{
     		}
         	Stage stage = (Stage) btnVolver.getScene().getWindow();
         	stage.close();
+        	
+        	ExportarExcel.exportar();
+        	new Alerta().informationAlert("Se ha exportar el Excel en la Carpeta Sistema Acai con Exito", "Exportar Excel");
+        	
     	}
     	
     }

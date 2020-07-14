@@ -77,12 +77,6 @@ public class MenuPrincipalControler {
     }
     
     @FXML
-    void onGenerarExcelClick(ActionEvent event) throws SQLException, IOException {
-    	ExportarExcel.exportar();
-    	new Alerta().informationAlert("Se ha exportar el Excel en la Carpeta Sistema Acai con Exito", "Exportar Excel");
-    }
-    
-    @FXML
     void onVerProductosClick(ActionEvent event) {
     	try {
 			FXMLLoader loader = new FXMLLoader();
