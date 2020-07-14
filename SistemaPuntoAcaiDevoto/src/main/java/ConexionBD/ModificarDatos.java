@@ -56,11 +56,12 @@ public class ModificarDatos extends ConexionBd {
 					+ "dire_numero = '"+clienteEditado.getNumero()+"',"
 					+ "dire_calle= '"+clienteEditado.getCalle()+"',"
 					+ "clie_como_llego = '"+clienteEditado.getComoLlego()+"',"
+					+ "clie_rubro = '"+clienteEditado.getRubro()+"',"
 					+ "clie_dni = '"+clienteEditado.getDni()+"'"
 							+ "WHERE clie_dni = '"+dniCliente+"'";
 			ejecutarUpdate(sql, "cliente editado");
 	}
-	
+
 	public void editarGasto(Gasto gastoViejo, Gasto gastoNuevo){
 		
 		String sql = "UPDATE GASTO SET "
