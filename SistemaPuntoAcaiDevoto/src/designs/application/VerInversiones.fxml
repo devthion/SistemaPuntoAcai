@@ -6,8 +6,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane prefHeight="650.0" prefWidth="1300.0" stylesheets="@../Styles/Style.css" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="application.VerInversiones">
+<AnchorPane prefHeight="650.0" prefWidth="1300.0" stylesheets="@../Styles/Style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.VerInversiones">
    <children>
       <Button fx:id="btnEditarInversion" layoutX="409.0" layoutY="515.0" mnemonicParsing="false" onAction="#onEditarInversionClick" text="EDITAR INVERSION" />
       <Label layoutX="911.0" layoutY="362.0" text="INVERSIONES TOTALES:" />
@@ -45,7 +44,7 @@
          </items>
       </SplitMenuButton>
       <TextField fx:id="txtAnio" layoutX="973.0" layoutY="205.0" prefHeight="33.0" prefWidth="177.0" />
-      <Label fx:id="lblInversionesTotal" layoutX="1121.0" layoutY="359.0" prefHeight="30.0" prefWidth="153.0" />
-      <Label fx:id="lblInversionesMes" layoutX="1119.0" layoutY="322.0" prefHeight="30.0" prefWidth="153.0" />
+      <Label fx:id="lblInversionesTotal" layoutX="1121.0" layoutY="362.0" prefHeight="30.0" prefWidth="153.0" />
+      <Label fx:id="lblInversionesMes" layoutX="1121.0" layoutY="325.0" prefHeight="30.0" prefWidth="153.0" />
    </children>
 </AnchorPane>

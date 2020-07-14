@@ -52,6 +52,25 @@ public class CrearTabla {
 		}
 	}
 	
+	public static void crearTablaInversion() {
+		try 
+		{
+			Connection con = DriverManager.getConnection("jdbc:h2:"+"./Database/bd", "root", "devthion");
+			Statement stmt= con.createStatement();
+			String sql = "CREATE TABLE IF NOT EXISTS INVERSION" 
+				+"(inver_id INTEGER auto_increment,"
+				+"inver_fecha DATE,"
+				+"inver_monto DOUBLE(10),"
+				+"inver_detalle VARCHAR(255),"
+				+"PRIMARY KEY (inver_id))";
+			stmt.executeUpdate(sql);
+			System.out.println("Tabla INVERSION creada");
+		}
+		catch(Exception e) {
+			System.err.println(e.getMessage());
+		}
+	}
+	
 	public static void crearTablaVenta() {
 		try 
 		{

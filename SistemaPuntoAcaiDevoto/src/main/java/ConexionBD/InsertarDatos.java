@@ -3,10 +3,10 @@ package ConexionBD;
 
 import java.sql.SQLException;
 import java.time.LocalDate;
-import java.util.List;
 import java.util.Objects;
 
 import ModeloGasto.Gasto;
+import ModeloInversion.Inversion;
 import ModelosClientes.Cliente;
 import Productos.Producto;
 import Ventas.CajaCerrada;
@@ -123,6 +123,16 @@ public class InsertarDatos extends ConexionBd{
 				+ "SET venta_estado_envio='"+true+"', venta_fecha_entrega = '"+fechaEntrega+"'"
 						+ "WHERE venta_id='"+venta.getVenta_id()+"'";
 		ejecutarUpdate(sql,"Venta '"+venta.getVenta_id()+"' concretada");
+	}
+
+	public void insertarInversion(Inversion inversion) {
+		String sql = "insert into INVERSION"
+				+ "(inver_fecha,"
+				+ "inver_monto,"
+				+ "inver_detalle)"
+				+ "values('"+inversion.getFecha()+"','"+inversion.getMonto()+"','"+inversion.getDetalle()+"')";
+		ejecutarUpdate(sql, "Inversion ingresada");
+		
 	}
 	
 	

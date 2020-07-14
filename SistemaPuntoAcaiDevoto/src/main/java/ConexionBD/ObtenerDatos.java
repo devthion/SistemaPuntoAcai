@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import ModeloGasto.Gasto;
+import ModeloInversion.Inversion;
 import ModelosClientes.Cliente;
 import ModelosClientes.Direccion;
 import ModelosGraficos.ClientesPorBarrio;
@@ -378,6 +379,22 @@ public class ObtenerDatos extends ConexionBd{
 		}	
 		
 		return cantidadVendida;
+	}
+
+	public ObservableList<Inversion> obtenerInversiones() throws SQLException {
+		ResultSet rs;
+		Statement unStmt =null;
+		ObservableList<Inversion> inversiones = FXCollections.observableArrayList();	
+		
+		sql="select * from INVERSION";
+		rs=ejecutarQuery(sql,unStmt);
+		while(rs.next()) {
+			LocalDate date = rs.getDate(2).toLocalDate();
+			Inversion unaInversion = new Inversion(rs.getString(4),rs.getDouble(3));
+			unaInversion .setFecha(date);
+			inversiones.add(unaInversion);
+		}
+		return inversiones;
 	}
 	
 	

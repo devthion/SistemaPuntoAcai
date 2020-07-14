@@ -103,7 +103,7 @@ public class VerGastos implements Initializable {
     	Gasto gasto = this.tblGastos.getSelectionModel().getSelectedItem();
     	
     	if(gasto==null) {
-    		new Alerta().errorAlert("Debe seleccionar un cliente", "Editar Cliente");
+    		new Alerta().errorAlert("Debe seleccionar un Gasto", "Editar Gasto");
     	}else {
     		try {
     			FXMLLoader loader = new FXMLLoader();
@@ -133,6 +133,8 @@ public class VerGastos implements Initializable {
 			
 			this.tblGastos.setItems(gastos);
 			this.tblGastos.refresh();
+			mostrarGastosPorMes(LocalDate.now().getMonthValue());
+	    	lblGastosTotal.setText(gastos.stream().mapToDouble(unGasto-> unGasto.getMonto()).sum()+" $");
     	}
     }
 
@@ -247,7 +249,7 @@ public class VerGastos implements Initializable {
 		this.colFecha.setCellValueFactory(new PropertyValueFactory<Gasto, LocalDate>("fecha"));
 		this.colCantidad.setCellValueFactory(new PropertyValueFactory<Gasto, Double>("monto"));
 		
-		lblGastosMes.setText(" $");
+		mostrarGastosPorMes(LocalDate.now().getMonthValue());
     	lblGastosTotal.setText(gastos.stream().mapToDouble(unGasto-> unGasto.getMonto()).sum()+" $");
 		
 	}

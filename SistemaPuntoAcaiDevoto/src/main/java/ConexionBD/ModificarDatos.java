@@ -4,6 +4,7 @@ import java.sql.SQLException;
 import java.time.LocalDate;
 
 import ModeloGasto.Gasto;
+import ModeloInversion.Inversion;
 import ModelosClientes.Cliente;
 import Ventas.Venta;
 
@@ -88,6 +89,16 @@ public class ModificarDatos extends ConexionBd {
 				+"prod_costo= '"+costo+"'"
 				+" WHERE prod_id= '"+prod_id+"'";
 		ejecutarUpdate(sql, "Precios actualizados");
+	}
+
+	public void editarInversion(Inversion inversionEditable, Inversion inversionNuevo) {
+		String sql = "UPDATE INVERSION SET "
+				+ "inver_fecha = '"+inversionNuevo.getFecha()+"',"
+				+"inver_monto = '"+inversionNuevo.getMonto() +"',"
+				+ "inver_detalle = '"+inversionNuevo.getDetalle()+"'"
+						+ "WHERE inver_fecha = '"+inversionEditable.getFecha()+"' AND inver_monto ='"+inversionEditable.getMonto()+"' AND  inver_detalle ='"+inversionEditable.getDetalle()+"'";
+		ejecutarUpdate(sql, "INVERSION EDITADA");
+		
 	}
 
 }

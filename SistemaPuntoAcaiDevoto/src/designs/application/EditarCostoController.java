@@ -6,7 +6,6 @@ import java.time.LocalDate;
 import Alertas.Alerta;
 import ConexionBD.ModificarDatos;
 import ModeloGasto.Gasto;
-import ModelosClientes.Cliente;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -40,7 +39,6 @@ public class EditarCostoController {
     @FXML
     void onGuardarGastoClick(ActionEvent event) {
     	gastoNuevo = generarGasto();
-    	//IF YA EXISTE EN LA BD
     		try {
 				new ModificarDatos().editarGasto(gastoEditable, gastoNuevo);
 				new Alerta().informationAlert("Se ha editado el gasto", "Informacion");
