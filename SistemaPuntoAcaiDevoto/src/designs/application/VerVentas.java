@@ -1,13 +1,18 @@
 package application;
 
+import java.io.IOException;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
+import com.itextpdf.text.DocumentException;
+
 import Alertas.Alerta;
 import ConexionBD.ObtenerDatos;
+import ManejoArchivos.ExportarPdf;
 import Ventas.Venta;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -15,7 +20,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
@@ -64,6 +68,9 @@ public class VerVentas implements Initializable {
     
     @FXML
     private Label lblItems;
+    
+    @FXML
+    private Button btnGenerarRemito;
     
     private ObservableList<Venta> ventasPendientes;
     
@@ -166,7 +173,29 @@ public class VerVentas implements Initializable {
     	}
     }
     
-
+    @FXML
+    void onGenerarRemitoClick(ActionEvent event) throws SQLException {
+    	Venta venta = this.tblVentas.getSelectionModel().getSelectedItem();
+    	
+    	if(venta==null) {
+    		new Alerta().errorAlert("Debe seleccionar una Venta", "Generar Remito");
+    	}else {
+			ExportarPdf exportarPdf = new ExportarPdf();
+			try {
+				exportarPdf.exportar(venta);
+				new Alerta().informationAlert("El Remito ha sido exportado a la carpeta de Remitos", "Generar Remito");
+			} catch (MalformedURLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (DocumentException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+    	}
+    }
     
 
 }

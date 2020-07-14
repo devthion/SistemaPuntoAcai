@@ -27,8 +27,8 @@
             <TableColumn fx:id="colEnvio" prefWidth="135.0" text="MONTO ENVIO" />
          </columns>
       </TableView>
-      <Button fx:id="btnTerminarVenta" layoutX="156.0" layoutY="553.0" mnemonicParsing="false" onAction="#onTerminarVentaClick" prefHeight="49.0" prefWidth="260.0" text="ENVIO REALIZADO" />
-      <Button fx:id="btnCancelarVenta" layoutX="641.0" layoutY="553.0" mnemonicParsing="false" onAction="#onCancelarVentaClick" prefHeight="49.0" prefWidth="260.0" text="CANCELAR VENTA" />
+      <Button fx:id="btnTerminarVenta" layoutX="126.0" layoutY="553.0" mnemonicParsing="false" onAction="#onTerminarVentaClick" prefHeight="49.0" prefWidth="260.0" text="ENVIO REALIZADO" />
+      <Button fx:id="btnCancelarVenta" layoutX="746.0" layoutY="553.0" mnemonicParsing="false" onAction="#onCancelarVentaClick" prefHeight="49.0" prefWidth="260.0" text="CANCELAR VENTA" />
       <Label layoutX="1103.0" layoutY="94.0" text="PRODUCTOS" />
       <ScrollPane layoutX="1061.0" layoutY="123.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="357.0" prefWidth="221.0">
         <content>
@@ -41,5 +41,6 @@
       </ScrollPane>
       <Label fx:id="lblObservacion" layoutX="160.0" layoutY="480.0" prefHeight="37.0" prefWidth="329.0" />
       <Label layoutX="14.0" layoutY="480.0" prefHeight="37.0" prefWidth="133.0" text="OBSERVACION" />
+      <Button fx:id="btnGenerarRemito" layoutX="433.0" layoutY="553.0" mnemonicParsing="false" onAction="#onGenerarRemitoClick" prefHeight="49.0" prefWidth="260.0" text="GENERAR REMITO" />
    </children>
 </AnchorPane>
