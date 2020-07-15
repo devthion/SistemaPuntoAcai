@@ -44,7 +44,7 @@ public class IngresoController {
     	if (Validaciones.validarCajasDeTextos(txtfiles)){
     		new Alerta().errorAlert("Debe ingresar un nombre y una contraseña", "Error de Ingreso");
     	}else {
-    		if(etNombreUsuario.getText().equalsIgnoreCase("acaidevoto") && etClave.getText().equalsIgnoreCase("123456")) {
+    		if(etNombreUsuario.getText().equalsIgnoreCase("maracaibocaba") && etClave.getText().equalsIgnoreCase("123456")) {
     			verMenuPrincipal("MenuPrincipal","Menu Principal");      	
     			Stage stage = (Stage) btnIngresar.getScene().getWindow();
     			stage.close();
