@@ -34,11 +34,6 @@
             <Font size="24.0" />
          </font>
       </Label>
-      <Label layoutX="36.0" layoutY="404.0" prefHeight="40.0" prefWidth="201.0" text="Correo Electronico" textFill="WHITE">
-         <font>
-            <Font size="24.0" />
-         </font>
-      </Label>
       <Label layoutX="587.0" layoutY="117.0" prefHeight="40.0" prefWidth="150.0" text="Calle" textFill="WHITE">
          <font>
             <Font size="24.0" />
@@ -62,9 +57,7 @@
       <SplitMenuButton fx:id="slipComoLlego" layoutX="752.0" layoutY="261.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="250.0" textFill="#481862">
          <items>
             <MenuItem mnemonicParsing="false" onAction="#onPorInstagram" text="Por Instagram" />
-            <MenuItem mnemonicParsing="false" onAction="#onPorRecomendacion" text="Por Recomendacion" />
             <MenuItem mnemonicParsing="false" onAction="#onPorOtraPersona" text="Por Otra Persona" />
-            <MenuItem mnemonicParsing="false" onAction="#onOtro" text="Otro" />
          </items>
       </SplitMenuButton>
       <SplitMenuButton fx:id="slipTipoCliente" layoutX="752.0" layoutY="331.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="250.0" textFill="#481862">
@@ -83,7 +76,6 @@
       <TextField fx:id="txtApellido" layoutX="237.0" layoutY="189.0" prefHeight="40.0" prefWidth="250.0" />
       <TextField fx:id="txtDni" layoutX="237.0" layoutY="264.0" prefHeight="40.0" prefWidth="250.0" />
       <TextField fx:id="txtTelefono" layoutX="237.0" layoutY="336.0" prefHeight="40.0" prefWidth="250.0" />
-      <TextField fx:id="txtEmail" layoutX="237.0" layoutY="404.0" prefHeight="40.0" prefWidth="250.0" />
       <TextField fx:id="txtCalle" layoutX="752.0" layoutY="117.0" prefHeight="40.0" prefWidth="250.0" />
       <TextField fx:id="txtNumero" layoutX="1157.0" layoutY="117.0" prefHeight="40.0" prefWidth="108.0" />
       <TextField fx:id="txtBarrio" layoutX="752.0" layoutY="189.0" prefHeight="40.0" prefWidth="250.0" />

@@ -35,9 +35,6 @@ public class AgregarCliente {
 
     @FXML
     private TextField txtComoLlego;
-
-    @FXML
-    private TextField txtEmail;
     
     @FXML
     private TextField txtRubro;
@@ -136,7 +133,6 @@ public class AgregarCliente {
     	this.txtNumero.setText(""+clienteEditable.getNumero());
     	this.txtCalle.setText(clienteEditable.getCalle());
     	this.txtBarrio.setText(clienteEditable.getBarrio());
-    	this.txtEmail.setText(clienteEditable.getEmail());
     	this.txtTelefono.setText(""+clienteEditable.getTelefono());
     	this.slipTipoCliente.setText(clienteEditable.getTipo().toLowerCase());
     	this.slipComoLlego.setText(clienteEditable.getComoLlego());
@@ -159,14 +155,13 @@ public class AgregarCliente {
     	int numero = Integer.parseInt(txtNumero.getText());
     	String calle = this.txtCalle.getText().toLowerCase();
     	String barrio = this.txtBarrio.getText().toLowerCase();
-    	String email=this.txtEmail.getText().toLowerCase();
     	int telefono=Integer.parseInt(txtTelefono.getText());
     	String tipo = slipTipoCliente.getText().toLowerCase();
     	String comoLlego = slipComoLlego.getText().toLowerCase();
     	String rubro = txtRubro.getText().toLowerCase();
     	
     	Direccion direccion = new Direccion(calle, numero, barrio, 0);
-    	return new Cliente(dni, nombre, apellido, telefono, email, direccion, tipo, comoLlego, rubro);
+    	return new Cliente(dni, nombre, apellido, telefono, "", direccion, tipo, comoLlego, rubro);
     }
     
     @FXML
@@ -201,7 +196,6 @@ public class AgregarCliente {
     	productosAValidar.add(txtApellido);
     	productosAValidar.add(txtCalle);
     	productosAValidar.add(txtBarrio);
-    	productosAValidar.add(txtEmail);
     	
     	return productosAValidar;
     }
@@ -237,19 +231,10 @@ public class AgregarCliente {
     }
 
     @FXML
-    void onPorRecomendacion(ActionEvent event) {
-    	this.slipComoLlego.setText("Por Recomendacion");
-    }
-
-    @FXML
     void onPorOtraPersona(ActionEvent event) {
     	this.slipComoLlego.setText("Por Otra Persona");
     }
 
-    @FXML
-    void onOtro(ActionEvent event) {
-    	this.slipComoLlego.setText("Otro");
-    }
     
 	public Cliente getNuevoCliente() {
 		return nuevoCliente;

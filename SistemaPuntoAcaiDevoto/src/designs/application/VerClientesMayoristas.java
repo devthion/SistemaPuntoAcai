@@ -52,9 +52,6 @@ public class VerClientesMayoristas implements Initializable {
     private TextField txtBusqueda;
 
     @FXML
-    private TableColumn<Cliente, String> colEmail;
-
-    @FXML
     private TableColumn<Cliente, String> colApellido;
 
     @FXML
@@ -152,7 +149,6 @@ public class VerClientesMayoristas implements Initializable {
 		this.colApellido.setCellValueFactory(new PropertyValueFactory<Cliente, String>("apellido"));
 		this.colDni.setCellValueFactory(new PropertyValueFactory<Cliente, Integer>("dni"));
 		this.colTelefono.setCellValueFactory(new PropertyValueFactory<Cliente, Integer>("telefono"));
-		this.colEmail.setCellValueFactory(new PropertyValueFactory<Cliente, String>("email"));
 		this.colCalle.setCellValueFactory(new PropertyValueFactory<Cliente, String>("calle"));
 		this.colNumero.setCellValueFactory(new PropertyValueFactory<Cliente, Integer>("numero"));
 		this.colBarrio.setCellValueFactory(new PropertyValueFactory<Cliente, String>("barrio"));

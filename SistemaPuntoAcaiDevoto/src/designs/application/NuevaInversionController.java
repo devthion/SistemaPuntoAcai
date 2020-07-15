@@ -37,7 +37,7 @@ public class NuevaInversionController {
     	if(Validaciones.validarCajasDeTextos(generarListTxt()) || Validaciones.validarCajasNumericas(generarListNumericos()) ) {
     		new Alerta().errorAlert("Los datos ingresados son erroneos o faltan completar algunos atributos","Error en el ingreso de Datos");
     	}else {
-    		Optional<ButtonType> action =  new Alerta().preguntaConfirmacion("Desea confirmar el gasto "+txtDetalle.getText()+" ?", "Confirmación");
+    		Optional<ButtonType> action =  new Alerta().preguntaConfirmacion("Desea confirmar la inversion "+txtDetalle.getText()+" ?", "Confirmación");
         	if (action.get() == ButtonType.OK) {
 	    		Inversion unaInversion = generarGasto();
 	    		unaInversion.almacenarInversion();
