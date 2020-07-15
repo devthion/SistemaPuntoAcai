@@ -44,7 +44,7 @@ public class ExportarPdf {
 	Document document = new Document();
 	ObtenerDatos obtenerDatosBd = new ObtenerDatos();
 	
-		PdfWriter writer = PdfWriter.getInstance(document, new FileOutputStream(""+unaVenta.getFechaEntrega().toString()+unaVenta.getDatosCliente().toUpperCase()+""+obtenerDatosBd.obtenerIdUltimaVentaIngresada()+".pdf"));
+		PdfWriter writer = PdfWriter.getInstance(document, new FileOutputStream("Remitos/"+unaVenta.getFechaEntrega().toString()+unaVenta.getDatosCliente().toUpperCase()+""+obtenerDatosBd.obtenerIdUltimaVentaIngresada()+".pdf"));
 		document.open();
 		//--------TABLA DE PRODUCTOS
 		PdfPTable table = new PdfPTable(5);
@@ -120,7 +120,7 @@ public class ExportarPdf {
 		// Add the data
 		
 		Image image1 = Image
-				.getInstance("./imagen_acai/acai.jpg");
+				.getInstance("acai.jpg");
 		image1.scaleAbsolute(50,50);
 		table2.addCell(image1);
 		table2.addCell(fecha);
