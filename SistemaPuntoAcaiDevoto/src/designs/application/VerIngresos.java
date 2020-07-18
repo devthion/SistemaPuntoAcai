@@ -166,9 +166,9 @@ public class VerIngresos implements Initializable {
     	Double diferenciaAnio = Double.parseDouble(lblRealAnio.getText())  - Double.parseDouble(lblIdealAnio.getText());
     	lblGananciaAnio.setText((ventasPorAnio.stream().mapToDouble(unaVenta -> unaVenta.getVenta_ganancia()).sum() + diferenciaAnio) +" $");
     	
-    	lblMercaderia.setText(ventas.stream().mapToDouble(unaVenta -> unaVenta.getVenta_ganancia()).sum() + " $");
-    	lblGastos.setText(gastos.stream().mapToDouble(unGasto -> unGasto.getMonto()).sum() + " $");
-    	lblInvertido.setText(inversiones.stream().mapToDouble(unaInversion -> unaInversion.getMonto()).sum() + " $");
+    	lblMercaderia.setText(ventas.stream().mapToDouble(unaVenta -> unaVenta.getVenta_ganancia()).sum() + "");
+    	lblGastos.setText(gastos.stream().mapToDouble(unGasto -> unGasto.getMonto()).sum() + "");
+    	lblInvertido.setText(inversiones.stream().mapToDouble(unaInversion -> unaInversion.getMonto()).sum() + "");
     	lblGananciaTotal.setText("" + (Double.parseDouble(lblMercaderia.getText()) - Double.parseDouble(lblGastos.getText()) + Double.parseDouble(lblInvertido.getText())));
     	
 		
