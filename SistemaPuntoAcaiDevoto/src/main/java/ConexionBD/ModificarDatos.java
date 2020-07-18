@@ -73,6 +73,13 @@ public class ModificarDatos extends ConexionBd {
 		ejecutarUpdate(sql, "GASTO EDITADO");
 	}
 	
+	public void eliminarGasto(Gasto gasto){
+		
+		String sql = "DELETE FROM GASTO "
+						+ "WHERE gasto_fecha = '"+gasto.getFecha()+"' AND gasto_monto ='"+gasto.getMonto()+"' AND  gasto_detalle ='"+gasto.getDetalle()+"'";
+		ejecutarUpdate(sql, "GASTO ELIMINADO");
+	}
+	
 	
 	public void actualizarStock(int prod_id, int cantidad) {
 		String sql ="UPDATE PRODUCTO SET "

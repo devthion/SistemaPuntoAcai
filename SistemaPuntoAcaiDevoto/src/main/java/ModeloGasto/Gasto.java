@@ -4,6 +4,7 @@ import java.sql.SQLException;
 import java.time.LocalDate;
 
 import ConexionBD.InsertarDatos;
+import ConexionBD.ModificarDatos;
 
 public class Gasto {
 	private LocalDate fecha;
@@ -36,6 +37,10 @@ public class Gasto {
 	public void almacenarGasto() throws SQLException {
 		InsertarDatos insertarDatos = new InsertarDatos();
 		insertarDatos.insertarGasto(this);
+	}
+	
+	public void eliminarGasto() throws SQLException {
+		new ModificarDatos().eliminarGasto(this);
 	}
 	
 }

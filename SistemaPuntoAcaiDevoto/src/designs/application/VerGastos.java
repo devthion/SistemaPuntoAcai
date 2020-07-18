@@ -95,6 +95,9 @@ public class VerGastos implements Initializable {
     @FXML
     private Button btnEditarGasto;
     
+    @FXML
+    private Button btnEliminarGasto;
+    
     private ObservableList<Gasto> gastos;
     private ObservableList<Gasto> gastosPorMes;
     
@@ -253,5 +256,32 @@ public class VerGastos implements Initializable {
     	lblGastosTotal.setText(gastos.stream().mapToDouble(unGasto-> unGasto.getMonto()).sum()+" $");
 		
 	}
+	
+    @FXML
+    void onEliminarGastoClick(ActionEvent event) throws SQLException {
+    	Gasto gasto = this.tblGastos.getSelectionModel().getSelectedItem();
+    	
+    	if(gasto==null) {
+    		new Alerta().errorAlert("Debe seleccionar un Gasto", "Editar Gasto");
+    	}else {
+    		try {
+    			
+    			gasto.eliminarGasto();
+    			new Alerta().errorAlert("Gasto Eliminado", "Eliminar Gasto");
+    			
+    		} catch(Exception e) {
+    			e.printStackTrace();
+    		}
+    		ObtenerDatos obtenerDatos = new ObtenerDatos();
+			obtenerDatos = new ObtenerDatos();
+			gastos = FXCollections.observableArrayList();
+			gastos = obtenerDatos.obtenerGastos();
+			
+			this.tblGastos.setItems(gastos);
+			this.tblGastos.refresh();
+			mostrarGastosPorMes(LocalDate.now().getMonthValue());
+	    	lblGastosTotal.setText(gastos.stream().mapToDouble(unGasto-> unGasto.getMonto()).sum()+" $");
+    	}
+    }
 
 }
