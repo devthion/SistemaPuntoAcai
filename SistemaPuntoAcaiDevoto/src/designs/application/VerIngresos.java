@@ -10,6 +10,8 @@ import java.util.ResourceBundle;
 import Alertas.Alerta;
 import Alertas.Validaciones;
 import ConexionBD.ObtenerDatos;
+import ModeloGasto.Gasto;
+import ModeloInversion.Inversion;
 import Ventas.CajaCerrada;
 import Ventas.Venta;
 import javafx.collections.FXCollections;
@@ -68,12 +70,26 @@ public class VerIngresos implements Initializable {
 
     @FXML
     private Label lblGananciaAnio;
+
+    @FXML
+    private Label lblMercaderia;
+    
+    @FXML
+    private Label lblGananciaTotal;
+    
+    @FXML
+    private Label lblInvertido;
+
+    @FXML
+    private Label lblGastos;
     
     private List<CajaCerrada> cajas = new ArrayList<>();
     private ObservableList<Venta> ventas;
     private ObservableList<Venta> ventasPorDia;
     private ObservableList<Venta> ventasPorMes;
     private ObservableList<Venta> ventasPorAnio;
+    private ObservableList<Gasto> gastos;
+    private ObservableList<Inversion> inversiones;
 
     @FXML
     void onVolverClick(ActionEvent event) {
@@ -149,6 +165,12 @@ public class VerIngresos implements Initializable {
     	
     	Double diferenciaAnio = Double.parseDouble(lblRealAnio.getText())  - Double.parseDouble(lblIdealAnio.getText());
     	lblGananciaAnio.setText((ventasPorAnio.stream().mapToDouble(unaVenta -> unaVenta.getVenta_ganancia()).sum() + diferenciaAnio) +" $");
+    	
+    	lblMercaderia.setText(ventas.stream().mapToDouble(unaVenta -> unaVenta.getVenta_ganancia()).sum() + " $");
+    	lblGastos.setText(gastos.stream().mapToDouble(unGasto -> unGasto.getMonto()).sum() + " $");
+    	lblInvertido.setText(inversiones.stream().mapToDouble(unaInversion -> unaInversion.getMonto()).sum() + " $");
+    	lblGananciaTotal.setText("" + (Double.parseDouble(lblMercaderia.getText()) - Double.parseDouble(lblGastos.getText()) + Double.parseDouble(lblInvertido.getText())));
+    	
 		
     }
     
@@ -171,6 +193,24 @@ public class VerIngresos implements Initializable {
 			obtenerDatos = new ObtenerDatos();
 			ventas = FXCollections.observableArrayList();
 			ventas = obtenerDatos.obtenerVentas();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		try {
+			obtenerDatos = new ObtenerDatos();
+			gastos = FXCollections.observableArrayList();
+			gastos = obtenerDatos.obtenerGastos();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		try {
+			obtenerDatos = new ObtenerDatos();
+			inversiones = FXCollections.observableArrayList();
+			inversiones = obtenerDatos.obtenerInversiones();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
