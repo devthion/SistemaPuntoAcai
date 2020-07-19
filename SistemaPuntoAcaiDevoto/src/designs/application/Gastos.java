@@ -19,6 +19,15 @@ public class Gastos {
 
     @FXML
     private Button btnVerGastos;
+    
+    @FXML
+    private Button btnGastosDiarios;
+
+    @FXML
+    private Button btnGastosGenerales;
+
+    @FXML
+    private Button btnGastosProductos;
 
 
 
@@ -80,5 +89,20 @@ public class Gastos {
 		}
     	Stage stage = (Stage) btnVolver.getScene().getWindow();
     	stage.close();
+    }
+    
+    @FXML
+    void onGastosDiariosClick(ActionEvent event) {
+
+    }
+
+    @FXML
+    void onGastosGeneralesClick(ActionEvent event) {
+
+    }
+
+    @FXML
+    void onGastosProductosClick(ActionEvent event) {
+
     }
 }

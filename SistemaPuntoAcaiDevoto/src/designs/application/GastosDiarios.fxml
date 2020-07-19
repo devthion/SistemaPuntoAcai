@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane prefHeight="650.0" prefWidth="1300.0" stylesheets="@../Styles/Style.css" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="application.VerGastosDiarios">
+   <children>
+      <Button fx:id="btnEliminarGasto" layoutX="571.0" layoutY="512.0" mnemonicParsing="false" onAction="#onEliminarGastoClick" text="ELIMINAR GASTO" />
+      <Button fx:id="btnEditarGasto" layoutX="218.0" layoutY="512.0" mnemonicParsing="false" onAction="#onEditarGastoClick" prefHeight="49.0" prefWidth="236.0" text="EDITAR GASTO" />
+      <Label layoutX="923.0" layoutY="380.0" text="GASTOS TOTALES:" />
+      <Label layoutX="923.0" layoutY="282.0" text="GASTOS DEL DIA:" />
+      <TableView fx:id="tblGastos" layoutX="150.0" layoutY="130.0" prefHeight="334.0" prefWidth="725.0">
+         <columns>
+            <TableColumn fx:id="colDetalle" prefWidth="249.0" text="DETALLE" />
+            <TableColumn fx:id="colCantidad" minWidth="0.0" prefWidth="225.0" text="CANTIDAD" />
+            <TableColumn fx:id="colFecha" prefWidth="249.0" text="FECHA" />
+         </columns>
+      </TableView>
+      <Separator layoutX="150.0" layoutY="71.0" prefWidth="1000.0" />
+      <Label layoutX="608.0" layoutY="30.0" text="GASTOS" />
+      <Button fx:id="btnVolver" layoutX="1148.0" layoutY="585.0" mnemonicParsing="false" onAction="#onVolverClick" prefHeight="51.0" prefWidth="138.0" text="VOLVER" textFill="WHITE">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Button>
+      <DatePicker fx:id="dateGastoDiario" layoutX="923.0" layoutY="185.0" onAction="#onSeleccionarDiaClick" style="-fx-background-color: #FFFFFF;" />
+      <Label fx:id="lblGastosDiarios" layoutX="1109.0" layoutY="282.0" text="Label" />
+      <Label fx:id="lblGastosTotales" layoutX="1109.0" layoutY="380.0" text="Label" />
+   </children>
+</AnchorPane>
