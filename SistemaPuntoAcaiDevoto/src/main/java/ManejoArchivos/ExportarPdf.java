@@ -55,41 +55,27 @@ public class ExportarPdf {
 		float[] colWidth= {2f,1f,1f,1f,1f};
 		table.setWidths(colWidth);
 		//COLUMNA NOMBRE
-		PdfPCell c1 = new PdfPCell(new Paragraph("DESCRIPCION"));
-		PdfPCell c2 = new PdfPCell(new Paragraph("CANT.TOTAL"));
-		PdfPCell c3 = new PdfPCell(new Paragraph("PRECIO UNITARIO"));
-		PdfPCell c4 = new PdfPCell(new Paragraph("PRECIO MAYORISTA"));
-		PdfPCell c5 = new PdfPCell(new Paragraph("PRECIO TOTAL"));
-		table.addCell(c1);
-		table.addCell(c2);
-		table.addCell(c3);
-		table.addCell(c4);
-		table.addCell(c5);
+		table.addCell(getCellConBorde("DESCRIPCION", PdfPCell.ALIGN_CENTER));
+		table.addCell(getCellConBorde("CANT.TOTAL", PdfPCell.ALIGN_CENTER));
+		table.addCell(getCellConBorde("PRECIO UNITARIO", PdfPCell.ALIGN_CENTER));
+		table.addCell(getCellConBorde("PRECIO MAYORISTA", PdfPCell.ALIGN_CENTER));
+		table.addCell(getCellConBorde("PRECIO TOTAL", PdfPCell.ALIGN_CENTER));
 		
 		
 		
 		//FILA VALORES
-		agregarProductoATabla(c1,c2,c3,c4,c5,table, unaVenta.getItems());
+		agregarProductoATabla(table, unaVenta.getItems());
 
-		
-		
-		c1=new PdfPCell(new Paragraph("")); 
-		c2=new PdfPCell(new Paragraph("")); 
-		c3=new PdfPCell(new Paragraph("")); 
-		c4=new PdfPCell(new Paragraph("")); 
-		c5=new PdfPCell(new Paragraph("")); 
-		table.addCell(c1);
-		table.addCell(c2);
-		table.addCell(c3);
-		table.addCell(c4);
-		table.addCell(c5);
+
 		//------------------------------
 		
 
 		//DETELLA PRODUCTOS
+
+		
 		PdfPTable precioTotal = new PdfPTable(1);
 		precioTotal.setWidthPercentage(100);
-		precioTotal.addCell(getCell("Costo Envio: "+unaVenta.getPrecioEnvio(), PdfPCell.ALIGN_RIGHT));
+		precioTotal.addCell(getCell("Costo Envio: "+unaVenta.getPrecioEnvio().toString(), PdfPCell.ALIGN_RIGHT));
 		precioTotal.addCell(getCell("Precio Total: "+unaVenta.getVenta_precioTotal(), PdfPCell.ALIGN_RIGHT));
 		
 		//------------------
@@ -104,18 +90,13 @@ public class ExportarPdf {
 		titulo.setAlignment(Element.ALIGN_CENTER);
 		document.add(titulo);
 		
-	
-		
-		PdfPCell nro_remito = new PdfPCell(new Paragraph("Remito Nro: "+obtenerDatosBd.obtenerIdUltimaVentaIngresada()));
-		PdfPCell fecha = new PdfPCell(new Paragraph("Fecha: "+unaVenta.getFechaEntrega().toString()));
-		
 		PdfPTable table2 = new PdfPTable(2);
 		 
 		// Set First row as header
 		table2.setHeaderRows(1);
 		// Add header details
-		table2.addCell(nro_remito);
-		table2.addCell("           Documento no valido como factura");
+		table2.addCell(getCellConBorde("Remito Nro: "+obtenerDatosBd.obtenerIdUltimaVentaIngresada(), PdfPCell.ALIGN_CENTER));
+		table2.addCell(getCellConBorde("Documento no valido como factura", PdfPCell.ALIGN_CENTER));
 
 		// Add the data
 		
@@ -123,7 +104,7 @@ public class ExportarPdf {
 				.getInstance("acai.jpeg");
 		image1.scaleAbsolute(50,50);
 		table2.addCell(image1);
-		table2.addCell(fecha);
+		table2.addCell(getCell("Fecha: "+unaVenta.getFechaEntrega(), PdfPCell.ALIGN_CENTER));
 		
 		//------------------------
 		
@@ -176,29 +157,30 @@ public class ExportarPdf {
 		writer.close();
 	}
 	
-	private static void agregarProductoATabla(PdfPCell c1, PdfPCell c2, PdfPCell c3, PdfPCell c4, PdfPCell c5, PdfPTable table, java.util.List<Item> items) {
+	private static void agregarProductoATabla(PdfPTable table, java.util.List<Item> items) {
 		
 		for (Item item : items) {
-			c1=new PdfPCell(new Paragraph(""+item.getNombreProducto())); 
-			c2=new PdfPCell(new Paragraph(""+item.getCantidad())); 
+
 			if(!item.esCompraMayorista()) {
-				c3=new PdfPCell(new Paragraph(""+item.getPrecioUnitarioProducto())); 
-				c4=new PdfPCell(new Paragraph("-")); 
-				
+				table.addCell(getCellConBorde(""+item.getPrecioUnitarioProducto(), PdfPCell.ALIGN_CENTER));
+				table.addCell(getCellConBorde("-", PdfPCell.ALIGN_CENTER));
 			}else {
-				c3=new PdfPCell(new Paragraph("-")); 
-				c4=new PdfPCell(new Paragraph(""+item.getPrecioMayoristaProducto())); 
+				table.addCell(getCellConBorde("-", PdfPCell.ALIGN_CENTER));
+				table.addCell(getCellConBorde(""+item.getPrecioMayoristaProducto(), PdfPCell.ALIGN_CENTER));
 			}
-			c5=new PdfPCell(new Paragraph(""+item.getPrecioFinal()));
-			table.addCell(c1);
-			table.addCell(c2);
-			table.addCell(c3);
-			table.addCell(c4);
-			table.addCell(c5);
+			table.addCell(getCellConBorde(item.getNombreProducto(), PdfPCell.ALIGN_CENTER));
+			table.addCell(getCellConBorde(""+item.getCantidad(), PdfPCell.ALIGN_CENTER));
+			table.addCell(getCellConBorde(""+item.getPrecioFinal(), PdfPCell.ALIGN_CENTER));
 		}
 
 	}
 
+	public static PdfPCell getCellConBorde(String text, int alignment) {
+	    PdfPCell cell = new PdfPCell(new Phrase(text));
+	    cell.setPadding(2);
+	    cell.setHorizontalAlignment(alignment);
+	    return cell;
+	}
 	public static PdfPCell getCell(String text, int alignment) {
 	    PdfPCell cell = new PdfPCell(new Phrase(text));
 	    cell.setPadding(0);
