@@ -76,7 +76,8 @@ public class Venta {
 		}
 	}
 	
-	public void setVenta_precioTotal(double venta_precioTotal) {
+	public void setVenta_precioTotal(double venta_precioTotal) { //ESTE ES EL PRECIO QUE SE OBTIENE DE LA BASE DE DATOS, EL CUAL SE SETEA, POR QUE SI LO CALCULARAMOS
+																// NOS DARIA OTRA COSA SI CAMBIARAMOS EL PRECIO DE UN PRODUCTO
 		this.venta_precioTotal=venta_precioTotal;
 	}
 	
@@ -85,7 +86,7 @@ public class Venta {
 	}
 
 	public double getPrecioTotal() {
-			return precioModificado + this.getEnvioPrecio();
+		return precioModificado + this.getEnvioPrecio(); //ESTO ES PARA ALMACENAR LA VENTA NO PARA TRAERLA Y CONSULTAR POR EL PRECIO TOTAL
 	}
 	
 	public double getCostoDeLaVenta() {
@@ -142,7 +143,7 @@ public class Venta {
 	}
 	
 	public double getVenta_precioTotal() {
-		return this.venta_precioTotal;
+		return this.venta_precioTotal; //CON ESTE OBTENGO EL PRECIO TOTAL, ALMACENADO EN LA BD.
 	}
 
 	public void almacenarVenta() throws SQLException {

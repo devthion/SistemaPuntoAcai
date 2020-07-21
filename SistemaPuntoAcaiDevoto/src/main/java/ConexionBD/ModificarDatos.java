@@ -22,6 +22,8 @@ public class ModificarDatos extends ConexionBd {
 		ejecutarUpdate(sql, "Venta: "+unaVenta.getVenta_id()+", eliminada");
 	}
 	
+	
+	//ESTAs VUELAn MEPA---------------
 	public void cambiarDirecciones() {
 		String sql = "ALTER TABLE CLIENTE ALTER COLUMN dire_calle VARCHAR(255) ";
 		ejecutarUpdate(sql, "La Direccion de la tabla ha sido modificada.");
@@ -31,6 +33,8 @@ public class ModificarDatos extends ConexionBd {
 		String sql = "ALTER TABLE Venta ADD venta_observacion varchar(255)";
 		ejecutarUpdate(sql, "Tabla observacion agregada");
 	}
+	//---------------------------
+	
 	
 	public void eliminarCajaCerrada(LocalDate unaFecha) {
 		String sql= "DELETE FROM CAJACERRADA "

@@ -90,7 +90,7 @@ public class ExportarPdf {
 		PdfPTable precioTotal = new PdfPTable(1);
 		precioTotal.setWidthPercentage(100);
 		precioTotal.addCell(getCell("Costo Envio: "+unaVenta.getPrecioEnvio(), PdfPCell.ALIGN_RIGHT));
-		precioTotal.addCell(getCell("Precio Total: "+unaVenta.getPrecioTotal(), PdfPCell.ALIGN_RIGHT));
+		precioTotal.addCell(getCell("Precio Total: "+unaVenta.getVenta_precioTotal(), PdfPCell.ALIGN_RIGHT));
 		
 		//------------------
 		
@@ -120,7 +120,7 @@ public class ExportarPdf {
 		// Add the data
 		
 		Image image1 = Image
-				.getInstance("acai.jpg");
+				.getInstance("acai.jpeg");
 		image1.scaleAbsolute(50,50);
 		table2.addCell(image1);
 		table2.addCell(fecha);
