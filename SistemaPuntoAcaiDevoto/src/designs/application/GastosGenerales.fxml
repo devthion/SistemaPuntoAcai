@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="650.0" prefWidth="1300.0" stylesheets="@../Styles/Style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.VerGastos">
+<AnchorPane prefHeight="650.0" prefWidth="1300.0" stylesheets="@../Styles/Style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.VerGastosGenerales">
    <children>
       <TextField fx:id="txtAnio" layoutX="973.0" layoutY="205.0" prefHeight="33.0" prefWidth="177.0" />
       <SplitMenuButton fx:id="slipMenuMes" layoutX="973.0" layoutY="130.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="177.0">
@@ -32,7 +32,7 @@
             <Font size="24.0" />
          </font>
       </Button>
-      <Label layoutX="608.0" layoutY="30.0" text="GASTOS" />
+      <Label layoutX="559.0" layoutY="27.0" text="GASTOS GENERALES" />
       <Separator layoutX="150.0" layoutY="71.0" prefWidth="1000.0" />
       <TableView fx:id="tblGastos" layoutX="150.0" layoutY="130.0" prefHeight="334.0" prefWidth="725.0">
         <columns>

@@ -27,7 +27,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
-public class VerGastos implements Initializable {
+public class VerGastosGenerales implements Initializable {
 
     @FXML
     private TableColumn<Gasto, LocalDate> colFecha;

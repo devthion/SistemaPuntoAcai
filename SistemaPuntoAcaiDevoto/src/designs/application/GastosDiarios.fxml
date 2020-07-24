@@ -6,8 +6,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane prefHeight="650.0" prefWidth="1300.0" stylesheets="@../Styles/Style.css" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="application.VerGastosDiarios">
+<AnchorPane prefHeight="650.0" prefWidth="1300.0" stylesheets="@../Styles/Style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.VerGastosGeneralesDiarios">
    <children>
       <Button fx:id="btnEliminarGasto" layoutX="571.0" layoutY="512.0" mnemonicParsing="false" onAction="#onEliminarGastoClick" text="ELIMINAR GASTO" />
       <Button fx:id="btnEditarGasto" layoutX="218.0" layoutY="512.0" mnemonicParsing="false" onAction="#onEditarGastoClick" prefHeight="49.0" prefWidth="236.0" text="EDITAR GASTO" />
@@ -21,7 +20,7 @@
          </columns>
       </TableView>
       <Separator layoutX="150.0" layoutY="71.0" prefWidth="1000.0" />
-      <Label layoutX="608.0" layoutY="30.0" text="GASTOS" />
+      <Label layoutX="573.0" layoutY="27.0" text="GASTOS DIARIOS" />
       <Button fx:id="btnVolver" layoutX="1148.0" layoutY="585.0" mnemonicParsing="false" onAction="#onVolverClick" prefHeight="51.0" prefWidth="138.0" text="VOLVER" textFill="WHITE">
          <font>
             <Font size="24.0" />
