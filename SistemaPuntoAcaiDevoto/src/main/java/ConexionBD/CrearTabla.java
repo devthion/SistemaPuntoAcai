@@ -11,8 +11,11 @@ public class CrearTabla {
 		crearTablaCliente();
 		crearTablaVenta();
 		crearTablaItem_Venta();
-		crearTablaGasto();
+		crearTablaGastoDiario();
+		crearTablaGastoGeneral();
+		crearTablaGastoProducto();
 		crearTablaCajaCerrada();
+		crearTablaInversion();
 	}
 	
 	public static void crearTablaCajaCerrada() {
@@ -33,19 +36,57 @@ public class CrearTabla {
 		}
 	}
 	
-	public static void crearTablaGasto() {
+	public static void crearTablaGastoDiario() {
 		try 
 		{
 			Connection con = DriverManager.getConnection("jdbc:h2:"+"./Database/bd", "root", "devthion");
 			Statement stmt= con.createStatement();
-			String sql = "CREATE TABLE IF NOT EXISTS GASTO" 
+			String sql = "CREATE TABLE IF NOT EXISTS GASTO_DIARIO" 
 				+"(gasto_id INTEGER auto_increment,"
 				+"gasto_fecha DATE,"
 				+"gasto_monto DOUBLE(10),"
 				+"gasto_detalle VARCHAR(255),"
 				+"PRIMARY KEY (gasto_id))";
 			stmt.executeUpdate(sql);
-			System.out.println("Tabla GASTO creada");
+			System.out.println("Tabla GASTO_DIARIO creada");
+		}
+		catch(Exception e) {
+			System.err.println(e.getMessage());
+		}
+	}
+	
+	public static void crearTablaGastoGeneral() {
+		try 
+		{
+			Connection con = DriverManager.getConnection("jdbc:h2:"+"./Database/bd", "root", "devthion");
+			Statement stmt= con.createStatement();
+			String sql = "CREATE TABLE IF NOT EXISTS GASTO_GENERAL" 
+				+"(gasto_id INTEGER auto_increment,"
+				+"gasto_fecha DATE,"
+				+"gasto_monto DOUBLE(10),"
+				+"gasto_detalle VARCHAR(255),"
+				+"PRIMARY KEY (gasto_id))";
+			stmt.executeUpdate(sql);
+			System.out.println("Tabla GASTO_GENERAL creada");
+		}
+		catch(Exception e) {
+			System.err.println(e.getMessage());
+		}
+	}
+	
+	public static void crearTablaGastoProducto() {
+		try 
+		{
+			Connection con = DriverManager.getConnection("jdbc:h2:"+"./Database/bd", "root", "devthion");
+			Statement stmt= con.createStatement();
+			String sql = "CREATE TABLE IF NOT EXISTS GASTO_PRODUCTO" 
+				+"(gasto_id INTEGER auto_increment,"
+				+"gasto_fecha DATE,"
+				+"gasto_monto DOUBLE(10),"
+				+"gasto_detalle VARCHAR(255),"
+				+"PRIMARY KEY (gasto_id))";
+			stmt.executeUpdate(sql);
+			System.out.println("Tabla GASTO_PRODUCTO creada");
 		}
 		catch(Exception e) {
 			System.err.println(e.getMessage());

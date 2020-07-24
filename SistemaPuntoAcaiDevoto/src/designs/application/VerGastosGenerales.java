@@ -113,7 +113,7 @@ public class VerGastosGenerales implements Initializable {
     			loader.setLocation(getClass().getResource("EditarGasto.fxml"));
     			AnchorPane root = (AnchorPane) loader.load();
     			
-    			EditarCostoController controller = loader.getController();
+    			EditarGastoController controller = loader.getController();
     			controller.initEditar(gasto);
     			
     			Scene scene = new Scene(root,1300,650);
