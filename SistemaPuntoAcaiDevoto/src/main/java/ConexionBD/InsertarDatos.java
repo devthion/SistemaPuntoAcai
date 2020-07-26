@@ -3,12 +3,15 @@ package ConexionBD;
 
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.Date;
 import java.util.Objects;
 
 import ModeloGasto.Gasto;
 import ModeloInversion.Inversion;
 import ModelosClientes.Cliente;
 import Productos.Producto;
+import Propina.Propina;
 import Ventas.CajaCerrada;
 import Ventas.Item;
 import Ventas.Venta;
@@ -19,14 +22,23 @@ public class InsertarDatos extends ConexionBd{
 		super();
 	}
 	
+	public void insertarPropina(Propina unaPropina) {
+		String sqlString = "INSERT INTO PROPINA"
+				+ "(propina_fecha,"
+				+ "propina_monto)"
+				+ "values('"+unaPropina.getFecha()+"','"+unaPropina.getMonto()+"') ON DUPLICATE KEY UPDATE"
+				+ "propina_monto = propina_monto + '"+unaPropina.getMonto()+"'";
+				
+	}
+	
 	public void insertarCajaCerrada(CajaCerrada unaCajaCerrada) {
 		String sql="INSERT INTO CAJACERRADA"
 				+ "(caja_cerrada_fecha,"
 				+ "caja_cerrada_monto_real,"
 				+ "caja_cerrada_monto_ideal)"
-				+ "values('"+unaCajaCerrada.getFecha()+"','"+unaCajaCerrada.getMonto_real()+"','"+unaCajaCerrada.getMonto_ideal()+"')";
+				+ "values('"+Date.from(unaCajaCerrada.getFecha().atStartOfDay(ZoneId.systemDefault()).toInstant())+"','"+unaCajaCerrada.getMonto_real()+"','"+unaCajaCerrada.getMonto_ideal()+"')";
 		ejecutarUpdate(sql, "Caja Cerrada");
-	}
+	}//todo chequear esto del date
 	
 	public void insertarGasto(Gasto unGasto) {
 		String sql = "insert into GASTO"

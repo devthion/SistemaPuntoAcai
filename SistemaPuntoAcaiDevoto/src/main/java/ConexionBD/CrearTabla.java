@@ -16,6 +16,7 @@ public class CrearTabla {
 		crearTablaGastoProducto();
 		crearTablaCajaCerrada();
 		crearTablaInversion();
+		crearTablaPropina();
 	}
 	
 	public static void crearTablaCajaCerrada() {
@@ -87,6 +88,23 @@ public class CrearTabla {
 				+"PRIMARY KEY (gasto_id))";
 			stmt.executeUpdate(sql);
 			System.out.println("Tabla GASTO_PRODUCTO creada");
+		}
+		catch(Exception e) {
+			System.err.println(e.getMessage());
+		}
+	}
+	
+	public static void crearTablaPropina() {
+		try 
+		{
+			Connection con = DriverManager.getConnection("jdbc:h2:"+"./Database/bd", "root", "devthion");
+			Statement stmt= con.createStatement();
+			String sql = "CREATE TABLE IF NOT EXISTS PROPINA" 
+				+"(propina_fecha DATE,"
+				+"propina_monto DOUBLE(10),"
+				+"PRIMARY KEY (propina_fecha))";
+			stmt.executeUpdate(sql);
+			System.out.println("Tabla PROPINA creada");
 		}
 		catch(Exception e) {
 			System.err.println(e.getMessage());

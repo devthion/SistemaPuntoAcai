@@ -7,7 +7,13 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.function.DoubleBinaryOperator;
+
+import org.omg.CORBA.PUBLIC_MEMBER;
+
+import com.itextpdf.text.pdf.PdfStructTreeController.returnType;
 
 import ModeloGasto.Gasto;
 import ModeloInversion.Inversion;
@@ -17,6 +23,7 @@ import ModelosGraficos.ClientesPorBarrio;
 import ModelosGraficos.ComoLlegoUnCliente;
 import ModelosGraficos.VentasPorMes;
 import Productos.Producto;
+import Propina.Propina;
 import Ventas.CajaCerrada;
 import Ventas.Envio;
 import Ventas.Item;
@@ -34,6 +41,21 @@ public class ObtenerDatos extends ConexionBd{
 
 	public ObtenerDatos() throws SQLException {
 		super();
+	}
+	
+	public ObservableList<Propina> obtenerPropinas() throws SQLException{
+		ObservableList<Propina> propinas = FXCollections.observableArrayList();
+		ResultSet resultSet;
+		Statement statement = null;
+		sql="SELECT * FROM PROPINA";
+		rs=ejecutarQuery(sql, statement);
+		while(rs.next()) {
+			LocalDate fecha = rs.getDate(1).toLocalDate();
+			double monto = rs.getDouble(2);
+			Propina propina = new Propina(monto, fecha);
+			propinas.add(propina);
+		}
+		return propinas;//todo chequear lo de la fecha
 	}
 	
 	public List<CajaCerrada> obtenerCajasCerradas() throws SQLException{
