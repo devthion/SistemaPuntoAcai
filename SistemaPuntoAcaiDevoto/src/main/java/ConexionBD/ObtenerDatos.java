@@ -15,6 +15,7 @@ import org.omg.CORBA.PUBLIC_MEMBER;
 
 import com.itextpdf.text.pdf.PdfStructTreeController.returnType;
 
+import Gastos.GastosDiarios;
 import Gastos.GastosGenerales;
 import Gastos.GastosProductos;
 import ModeloInversion.Inversion;
@@ -112,7 +113,23 @@ public class ObtenerDatos extends ConexionBd{
 		}
 		return ventasPorMes;
 	}
-	
+	public ObservableList<GastosDiarios> obtenerGastosDiarios() throws SQLException{
+		ResultSet rs;
+		Statement unStmt =null;
+		ObservableList<GastosDiarios> gastos = FXCollections.observableArrayList();	
+		
+		sql="select * from GASTO_GENERAL";
+		rs=ejecutarQuery(sql,unStmt);
+		while(rs.next()) {
+			int id = rs.getInt(1);
+			LocalDate date = rs.getDate(2).toLocalDate();
+			GastosDiarios unGasto = new GastosDiarios(rs.getString(4),rs.getDouble(3));
+			unGasto.setFecha(date);
+			unGasto.setId(id);
+			gastos.add(unGasto);
+		}
+		return gastos;
+	}
 	
 	public ObservableList<GastosGenerales> obtenerGastosGenerales() throws SQLException{
 		ResultSet rs;
@@ -122,9 +139,11 @@ public class ObtenerDatos extends ConexionBd{
 		sql="select * from GASTO_GENERAL";
 		rs=ejecutarQuery(sql,unStmt);
 		while(rs.next()) {
+			int id = rs.getInt(1);
 			LocalDate date = rs.getDate(2).toLocalDate();
 			GastosGenerales unGasto = new GastosGenerales(rs.getString(4),rs.getDouble(3));
 			unGasto.setFecha(date);
+			unGasto.setId(id);
 			gastos.add(unGasto);
 		}
 		return gastos;
@@ -138,9 +157,11 @@ public class ObtenerDatos extends ConexionBd{
 		sql="select * from GASTO_PRODUCTO";
 		rs=ejecutarQuery(sql,unStmt);
 		while(rs.next()) {
+			int id = rs.getInt(1);
 			LocalDate date = rs.getDate(2).toLocalDate();
 			GastosProductos unGasto = new GastosProductos(rs.getString(4),rs.getDouble(3));
 			unGasto.setFecha(date);
+			unGasto.setId(1);
 			gastos.add(unGasto);
 		}
 		return gastos;

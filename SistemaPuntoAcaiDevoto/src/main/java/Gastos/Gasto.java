@@ -6,6 +6,7 @@ public abstract class Gasto {
 	private LocalDate fecha;
 	private String detalle;
 	private double monto;
+	private int id;
 	
 	public Gasto(String detalle, double monto) {
 		super();
@@ -14,6 +15,14 @@ public abstract class Gasto {
 		this.monto = monto;
 	}
 	
+	
+	
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
 	public LocalDate getFecha() {
 		return fecha;
 	}

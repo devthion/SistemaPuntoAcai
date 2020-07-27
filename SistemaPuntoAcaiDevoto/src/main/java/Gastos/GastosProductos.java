@@ -13,15 +13,17 @@ public class GastosProductos extends Gasto {
 	
 	public void almacenarGasto() throws SQLException {
 		InsertarDatos insertarDatos = new InsertarDatos();
-		insertarDatos.insertarGastoProducto(this);
+		insertarDatos.insertarGasto(this, "GASTO_PRODUCTO");
 	}
 	
 	public void editarGasto(GastosProductos gastoModificado) throws SQLException {
-		new ModificarDatos().editarGastoProducto(this, gastoModificado);
+		ModificarDatos modificarDatos = new ModificarDatos();
+		modificarDatos.editarGasto(this.getId(), gastoModificado, "GASTO_PRODUCTO");
 	}
 	
 	public void eliminarGasto() throws SQLException {
-		new ModificarDatos().eliminarGastoProducto(this);
+		ModificarDatos modificarDatos = new ModificarDatos();
+		modificarDatos.eliminarGasto(this.getId(),"GASTO_PRODUCTO");
 	}
 	
 }

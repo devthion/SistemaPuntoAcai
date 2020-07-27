@@ -3,10 +3,11 @@ package ConexionBD;
 import java.sql.SQLException;
 import java.time.LocalDate;
 
+import Gastos.Gasto;
 import Gastos.GastosDiarios;
 import Gastos.GastosGenerales;
 import Gastos.GastosProductos;
-import ModeloGasto.Gasto;
+
 import ModeloInversion.Inversion;
 import ModelosClientes.Cliente;
 import Ventas.Venta;
@@ -70,57 +71,25 @@ public class ModificarDatos extends ConexionBd {
 			ejecutarUpdate(sql, "cliente editado");
 	}
 
-	public void editarGastoProducto(GastosProductos gastoViejo, GastosProductos gastoNuevo){
+	
+	public void editarGasto(int idGasto, Gasto gastoNuevo, String tipoGasto){
 		
-		String sql = "UPDATE GASTO_PRODUCTO SET "
+		String sql = "UPDATE '"+tipoGasto+"' SET "
 				+ "gasto_fecha = '"+gastoNuevo.getFecha()+"',"
 				+"gasto_monto = '"+gastoNuevo.getMonto() +"',"
 				+ "gasto_detalle = '"+gastoNuevo.getDetalle()+"'"
-						+ "WHERE gasto_fecha = '"+gastoViejo.getFecha()+"' AND gasto_monto ='"+gastoViejo.getMonto()+"' AND  gasto_detalle ='"+gastoViejo.getDetalle()+"'";
+						+ "WHERE gasto_id= '"+idGasto+"'";
 		ejecutarUpdate(sql, "GASTO EDITADO");
 	}
 	
-	public void editarGastoDiario(Gasto gastoViejo, Gasto gastoNuevo){
-		
-		String sql = "UPDATE GASTO_DIARIO SET "
-				+ "gasto_fecha = '"+gastoNuevo.getFecha()+"',"
-				+"gasto_monto = '"+gastoNuevo.getMonto() +"',"
-				+ "gasto_detalle = '"+gastoNuevo.getDetalle()+"'"
-						+ "WHERE gasto_fecha = '"+gastoViejo.getFecha()+"' AND gasto_monto ='"+gastoViejo.getMonto()+"' AND  gasto_detalle ='"+gastoViejo.getDetalle()+"'";
-		ejecutarUpdate(sql, "GASTO EDITADO");
-	}
+
 	
-	public void editarGastoGeneral(Gasto gastoViejo, Gasto gastoNuevo){
+	public void eliminarGasto(int id, String tipoGasto){
 		
-		String sql = "UPDATE GASTO_GENERAL SET "
-				+ "gasto_fecha = '"+gastoNuevo.getFecha()+"',"
-				+"gasto_monto = '"+gastoNuevo.getMonto() +"',"
-				+ "gasto_detalle = '"+gastoNuevo.getDetalle()+"'"
-						+ "WHERE gasto_fecha = '"+gastoViejo.getFecha()+"' AND gasto_monto ='"+gastoViejo.getMonto()+"' AND  gasto_detalle ='"+gastoViejo.getDetalle()+"'";
-		ejecutarUpdate(sql, "GASTO EDITADO");
-	}
-	
-	public void eliminarGastoProducto(GastosProductos gasto){
-		
-		String sql = "DELETE FROM GASTO_PRODUCTO "
-						+ "WHERE gasto_fecha = '"+gasto.getFecha()+"' AND gasto_monto ='"+gasto.getMonto()+"' AND  gasto_detalle ='"+gasto.getDetalle()+"'";
+		String sql = "DELETE FROM '"+tipoGasto+"' "
+						+ "WHERE gasto_id = '"+id+"'";
 		ejecutarUpdate(sql, "GASTO ELIMINADO");
 	}
-	
-	public void eliminarGastoDiario(GastosDiarios gasto){
-		
-		String sql = "DELETE FROM GASTO_DIARIO "
-						+ "WHERE gasto_fecha = '"+gasto.getFecha()+"' AND gasto_monto ='"+gasto.getMonto()+"' AND  gasto_detalle ='"+gasto.getDetalle()+"'";
-		ejecutarUpdate(sql, "GASTO ELIMINADO");
-	}
-	
-	public void eliminarGastoGenerales(GastosGenerales gasto){
-		
-		String sql = "DELETE FROM GASTO_GENERAL "
-						+ "WHERE gasto_fecha = '"+gasto.getFecha()+"' AND gasto_monto ='"+gasto.getMonto()+"' AND  gasto_detalle ='"+gasto.getDetalle()+"'";
-		ejecutarUpdate(sql, "GASTO ELIMINADO");
-	}
-	
 	
 	public void actualizarStock(int prod_id, int cantidad) {
 		String sql ="UPDATE PRODUCTO SET "
