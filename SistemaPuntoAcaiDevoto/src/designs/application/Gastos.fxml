@@ -15,8 +15,6 @@
       </Button>
       <Label layoutX="613.0" layoutY="30.0" text="GASTOS" />
       <Separator layoutX="150.0" layoutY="71.0" prefWidth="1000.0" />
-      <Button fx:id="btnVerGastos" layoutX="305.0" layoutY="105.0" mnemonicParsing="false" onAction="#onVerGastosClick" prefHeight="76.0" prefWidth="210.0" text="VER GASTOS" />
-      <Button fx:id="btnNuevoGasto" layoutX="777.0" layoutY="105.0" mnemonicParsing="false" onAction="#onNuevoGastoClick" prefHeight="76.0" prefWidth="210.0" text="NUEVO GASTO" />
       <Button fx:id="btnGastosDiarios" layoutX="150.0" layoutY="287.0" mnemonicParsing="false" onAction="#onGastosDiariosClick" prefHeight="76.0" prefWidth="210.0" text="DIARIOS" />
       <Button fx:id="btnGastosGenerales" layoutX="545.0" layoutY="287.0" mnemonicParsing="false" onAction="#onGastosGeneralesClick" prefHeight="76.0" prefWidth="210.0" text="GENERALES" />
       <Button fx:id="btnGastosProductos" layoutX="938.0" layoutY="287.0" mnemonicParsing="false" onAction="#onGastosProductosClick" prefHeight="76.0" prefWidth="210.0" text="PRODUCTOS" />

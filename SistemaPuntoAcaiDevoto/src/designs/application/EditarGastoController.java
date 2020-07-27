@@ -4,16 +4,14 @@ import java.sql.SQLException;
 import java.time.LocalDate;
 
 import Alertas.Alerta;
-import ConexionBD.ModificarDatos;
-import Gastos.Gasto;
+import Gastos.GastosDiarios;
+import Gastos.GastosGenerales;
+import Gastos.GastosProductos;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 public class EditarGastoController {
@@ -39,12 +37,29 @@ public class EditarGastoController {
     @FXML
     private Button btnNuevoGastoProductos;
     
-    private Gasto gastoEditable;
-    private Gasto nuevoGasto;
+    private GastosProductos gastoEditableProd;
+    private GastosProductos nuevoGastoProducto;
+    
+    private GastosDiarios gastoEditableDiario;
+    private GastosDiarios nuevoGastoDiario;
+    
+    private GastosGenerales gastoEditableGral;
+    private GastosGenerales nuevoGastoGeneral;
 
     @FXML
     void onEditarGastoProductosClick(ActionEvent event) {
-
+    	nuevoGastoProducto = generarGastoProducto();
+		try {
+			gastoEditableProd.editarGasto(nuevoGastoProducto);
+			new Alerta().informationAlert("Se ha editado el gasto", "Informacion");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			new Alerta().errorAlert("Error al modificar el gasto", "Error en la modificacion");
+		}
+    	
+    	Stage stage = (Stage) btnEditarGastoGeneral.getScene().getWindow();
+    	stage.close();
     }
 
     @FXML
@@ -60,21 +75,21 @@ public class EditarGastoController {
 
     @FXML
     void onEditarGastoGeneralClick(ActionEvent event) {
-    	nuevoGasto = generarGasto();
-		try {
-			new ModificarDatos().editarGasto(gastoEditable, nuevoGasto);
-			new Alerta().informationAlert("Se ha editado el gasto", "Informacion");
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			new Alerta().errorAlert("Error al modificar el gasto", "Error en la modificacion");
-		}
-    	
-    	Stage stage = (Stage) btnEditarGastoGeneral.getScene().getWindow();
-    	stage.close();
+//    	nuevoGastoGeneral = generarGastoGeneral();
+//		try {
+//			new ModificarDatos().editarGastoProducto(gastoEditableGral, nuevoGastoGeneral);
+//			new Alerta().informationAlert("Se ha editado el gasto", "Informacion");
+//		} catch (SQLException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//			new Alerta().errorAlert("Error al modificar el gasto", "Error en la modificacion");
+//		}
+//    	
+//    	Stage stage = (Stage) btnEditarGastoGeneral.getScene().getWindow();
+//    	stage.close();
     }
     
-    public void initEditarProductos(Gasto gasto) {
+    public void initEditarProductos(GastosProductos gasto) {
     	this.txtDetalle.setText(gasto.getDetalle());
     	this.txtMonto.setText(""+gasto.getMonto());
     	this.dateCosto.setValue(gasto.getFecha());
@@ -83,11 +98,11 @@ public class EditarGastoController {
     	btnEditarGastoGeneral.setVisible(false);
     	btnNuevoGastoProductos.setVisible(true);
     	 	
-    	gastoEditable = gasto;
+    	gastoEditableProd = gasto;
     	
     }
     
-    public void initEditarDiarios(Gasto gasto) {
+    public void initEditarDiarios(GastosDiarios gasto) {
     	this.txtDetalle.setText(gasto.getDetalle());
     	this.txtMonto.setText(""+gasto.getMonto());
     	this.dateCosto.setValue(gasto.getFecha());
@@ -96,11 +111,11 @@ public class EditarGastoController {
     	btnEditarGastoGeneral.setVisible(false);
     	btnNuevoGastoProductos.setVisible(false);
 
-    	gastoEditable = gasto;
+    	gastoEditableDiario = gasto;
     	
     }
     
-    public void initEditarGenerales(Gasto gasto) {
+    public void initEditarGenerales(GastosGenerales gasto) {
     	this.txtDetalle.setText(gasto.getDetalle());
     	this.txtMonto.setText(""+gasto.getMonto());
     	this.dateCosto.setValue(gasto.getFecha());
@@ -109,15 +124,33 @@ public class EditarGastoController {
     	btnEditarGastoGeneral.setVisible(true);
     	btnNuevoGastoProductos.setVisible(false);
 
-    	gastoEditable = gasto;
+    	gastoEditableGral = gasto;
     	
     }
     
-    public Gasto generarGasto() {
+    public GastosProductos generarGastoProducto() {
     	String detalle = this.txtDetalle.getText().toString();
     	double monto = Double.parseDouble(this.txtMonto.getText().toString());
     	LocalDate gastoFecha = dateCosto.getValue();
-    	Gasto gasto = new Gasto(detalle, monto);
+    	GastosProductos gasto = new GastosProductos(detalle, monto);
+    	gasto.setFecha(gastoFecha);
+    	return gasto;
+    }
+    
+    public GastosDiarios generarGastoDiario() {
+    	String detalle = this.txtDetalle.getText().toString();
+    	double monto = Double.parseDouble(this.txtMonto.getText().toString());
+    	LocalDate gastoFecha = dateCosto.getValue();
+    	GastosDiarios gasto = new GastosDiarios(detalle, monto);
+    	gasto.setFecha(gastoFecha);
+    	return gasto;
+    }
+    
+    public GastosGenerales generarGastoGeneral() {
+    	String detalle = this.txtDetalle.getText().toString();
+    	double monto = Double.parseDouble(this.txtMonto.getText().toString());
+    	LocalDate gastoFecha = dateCosto.getValue();
+    	GastosGenerales gasto = new GastosGenerales(detalle, monto);
     	gasto.setFecha(gastoFecha);
     	return gasto;
     }

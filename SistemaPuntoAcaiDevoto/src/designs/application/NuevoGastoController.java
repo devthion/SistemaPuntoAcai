@@ -7,6 +7,8 @@ import java.util.Optional;
 
 import Alertas.Alerta;
 import Alertas.Validaciones;
+import Gastos.GastosGenerales;
+import Gastos.GastosProductos;
 import ModeloGasto.Gasto;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -24,70 +26,79 @@ public class NuevoGastoController {
     private TextField txtMonto;
 
     @FXML
-    private Button btnNuevoGasto;
-
-    @FXML
     private TextField txtDetalle;
 
     @FXML
     private Button btnVolver;
 
     @FXML
+    private Button btnGuardarGastoGeneral;
+
+    @FXML
+    private Button btnGuardarGastoProductos;
+
+    @FXML
+    private Button btnGuardarGastoDiario;
+
+    @FXML
     void onVolverClick(ActionEvent event) {
-    	try {
-			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(getClass().getResource("Gastos.fxml"));
-			AnchorPane root = (AnchorPane) loader.load();
-			Scene scene = new Scene(root,1300,650);
-			Stage stage = new Stage();
-			stage.setScene(scene);
-			stage.resizableProperty().setValue(Boolean.FALSE);
-			stage.setResizable(false);
-			stage.setTitle("Gastos");
-			stage.show();
-		} catch(Exception e) {
-			e.printStackTrace();
-		}
     	Stage stage = (Stage) btnVolver.getScene().getWindow();
     	stage.close();
     }
-
+    
     @FXML
-    void onGuardarGastoClick(ActionEvent event) throws SQLException {
+    void onGuardarGastoGeneralClick(ActionEvent event) throws SQLException {
     	if(Validaciones.validarCajasDeTextos(generarListTxt()) || Validaciones.validarCajasNumericas(generarListNumericos()) ) {
     		new Alerta().errorAlert("Los datos ingresados son erroneos o faltan completar algunos atributos","Error en el ingreso de Datos");
     	}else {
     		Optional<ButtonType> action =  new Alerta().preguntaConfirmacion("Desea confirmar el gasto "+txtDetalle.getText()+" ?", "Confirmación");
         	if (action.get() == ButtonType.OK) {
-	    		Gasto unGasto = generarGasto();
+	    		GastosGenerales unGasto = new GastosGenerales(this.txtDetalle.getText().toString(), Double.parseDouble(this.txtMonto.getText().toString()));
 	    		unGasto.almacenarGasto();
-	    		new Alerta().informationAlert("Se ha agregado el Gasto con exito", "Nuevo Gasto");
-	    		try {
-	    			FXMLLoader loader = new FXMLLoader();
-	    			loader.setLocation(getClass().getResource("Gastos.fxml"));
-	    			AnchorPane root = (AnchorPane) loader.load();
-	    			Scene scene = new Scene(root,1300,650);
-	    			Stage stage = new Stage();
-	    			stage.setScene(scene);
-	    			stage.resizableProperty().setValue(Boolean.FALSE);
-	    			stage.setResizable(false);
-	    			stage.setTitle("Gastos");
-	    			stage.show();
-	    		} catch(Exception e) {
-	    			e.printStackTrace();
-	    		}
+	    		new Alerta().informationAlert("Se ha almacenado el Gasto con exito", "Nuevo Gasto");
 	        	Stage stage = (Stage) btnVolver.getScene().getWindow();
 	        	stage.close();
         	}
     	}
+    }
+
+    @FXML
+    void onGuardarGastoDiarioCick(ActionEvent event) {
     	
     }
+
+    @FXML
+    void onGuardarGastoProductosClick(ActionEvent event) throws SQLException {
+    	if(Validaciones.validarCajasDeTextos(generarListTxt()) || Validaciones.validarCajasNumericas(generarListNumericos()) ) {
+    		new Alerta().errorAlert("Los datos ingresados son erroneos o faltan completar algunos atributos","Error en el ingreso de Datos");
+    	}else {
+    		Optional<ButtonType> action =  new Alerta().preguntaConfirmacion("Desea confirmar el gasto "+txtDetalle.getText()+" ?", "Confirmación");
+        	if (action.get() == ButtonType.OK) {
+	    		GastosProductos unGasto = new GastosProductos(this.txtDetalle.getText().toString(), Double.parseDouble(this.txtMonto.getText().toString()));
+	    		unGasto.almacenarGasto();
+	    		new Alerta().informationAlert("Se ha almacenado el Gasto con exito", "Nuevo Gasto");
+	        	Stage stage = (Stage) btnVolver.getScene().getWindow();
+	        	stage.close();
+        	}
+    	}
+    }
     
-    public Gasto generarGasto() {
-    	String detalle = this.txtDetalle.getText().toString();
-    	double monto = Double.parseDouble(this.txtMonto.getText().toString());
-    	
-    	return new Gasto(detalle, monto);
+    public void initGuardarProductos() {    	
+    	btnGuardarGastoDiario.setVisible(false);
+    	btnGuardarGastoGeneral.setVisible(false);
+    	btnGuardarGastoProductos.setVisible(true);
+    }
+    
+    public void initEditarDiarios() {
+    	btnGuardarGastoDiario.setVisible(true);
+    	btnGuardarGastoGeneral.setVisible(false);
+    	btnGuardarGastoProductos.setVisible(false);	
+    }
+    
+    public void initEditarGenerales() {
+    	btnGuardarGastoDiario.setVisible(false);
+    	btnGuardarGastoGeneral.setVisible(true);
+    	btnGuardarGastoProductos.setVisible(false);
     }
     
     public List<TextField> generarListTxt() {

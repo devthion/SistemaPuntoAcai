@@ -6,11 +6,10 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane prefHeight="650.0" prefWidth="1300.0" stylesheets="@../Styles/Style.css" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="application.VerGastosProductos">
+<AnchorPane prefHeight="650.0" prefWidth="1300.0" stylesheets="@../Styles/Style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.VerGastosProductos">
    <children>
-      <Button fx:id="btnEliminarGasto" layoutX="571.0" layoutY="512.0" mnemonicParsing="false" onAction="#onEliminarGastoClick" text="ELIMINAR GASTO" />
-      <Button fx:id="btnEditarGasto" layoutX="218.0" layoutY="512.0" mnemonicParsing="false" onAction="#onEditarGastoClick" prefHeight="49.0" prefWidth="236.0" text="EDITAR GASTO" />
+      <Button fx:id="btnEliminarGasto" layoutX="639.0" layoutY="512.0" mnemonicParsing="false" onAction="#onEliminarGastoClick" text="ELIMINAR GASTO" />
+      <Button fx:id="btnEditarGasto" layoutX="395.0" layoutY="512.0" mnemonicParsing="false" onAction="#onEditarGastoClick" prefHeight="49.0" prefWidth="236.0" text="EDITAR GASTO" />
       <Label fx:id="lblGastosTotal" layoutX="1076.0" layoutY="362.0" prefHeight="30.0" prefWidth="153.0" />
       <Label layoutX="911.0" layoutY="362.0" text="GASTOS TOTALES:" />
       <Label layoutX="909.0" layoutY="325.0" text="GASTOS DEL MES:" />
@@ -48,5 +47,6 @@
          </items>
       </SplitMenuButton>
       <TextField fx:id="txtAnio" layoutX="973.0" layoutY="205.0" prefHeight="33.0" prefWidth="177.0" />
+      <Button fx:id="btnNuevoGasto" layoutX="150.0" layoutY="512.0" mnemonicParsing="false" onAction="#onNuevoGastoClick" prefHeight="49.0" prefWidth="236.0" text="NUEVO GASTO" />
    </children>
 </AnchorPane>

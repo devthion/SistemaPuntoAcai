@@ -3,6 +3,9 @@ package ConexionBD;
 import java.sql.SQLException;
 import java.time.LocalDate;
 
+import Gastos.GastosDiarios;
+import Gastos.GastosGenerales;
+import Gastos.GastosProductos;
 import ModeloGasto.Gasto;
 import ModeloInversion.Inversion;
 import ModelosClientes.Cliente;
@@ -67,9 +70,9 @@ public class ModificarDatos extends ConexionBd {
 			ejecutarUpdate(sql, "cliente editado");
 	}
 
-	public void editarGasto(Gasto gastoViejo, Gasto gastoNuevo){
+	public void editarGastoProducto(GastosProductos gastoViejo, GastosProductos gastoNuevo){
 		
-		String sql = "UPDATE GASTO SET "
+		String sql = "UPDATE GASTO_PRODUCTO SET "
 				+ "gasto_fecha = '"+gastoNuevo.getFecha()+"',"
 				+"gasto_monto = '"+gastoNuevo.getMonto() +"',"
 				+ "gasto_detalle = '"+gastoNuevo.getDetalle()+"'"
@@ -77,9 +80,43 @@ public class ModificarDatos extends ConexionBd {
 		ejecutarUpdate(sql, "GASTO EDITADO");
 	}
 	
-	public void eliminarGasto(Gasto gasto){
+	public void editarGastoDiario(Gasto gastoViejo, Gasto gastoNuevo){
 		
-		String sql = "DELETE FROM GASTO "
+		String sql = "UPDATE GASTO_DIARIO SET "
+				+ "gasto_fecha = '"+gastoNuevo.getFecha()+"',"
+				+"gasto_monto = '"+gastoNuevo.getMonto() +"',"
+				+ "gasto_detalle = '"+gastoNuevo.getDetalle()+"'"
+						+ "WHERE gasto_fecha = '"+gastoViejo.getFecha()+"' AND gasto_monto ='"+gastoViejo.getMonto()+"' AND  gasto_detalle ='"+gastoViejo.getDetalle()+"'";
+		ejecutarUpdate(sql, "GASTO EDITADO");
+	}
+	
+	public void editarGastoGeneral(Gasto gastoViejo, Gasto gastoNuevo){
+		
+		String sql = "UPDATE GASTO_GENERAL SET "
+				+ "gasto_fecha = '"+gastoNuevo.getFecha()+"',"
+				+"gasto_monto = '"+gastoNuevo.getMonto() +"',"
+				+ "gasto_detalle = '"+gastoNuevo.getDetalle()+"'"
+						+ "WHERE gasto_fecha = '"+gastoViejo.getFecha()+"' AND gasto_monto ='"+gastoViejo.getMonto()+"' AND  gasto_detalle ='"+gastoViejo.getDetalle()+"'";
+		ejecutarUpdate(sql, "GASTO EDITADO");
+	}
+	
+	public void eliminarGastoProducto(GastosProductos gasto){
+		
+		String sql = "DELETE FROM GASTO_PRODUCTO "
+						+ "WHERE gasto_fecha = '"+gasto.getFecha()+"' AND gasto_monto ='"+gasto.getMonto()+"' AND  gasto_detalle ='"+gasto.getDetalle()+"'";
+		ejecutarUpdate(sql, "GASTO ELIMINADO");
+	}
+	
+	public void eliminarGastoDiario(GastosDiarios gasto){
+		
+		String sql = "DELETE FROM GASTO_DIARIO "
+						+ "WHERE gasto_fecha = '"+gasto.getFecha()+"' AND gasto_monto ='"+gasto.getMonto()+"' AND  gasto_detalle ='"+gasto.getDetalle()+"'";
+		ejecutarUpdate(sql, "GASTO ELIMINADO");
+	}
+	
+	public void eliminarGastoGenerales(GastosGenerales gasto){
+		
+		String sql = "DELETE FROM GASTO_GENERAL "
 						+ "WHERE gasto_fecha = '"+gasto.getFecha()+"' AND gasto_monto ='"+gasto.getMonto()+"' AND  gasto_detalle ='"+gasto.getDetalle()+"'";
 		ejecutarUpdate(sql, "GASTO ELIMINADO");
 	}

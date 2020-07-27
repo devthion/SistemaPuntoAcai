@@ -5,8 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane prefHeight="650.0" prefWidth="1300.0" stylesheets="@../Styles/Style.css" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="application.NuevoGastoController">
+<AnchorPane prefHeight="650.0" prefWidth="1300.0" stylesheets="@../Styles/Style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.NuevoGastoController">
    <children>
       <Button fx:id="btnVolver" layoutX="1152.0" layoutY="587.0" mnemonicParsing="false" onAction="#onVolverClick" text="VOLVER" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="14.0" />
       <Label layoutX="583.0" layoutY="30.0" text="NUEVO GASTO" AnchorPane.leftAnchor="583.0" AnchorPane.rightAnchor="582.0" AnchorPane.topAnchor="30.0" />
@@ -15,6 +14,8 @@
       <TextField fx:id="txtMonto" layoutX="546.0" layoutY="309.0" />
       <Label layoutX="558.0" layoutY="154.0" text="DETALLE DEL GASTO" />
       <Label layoutX="613.0" layoutY="279.0" text="MONTO" />
-      <Button fx:id="btnNuevoGasto" layoutX="530.0" layoutY="475.0" mnemonicParsing="false" onAction="#onGuardarGastoClick" text="GUARDAR GASTO" />
+      <Button fx:id="btnGuardarGastoGeneral" layoutX="458.0" layoutY="510.0" mnemonicParsing="false" onAction="#onGuardarGastoGeneralClick" prefHeight="49.0" prefWidth="384.0" text="GUARDAR GASTO GENERAL" />
+      <Button fx:id="btnGuardarGastoDiario" layoutX="458.0" layoutY="510.0" mnemonicParsing="false" onAction="#onGuardarGastoDiarioCick" prefHeight="49.0" prefWidth="384.0" text="GUARDAR GASTO DIARIO" />
+      <Button fx:id="btnGuardarGastoProductos" layoutX="459.0" layoutY="510.0" mnemonicParsing="false" onAction="#onGuardarGastoProductosClick" text="GUARDAR GASTO PRODUCTOS" />
    </children>
 </AnchorPane>

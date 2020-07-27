@@ -15,6 +15,7 @@ import org.omg.CORBA.PUBLIC_MEMBER;
 
 import com.itextpdf.text.pdf.PdfStructTreeController.returnType;
 
+import Gastos.GastosProductos;
 import ModeloGasto.Gasto;
 import ModeloInversion.Inversion;
 import ModelosClientes.Cliente;
@@ -123,6 +124,22 @@ public class ObtenerDatos extends ConexionBd{
 		while(rs.next()) {
 			LocalDate date = rs.getDate(2).toLocalDate();
 			Gasto unGasto = new Gasto(rs.getString(4),rs.getDouble(3));
+			unGasto.setFecha(date);
+			gastos.add(unGasto);
+		}
+		return gastos;
+	}
+	
+	public ObservableList<GastosProductos> obtenerGastosProductos() throws SQLException{
+		ResultSet rs;
+		Statement unStmt =null;
+		ObservableList<GastosProductos> gastos = FXCollections.observableArrayList();	
+		
+		sql="select * from GASTO_PRODUCTO";
+		rs=ejecutarQuery(sql,unStmt);
+		while(rs.next()) {
+			LocalDate date = rs.getDate(2).toLocalDate();
+			GastosProductos unGasto = new GastosProductos(rs.getString(4),rs.getDouble(3));
 			unGasto.setFecha(date);
 			gastos.add(unGasto);
 		}

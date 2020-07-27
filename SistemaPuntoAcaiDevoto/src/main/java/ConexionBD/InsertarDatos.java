@@ -7,6 +7,7 @@ import java.time.ZoneId;
 import java.util.Date;
 import java.util.Objects;
 
+import Gastos.GastosProductos;
 import ModeloGasto.Gasto;
 import ModeloInversion.Inversion;
 import ModelosClientes.Cliente;
@@ -42,6 +43,16 @@ public class InsertarDatos extends ConexionBd{
 	
 	public void insertarGasto(Gasto unGasto) {
 		String sql = "insert into GASTO"
+				+ "(gasto_fecha,"
+				+ "gasto_monto,"
+				+ "gasto_detalle)"
+				+ "values('"+unGasto.getFecha()+"','"+unGasto.getMonto()+"','"+unGasto.getDetalle()+"')";
+		ejecutarUpdate(sql, "Gasto ingresado");
+				
+	}
+	
+	public void insertarGastoProducto(GastosProductos unGasto) {
+		String sql = "insert into GASTO_PRODUCTO"
 				+ "(gasto_fecha,"
 				+ "gasto_monto,"
 				+ "gasto_detalle)"

@@ -1,5 +1,9 @@
 package Gastos;
 
+import java.sql.SQLException;
+
+import ConexionBD.InsertarDatos;
+import ConexionBD.ModificarDatos;
 
 public class GastosProductos extends Gasto {
 
@@ -7,16 +11,17 @@ public class GastosProductos extends Gasto {
 		super(detalle, monto);
 	}
 	
-	public void almacenarGasto() {
-		//ALMACENAR GASTO
+	public void almacenarGasto() throws SQLException {
+		InsertarDatos insertarDatos = new InsertarDatos();
+		insertarDatos.insertarGastoProducto(this);
 	}
 	
-	public void editarGasto(Gasto gastoModificado) {
-		//ModificarDatos.modificarGasto(this, gastoModificado);
+	public void editarGasto(GastosProductos gastoModificado) throws SQLException {
+		new ModificarDatos().editarGastoProducto(this, gastoModificado);
 	}
 	
-	public void eliminarGasto() {
-		//ModificarDatos.eliminarGasto(this);
+	public void eliminarGasto() throws SQLException {
+		new ModificarDatos().eliminarGastoProducto(this);
 	}
 	
 }

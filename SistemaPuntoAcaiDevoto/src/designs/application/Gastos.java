@@ -12,13 +12,7 @@ import javafx.stage.Stage;
 public class Gastos {
 
     @FXML
-    private Button btnNuevoGasto;
-
-    @FXML
     private Button btnVolver;
-
-    @FXML
-    private Button btnVerGastos;
     
     @FXML
     private Button btnGastosDiarios;
@@ -28,48 +22,6 @@ public class Gastos {
 
     @FXML
     private Button btnGastosProductos;
-
-
-
-    @FXML
-    void onVerGastosClick(ActionEvent event) {
-    	try {
-			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(getClass().getResource("VerGastos.fxml"));
-			AnchorPane root = (AnchorPane) loader.load();
-			Scene scene = new Scene(root,1300,650);
-			Stage stage = new Stage();
-			stage.setScene(scene);
-			stage.resizableProperty().setValue(Boolean.FALSE);
-			stage.setResizable(false);
-			stage.setTitle("Gastos");
-			stage.show();
-		} catch(Exception e) {
-			e.printStackTrace();
-		}
-    	Stage stage = (Stage) btnVerGastos.getScene().getWindow();
-    	stage.close();
-    }
-
-    @FXML
-    void onNuevoGastoClick(ActionEvent event) {
-    	try {
-			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(getClass().getResource("Costos.fxml"));
-			AnchorPane root = (AnchorPane) loader.load();
-			Scene scene = new Scene(root,1300,650);
-			Stage stage = new Stage();
-			stage.setScene(scene);
-			stage.resizableProperty().setValue(Boolean.FALSE);
-			stage.setResizable(false);
-			stage.setTitle("Gastos");
-			stage.show();
-		} catch(Exception e) {
-			e.printStackTrace();
-		}
-    	Stage stage = (Stage) btnNuevoGasto.getScene().getWindow();
-    	stage.close();
-    }
     
     @FXML
     void onVolverClick(ActionEvent event) {
@@ -93,7 +45,7 @@ public class Gastos {
     
     @FXML
     void onGastosDiariosClick(ActionEvent event) {
-
+    	
     }
 
     @FXML
@@ -103,6 +55,21 @@ public class Gastos {
 
     @FXML
     void onGastosProductosClick(ActionEvent event) {
-
+    	try {
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(getClass().getResource("GastosProductos.fxml"));
+			AnchorPane root = (AnchorPane) loader.load();
+			Scene scene = new Scene(root,1300,650);
+			Stage stage = new Stage();
+			stage.setScene(scene);
+			stage.resizableProperty().setValue(Boolean.FALSE);
+			stage.setResizable(false);
+			stage.setTitle("Menu Principal");
+			stage.show();
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+    	Stage stage = (Stage) btnVolver.getScene().getWindow();
+    	stage.close();
     }
 }

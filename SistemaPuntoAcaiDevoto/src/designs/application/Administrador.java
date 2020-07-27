@@ -68,13 +68,17 @@ public class Administrador {
     }
 
     @FXML
-    void onCrearTablasClcik(ActionEvent event) {
+    void onCrearTablasClcik(ActionEvent event) {		
     	CrearTabla.crearTablaProducto();
     	CrearTabla.crearTablaCliente();
     	CrearTabla.crearTablaVenta();
     	CrearTabla.crearTablaItem_Venta();
-    	CrearTabla.crearTablaGasto();
-    	CrearTabla.crearTablaCajaCerrada();
+		CrearTabla.crearTablaGastoDiario();
+		CrearTabla.crearTablaGastoGeneral();
+		CrearTabla.crearTablaGastoProducto();
+		CrearTabla.crearTablaCajaCerrada();
+		CrearTabla.crearTablaInversion();
+		CrearTabla.crearTablaPropina();
     	new Alerta().informationAlert("Las tablas de la BD han sido creadas con Exito", "Creacion Tablas");
     }
     
