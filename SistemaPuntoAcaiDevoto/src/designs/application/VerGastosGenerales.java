@@ -82,6 +82,9 @@ public class VerGastosGenerales implements Initializable {
 
     @FXML
     private MenuItem slipJunio;
+    
+    @FXML
+    private Button btnNuevoGasto;
 
     @FXML
     private MenuItem slipNoviembre;
@@ -139,6 +142,11 @@ public class VerGastosGenerales implements Initializable {
 			mostrarGastosPorMes(LocalDate.now().getMonthValue());
 	    	lblGastosTotal.setText(gastos.stream().mapToDouble(unGasto-> unGasto.getMonto()).sum()+" $");
     	}
+    }
+    
+    @FXML
+    void onNuevoGastoClick(ActionEvent event) {
+
     }
 
     @FXML
