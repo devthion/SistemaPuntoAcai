@@ -43,7 +43,7 @@ public class InsertarDatos extends ConexionBd{
 	}//todo chequear esto del date
 	
 	public void insertarGasto(Gasto unGasto, String tipoGasto) {
-		String sql = "insert into '"+tipoGasto+"'"
+		String sql = "insert into "+tipoGasto+" "
 				+ "(gasto_fecha,"
 				+ "gasto_monto,"
 				+ "gasto_detalle)"

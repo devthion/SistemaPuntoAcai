@@ -8,7 +8,7 @@
 
 <AnchorPane prefHeight="650.0" prefWidth="1300.0" stylesheets="@../Styles/Style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.VerInversiones">
    <children>
-      <Button fx:id="btnEditarInversion" layoutX="409.0" layoutY="515.0" mnemonicParsing="false" onAction="#onEditarInversionClick" text="EDITAR INVERSION" />
+      <Button fx:id="btnEditarInversion" layoutX="396.0" layoutY="507.0" mnemonicParsing="false" onAction="#onEditarInversionClick" text="EDITAR INVERSION" />
       <Label layoutX="911.0" layoutY="362.0" text="INVERSIONES TOTALES:" />
       <Label layoutX="909.0" layoutY="325.0" text="INVERSIONES DEL MES:" />
       <TableView fx:id="tblInversiones" layoutX="150.0" layoutY="130.0" prefHeight="334.0" prefWidth="725.0">
@@ -46,5 +46,7 @@
       <TextField fx:id="txtAnio" layoutX="973.0" layoutY="205.0" prefHeight="33.0" prefWidth="177.0" />
       <Label fx:id="lblInversionesTotal" layoutX="1121.0" layoutY="362.0" prefHeight="30.0" prefWidth="153.0" />
       <Label fx:id="lblInversionesMes" layoutX="1121.0" layoutY="325.0" prefHeight="30.0" prefWidth="153.0" />
+      <Button fx:id="btnNuevaInversion1" layoutX="115.0" layoutY="507.0" mnemonicParsing="false" onAction="#onNuevaInversionClick" text="NUEVA INVERSION" />
+      <Button fx:id="btnEditarInversion11" layoutX="677.0" layoutY="507.0" mnemonicParsing="false" onAction="#onEditarInversionClick" text="ELIMINAR INVERSION" />
    </children>
 </AnchorPane>

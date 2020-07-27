@@ -77,7 +77,7 @@ public class ModificarDatos extends ConexionBd {
 	
 	public void editarGasto(int idGasto, Gasto gastoNuevo, String tipoGasto){
 		
-		String sql = "UPDATE '"+tipoGasto+"' SET "
+		String sql = "UPDATE "+tipoGasto+" SET "
 				+ "gasto_fecha = '"+gastoNuevo.getFecha()+"',"
 				+"gasto_monto = '"+gastoNuevo.getMonto() +"',"
 				+ "gasto_detalle = '"+gastoNuevo.getDetalle()+"'"
@@ -89,7 +89,7 @@ public class ModificarDatos extends ConexionBd {
 	
 	public void eliminarGasto(int id, String tipoGasto){
 		
-		String sql = "DELETE FROM '"+tipoGasto+"' "
+		String sql = "DELETE FROM "+tipoGasto+" "
 						+ "WHERE gasto_id = '"+id+"'";
 		ejecutarUpdate(sql, "GASTO ELIMINADO");
 	}
