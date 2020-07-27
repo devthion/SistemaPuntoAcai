@@ -10,10 +10,18 @@ import ConexionBD.ModificarDatos;
 public class Propina {
 	double monto;
 	LocalDate fecha;
+	int id;
 		
 	public Propina(double monto, LocalDate fecha) {
 		this.monto = monto;
 		this.fecha = fecha;
+	}
+	
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public double getMonto() {
@@ -45,6 +53,11 @@ public class Propina {
 	
 	public void modificarPropina(Propina propinaModificada) throws SQLException {
 		ModificarDatos modificarDatos = new ModificarDatos();
-		modificarDatos.modificarPropina(this.getFecha(), propinaModificada);
+		modificarDatos.modificarPropina(propinaModificada);
+	}
+	
+	public void eliminarPropina() {
+		ModificarDatos modificarDatos = new ModificarDatos();
+		modificarDatos.eliminarPropina(this.getId());
 	}
 }

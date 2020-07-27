@@ -121,20 +121,21 @@ public class ModificarDatos extends ConexionBd {
 		
 	}
 
-	public void modificarPropina(LocalDate fecha, Propina propinaModificada) {
-		Date fechaDate = Date.from(fecha.atStartOfDay(ZoneId.systemDefault()).toInstant());
+	public void modificarPropina(Propina propinaModificada) {
 		String sql = "UPDATE PROPINA SET"
 				+ "propina_monto = propina_monto + '"+propinaModificada.getMonto()+"'"
-				+ "WHERE propina_fecha = '"+fechaDate+"'";
+						+ "propina_fecha = '"+propinaModificada.getFecha()+"'"
+				+ "WHERE propina_fecha = '"+propinaModificada.getId()+"'";
 		ejecutarUpdate(sql, "Propina actualizada");
 	}
 	
-	public void eliminarPropina(LocalDate fecha) {
-		Date fechaDate = Date.from(fecha.atStartOfDay(ZoneId.systemDefault()).toInstant());
+	public void eliminarPropina(int id) {
+		
 		String sqlString = "DELETE FROM PROPINA"
-				+ "WHERE propina_fecha = '"+fechaDate+"'";
+				+ "WHERE propina_id = '"+id+"'";
 		ejecutarUpdate(sqlString, "propina eliminated");
 				
 	}
+
 
 }

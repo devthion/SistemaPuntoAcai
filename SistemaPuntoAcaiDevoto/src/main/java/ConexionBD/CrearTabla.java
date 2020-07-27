@@ -100,9 +100,10 @@ public class CrearTabla {
 			Connection con = DriverManager.getConnection("jdbc:h2:"+"./Database/bd", "root", "devthion");
 			Statement stmt= con.createStatement();
 			String sql = "CREATE TABLE IF NOT EXISTS PROPINA" 
-				+"(propina_fecha DATE,"
+				+"(propina_id INTEGER auto_increment,"
+				+ "propina_fecha DATE,"
 				+"propina_monto DOUBLE(10),"
-				+"PRIMARY KEY (propina_fecha))";
+				+"PRIMARY KEY (propina_id))";
 			stmt.executeUpdate(sql);
 			System.out.println("Tabla PROPINA creada");
 		}

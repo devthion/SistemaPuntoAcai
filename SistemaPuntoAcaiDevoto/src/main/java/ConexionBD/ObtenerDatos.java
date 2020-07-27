@@ -52,12 +52,14 @@ public class ObtenerDatos extends ConexionBd{
 		sql="SELECT * FROM PROPINA";
 		rs=ejecutarQuery(sql, statement);
 		while(rs.next()) {
-			LocalDate fecha = rs.getDate(1).toLocalDate();
-			double monto = rs.getDouble(2);
+			int id = rs.getInt(1);
+			LocalDate fecha = rs.getDate(2).toLocalDate();
+			double monto = rs.getDouble(3);
 			Propina propina = new Propina(monto, fecha);
+			propina.setId(id);
 			propinas.add(propina);
 		}
-		return propinas;//todo chequear lo de la fecha
+		return propinas;
 	}
 	
 	public List<CajaCerrada> obtenerCajasCerradas() throws SQLException{

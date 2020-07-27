@@ -28,9 +28,7 @@ public class InsertarDatos extends ConexionBd{
 		String sqlString = "INSERT INTO PROPINA"
 				+ "(propina_fecha,"
 				+ "propina_monto)"
-				+ "values('"+unaPropina.getFecha()+"','"+unaPropina.getMonto()+"') ON DUPLICATE KEY UPDATE"
-				+ "propina_monto = propina_monto + '"+unaPropina.getMonto()+"'";
-				
+				+ "values('"+unaPropina.getFecha()+"','"+unaPropina.getMonto()+"')";
 	}
 	
 	public void insertarCajaCerrada(CajaCerrada unaCajaCerrada) {
@@ -38,9 +36,9 @@ public class InsertarDatos extends ConexionBd{
 				+ "(caja_cerrada_fecha,"
 				+ "caja_cerrada_monto_real,"
 				+ "caja_cerrada_monto_ideal)"
-				+ "values('"+Date.from(unaCajaCerrada.getFecha().atStartOfDay(ZoneId.systemDefault()).toInstant())+"','"+unaCajaCerrada.getMonto_real()+"','"+unaCajaCerrada.getMonto_ideal()+"')";
+				+ "values('"+unaCajaCerrada.getFecha()+"','"+unaCajaCerrada.getMonto_real()+"','"+unaCajaCerrada.getMonto_ideal()+"')";
 		ejecutarUpdate(sql, "Caja Cerrada");
-	}//todo chequear esto del date
+	}
 	
 	public void insertarGasto(Gasto unGasto, String tipoGasto) {
 		String sql = "insert into '"+tipoGasto+"'"
