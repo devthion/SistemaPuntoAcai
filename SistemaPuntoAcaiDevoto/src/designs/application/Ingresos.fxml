@@ -8,8 +8,7 @@
 
 <AnchorPane prefHeight="650.0" prefWidth="1300.0" stylesheets="@../Styles/Style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Ingresos">
    <children>
-      <Button fx:id="btnNuevoGasto" layoutX="716.0" layoutY="249.0" mnemonicParsing="false" onAction="#onNuevoGastoClick" prefHeight="76.0" prefWidth="280.0" text="NUEVA INVERSION" />
-      <Button fx:id="btnVerIngresos" layoutX="305.0" layoutY="249.0" mnemonicParsing="false" onAction="#onVerIngresosClick" prefHeight="76.0" prefWidth="280.0" text="VER INVERSIONES" />
+      <Button fx:id="btnVerIngresos" layoutX="278.0" layoutY="249.0" mnemonicParsing="false" onAction="#onVerIngresosClick" prefHeight="76.0" prefWidth="280.0" text="INVERSIONES" />
       <Separator layoutX="150.0" layoutY="71.0" prefWidth="1000.0" />
       <Label layoutX="589.0" layoutY="27.0" text="INVERSIONES" />
       <Button fx:id="btnVolver" layoutX="1148.0" layoutY="585.0" mnemonicParsing="false" onAction="#onVolverClick" prefHeight="51.0" prefWidth="138.0" text="VOLVER" textFill="WHITE">
@@ -17,5 +16,6 @@
             <Font size="24.0" />
          </font>
       </Button>
+      <Button fx:id="btnPropinas" layoutX="742.0" layoutY="249.0" mnemonicParsing="false" onAction="#onPropinasClick" prefHeight="76.0" prefWidth="280.0" text="PROPINAS" />
    </children>
 </AnchorPane>

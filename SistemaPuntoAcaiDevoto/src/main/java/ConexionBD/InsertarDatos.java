@@ -41,7 +41,7 @@ public class InsertarDatos extends ConexionBd{
 	}
 	
 	public void insertarGasto(Gasto unGasto, String tipoGasto) {
-		String sql = "insert into '"+tipoGasto+"'"
+		String sql = "insert into "+tipoGasto+" "
 				+ "(gasto_fecha,"
 				+ "gasto_monto,"
 				+ "gasto_detalle)"

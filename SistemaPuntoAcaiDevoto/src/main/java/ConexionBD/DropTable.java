@@ -11,7 +11,6 @@ public class DropTable {
 		dropTablaProducto();
 		dropTablaVenta();
 		dropTablaCliente();
-		dropTablaGasto();
 		dropTablaCerrarCaja();
 	}
 	
