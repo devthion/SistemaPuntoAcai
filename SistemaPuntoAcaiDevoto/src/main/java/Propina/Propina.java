@@ -5,6 +5,7 @@ import java.time.LocalDate;
 import java.util.Date;
 
 import ConexionBD.InsertarDatos;
+import ConexionBD.ModificarDatos;
 
 public class Propina {
 	double monto;
@@ -40,5 +41,10 @@ public class Propina {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+	
+	public void modificarPropina(Propina propinaModificada) {
+		ModificarDatos modificarDatos = new ModificarDatos();
+		modificarDatos.modificarPropina(this.getFecha(), propinaModificada);
 	}
 }

@@ -2,6 +2,8 @@ package ConexionBD;
 
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.Date;
 
 import Gastos.Gasto;
 import Gastos.GastosDiarios;
@@ -10,6 +12,7 @@ import Gastos.GastosProductos;
 
 import ModeloInversion.Inversion;
 import ModelosClientes.Cliente;
+import Propina.Propina;
 import Ventas.Venta;
 
 
@@ -116,6 +119,22 @@ public class ModificarDatos extends ConexionBd {
 						+ "WHERE inver_fecha = '"+inversionEditable.getFecha()+"' AND inver_monto ='"+inversionEditable.getMonto()+"' AND  inver_detalle ='"+inversionEditable.getDetalle()+"'";
 		ejecutarUpdate(sql, "INVERSION EDITADA");
 		
+	}
+
+	public void modificarPropina(LocalDate fecha, Propina propinaModificada) {
+		Date fechaDate = Date.from(fecha.atStartOfDay(ZoneId.systemDefault()).toInstant());
+		String sql = "UPDATE PROPINA SET"
+				+ "propina_monto = propina_monto + '"+propinaModificada.getMonto()+"'"
+				+ "WHERE propina_fecha = '"+fechaDate+"'";
+		ejecutarUpdate(sql, "Propina actualizada");
+	}
+	
+	public void eliminarPropina(LocalDate fecha) {
+		Date fechaDate = Date.from(fecha.atStartOfDay(ZoneId.systemDefault()).toInstant());
+		String sqlString = "DELETE FROM PROPINA"
+				+ "WHERE propina_fecha = '"+fechaDate+"'";
+		ejecutarUpdate(sqlString, "propina eliminated");
+				
 	}
 
 }
