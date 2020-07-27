@@ -8,7 +8,7 @@ import java.util.ResourceBundle;
 import Alertas.Alerta;
 import Alertas.Validaciones;
 import ConexionBD.ObtenerDatos;
-import ModeloGasto.Gasto;
+import Gastos.GastosGenerales;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -30,7 +30,7 @@ import javafx.stage.Stage;
 public class VerGastosGenerales implements Initializable {
 
     @FXML
-    private TableColumn<Gasto, LocalDate> colFecha;
+    private TableColumn<GastosGenerales, LocalDate> colFecha;
 
     @FXML
     private MenuItem slipOctubre;
@@ -60,13 +60,13 @@ public class VerGastosGenerales implements Initializable {
     private Button btnVolver;
 
     @FXML
-    private TableColumn<Gasto, String> colDetalle;
+    private TableColumn<GastosGenerales, String> colDetalle;
 
     @FXML
     private SplitMenuButton slipMenuMes;
 
     @FXML
-    private TableView<Gasto> tblGastos;
+    private TableView<GastosGenerales> tblGastos;
 
     @FXML
     private MenuItem slipAbril;
@@ -87,7 +87,7 @@ public class VerGastosGenerales implements Initializable {
     private MenuItem slipNoviembre;
 
     @FXML
-    private TableColumn<Gasto, Double> colCantidad;
+    private TableColumn<GastosGenerales, Double> colCantidad;
 
     @FXML
     private MenuItem slipDiciembre;
@@ -98,12 +98,12 @@ public class VerGastosGenerales implements Initializable {
     @FXML
     private Button btnEliminarGasto;
     
-    private ObservableList<Gasto> gastos;
-    private ObservableList<Gasto> gastosPorMes;
+    private ObservableList<GastosGenerales> gastos;
+    private ObservableList<GastosGenerales> gastosPorMes;
     
     @FXML
     void onEditarGastoClick(ActionEvent event) throws SQLException {
-    	Gasto gasto = this.tblGastos.getSelectionModel().getSelectedItem();
+    	GastosGenerales gasto = this.tblGastos.getSelectionModel().getSelectedItem();
     	
     	if(gasto==null) {
     		new Alerta().errorAlert("Debe seleccionar un Gasto", "Editar Gasto");
@@ -114,7 +114,7 @@ public class VerGastosGenerales implements Initializable {
     			AnchorPane root = (AnchorPane) loader.load();
     			
     			EditarGastoController controller = loader.getController();
-    			controller.initEditar(gasto);
+    			controller.initEditarGenerales(gasto);
     			
     			Scene scene = new Scene(root,1300,650);
     			Stage stage = new Stage();
@@ -132,7 +132,7 @@ public class VerGastosGenerales implements Initializable {
     		ObtenerDatos obtenerDatos = new ObtenerDatos();
 			obtenerDatos = new ObtenerDatos();
 			gastos = FXCollections.observableArrayList();
-			gastos = obtenerDatos.obtenerGastos();
+			gastos = obtenerDatos.obtenerGastosGenerales();
 			
 			this.tblGastos.setItems(gastos);
 			this.tblGastos.refresh();
@@ -239,7 +239,7 @@ public class VerGastosGenerales implements Initializable {
 		try {
 			obtenerDatos = new ObtenerDatos();
 			gastos = FXCollections.observableArrayList();
-			gastos = obtenerDatos.obtenerGastos();
+			gastos = obtenerDatos.obtenerGastosGenerales();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -248,9 +248,9 @@ public class VerGastosGenerales implements Initializable {
 		
 		this.tblGastos.setItems(gastos);
 		
-		this.colDetalle.setCellValueFactory(new PropertyValueFactory<Gasto, String>("detalle"));
-		this.colFecha.setCellValueFactory(new PropertyValueFactory<Gasto, LocalDate>("fecha"));
-		this.colCantidad.setCellValueFactory(new PropertyValueFactory<Gasto, Double>("monto"));
+		this.colDetalle.setCellValueFactory(new PropertyValueFactory<GastosGenerales, String>("detalle"));
+		this.colFecha.setCellValueFactory(new PropertyValueFactory<GastosGenerales, LocalDate>("fecha"));
+		this.colCantidad.setCellValueFactory(new PropertyValueFactory<GastosGenerales, Double>("monto"));
 		
 		mostrarGastosPorMes(LocalDate.now().getMonthValue());
     	lblGastosTotal.setText(gastos.stream().mapToDouble(unGasto-> unGasto.getMonto()).sum()+" $");
@@ -259,7 +259,7 @@ public class VerGastosGenerales implements Initializable {
 	
     @FXML
     void onEliminarGastoClick(ActionEvent event) throws SQLException {
-    	Gasto gasto = this.tblGastos.getSelectionModel().getSelectedItem();
+    	GastosGenerales gasto = this.tblGastos.getSelectionModel().getSelectedItem();
     	
     	if(gasto==null) {
     		new Alerta().errorAlert("Debe seleccionar un Gasto", "Editar Gasto");
@@ -275,7 +275,7 @@ public class VerGastosGenerales implements Initializable {
     		ObtenerDatos obtenerDatos = new ObtenerDatos();
 			obtenerDatos = new ObtenerDatos();
 			gastos = FXCollections.observableArrayList();
-			gastos = obtenerDatos.obtenerGastos();
+			gastos = obtenerDatos.obtenerGastosGenerales();
 			
 			this.tblGastos.setItems(gastos);
 			this.tblGastos.refresh();

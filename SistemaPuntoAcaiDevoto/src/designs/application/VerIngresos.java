@@ -10,7 +10,7 @@ import java.util.ResourceBundle;
 import Alertas.Alerta;
 import Alertas.Validaciones;
 import ConexionBD.ObtenerDatos;
-import ModeloGasto.Gasto;
+import Gastos.GastosGenerales;
 import ModeloInversion.Inversion;
 import Ventas.CajaCerrada;
 import Ventas.Venta;
@@ -88,7 +88,7 @@ public class VerIngresos implements Initializable {
     private ObservableList<Venta> ventasPorDia;
     private ObservableList<Venta> ventasPorMes;
     private ObservableList<Venta> ventasPorAnio;
-    private ObservableList<Gasto> gastos;
+    private ObservableList<GastosGenerales> gastos;
     private ObservableList<Inversion> inversiones;
 
     @FXML
@@ -203,7 +203,7 @@ public class VerIngresos implements Initializable {
 		try {
 			obtenerDatos = new ObtenerDatos();
 			gastos = FXCollections.observableArrayList();
-			gastos = obtenerDatos.obtenerGastos();
+			gastos = obtenerDatos.obtenerGastosGenerales();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
