@@ -43,7 +43,7 @@ public class Propina {
 		}
 	}
 	
-	public void modificarPropina(Propina propinaModificada) {
+	public void modificarPropina(Propina propinaModificada) throws SQLException {
 		ModificarDatos modificarDatos = new ModificarDatos();
 		modificarDatos.modificarPropina(this.getFecha(), propinaModificada);
 	}
