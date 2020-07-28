@@ -113,7 +113,7 @@ public class VerGastosProductos implements Initializable {
     	if(gasto==null) {
     		new Alerta().errorAlert("Debe seleccionar un Gasto", "Editar Gasto");
     	}else {
-    		Optional<ButtonType> action =  new Alerta().preguntaConfirmacion("¿Estas seguro que desea cancelar la operación?", "Confirmación");
+    		Optional<ButtonType> action =  new Alerta().preguntaConfirmacion("¿Estas seguro que desea eliminar el gasto?", "Confirmación");
         	if (action.get() == ButtonType.OK) {
 	    		gasto.eliminarGasto();
 	    		new Alerta().errorAlert("Gasto Eliminado", "Eliminar Gasto");

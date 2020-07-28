@@ -107,7 +107,7 @@ public class PropinasController implements Initializable {
     	if(propina==null) {
     		new Alerta().errorAlert("Debe seleccionar una Propina", "Editar Inversion");
     	}else {
-    		Optional<ButtonType> action =  new Alerta().preguntaConfirmacion("¿Estas seguro que desea cancelar la operación?", "Confirmación");
+    		Optional<ButtonType> action =  new Alerta().preguntaConfirmacion("¿Estas seguro que desea eliminar la propina?", "Confirmación");
         	if (action.get() == ButtonType.OK) {
 	    		propina.eliminarPropina();
 	    		new Alerta().errorAlert("Gasto Eliminado", "Eliminar Gasto");

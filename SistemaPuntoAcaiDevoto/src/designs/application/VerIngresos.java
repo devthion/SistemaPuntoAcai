@@ -10,6 +10,7 @@ import java.util.ResourceBundle;
 import Alertas.Alerta;
 import Alertas.Validaciones;
 import ConexionBD.ObtenerDatos;
+import Gastos.GastosDiarios;
 import Gastos.GastosGenerales;
 import ModeloInversion.Inversion;
 import Ventas.CajaCerrada;
@@ -29,11 +30,6 @@ import javafx.stage.Stage;
 
 public class VerIngresos implements Initializable {
 
-    @FXML
-    private Label lblIdealMes;
-
-    @FXML
-    private Label lblRealAnio;
 
     @FXML
     private Button btnVolver;
@@ -51,28 +47,19 @@ public class VerIngresos implements Initializable {
     private TextField txtAnio;
 
     @FXML
-    private Label lblRealMes;
-
-    @FXML
-    private Label lblIdealAnio;
-
-    @FXML
     private TextField txtDia;
     
     @FXML
     private Button btnVerIngresos;
-    
-    @FXML
-    private Label lblGananciaMes;
 
     @FXML
     private Label lblGananciaDia;
 
     @FXML
-    private Label lblGananciaAnio;
-
-    @FXML
     private Label lblMercaderia;
+    
+    @FXML
+    private Label lblGananciaGeneral;
     
     @FXML
     private Label lblGananciaTotal;
@@ -83,9 +70,9 @@ public class VerIngresos implements Initializable {
     private List<CajaCerrada> cajas = new ArrayList<>();
     private ObservableList<Venta> ventas;
     private ObservableList<Venta> ventasPorDia;
-    private ObservableList<Venta> ventasPorMes;
-    private ObservableList<Venta> ventasPorAnio;
     private ObservableList<GastosGenerales> gastos;
+    private ObservableList<GastosDiarios> gastosDiarios;
+    private ObservableList<GastosDiarios> gastosPorDia;
 
     @FXML
     void onVolverClick(ActionEvent event) {
@@ -140,35 +127,25 @@ public class VerIngresos implements Initializable {
     			&& unaVenta.getUnEnvio().getFechaEntrega().getYear() ==anio
     			&& unaVenta.getUnEnvio().getEstado()==true);
     	
+    	gastosPorDia = gastosDiarios.filtered(unGasto-> (unGasto.getFecha().getDayOfMonth()== dia) &&
+    			unGasto.getFecha().getMonthValue() == mes && unGasto.getFecha().getYear() == anio);
+    	
     	Double diferenciaDia = Double.parseDouble(lblRealDia.getText()) - Double.parseDouble(lblIdealDia.getText());
-    	lblGananciaDia.setText((ventasPorDia.stream().mapToDouble(unaVenta -> unaVenta.getVenta_ganancia()).sum() + diferenciaDia )+" $");
-    	
-    	//MOSTRAR INGRESOS MENSUALES
-    	lblIdealMes.setText(""+cajas.stream().filter(unaCaja ->unaCaja.getFecha().getMonthValue() == mes 
-    			&& unaCaja.getFecha().getYear() == anio).mapToDouble(unaCaja -> unaCaja.getMonto_ideal()).sum());
-    	lblRealMes.setText(""+cajas.stream().filter(unaCaja ->unaCaja.getFecha().getMonthValue() == mes 
-    			&& unaCaja.getFecha().getYear() == anio).mapToDouble(unaCaja -> unaCaja.getMonto_real()).sum());
-    	ventasPorMes = ventas.filtered(unaVenta -> unaVenta.getUnEnvio().getFechaEntrega().getYear()==anio
-    			&& unaVenta.getUnEnvio().getFechaEntrega().getMonthValue()==mes
-    			&& unaVenta.getUnEnvio().getEstado()==true);
-    	
-    	Double diferenciaMes = Double.parseDouble(lblRealMes.getText())  - Double.parseDouble(lblIdealMes.getText());
-    	lblGananciaMes.setText((ventasPorMes.stream().mapToDouble(unaVenta -> unaVenta.getVenta_ganancia()).sum() + diferenciaMes) +" $");
-    	
-    	//MOSTRAR INGRESOS MENSUALES
-    	lblIdealAnio.setText(""+cajas.stream().filter(unaCaja ->unaCaja.getFecha().getYear() == anio).mapToDouble(unaCaja -> unaCaja.getMonto_ideal()).sum()); 	
-    	lblRealAnio.setText(""+cajas.stream().filter(unaCaja ->unaCaja.getFecha().getYear() == anio).mapToDouble(unaCaja -> unaCaja.getMonto_real()).sum());
-    	
-    	ventasPorAnio = ventas.filtered(unaVenta -> unaVenta.getUnEnvio().getFechaEntrega().getYear()==anio
-    			&& unaVenta.getUnEnvio().getEstado()==true);
-    	
-    	Double diferenciaAnio = Double.parseDouble(lblRealAnio.getText())  - Double.parseDouble(lblIdealAnio.getText());
-    	lblGananciaAnio.setText((ventasPorAnio.stream().mapToDouble(unaVenta -> unaVenta.getVenta_ganancia()).sum() + diferenciaAnio) +" $");
+    	lblGananciaDia.setText((ventasPorDia.stream().mapToDouble(unaVenta -> unaVenta.getVenta_ganancia()).sum() + diferenciaDia - gastosPorDia.stream().mapToDouble(unGasto-> unGasto.getMonto()).sum())+" $");
     	
     	//MOSTRAR INGRESOS TOTALES
     	
     	lblMercaderia.setText(cajas.stream().mapToDouble(unaCaja -> unaCaja.getMonto_real()).sum() + "");
     	lblGastos.setText(gastos.stream().mapToDouble(unGasto -> unGasto.getMonto()).sum() + "");
+    	
+    	
+    	Double ventasCostoDouble = ventas.stream().mapToDouble(unaVenta -> 
+    	unaVenta.getItems().stream().mapToDouble(unItem -> unItem.getProducto().getCosto()).sum()).sum();
+    		
+    	
+    	lblGananciaGeneral.setText(" "+ (Double.parseDouble(lblMercaderia.getText()) - Double.parseDouble(lblGastos.getText())
+    			- ventasCostoDouble));
+    	
     	lblGananciaTotal.setText("" + (Double.parseDouble(lblMercaderia.getText()) - Double.parseDouble(lblGastos.getText())));
     	
 		
@@ -202,11 +179,12 @@ public class VerIngresos implements Initializable {
 			obtenerDatos = new ObtenerDatos();
 			gastos = FXCollections.observableArrayList();
 			gastos = obtenerDatos.obtenerGastosGenerales();
+			gastosDiarios = FXCollections.observableArrayList();
+			gastosDiarios = obtenerDatos.obtenerGastosDiarios();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
 		
 		txtDia.setText(""+LocalDate.now().getDayOfMonth());
 		txtMes.setText(""+LocalDate.now().getMonthValue());

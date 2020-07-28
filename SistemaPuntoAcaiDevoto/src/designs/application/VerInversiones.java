@@ -172,7 +172,7 @@ public class VerInversiones implements Initializable {
     	if(inversion==null) {
     		new Alerta().errorAlert("Debe seleccionar una Inversion", "Editar Inversion");
     	}else {
-    		Optional<ButtonType> action =  new Alerta().preguntaConfirmacion("¿Estas seguro que desea cancelar la operación?", "Confirmación");
+    		Optional<ButtonType> action =  new Alerta().preguntaConfirmacion("¿Estas seguro que desea eliminar la inversion?", "Confirmación");
         	if (action.get() == ButtonType.OK) {
 	    		inversion.eliminarInversion();
 	    		new Alerta().errorAlert("Gasto Eliminado", "Eliminar Gasto");

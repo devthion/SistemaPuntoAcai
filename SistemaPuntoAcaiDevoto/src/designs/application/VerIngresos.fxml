@@ -21,38 +21,24 @@
       <TextField fx:id="txtMes" layoutX="562.0" layoutY="142.0" prefHeight="33.0" prefWidth="177.0" />
       <TextField fx:id="txtDia" layoutX="228.0" layoutY="143.0" prefHeight="33.0" prefWidth="177.0" />
       <Label layoutX="300.0" layoutY="113.0" text="DIA" />
-      <Label layoutX="96.0" layoutY="252.0" text="INGRESO DIARIO" />
-      <Label layoutX="372.0" layoutY="254.0" text="INGRESO MENSUAL" />
-      <Label layoutX="718.0" layoutY="257.0" text="INGRESO ANUAL" />
-      <Label layoutX="71.0" layoutY="295.0" text="IDEAL" />
-      <Label layoutX="362.0" layoutY="297.0" text="IDEAL" />
-      <Label layoutX="693.0" layoutY="300.0" text="IDEAL" />
-      <Label layoutX="70.0" layoutY="351.0" text="REAL" />
-      <Label layoutX="361.0" layoutY="353.0" text="REAL" />
-      <Label layoutX="696.0" layoutY="356.0" text="REAL" />
-      <Separator layoutX="72.0" layoutY="282.0" prefWidth="200.0" />
-      <Separator layoutX="361.0" layoutY="283.0" prefWidth="200.0" />
-      <Separator layoutX="694.0" layoutY="286.0" prefWidth="200.0" />
-      <Label fx:id="lblIdealDia" layoutX="154.0" layoutY="295.0" prefHeight="30.0" prefWidth="119.0" text="Label" />
-      <Label fx:id="lblRealDia" layoutX="153.0" layoutY="351.0" prefHeight="30.0" prefWidth="119.0" text="Label" />
-      <Label fx:id="lblRealMes" layoutX="441.0" layoutY="353.0" prefHeight="30.0" prefWidth="119.0" text="Label" />
-      <Label fx:id="lblIdealMes" layoutX="442.0" layoutY="297.0" prefHeight="30.0" prefWidth="119.0" text="Label" />
-      <Label fx:id="lblIdealAnio" layoutX="776.0" layoutY="300.0" prefHeight="30.0" prefWidth="119.0" text="Label" />
-      <Label fx:id="lblRealAnio" layoutX="775.0" layoutY="356.0" prefHeight="30.0" prefWidth="119.0" text="Label" />
+      <Label layoutX="383.0" layoutY="252.0" text="INGRESO DIARIO" />
+      <Label layoutX="358.0" layoutY="295.0" text="IDEAL" />
+      <Label layoutX="357.0" layoutY="351.0" text="REAL" />
+      <Separator layoutX="359.0" layoutY="282.0" prefWidth="200.0" />
+      <Label fx:id="lblIdealDia" layoutX="441.0" layoutY="295.0" prefHeight="30.0" prefWidth="119.0" text="Label" />
+      <Label fx:id="lblRealDia" layoutX="440.0" layoutY="351.0" prefHeight="30.0" prefWidth="119.0" text="Label" />
       <Button fx:id="btnVerIngresos" layoutX="547.0" layoutY="508.0" mnemonicParsing="false" onAction="#onVerIngresosClick" text="VER INGRESOS" />
-      <Label fx:id="lblGananciaAnio" layoutX="776.0" layoutY="419.0" prefHeight="30.0" prefWidth="119.0" text="Label" />
-      <Label fx:id="lblGananciaMes" layoutX="442.0" layoutY="416.0" prefHeight="30.0" prefWidth="119.0" text="Label" />
-      <Label fx:id="lblGananciaDia" layoutX="154.0" layoutY="414.0" prefHeight="30.0" prefWidth="119.0" text="Label" />
-      <Label layoutX="47.0" layoutY="414.0" text="GANANCIA" />
-      <Label layoutX="333.0" layoutY="416.0" text="GANANCIA" />
-      <Label layoutX="669.0" layoutY="419.0" text="GANANCIA" />
-      <Label layoutX="994.0" layoutY="356.0" text="GASTOS:" />
-      <Label layoutX="1012.0" layoutY="252.0" text="INGRESO GENERAL" />
-      <Label layoutX="994.0" layoutY="297.0" text="MERCADERIA:" />
-      <Label fx:id="lblGastos" layoutX="1133.0" layoutY="356.0" prefHeight="30.0" prefWidth="119.0" text="Label" />
-      <Label fx:id="lblMercaderia" layoutX="1133.0" layoutY="297.0" prefHeight="30.0" prefWidth="119.0" text="Label" />
-      <Separator layoutX="997.0" layoutY="284.0" prefWidth="200.0" />
-      <Label layoutX="994.0" layoutY="419.0" text="GANANCIA" />
-      <Label fx:id="lblGananciaTotal" layoutX="1133.0" layoutY="419.0" prefHeight="30.0" prefWidth="119.0" text="Label" />
+      <Label fx:id="lblGananciaDia" layoutX="466.0" layoutY="414.0" prefHeight="30.0" prefWidth="119.0" text="Label" />
+      <Label layoutX="359.0" layoutY="414.0" text="GANANCIA" />
+      <Label layoutX="708.0" layoutY="325.0" text="GASTOS:" />
+      <Label layoutX="726.0" layoutY="247.0" text="INGRESO GENERAL" />
+      <Label layoutX="708.0" layoutY="292.0" text="MERCADERIA:" />
+      <Label fx:id="lblGastos" layoutX="842.0" layoutY="325.0" prefHeight="30.0" prefWidth="119.0" />
+      <Label fx:id="lblMercaderia" layoutX="842.0" layoutY="292.0" prefHeight="30.0" prefWidth="119.0" />
+      <Separator layoutX="711.0" layoutY="279.0" prefWidth="200.0" />
+      <Label layoutX="710.0" layoutY="408.0" text="TOTAL" />
+      <Label fx:id="lblGananciaTotal" layoutX="842.0" layoutY="408.0" prefHeight="30.0" prefWidth="119.0" />
+      <Label layoutX="708.0" layoutY="366.0" text="GANANCIA" />
+      <Label fx:id="lblGananciaGeneral" layoutX="842.0" layoutY="366.0" prefHeight="30.0" prefWidth="119.0" />
    </children>
 </AnchorPane>
