@@ -56,7 +56,7 @@ public class Propina {
 		modificarDatos.modificarPropina(propinaModificada);
 	}
 	
-	public void eliminarPropina() {
+	public void eliminarPropina() throws SQLException {
 		ModificarDatos modificarDatos = new ModificarDatos();
 		modificarDatos.eliminarPropina(this.getId());
 	}

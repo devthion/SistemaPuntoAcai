@@ -451,9 +451,11 @@ public class ObtenerDatos extends ConexionBd{
 		sql="select * from INVERSION";
 		rs=ejecutarQuery(sql,unStmt);
 		while(rs.next()) {
+			int id = rs.getInt(1);
 			LocalDate date = rs.getDate(2).toLocalDate();
 			Inversion unaInversion = new Inversion(rs.getString(4),rs.getDouble(3));
 			unaInversion .setFecha(date);
+			unaInversion.setId(id);
 			inversiones.add(unaInversion);
 		}
 		return inversiones;

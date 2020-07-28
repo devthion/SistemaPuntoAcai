@@ -110,13 +110,19 @@ public class ModificarDatos extends ConexionBd {
 				+" WHERE prod_id= '"+prod_id+"'";
 		ejecutarUpdate(sql, "Precios actualizados");
 	}
+	
+	public void eliminarInversion(int id) {
+		String sqlString = "DELETE FROM INVERSION"
+				+ "WHERE inver_id = '"+id+"'";
+		ejecutarUpdate(sqlString, "inversion eliminated");
+	}
 
-	public void editarInversion(Inversion inversionEditable, Inversion inversionNuevo) {
+	public void editarInversion(int id, Inversion inversionNuevo) {
 		String sql = "UPDATE INVERSION SET "
 				+ "inver_fecha = '"+inversionNuevo.getFecha()+"',"
 				+"inver_monto = '"+inversionNuevo.getMonto() +"',"
 				+ "inver_detalle = '"+inversionNuevo.getDetalle()+"'"
-						+ "WHERE inver_fecha = '"+inversionEditable.getFecha()+"' AND inver_monto ='"+inversionEditable.getMonto()+"' AND  inver_detalle ='"+inversionEditable.getDetalle()+"'";
+						+ "WHERE inver_id = '"+id+"'";
 		ejecutarUpdate(sql, "INVERSION EDITADA");
 		
 	}
@@ -130,7 +136,7 @@ public class ModificarDatos extends ConexionBd {
 	}
 	
 	public void eliminarPropina(int id) {
-		
+	
 		String sqlString = "DELETE FROM PROPINA"
 				+ "WHERE propina_id = '"+id+"'";
 		ejecutarUpdate(sqlString, "propina eliminated");
