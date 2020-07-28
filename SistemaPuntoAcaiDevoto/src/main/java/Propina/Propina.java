@@ -50,11 +50,7 @@ public class Propina {
 			e.printStackTrace();
 		}
 	}
-	
-	public void modificarPropina(Propina propinaModificada) throws SQLException {
-		ModificarDatos modificarDatos = new ModificarDatos();
-		modificarDatos.modificarPropina(propinaModificada);
-	}
+
 	
 	public void eliminarPropina() throws SQLException {
 		ModificarDatos modificarDatos = new ModificarDatos();

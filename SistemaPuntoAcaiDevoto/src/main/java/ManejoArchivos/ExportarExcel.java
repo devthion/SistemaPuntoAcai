@@ -17,9 +17,14 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import ConexionBD.ObtenerDatos;
 import ConexionBD.Querys;
-import ModeloGasto.Gasto;
+import Gastos.GastosDiarios;
+import Gastos.GastosGenerales;
+import Gastos.GastosProductos;
+import ModeloInversion.Inversion;
 import ModelosClientes.Cliente;
 import Productos.Producto;
+import Propina.Propina;
+import Ventas.CajaCerrada;
 import Ventas.Item;
 import Ventas.Venta;
 
@@ -35,7 +40,12 @@ public class ExportarExcel {
 		
 		
 		List<Cliente> clientes = obtenerDatos.obtenerClientes(new Querys().queryClientes());
-		List<Gasto> gastos=obtenerDatos.obtenerGastos();
+		List<GastosProductos> gastosProductos=obtenerDatos.obtenerGastosProductos();
+		List<GastosDiarios> gastosDiarios = obtenerDatos.obtenerGastosDiarios();
+		List<GastosGenerales> gastosGenerales =obtenerDatos.obtenerGastosGenerales();
+		List<CajaCerrada> cajasCerradas = obtenerDatos.obtenerCajasCerradas();
+		List<Propina> propinas = obtenerDatos.obtenerPropinas();
+		List<Inversion> inversiones = obtenerDatos.obtenerInversiones();
 		List<Producto> productos = obtenerDatos.obtenerProductos();
 		List<Venta> ventas = obtenerDatos.obtenerVentas();
 		List<Item> itemsVenta= obtenerDatos.obtenerItemsVenta();
@@ -52,7 +62,12 @@ public class ExportarExcel {
         Sheet sheet1 = workbook.createSheet("Ventas");
         Sheet sheet2 = workbook.createSheet("Item_Venta");
         Sheet sheet3 = workbook.createSheet("Productos");
-        Sheet sheet4 = workbook.createSheet("Gastos");
+        Sheet sheet4 = workbook.createSheet("GastosGenerales");
+        Sheet sheet5 = workbook.createSheet("GastosDiarios");
+        Sheet sheet6 = workbook.createSheet("GastosProductos");
+        Sheet sheet7 = workbook.createSheet("CajasCerradas");
+        Sheet sheet8 = workbook.createSheet("Propinas");
+        Sheet sheet9 = workbook.createSheet("Inversiones");
         
         // Create a Font for styling header cells
         Font headerFont = workbook.createFont();
@@ -67,17 +82,20 @@ public class ExportarExcel {
         
         insertarDatosEnSheetVentas(sheet1, ventas, headerCellStyle);
         insertarDatosEnSheetClientes(sheet, clientes, headerCellStyle);
-        insertarDatosEnSheetGastos(sheet4, gastos, headerCellStyle);
         insertarDatosEnSheetProductos(sheet3, productos, headerCellStyle);
         insertarDatosEnSheetItemsVenta(sheet2, itemsVenta, headerCellStyle);
-      
-        
+        insertarDatosEnSheetGastosGenerales(sheet4, gastosGenerales, headerCellStyle);
+        insertarDatosEnSheetGastosDiarios(sheet5,gastosDiarios,headerCellStyle);
+        insertarDatosEnSheetGastosProductos(sheet6, gastosProductos, headerCellStyle);
+        insertarDatosEnSheetCajasCerradas(sheet7, cajasCerradas, headerCellStyle);
+        insertarDatosEnPropinas(sheet8, propinas, headerCellStyle);
+        insertarDatosEnInversiones(sheet9, inversiones, headerCellStyle);
         // Create Other rows and cells with  data
         
         
         
         // Write the output to a file
-        FileOutputStream fileOut = new FileOutputStream("clientes.xlsx");
+        FileOutputStream fileOut = new FileOutputStream("data.xlsx");
         
         workbook.write(fileOut);
         System.out.println("Excel exportado");
@@ -89,6 +107,201 @@ public class ExportarExcel {
 
 	}
 	
+	private static void insertarDatosEnInversiones(Sheet sheet9, List<Inversion> inversiones, CellStyle headerCellStyle) {
+		String[] columnas = {"fecha", "detalle", "monto"};
+		// Create a Row
+		Row headerRow = sheet9.createRow(0);
+		
+		int rowNum = 1;
+        for(Inversion unaInversion: inversiones) {
+            Row row = sheet9.createRow(rowNum++);
+
+            row.createCell(0)
+                .setCellValue(unaInversion.getFecha().toString());
+
+            row.createCell(1)
+                .setCellValue(unaInversion.getDetalle());
+
+            row.createCell(2)
+            	.setCellValue(unaInversion.getMonto());
+
+        }
+        
+        // Resize all columns to fit the content size
+        for(int i = 0; i < columnas.length; i++) {
+            sheet9.autoSizeColumn(i);
+        }
+        
+        // Create cells
+        for(int i = 0; i < columnas.length; i++) {
+            Cell cell = headerRow.createCell(i);
+            cell.setCellValue(columnas[i]);
+            cell.setCellStyle(headerCellStyle);
+        }
+		
+	}
+	
+	private static void insertarDatosEnPropinas(Sheet sheet8, List<Propina> propinas, CellStyle headerCellStyle) {
+		String[] columnas = {"fecha", "monto_real"};
+		// Create a Row
+		Row headerRow = sheet8.createRow(0);
+		
+		int rowNum = 1;
+        for(Propina unaPropina: propinas) {
+            Row row = sheet8.createRow(rowNum++);
+
+            row.createCell(0)
+                .setCellValue(unaPropina.getFecha().toString());
+
+            row.createCell(1)
+                .setCellValue(unaPropina.getMonto());
+
+
+        }
+        
+        // Resize all columns to fit the content size
+        for(int i = 0; i < columnas.length; i++) {
+            sheet8.autoSizeColumn(i);
+        }
+        
+        // Create cells
+        for(int i = 0; i < columnas.length; i++) {
+            Cell cell = headerRow.createCell(i);
+            cell.setCellValue(columnas[i]);
+            cell.setCellStyle(headerCellStyle);
+        }
+		
+	}
+	
+	
+	
+	private static void insertarDatosEnSheetCajasCerradas(Sheet sheet7, List<CajaCerrada> cajas, CellStyle headerCellStyle) {
+		String[] columnas = {"fecha", "monto_real", "monto_ideal"};
+		// Create a Row
+		Row headerRow = sheet7.createRow(0);
+		
+		int rowNum = 1;
+        for(CajaCerrada unaCajaCerrada: cajas) {
+            Row row = sheet7.createRow(rowNum++);
+
+            row.createCell(0)
+                .setCellValue(unaCajaCerrada.getFecha().toString());
+
+            row.createCell(1)
+                .setCellValue(unaCajaCerrada.getMonto_real());
+            
+            row.createCell(2)
+            	.setCellValue(unaCajaCerrada.getMonto_ideal());
+
+        }
+        
+        // Resize all columns to fit the content size
+        for(int i = 0; i < columnas.length; i++) {
+            sheet7.autoSizeColumn(i);
+        }
+        
+        // Create cells
+        for(int i = 0; i < columnas.length; i++) {
+            Cell cell = headerRow.createCell(i);
+            cell.setCellValue(columnas[i]);
+            cell.setCellStyle(headerCellStyle);
+        }
+		
+	}
+	
+	private static void insertarDatosEnSheetGastosProductos(Sheet sheet6, List<GastosProductos> gastos, CellStyle headerCellStyle) {
+		String[] columnas = {"detalle", "monto"};
+		// Create a Row
+		Row headerRow = sheet6.createRow(0);
+		
+		int rowNum = 1;
+        for(GastosProductos unGasto: gastos) {
+            Row row = sheet6.createRow(rowNum++);
+
+            row.createCell(0)
+                .setCellValue(unGasto.getDetalle());
+
+            row.createCell(1)
+                .setCellValue(unGasto.getMonto());
+
+        }
+        
+        // Resize all columns to fit the content size
+        for(int i = 0; i < columnas.length; i++) {
+            sheet6.autoSizeColumn(i);
+        }
+        
+        // Create cells
+        for(int i = 0; i < columnas.length; i++) {
+            Cell cell = headerRow.createCell(i);
+            cell.setCellValue(columnas[i]);
+            cell.setCellStyle(headerCellStyle);
+        }
+		
+	}
+	
+	private static void insertarDatosEnSheetGastosDiarios(Sheet sheet5, List<GastosDiarios> gastos, CellStyle headerCellStyle) {
+		String[] columnas = {"detalle", "monto"};
+		// Create a Row
+		Row headerRow = sheet5.createRow(0);
+		
+		int rowNum = 1;
+        for(GastosDiarios unGasto: gastos) {
+            Row row = sheet5.createRow(rowNum++);
+
+            row.createCell(0)
+                .setCellValue(unGasto.getDetalle());
+
+            row.createCell(1)
+                .setCellValue(unGasto.getMonto());
+
+        }
+        
+        // Resize all columns to fit the content size
+        for(int i = 0; i < columnas.length; i++) {
+            sheet5.autoSizeColumn(i);
+        }
+        
+        // Create cells
+        for(int i = 0; i < columnas.length; i++) {
+            Cell cell = headerRow.createCell(i);
+            cell.setCellValue(columnas[i]);
+            cell.setCellStyle(headerCellStyle);
+        }
+		
+	}
+	
+	private static void insertarDatosEnSheetGastosGenerales(Sheet sheet4, List<GastosGenerales> gastos, CellStyle headerCellStyle) {
+		String[] columnas = {"detalle", "monto"};
+		// Create a Row
+		Row headerRow = sheet4.createRow(0);
+		
+		int rowNum = 1;
+        for(GastosGenerales unGasto: gastos) {
+            Row row = sheet4.createRow(rowNum++);
+
+            row.createCell(0)
+                .setCellValue(unGasto.getDetalle());
+
+            row.createCell(1)
+                .setCellValue(unGasto.getMonto());
+
+        }
+        
+        // Resize all columns to fit the content size
+        for(int i = 0; i < columnas.length; i++) {
+            sheet4.autoSizeColumn(i);
+        }
+        
+        // Create cells
+        for(int i = 0; i < columnas.length; i++) {
+            Cell cell = headerRow.createCell(i);
+            cell.setCellValue(columnas[i]);
+            cell.setCellStyle(headerCellStyle);
+        }
+		
+	}
+
 	
 	private static void insertarDatosEnSheetItemsVenta(Sheet sheet2, List<Item> itemsVenta, CellStyle headerCellStyle) {
 		String[] columnas = {"numero_venta", "cantidad_item", "producto","precio_item"};
@@ -221,38 +434,6 @@ public class ExportarExcel {
 		
 	}
 
-	private static void insertarDatosEnSheetGastos(Sheet sheet4, List<Gasto> gastos, CellStyle headerCellStyle) {
-		String[] columnas = {"fecha_gasto", "monto_gasto", "detalle_gasto"};
-		// Create a Row
-		Row headerRow = sheet4.createRow(0);
-		
-		int rowNum = 1;
-        for(Gasto unGasto: gastos) {
-            Row row = sheet4.createRow(rowNum++);
-
-            row.createCell(0)
-                .setCellValue(unGasto.getFecha().toString());
-
-            row.createCell(1)
-                .setCellValue(unGasto.getMonto());
-
-            row.createCell(2)
-                .setCellValue(unGasto.getDetalle());
-        }
-        
-        // Resize all columns to fit the content size
-        for(int i = 0; i < columnas.length; i++) {
-            sheet4.autoSizeColumn(i);
-        }
-        
-        // Create cells
-        for(int i = 0; i < columnas.length; i++) {
-            Cell cell = headerRow.createCell(i);
-            cell.setCellValue(columnas[i]);
-            cell.setCellStyle(headerCellStyle);
-        }
-		
-	}
 
 	public static void insertarDatosEnSheetClientes(Sheet sheet, List<Cliente> clientes,CellStyle headerCellStyle) {
 		String[] columnas = {"clie_dni","clie_nombre","clie_apellido","clie_telefono","clie_email","dire_calle","dire_numero","dire_barrio","dire_codPostal","clie_tipo","clie_como_llego","clie_rubro"};
