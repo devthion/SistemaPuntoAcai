@@ -120,7 +120,7 @@ public class ObtenerDatos extends ConexionBd{
 		Statement unStmt =null;
 		ObservableList<GastosDiarios> gastos = FXCollections.observableArrayList();	
 		
-		sql="select * from GASTO_GENERAL";
+		sql="select * from GASTO_DIARIO";
 		rs=ejecutarQuery(sql,unStmt);
 		while(rs.next()) {
 			int id = rs.getInt(1);

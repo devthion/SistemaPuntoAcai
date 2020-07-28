@@ -7,16 +7,14 @@ import java.util.Optional;
 
 import Alertas.Alerta;
 import Alertas.Validaciones;
+import Gastos.GastosDiarios;
 import Gastos.GastosGenerales;
 import Gastos.GastosProductos;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 public class NuevoGastoController {
@@ -62,8 +60,19 @@ public class NuevoGastoController {
     }
 
     @FXML
-    void onGuardarGastoDiarioCick(ActionEvent event) {
-    	
+    void onGuardarGastoDiarioCick(ActionEvent event) throws SQLException {
+    	if(Validaciones.validarCajasDeTextos(generarListTxt()) || Validaciones.validarCajasNumericas(generarListNumericos()) ) {
+    		new Alerta().errorAlert("Los datos ingresados son erroneos o faltan completar algunos atributos","Error en el ingreso de Datos");
+    	}else {
+    		Optional<ButtonType> action =  new Alerta().preguntaConfirmacion("Desea confirmar el gasto "+txtDetalle.getText()+" ?", "Confirmación");
+        	if (action.get() == ButtonType.OK) {
+	    		GastosDiarios unGasto = new GastosDiarios(this.txtDetalle.getText().toString(), Double.parseDouble(this.txtMonto.getText().toString()));
+	    		unGasto.almacenarGasto();
+	    		new Alerta().informationAlert("Se ha almacenado el Gasto con exito", "Nuevo Gasto");
+	        	Stage stage = (Stage) btnVolver.getScene().getWindow();
+	        	stage.close();
+        	}
+    	}
     }
 
     @FXML

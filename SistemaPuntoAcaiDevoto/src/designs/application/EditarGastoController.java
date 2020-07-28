@@ -70,7 +70,18 @@ public class EditarGastoController {
 
     @FXML
     void onEditarGastoDiarioCick(ActionEvent event) {
-
+    	nuevoGastoDiario = generarGastoDiario();
+		try {
+			gastoEditableDiario.editarGasto(nuevoGastoDiario);
+			new Alerta().informationAlert("Se ha editado el gasto", "Informacion");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			new Alerta().errorAlert("Error al modificar el gasto", "Error en la modificacion");
+		}
+    	
+    	Stage stage = (Stage) btnEditarGastoGeneral.getScene().getWindow();
+    	stage.close();
     }
 
     @FXML
