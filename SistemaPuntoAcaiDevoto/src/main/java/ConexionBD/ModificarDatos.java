@@ -127,13 +127,6 @@ public class ModificarDatos extends ConexionBd {
 		
 	}
 
-	public void modificarPropina(Propina propinaModificada) {
-		String sql = "UPDATE PROPINA SET"
-				+ "propina_monto = propina_monto + '"+propinaModificada.getMonto()+"'"
-						+ "propina_fecha = '"+propinaModificada.getFecha()+"'"
-				+ "WHERE propina_fecha = '"+propinaModificada.getId()+"'";
-		ejecutarUpdate(sql, "Propina actualizada");
-	}
 	
 	public void eliminarPropina(int id) {
 	
