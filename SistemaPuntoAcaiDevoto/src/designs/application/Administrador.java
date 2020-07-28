@@ -84,8 +84,8 @@ public class Administrador {
     
     @FXML
     void onEliminarTablas(ActionEvent event) {
-    	DropTable.main();
-    	new Alerta().informationAlert("Las tablas de la BD han sido eliminadas con Exito", "Eliminacion Tablas");
+    	DropTable.dropTablaGasto();;
+    	new Alerta().informationAlert("Las tabla GASTO ha sido eliminada con Exito", "Eliminacion Tablas");
     }
     
     @FXML
@@ -97,6 +97,7 @@ public class Administrador {
     void onModificarDireccionesClick(ActionEvent event) {
 		try {	
 			new ModificarDatos().cambiarDirecciones();
+			new Alerta().informationAlert("Direcciones Modificadas", "EXITO!");
 		} catch (Exception e) {
 		// TODO: handle exception
 		System.out.println("ERROR");
@@ -113,6 +114,7 @@ public class Administrador {
 		try {
 			
 			new ModificarDatos().agregarObservacion();
+			new Alerta().informationAlert("Descripciones Agregadas", "EXITO!");
 		} catch (Exception e) {
 			// TODO: handle exception
 			System.out.println("ERROR");
