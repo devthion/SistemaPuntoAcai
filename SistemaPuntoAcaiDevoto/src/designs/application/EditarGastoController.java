@@ -75,18 +75,18 @@ public class EditarGastoController {
 
     @FXML
     void onEditarGastoGeneralClick(ActionEvent event) {
-//    	nuevoGastoGeneral = generarGastoGeneral();
-//		try {
-//			new ModificarDatos().editarGastoProducto(gastoEditableGral, nuevoGastoGeneral);
-//			new Alerta().informationAlert("Se ha editado el gasto", "Informacion");
-//		} catch (SQLException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//			new Alerta().errorAlert("Error al modificar el gasto", "Error en la modificacion");
-//		}
-//    	
-//    	Stage stage = (Stage) btnEditarGastoGeneral.getScene().getWindow();
-//    	stage.close();
+    	nuevoGastoGeneral = generarGastoGeneral();
+		try {
+			gastoEditableGral.editarGasto(nuevoGastoGeneral);
+			new Alerta().informationAlert("Se ha editado el gasto", "Informacion");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			new Alerta().errorAlert("Error al modificar el gasto", "Error en la modificacion");
+		}
+    	
+    	Stage stage = (Stage) btnEditarGastoGeneral.getScene().getWindow();
+    	stage.close();
     }
     
     public void initEditarProductos(GastosProductos gasto) {

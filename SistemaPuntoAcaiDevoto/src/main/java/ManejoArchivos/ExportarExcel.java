@@ -69,6 +69,7 @@ public class ExportarExcel {
         Sheet sheet8 = workbook.createSheet("Propinas");
         Sheet sheet9 = workbook.createSheet("Inversiones");
         
+        
         // Create a Font for styling header cells
         Font headerFont = workbook.createFont();
         headerFont.setBold(true);

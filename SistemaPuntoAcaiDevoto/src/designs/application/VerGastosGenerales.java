@@ -3,6 +3,7 @@ package application;
 import java.net.URL;
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 import Alertas.Alerta;
@@ -17,6 +18,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.SplitMenuButton;
@@ -145,8 +147,36 @@ public class VerGastosGenerales implements Initializable {
     }
     
     @FXML
-    void onNuevoGastoClick(ActionEvent event) {
+    void onNuevoGastoClick(ActionEvent event) throws SQLException {
+    	try {
+    		FXMLLoader loader = new FXMLLoader();
+    		loader.setLocation(getClass().getResource("GastoNuevo.fxml"));
+    		AnchorPane root = (AnchorPane) loader.load();
 
+    		NuevoGastoController controller = loader.getController();
+    		controller.initGuardarGenerales();
+
+    		Scene scene = new Scene(root,1300,650);
+    		Stage stage = new Stage();
+    		stage.setScene(scene);
+    		stage.resizableProperty().setValue(Boolean.FALSE);
+    		stage.setResizable(false);
+    		stage.setTitle("Gastos");
+    		stage.showAndWait();
+
+
+    	} catch(Exception e) {
+    		e.printStackTrace();
+    	}
+    	ObtenerDatos obtenerDatos = new ObtenerDatos();
+    	obtenerDatos = new ObtenerDatos();
+    	gastos = FXCollections.observableArrayList();
+    	gastos = obtenerDatos.obtenerGastosGenerales();
+
+    	this.tblGastos.setItems(gastos);
+    	this.tblGastos.refresh();
+    	mostrarGastosPorMes(LocalDate.now().getMonthValue());
+    	lblGastosTotal.setText(gastos.stream().mapToDouble(unGasto-> unGasto.getMonto()).sum()+" $");
     }
 
     @FXML
@@ -272,23 +302,26 @@ public class VerGastosGenerales implements Initializable {
     	if(gasto==null) {
     		new Alerta().errorAlert("Debe seleccionar un Gasto", "Editar Gasto");
     	}else {
-    		try {
-    			
-    			gasto.eliminarGasto();
-    			new Alerta().errorAlert("Gasto Eliminado", "Eliminar Gasto");
-    			
-    		} catch(Exception e) {
-    			e.printStackTrace();
-    		}
-    		ObtenerDatos obtenerDatos = new ObtenerDatos();
-			obtenerDatos = new ObtenerDatos();
-			gastos = FXCollections.observableArrayList();
-			gastos = obtenerDatos.obtenerGastosGenerales();
-			
-			this.tblGastos.setItems(gastos);
-			this.tblGastos.refresh();
-			mostrarGastosPorMes(LocalDate.now().getMonthValue());
-	    	lblGastosTotal.setText(gastos.stream().mapToDouble(unGasto-> unGasto.getMonto()).sum()+" $");
+    		Optional<ButtonType> action =  new Alerta().preguntaConfirmacion("¿Estas seguro que desea elminar el gasto?", "Confirmación");
+        	if (action.get() == ButtonType.OK) {
+	    		try {
+	    			
+	    			gasto.eliminarGasto();
+	    			new Alerta().errorAlert("Gasto Eliminado", "Eliminar Gasto");
+	    			
+	    		} catch(Exception e) {
+	    			e.printStackTrace();
+	    		}
+	    		ObtenerDatos obtenerDatos = new ObtenerDatos();
+				obtenerDatos = new ObtenerDatos();
+				gastos = FXCollections.observableArrayList();
+				gastos = obtenerDatos.obtenerGastosGenerales();
+				
+				this.tblGastos.setItems(gastos);
+				this.tblGastos.refresh();
+				mostrarGastosPorMes(LocalDate.now().getMonthValue());
+		    	lblGastosTotal.setText(gastos.stream().mapToDouble(unGasto-> unGasto.getMonto()).sum()+" $");
+        	}
     	}
     }
 

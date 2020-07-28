@@ -50,7 +50,22 @@ public class Gastos {
 
     @FXML
     void onGastosGeneralesClick(ActionEvent event) {
-
+    	try {
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(getClass().getResource("GastosGenerales.fxml"));
+			AnchorPane root = (AnchorPane) loader.load();
+			Scene scene = new Scene(root,1300,650);
+			Stage stage = new Stage();
+			stage.setScene(scene);
+			stage.resizableProperty().setValue(Boolean.FALSE);
+			stage.setResizable(false);
+			stage.setTitle("Gastos Generales");
+			stage.show();
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+    	Stage stage = (Stage) btnVolver.getScene().getWindow();
+    	stage.close();
     }
 
     @FXML
@@ -64,7 +79,7 @@ public class Gastos {
 			stage.setScene(scene);
 			stage.resizableProperty().setValue(Boolean.FALSE);
 			stage.setResizable(false);
-			stage.setTitle("Menu Principal");
+			stage.setTitle("Gastos Productos");
 			stage.show();
 		} catch(Exception e) {
 			e.printStackTrace();

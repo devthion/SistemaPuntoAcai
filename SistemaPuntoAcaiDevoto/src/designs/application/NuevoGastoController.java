@@ -88,13 +88,13 @@ public class NuevoGastoController {
     	btnGuardarGastoProductos.setVisible(true);
     }
     
-    public void initEditarDiarios() {
+    public void initGuardarDiarios() {
     	btnGuardarGastoDiario.setVisible(true);
     	btnGuardarGastoGeneral.setVisible(false);
     	btnGuardarGastoProductos.setVisible(false);	
     }
     
-    public void initEditarGenerales() {
+    public void initGuardarGenerales() {
     	btnGuardarGastoDiario.setVisible(false);
     	btnGuardarGastoGeneral.setVisible(true);
     	btnGuardarGastoProductos.setVisible(false);
