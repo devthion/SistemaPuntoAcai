@@ -10,6 +10,7 @@ import java.util.ResourceBundle;
 import Alertas.Alerta;
 import Alertas.Validaciones;
 import ConexionBD.ObtenerDatos;
+import Gastos.GastosDiarios;
 import ManejoArchivos.ExportarExcel;
 import Ventas.CajaCerrada;
 import Ventas.Venta;
@@ -64,7 +65,21 @@ public class CerrarCaja implements Initializable{
     @FXML
     private TableColumn<Venta, String> colDireccionCliente;
     
+    @FXML
+    private TableView<GastosDiarios> tblGastos;
+    
+    @FXML
+    private TableColumn<GastosDiarios, String> colDetalle;
+    
+    @FXML
+    private TableColumn<GastosDiarios, Double> colCantidad;
+
+    @FXML
+    private TableColumn<GastosDiarios, LocalDate> colFechaGasto;
+    
     private ObservableList<Venta> ventas;
+    private ObservableList<GastosDiarios> gastos;
+    private ObservableList<GastosDiarios> gastosPorDia;
     
     private CajaCerrada cajaDelDia;
     
@@ -131,6 +146,9 @@ public class CerrarCaja implements Initializable{
 			obtenerDatos = new ObtenerDatos();
 			ventas = FXCollections.observableArrayList();
 			ventas = obtenerDatos.obtenerVentasDeldia(LocalDate.now());
+			gastos = FXCollections.observableArrayList();
+			gastos = obtenerDatos.obtenerGastosDiarios();
+			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -144,7 +162,15 @@ public class CerrarCaja implements Initializable{
 		this.colMontoTotal.setCellValueFactory(new PropertyValueFactory<Venta, Double>("venta_precioTotal"));
 		this.colDireccionCliente.setCellValueFactory(new PropertyValueFactory<Venta, String>("direccionCliente"));
 		
-		txtMontoIdeal.setText(""+ventas.stream().mapToDouble(unaVenta-> unaVenta.getVenta_precioTotal()).sum());
+		gastosPorDia =gastos.filtered(unGasto-> unGasto.getFecha().equals(LocalDate.now()));
+        this.tblGastos.setItems(gastosPorDia);
+		
+		this.colDetalle.setCellValueFactory(new PropertyValueFactory<GastosDiarios, String>("detalle"));
+		this.colFechaGasto.setCellValueFactory(new PropertyValueFactory<GastosDiarios, LocalDate>("fecha"));
+		this.colCantidad.setCellValueFactory(new PropertyValueFactory<GastosDiarios, Double>("monto"));
+		
+		txtMontoIdeal.setText(""+(ventas.stream().mapToDouble(unaVenta-> unaVenta.getVenta_precioTotal()).sum() 
+				- gastosPorDia.stream().mapToDouble(unGasto-> unGasto.getMonto()).sum()));
 		
 	}
 	
