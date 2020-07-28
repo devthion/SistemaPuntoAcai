@@ -55,7 +55,7 @@ public class Inversion {
 		modificarDatos.editarInversion(this.getId(),inversionModificada);
 	}
 	
-	public void eliminate() throws SQLException {
+	public void eliminarInversion() throws SQLException {
 		ModificarDatos modificarDatos = new ModificarDatos();
 		modificarDatos.eliminarInversion(this.getId());
 	}
