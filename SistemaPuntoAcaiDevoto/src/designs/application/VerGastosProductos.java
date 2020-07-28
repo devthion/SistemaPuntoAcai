@@ -3,6 +3,7 @@ package application;
 import java.net.URL;
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 import Alertas.Alerta;
@@ -17,6 +18,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.SplitMenuButton;
@@ -111,18 +113,21 @@ public class VerGastosProductos implements Initializable {
     	if(gasto==null) {
     		new Alerta().errorAlert("Debe seleccionar un Gasto", "Editar Gasto");
     	}else {
-    		gasto.eliminarGasto();
-    		new Alerta().errorAlert("Gasto Eliminado", "Eliminar Gasto");
-    		
-    		ObtenerDatos obtenerDatos = new ObtenerDatos();
-			obtenerDatos = new ObtenerDatos();
-			gastos = FXCollections.observableArrayList();
-			gastos = obtenerDatos.obtenerGastosProductos();
-			
-			this.tblGastos.setItems(gastos);
-			this.tblGastos.refresh();
-			mostrarGastosPorMes(LocalDate.now().getMonthValue());
-	    	lblGastosTotal.setText(gastos.stream().mapToDouble(unGasto-> unGasto.getMonto()).sum()+" $");
+    		Optional<ButtonType> action =  new Alerta().preguntaConfirmacion("¿Estas seguro que desea cancelar la operación?", "Confirmación");
+        	if (action.get() == ButtonType.OK) {
+	    		gasto.eliminarGasto();
+	    		new Alerta().errorAlert("Gasto Eliminado", "Eliminar Gasto");
+	    		
+	    		ObtenerDatos obtenerDatos = new ObtenerDatos();
+				obtenerDatos = new ObtenerDatos();
+				gastos = FXCollections.observableArrayList();
+				gastos = obtenerDatos.obtenerGastosProductos();
+				
+				this.tblGastos.setItems(gastos);
+				this.tblGastos.refresh();
+				mostrarGastosPorMes(LocalDate.now().getMonthValue());
+		    	lblGastosTotal.setText(gastos.stream().mapToDouble(unGasto-> unGasto.getMonto()).sum()+" $");
+        	}
     	}
     }
     

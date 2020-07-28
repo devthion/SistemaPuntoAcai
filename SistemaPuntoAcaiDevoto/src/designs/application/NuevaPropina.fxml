@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane prefHeight="650.0" prefWidth="1300.0" stylesheets="@../Styles/Style.css" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="application.NuevaPropina">
+   <children>
+      <Button fx:id="btnVolver" layoutX="1152.0" layoutY="587.0" mnemonicParsing="false" onAction="#onVolverClick" text="VOLVER" />
+      <Label layoutX="565.0" layoutY="31.0" text="NUEVA PROPINA" />
+      <Separator layoutX="150.0" layoutY="71.0" prefWidth="1000.0" />
+      <TextField fx:id="txtMonto" layoutX="546.0" layoutY="309.0" />
+      <Label layoutX="620.0" layoutY="154.0" text="FECHA" />
+      <Label layoutX="613.0" layoutY="279.0" text="MONTO" />
+      <Button fx:id="btnNuevaPropina" layoutX="519.0" layoutY="473.0" mnemonicParsing="false" onAction="#onGuardarGastoClick" text="GUARDAR PROPINA" />
+      <DatePicker fx:id="datePropina" layoutX="534.0" layoutY="184.0" style="-fx-background-color: #FFFFFF;" />
+   </children>
+</AnchorPane>

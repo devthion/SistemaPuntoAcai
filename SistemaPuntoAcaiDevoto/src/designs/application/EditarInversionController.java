@@ -64,7 +64,7 @@ public class EditarInversionController {
     void onEditarInversionClick(ActionEvent event) {
     	inversionNuevo = generarGasto();
 		try {
-			new ModificarDatos().editarInversion(inversionEditable, inversionNuevo);
+			inversionEditable.modificarInversion(inversionNuevo);
 			new Alerta().informationAlert("Se ha editado la inversion con Exito", "Informacion");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

@@ -1,8 +1,51 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane xmlns:fx="http://javafx.com/fxml/1">
-	<!-- TODO Add Nodes -->
-</AnchorPane>
 
+<AnchorPane prefHeight="650.0" prefWidth="1300.0" stylesheets="@../Styles/Style.css" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="application.PropinasController">
+   <children>
+      <Button fx:id="btnEliminarPropina" layoutX="567.0" layoutY="506.0" mnemonicParsing="false" onAction="#onEliminarPropinaClick" text="ELIMINAR PROPINA" />
+      <Button fx:id="btnNuevaPropina" layoutX="199.0" layoutY="506.0" mnemonicParsing="false" onAction="#onNuevaPropinaClick" prefHeight="49.0" prefWidth="260.0" text="NUEVA PROPINA" />
+      <Label fx:id="lblPropinasMes" layoutX="1121.0" layoutY="325.0" prefHeight="30.0" prefWidth="153.0" />
+      <Label fx:id="lblPropinasTotal" layoutX="1121.0" layoutY="362.0" prefHeight="30.0" prefWidth="153.0" />
+      <TextField fx:id="txtAnio" layoutX="973.0" layoutY="205.0" prefHeight="33.0" prefWidth="177.0" />
+      <SplitMenuButton fx:id="slipMenuMes" layoutX="973.0" layoutY="130.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="177.0">
+         <items>
+            <MenuItem fx:id="slipEnero" mnemonicParsing="false" onAction="#onEneroClick" text="ENERO" />
+            <MenuItem fx:id="slipFebrero" mnemonicParsing="false" onAction="#onFebreroClick" text="FEBRERO" />
+            <MenuItem fx:id="slipMarzo" mnemonicParsing="false" onAction="#onMarzoClick" text="MARZO" />
+            <MenuItem fx:id="slipAbril" mnemonicParsing="false" onAction="#onAbrilClick" text="ABRIL" />
+            <MenuItem fx:id="slipMayo" mnemonicParsing="false" onAction="#onMayoClick" text="MAYO" />
+            <MenuItem fx:id="slipJunio" mnemonicParsing="false" onAction="#onJunioClick" text="JUNIO" />
+            <MenuItem fx:id="slipJulio" mnemonicParsing="false" onAction="#onJulioClick" text="JULIO" />
+            <MenuItem fx:id="slipAgosto" mnemonicParsing="false" onAction="#onAgostoClick" text="AGOSTO" />
+            <MenuItem fx:id="slipSeptiembre" mnemonicParsing="false" onAction="#onSeptiembreClick" text="SEPTIEMBRE" />
+            <MenuItem fx:id="slipOctubre" mnemonicParsing="false" onAction="#onOctubreClick" text="OCTUBRE" />
+            <MenuItem fx:id="slipNoviembre" mnemonicParsing="false" onAction="#onNoviembreClick" text="NOVIEMBRE" />
+            <MenuItem fx:id="slipDiciembre" mnemonicParsing="false" onAction="#onDiciembreClick" text="DICIEMBRE" />
+         </items>
+      </SplitMenuButton>
+      <Label layoutX="909.0" layoutY="206.0" text="AÑO" />
+      <Label layoutX="911.0" layoutY="137.0" text="MES" />
+      <Button fx:id="btnVolver" layoutX="1148.0" layoutY="585.0" mnemonicParsing="false" onAction="#onVolverClick" prefHeight="51.0" prefWidth="138.0" text="VOLVER" textFill="WHITE">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Button>
+      <Label layoutX="603.0" layoutY="30.0" text="PROPINAS" />
+      <Separator layoutX="150.0" layoutY="71.0" prefWidth="1000.0" />
+      <TableView fx:id="tblPropinas" layoutX="150.0" layoutY="130.0" prefHeight="334.0" prefWidth="725.0">
+         <columns>
+            <TableColumn fx:id="colCantidad" minWidth="0.0" prefWidth="359.0" text="CANTIDAD" />
+            <TableColumn fx:id="colFecha" prefWidth="364.0" text="FECHA" />
+         </columns>
+      </TableView>
+      <Label layoutX="909.0" layoutY="325.0" text="PROPINAS DEL MES:" />
+      <Label layoutX="911.0" layoutY="362.0" text="PROPINAS TOTALES:" />
+   </children>
+</AnchorPane>

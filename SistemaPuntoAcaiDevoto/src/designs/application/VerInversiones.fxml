@@ -47,6 +47,6 @@
       <Label fx:id="lblInversionesTotal" layoutX="1121.0" layoutY="362.0" prefHeight="30.0" prefWidth="153.0" />
       <Label fx:id="lblInversionesMes" layoutX="1121.0" layoutY="325.0" prefHeight="30.0" prefWidth="153.0" />
       <Button fx:id="btnNuevaInversion1" layoutX="115.0" layoutY="507.0" mnemonicParsing="false" onAction="#onNuevaInversionClick" text="NUEVA INVERSION" />
-      <Button fx:id="btnEditarInversion11" layoutX="677.0" layoutY="507.0" mnemonicParsing="false" onAction="#onEditarInversionClick" text="ELIMINAR INVERSION" />
+      <Button fx:id="btnEliminarInversion" layoutX="677.0" layoutY="507.0" mnemonicParsing="false" onAction="#onEliminarInversionClick" text="ELIMINAR INVERSION" />
    </children>
 </AnchorPane>

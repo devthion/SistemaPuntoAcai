@@ -47,7 +47,7 @@ public class ObtenerDatos extends ConexionBd{
 	
 	public ObservableList<Propina> obtenerPropinas() throws SQLException{
 		ObservableList<Propina> propinas = FXCollections.observableArrayList();
-		ResultSet resultSet;
+		ResultSet rs;
 		Statement statement = null;
 		sql="SELECT * FROM PROPINA";
 		rs=ejecutarQuery(sql, statement);

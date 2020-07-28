@@ -3,6 +3,7 @@ package application;
 import java.net.URL;
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 import Alertas.Alerta;
@@ -17,6 +18,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.SplitMenuButton;
@@ -95,6 +97,12 @@ public class VerInversiones implements Initializable {
     @FXML
     private MenuItem slipDiciembre;
     
+    @FXML
+    private Button btnNuevaInversion1;
+    
+    @FXML
+    private Button btnEliminarInversion;
+    
     private ObservableList<Inversion> inversiones;
     private ObservableList<Inversion> inversionesPorMes;
 
@@ -137,22 +145,50 @@ public class VerInversiones implements Initializable {
     	}
     }
     
-	try {
-		FXMLLoader loader = new FXMLLoader();
-		loader.setLocation(getClass().getResource("NuevaInversion.fxml"));
-		AnchorPane root = (AnchorPane) loader.load();
-		Scene scene = new Scene(root, 1300, 650);
-		Stage stage = new Stage();
-		stage.setScene(scene);
-		stage.resizableProperty().setValue(Boolean.FALSE);
-		stage.setResizable(false);
-		stage.setTitle("Nueva Inversion");
-		stage.show();
-	} catch (Exception e) {
-		e.printStackTrace();
-	}
-	Stage stage = (Stage) btnNuevoGasto.getScene().getWindow();
-	stage.close();
+    @FXML
+    void onNuevaInversionClick(ActionEvent event) {
+    	try {
+    		FXMLLoader loader = new FXMLLoader();
+    		loader.setLocation(getClass().getResource("NuevaInversion.fxml"));
+    		AnchorPane root = (AnchorPane) loader.load();
+    		Scene scene = new Scene(root, 1300, 650);
+    		Stage stage = new Stage();
+    		stage.setScene(scene);
+    		stage.resizableProperty().setValue(Boolean.FALSE);
+    		stage.setResizable(false);
+    		stage.setTitle("Nueva Inversion");
+    		stage.show();
+    	} catch (Exception e) {
+    		e.printStackTrace();
+    	}
+    	Stage stage = (Stage) btnNuevaInversion1.getScene().getWindow();
+    	stage.close();
+    }
+
+    @FXML
+    void onEliminarInversionClick(ActionEvent event) throws SQLException {
+    	Inversion inversion = this.tblInversiones.getSelectionModel().getSelectedItem();
+    	
+    	if(inversion==null) {
+    		new Alerta().errorAlert("Debe seleccionar una Inversion", "Editar Inversion");
+    	}else {
+    		Optional<ButtonType> action =  new Alerta().preguntaConfirmacion("¿Estas seguro que desea cancelar la operación?", "Confirmación");
+        	if (action.get() == ButtonType.OK) {
+	    		inversion.eliminarInversion();
+	    		new Alerta().errorAlert("Gasto Eliminado", "Eliminar Gasto");
+	    		
+	    		ObtenerDatos obtenerDatos = new ObtenerDatos();
+				obtenerDatos = new ObtenerDatos();
+				inversiones = FXCollections.observableArrayList();
+				inversiones = obtenerDatos.obtenerInversiones();
+				
+				this.tblInversiones.setItems(inversiones);
+				mostrarGastosPorMes(LocalDate.now().getMonthValue());
+				lblInversionesTotal.setText(inversiones.stream().mapToDouble(unaInversion-> unaInversion.getMonto()).sum()+" $");
+        	}
+	    }
+    }
+	
 
     @FXML
     void onVolverClick(ActionEvent event) {

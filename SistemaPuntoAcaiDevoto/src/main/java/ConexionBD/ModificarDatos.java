@@ -112,7 +112,7 @@ public class ModificarDatos extends ConexionBd {
 	}
 	
 	public void eliminarInversion(int id) {
-		String sqlString = "DELETE FROM INVERSION"
+		String sqlString = "DELETE FROM INVERSION "
 				+ "WHERE inver_id = '"+id+"'";
 		ejecutarUpdate(sqlString, "inversion eliminated");
 	}
@@ -137,7 +137,7 @@ public class ModificarDatos extends ConexionBd {
 	
 	public void eliminarPropina(int id) {
 	
-		String sqlString = "DELETE FROM PROPINA"
+		String sqlString = "DELETE FROM PROPINA "
 				+ "WHERE propina_id = '"+id+"'";
 		ejecutarUpdate(sqlString, "propina eliminated");
 				

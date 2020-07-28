@@ -25,10 +25,11 @@ public class InsertarDatos extends ConexionBd{
 	}
 	
 	public void insertarPropina(Propina unaPropina) {
-		String sqlString = "INSERT INTO PROPINA"
+		String sql = "INSERT INTO PROPINA"
 				+ "(propina_fecha,"
 				+ "propina_monto)"
 				+ "values('"+unaPropina.getFecha()+"','"+unaPropina.getMonto()+"')";
+		ejecutarUpdate(sql, "Propina Ingresada");
 	}
 	
 	public void insertarCajaCerrada(CajaCerrada unaCajaCerrada) {
