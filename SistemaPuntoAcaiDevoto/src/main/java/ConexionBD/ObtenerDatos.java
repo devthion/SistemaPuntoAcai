@@ -163,7 +163,7 @@ public class ObtenerDatos extends ConexionBd{
 			LocalDate date = rs.getDate(2).toLocalDate();
 			GastosProductos unGasto = new GastosProductos(rs.getString(4),rs.getDouble(3));
 			unGasto.setFecha(date);
-			unGasto.setId(1);
+			unGasto.setId(id);
 			gastos.add(unGasto);
 		}
 		return gastos;

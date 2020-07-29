@@ -60,9 +60,7 @@ public class VerIngresos implements Initializable {
     
     @FXML
     private Label lblGananciaGeneral;
-    
-    @FXML
-    private Label lblGananciaTotal;
+   
 
     @FXML
     private Label lblGastos;
@@ -140,14 +138,12 @@ public class VerIngresos implements Initializable {
     	
     	
     	Double ventasCostoDouble = ventas.stream().mapToDouble(unaVenta -> 
-    	unaVenta.getItems().stream().mapToDouble(unItem -> unItem.getProducto().getCosto()).sum()).sum();
+    	unaVenta.getItems().stream().mapToDouble(unItem -> unItem.getProducto().getCosto() *unItem.getCantidad() ).sum()).sum();
     		
     	
     	lblGananciaGeneral.setText(" "+ (Double.parseDouble(lblMercaderia.getText()) - Double.parseDouble(lblGastos.getText())
     			- ventasCostoDouble));
-    	
-    	lblGananciaTotal.setText("" + (Double.parseDouble(lblMercaderia.getText()) - Double.parseDouble(lblGastos.getText())));
-    	
+    
 		
     }
     
