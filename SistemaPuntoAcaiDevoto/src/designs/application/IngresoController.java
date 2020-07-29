@@ -1,14 +1,17 @@
 package application;
 
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.ResourceBundle;
 
 import Alertas.Alerta;
 import Alertas.Validaciones;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
@@ -17,7 +20,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
-public class IngresoController {
+public class IngresoController implements Initializable {
 	
     @FXML
     private TextField etClave;
@@ -82,4 +85,10 @@ public class IngresoController {
     			System.exit(0);
     	}
     }
+
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+		// TODO Auto-generated method stub
+		etNombreUsuario.setText("MaracaiboCABA");
+	}
 }

@@ -210,7 +210,9 @@ public class ObtenerDatos extends ConexionBd{
 		Statement unStmt = null;
 		ObservableList<Producto> productos = FXCollections.observableArrayList();
 		
-		sql="SELECT * FROM PRODUCTO where prod_nombre not like '%regalo%'";
+		sql="SELECT * FROM PRODUCTO where prod_nombre not like '%regalo%'"
+				+ " UNION "
+				+ "SELECT * FROM PRODUCTO WHERE prod_id = 17";
 		rs=ejecutarQuery(sql,unStmt);
 		while(rs.next()) {
 			Producto unProducto = new Producto(rs.getString(2),rs.getDouble(3),rs.getInt(4),rs.getDouble(5),rs.getDouble(6),rs.getDouble(7), rs.getInt(8));
