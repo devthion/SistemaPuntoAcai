@@ -22,7 +22,7 @@
          </columns>
       </TableView>
       <Separator layoutX="150.0" layoutY="71.0" prefWidth="1000.0" />
-      <Label layoutX="553.0" layoutY="26.0" text="GASTOS PRODUCTOS" />
+      <Label layoutX="551.0" layoutY="26.0" text="GASTOS MERCADERIA" />
       <Button fx:id="btnVolver" layoutX="1148.0" layoutY="585.0" mnemonicParsing="false" onAction="#onVolverClick" prefHeight="51.0" prefWidth="138.0" text="VOLVER" textFill="WHITE">
          <font>
             <Font size="24.0" />

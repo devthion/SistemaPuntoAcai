@@ -16,6 +16,6 @@
       <Label layoutX="613.0" layoutY="279.0" text="MONTO" />
       <Button fx:id="btnGuardarGastoGeneral" layoutX="458.0" layoutY="510.0" mnemonicParsing="false" onAction="#onGuardarGastoGeneralClick" prefHeight="49.0" prefWidth="384.0" text="GUARDAR GASTO GENERAL" />
       <Button fx:id="btnGuardarGastoDiario" layoutX="458.0" layoutY="510.0" mnemonicParsing="false" onAction="#onGuardarGastoDiarioCick" prefHeight="49.0" prefWidth="384.0" text="GUARDAR GASTO DIARIO" />
-      <Button fx:id="btnGuardarGastoProductos" layoutX="459.0" layoutY="510.0" mnemonicParsing="false" onAction="#onGuardarGastoProductosClick" text="GUARDAR GASTO PRODUCTOS" />
+      <Button fx:id="btnGuardarGastoProductos" layoutX="459.0" layoutY="510.0" mnemonicParsing="false" onAction="#onGuardarGastoProductosClick" text="GUARDAR GASTO MERCADERIA" />
    </children>
 </AnchorPane>
