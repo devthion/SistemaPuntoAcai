@@ -137,8 +137,11 @@ public class VerIngresos implements Initializable {
     	lblGastos.setText(gastos.stream().mapToDouble(unGasto -> unGasto.getMonto()).sum() + "");
     	
     	
+//    	Double ventasCostoDouble2 = ventas.stream().mapToDouble(unaVenta -> 
+//    	unaVenta.getItems().stream().mapToDouble(unItem -> unItem.getProducto().getCosto() *unItem.getCantidad() ).sum()).sum();
+    	
     	Double ventasCostoDouble = ventas.stream().mapToDouble(unaVenta -> 
-    	unaVenta.getItems().stream().mapToDouble(unItem -> unItem.getProducto().getCosto() *unItem.getCantidad() ).sum()).sum();
+    	unaVenta.getVenta_precioTotal() - unaVenta.getVenta_ganancia()).sum();
     		
     	
     	lblGananciaGeneral.setText(" "+ (Double.parseDouble(lblMercaderia.getText()) - Double.parseDouble(lblGastos.getText())
