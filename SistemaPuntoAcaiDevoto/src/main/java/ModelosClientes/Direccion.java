@@ -1,12 +1,14 @@
 package ModelosClientes;
 
+
 public class Direccion {
 	
 	private String calle;
 	private int numero;
 	private String barrio;
 	private int codPostal;
-
+	private String dpto = null;
+	
 	public Direccion(String calle, int numero, String barrio, int codPostal) {
 		this.calle = calle;
 		this.numero = numero;
@@ -31,6 +33,14 @@ public class Direccion {
 
 	public int getCodPostal() {
 		return codPostal;
+	}
+	
+	public String getDpto() {
+		return dpto;
+	}
+	
+	public void setDpto(String dpto) {
+		this.dpto = dpto;
 	}
 
 	

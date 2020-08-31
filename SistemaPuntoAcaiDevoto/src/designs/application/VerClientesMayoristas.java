@@ -144,9 +144,7 @@ public class VerClientesMayoristas implements Initializable {
 		this.colNombre.setCellValueFactory(new PropertyValueFactory<Cliente, String>("nombre"));
 		this.colApellido.setCellValueFactory(new PropertyValueFactory<Cliente, String>("apellido"));
 		this.colTelefono.setCellValueFactory(new PropertyValueFactory<Cliente, Integer>("telefono"));
-		this.colCalle.setCellValueFactory(new PropertyValueFactory<Cliente, String>("calle"));
-		this.colNumero.setCellValueFactory(new PropertyValueFactory<Cliente, Integer>("numero"));
-		this.colBarrio.setCellValueFactory(new PropertyValueFactory<Cliente, String>("barrio"));
+		this.colCalle.setCellValueFactory(new PropertyValueFactory<Cliente, String>("DireccionCompleta"));
 		this.ColTipoCliente.setCellValueFactory(new PropertyValueFactory<Cliente, String>("rubro"));
 		this.colIngresos.setCellValueFactory(new PropertyValueFactory<Cliente, Double>("ingresos"));	
 		

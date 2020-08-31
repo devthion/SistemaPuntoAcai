@@ -5,18 +5,19 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane prefHeight="300.0" prefWidth="700.0" stylesheets="@../Styles/Style.css" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="application.ActualizarPrecio">
+<AnchorPane prefHeight="300.0" prefWidth="700.0" stylesheets="@../Styles/Style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.ActualizarPrecio">
    <children>
       <Label layoutX="252.0" layoutY="14.0" text="ACTUALIZAR PRECIOS" />
-      <TextField fx:id="txtCosto" alignment="CENTER" layoutX="74.0" layoutY="111.0" prefHeight="33.0" prefWidth="155.0" />
-      <TextField fx:id="txtPrecioUnitario" alignment="CENTER" layoutX="273.0" layoutY="111.0" prefHeight="33.0" prefWidth="155.0" />
-      <TextField fx:id="txtPrecioPorMayor" alignment="CENTER" layoutX="473.0" layoutY="111.0" prefHeight="33.0" prefWidth="155.0" />
-      <Label layoutX="119.0" layoutY="82.0" text="COSTO" />
-      <Label layoutX="270.0" layoutY="82.0" text="PRECIO UNITARIO" />
-      <Label layoutX="458.0" layoutY="82.0" text="PRECIO POR MAYOR" />
+      <TextField fx:id="txtCosto" alignment="CENTER" layoutX="14.0" layoutY="105.0" prefHeight="33.0" prefWidth="155.0" AnchorPane.leftAnchor="15.0" />
+      <TextField fx:id="txtPrecioUnitario" alignment="CENTER" layoutX="187.0" layoutY="106.0" prefHeight="33.0" prefWidth="155.0" />
+      <TextField fx:id="txtPrecioPorMayor" alignment="CENTER" layoutX="361.0" layoutY="106.0" prefHeight="33.0" prefWidth="155.0" />
+      <Label layoutX="59.0" layoutY="76.0" text="COSTO" />
+      <Label layoutX="184.0" layoutY="77.0" text="PRECIO UNITARIO" />
+      <Label layoutX="368.0" layoutY="77.0" text="PRECIO MAYOR" />
       <Separator layoutX="151.0" layoutY="61.0" prefWidth="400.0" />
       <Button fx:id="btnActualizarPrecio" layoutX="258.0" layoutY="185.0" mnemonicParsing="false" onAction="#onActualizarPrecioClick" text="ACTUALIZAR" />
       <Button fx:id="btnVolver" layoutX="551.0" layoutY="234.0" mnemonicParsing="false" onAction="#onVolverClick" text="VOLVER" />
+      <TextField fx:id="txtCantMayor" layoutX="530.0" layoutY="107.0" prefHeight="33.0" prefWidth="155.0" AnchorPane.rightAnchor="15.0" />
+      <Label layoutX="545.0" layoutY="78.0" text="CANT MAYOR" AnchorPane.rightAnchor="29.0" />
    </children>
 </AnchorPane>

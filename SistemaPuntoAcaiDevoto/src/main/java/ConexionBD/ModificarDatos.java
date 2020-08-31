@@ -42,6 +42,11 @@ public class ModificarDatos extends ConexionBd {
 	}
 	//---------------------------
 	
+	public void agregarDpto() {
+		String sql = "ALTER TABLE Cliente ADD dire_dpto varchar(30)";
+		ejecutarUpdate(sql, "Columna clie_dpto agregada");
+	}
+	
 	
 	public void eliminarCajaCerrada(LocalDate unaFecha) {
 		String sql= "DELETE FROM CAJACERRADA "
@@ -66,6 +71,7 @@ public class ModificarDatos extends ConexionBd {
 					+ "dire_codPostal= '"+clienteEditado.getCodPostal()+"',"
 					+ "dire_barrio= '"+clienteEditado.getBarrio()+"',"
 					+ "dire_numero = '"+clienteEditado.getNumero()+"',"
+					+ "dire_dpto = '"+clienteEditado.getDireccion().getDpto()+"',"
 					+ "dire_calle= '"+clienteEditado.getCalle()+"',"
 					+ "clie_como_llego = '"+clienteEditado.getComoLlego()+"',"
 					+ "clie_rubro = '"+clienteEditado.getRubro()+"',"
@@ -102,11 +108,12 @@ public class ModificarDatos extends ConexionBd {
 	}
 	
 	
-	public void actualizarPrecios(double precioUnitario, double precioMayor, double costo, int prod_id) {
+	public void actualizarPrecios(double precioUnitario, double precioMayor, double costo, int prod_id, int cantidad) {
 		String sql="UPDATE PRODUCTO SET "
 				+"prod_precio= '"+precioUnitario+"',"
 				+"prod_precio_mayor='"+precioMayor+"',"
-				+"prod_costo= '"+costo+"'"
+				+"prod_costo= '"+costo+"',"
+				+"prod_cantidad_mayor= '"+cantidad+"'"
 				+" WHERE prod_id= '"+prod_id+"'";
 		ejecutarUpdate(sql, "Precios actualizados");
 	}

@@ -2,6 +2,7 @@ package ModelosClientes;
 
 import java.sql.SQLException;
 
+
 import ConexionBD.InsertarDatos;
 import ConexionBD.ModificarDatos;
 import ConexionBD.ObtenerDatos;
@@ -58,7 +59,12 @@ public class Cliente {
 	}
 	
 	public String getDireccionCompleta() {
-		return direccion.getCalle() +" " + direccion.getNumero() +", "+direccion.getBarrio();
+		if(direccion.getDpto() == null) {
+			return direccion.getCalle() +" " + direccion.getNumero() +", "+direccion.getBarrio();
+		}else {
+			return direccion.getCalle() +" " + direccion.getNumero() +", Depto "+direccion.getDpto()+", "+direccion.getBarrio();
+		}
+		
 	}
 	
 	public String getTipo() {

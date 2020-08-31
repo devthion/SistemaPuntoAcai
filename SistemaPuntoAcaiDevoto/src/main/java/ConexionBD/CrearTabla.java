@@ -173,6 +173,7 @@ public class CrearTabla {
 				+"dire_numero INTEGER(6),"
 				+"dire_calle VARCHAR(40),"
 				+"clie_como_llego VARCHAR(40),"
+				+"dire_dpto VARCHAR(30),"
 				+"clie_rubro VARCHAR(40),"
 				+"PRIMARY KEY (clie_dni))";
 			stmt.executeUpdate(sql);

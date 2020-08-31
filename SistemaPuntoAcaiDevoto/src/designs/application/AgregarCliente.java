@@ -100,7 +100,7 @@ public class AgregarCliente {
     
     @FXML
     void editarCliente(ActionEvent event) throws SQLException {
-    	Cliente cliente = generarCliente();
+    	Cliente cliente = generarClienteEditable();
     	if(!existeElUsuarioEnLaBd()||(cliente.getDni()==nuevoCliente.getDni())) {
         	nuevoCliente.modificarCliente(cliente);
         	new Alerta().informationAlert("Se ha editado el cliente", "Informacion");
@@ -131,6 +131,10 @@ public class AgregarCliente {
     	this.txtBarrio.setText(clienteEditable.getBarrio());
     	this.txtTelefono.setText(""+clienteEditable.getTelefono());
     	this.slipTipoCliente.setText(clienteEditable.getTipo().toLowerCase());
+    	if(clienteEditable.getDireccion().getDpto() != null) {
+    		this.txtDpto.setText(clienteEditable.getDireccion().getDpto());
+    	}
+    	
     	
     	nuevoCliente = clienteEditable;
     	
@@ -153,6 +157,7 @@ public class AgregarCliente {
     	String tipo = slipTipoCliente.getText().toLowerCase();
     	String rubro = txtRubro.getText().toLowerCase();
     	
+    	
     	int dni = 0;
 		try {
 			dni = new ObtenerDatos().obtenerMayorDni() + 1;
@@ -162,9 +167,31 @@ public class AgregarCliente {
 		}
     	
     	Direccion direccion = new Direccion(calle, numero, barrio, 0);
+    	if(!txtDpto.getText().isEmpty()) {
+    		String dpto = txtDpto.getText();
+    		direccion.setDpto(dpto);
+    	}
     	return new Cliente(dni, nombre, apellido, telefono, "", direccion, tipo, "Desconocido", rubro);
     }
     
+    public Cliente generarClienteEditable() {
+    	String nombre = this.txtNombre.getText().toString().toLowerCase();
+    	String apellido = this.txtApellido.getText().toLowerCase();
+    	int numero = Integer.parseInt(txtNumero.getText());
+    	String calle = this.txtCalle.getText().toLowerCase();
+    	String barrio = this.txtBarrio.getText().toLowerCase();
+    	int telefono=Integer.parseInt(txtTelefono.getText());
+    	String tipo = slipTipoCliente.getText().toLowerCase();
+    	String rubro = txtRubro.getText().toLowerCase();
+    	
+    	
+    	Direccion direccion = new Direccion(calle, numero, barrio, 0);
+    	if(!txtDpto.getText().isEmpty()) {
+    		String dpto = txtDpto.getText();
+    		direccion.setDpto(dpto);
+    	}
+    	return new Cliente(nuevoCliente.getDni(), nombre, apellido, telefono, "", direccion, tipo, "Desconocido", rubro);
+    }
     @FXML
     void onVolverClick(ActionEvent event) {
     	Stage stage = (Stage) btnVolver.getScene().getWindow();

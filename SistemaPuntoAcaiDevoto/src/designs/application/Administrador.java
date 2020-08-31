@@ -113,8 +113,8 @@ public class Administrador {
     void onAgregarDescripcionClick(ActionEvent event) {
 		try {
 			
-			new ModificarDatos().agregarObservacion();
-			new Alerta().informationAlert("Descripciones Agregadas", "EXITO!");
+			new ModificarDatos().agregarDpto();
+			new Alerta().informationAlert("Depto Agregado", "EXITO!");
 		} catch (Exception e) {
 			// TODO: handle exception
 			System.out.println("ERROR");

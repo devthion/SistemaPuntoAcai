@@ -47,9 +47,9 @@ public class Producto {
 		modificarDatos.actualizarStock(prod_id, stock+unaCantidad);
 	}
 	
-	public void actualizarPrecios(double precioUnitario, double precioMayor, double costo) throws SQLException {
+	public void actualizarPrecios(double precioUnitario, double precioMayor, double costo, int cantidadPorMayor) throws SQLException {
 		modificarDatos = new ModificarDatos();
-		modificarDatos.actualizarPrecios(precioUnitario, precioMayor, costo, prod_id);
+		modificarDatos.actualizarPrecios(precioUnitario, precioMayor, costo, prod_id, cantidadPorMayor);
 	}
 	
 	public int getProd_id() {

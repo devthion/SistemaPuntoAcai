@@ -26,6 +26,9 @@ public class ActualizarPrecio {
 
     @FXML
     private TextField txtPrecioUnitario;
+    
+    @FXML
+    private TextField txtCantMayor;
 
     @FXML
     private TextField txtPrecioPorMayor;
@@ -43,8 +46,9 @@ public class ActualizarPrecio {
 			double costo = Double.parseDouble(txtCosto.getText());
 			double precioUnitario = Double.parseDouble(txtPrecioUnitario.getText());
 			double precioMayor = Double.parseDouble(txtPrecioPorMayor.getText());
+			int cantMayor = Integer.parseInt(txtCantMayor.getText());
 			
-			productoActualizar.actualizarPrecios(precioUnitario, precioMayor, costo);
+			productoActualizar.actualizarPrecios(precioUnitario, precioMayor, costo, cantMayor);
 			new Alerta().informationAlert("Se ha actualizado el preio del producto", "Actualizar Precio");
 			
 			Stage stage = (Stage) btnActualizarPrecio.getScene().getWindow();
@@ -65,6 +69,7 @@ public class ActualizarPrecio {
 
 	public void setProductoActualizar(Producto productoActualizar) {
 		this.productoActualizar = productoActualizar;
+		txtCantMayor.setText(productoActualizar.getCantidadPorMayor()+"");
 	}
 	
 	public List<TextField> generarListNumerica(){
@@ -73,6 +78,7 @@ public class ActualizarPrecio {
     	productosAValidar.add(txtCosto);
     	productosAValidar.add(txtPrecioUnitario);
     	productosAValidar.add(txtPrecioPorMayor);
+    	productosAValidar.add(txtCantMayor);
     	
     	return productosAValidar;
 		
