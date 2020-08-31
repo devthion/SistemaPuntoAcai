@@ -1,7 +1,9 @@
 package ModelosClientes;
 
 import java.sql.SQLException;
+import java.util.Objects;
 
+import com.itextpdf.text.pdf.PdfStructTreeController.returnType;
 
 import ConexionBD.InsertarDatos;
 import ConexionBD.ModificarDatos;
@@ -54,16 +56,16 @@ public class Cliente {
 	public String getBarrio() {
 		return direccion.getBarrio();
 	}
+	
+	public String getDpto() {
+		return direccion.getDpto();
+	}
 	public int getCodPostal() {
 		return direccion.getCodPostal();
 	}
 	
 	public String getDireccionCompleta() {
-		if(direccion.getDpto() == null) {
-			return direccion.getCalle() +" " + direccion.getNumero() +", "+direccion.getBarrio();
-		}else {
-			return direccion.getCalle() +" " + direccion.getNumero() +", Depto "+direccion.getDpto()+", "+direccion.getBarrio();
-		}
+		return direccion.getDireccionCompleta();
 		
 	}
 	

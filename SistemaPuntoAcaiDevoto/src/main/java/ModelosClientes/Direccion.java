@@ -1,5 +1,6 @@
 package ModelosClientes;
 
+import java.util.Objects;
 
 public class Direccion {
 	
@@ -41,6 +42,14 @@ public class Direccion {
 	
 	public void setDpto(String dpto) {
 		this.dpto = dpto;
+	}
+	
+	public String getDireccionCompleta() {
+		if(Objects.isNull(dpto) || dpto.equalsIgnoreCase("null") || dpto == null) {
+			return calle +" " + numero +", "+barrio;
+		}else {
+			return calle +" " + numero +", Depto "+dpto+", "+barrio;
+		}
 	}
 
 	

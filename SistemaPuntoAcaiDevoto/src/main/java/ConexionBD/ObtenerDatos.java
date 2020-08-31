@@ -194,6 +194,7 @@ public class ObtenerDatos extends ConexionBd{
 		rs = ejecutarQuery(sql,unStmt);
 		while(rs.next()) {
 			Direccion unaDireccion= new Direccion(rs.getString(10),rs.getInt(9),rs.getString(8),rs.getInt(7));
+			unaDireccion.setDpto(rs.getString("dire_dpto"));
 			Cliente unCliente = new Cliente(rs.getInt(4),rs.getString(2),rs.getString(3),rs.getInt(5),rs.getString(6),unaDireccion,rs.getString(1),rs.getString(11), rs.getString(12));
 			clientes.add(unCliente);
 		}
@@ -386,6 +387,7 @@ public class ObtenerDatos extends ConexionBd{
 		rsUnCliente=ejecutarQuery(sql,unStmt);
 		while(rsUnCliente.next()) {
 			unaDireccion = new Direccion(rsUnCliente.getString(10),rsUnCliente.getInt(9),rsUnCliente.getString(8),rsUnCliente.getInt(7));
+			unaDireccion.setDpto(rs.getString("dire_dpto"));
 			unCliente = new Cliente(rsUnCliente.getInt(4),rsUnCliente.getString(2),rsUnCliente.getString(3),rsUnCliente.getInt(5),rsUnCliente.getString(6),unaDireccion,rsUnCliente.getString(1),rsUnCliente.getString(11), rsUnCliente.getString(12));
 		}
 		return unCliente;

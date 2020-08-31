@@ -170,6 +170,8 @@ public class AgregarCliente {
     	if(!txtDpto.getText().isEmpty()) {
     		String dpto = txtDpto.getText();
     		direccion.setDpto(dpto);
+    	}else {
+    		direccion.setDpto("-1");
     	}
     	return new Cliente(dni, nombre, apellido, telefono, "", direccion, tipo, "Desconocido", rubro);
     }
