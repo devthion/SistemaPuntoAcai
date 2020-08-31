@@ -29,6 +29,9 @@ public class AgregarCliente {
 
     @FXML
     private TextField txtCalle;
+    
+    @FXML
+    private TextField txtDpto;
 
     @FXML
     private TextField txtTelefono;
@@ -55,13 +58,7 @@ public class AgregarCliente {
     private TextField txtNumero;
 
     @FXML
-    private TextField txtDni;
-
-    @FXML
     private SplitMenuButton slipTipoCliente;
-    
-    @FXML
-    private SplitMenuButton slipComoLlego;
     
     @FXML
     private Button btnVolver;
@@ -77,7 +74,7 @@ public class AgregarCliente {
     	ObtenerDatos obtenerDatos = new ObtenerDatos();
 		clientes = FXCollections.observableArrayList();
 		clientes = obtenerDatos.obtenerClientes(new Querys().queryClientes());
-    	return clientes.stream().anyMatch(unCliente -> unCliente.tieneElMismoDni(Integer.parseInt(txtDni.getText())));
+    	return clientes.stream().anyMatch(unCliente -> unCliente.tieneElMismoDni(-1));
     }
 
     @FXML
@@ -88,8 +85,8 @@ public class AgregarCliente {
     	if(Validaciones.validarCajasDeTextos(generarListObligatorios()) || Validaciones.validarCajasNumericas(generarListNumericos())) {
     		new Alerta().errorAlert("Puede que falten atributos llenar o esta ingresando mal los datos", "Error en el ingreso de Datos");
     	}else {
+    		Cliente cliente = generarCliente();
     		if(!existeElUsuarioEnLaBd()) {
-	    		Cliente cliente = generarCliente();
 	    		this.nuevoCliente = cliente;
 	    		cliente.almacenarCliente();
 	    		new Alerta().informationAlert("Se ha añadido correctamente", "Informacion");
@@ -129,13 +126,11 @@ public class AgregarCliente {
     	
     	this.txtNombre.setText(clienteEditable.getNombre());
     	this.txtApellido.setText(clienteEditable.getApellido());
-    	this.txtDni.setText((""+clienteEditable.getDni()));
     	this.txtNumero.setText(""+clienteEditable.getNumero());
     	this.txtCalle.setText(clienteEditable.getCalle());
     	this.txtBarrio.setText(clienteEditable.getBarrio());
     	this.txtTelefono.setText(""+clienteEditable.getTelefono());
     	this.slipTipoCliente.setText(clienteEditable.getTipo().toLowerCase());
-    	this.slipComoLlego.setText(clienteEditable.getComoLlego());
     	
     	nuevoCliente = clienteEditable;
     	
@@ -151,17 +146,23 @@ public class AgregarCliente {
     public Cliente generarCliente() {
     	String nombre = this.txtNombre.getText().toString().toLowerCase();
     	String apellido = this.txtApellido.getText().toLowerCase();
-    	int dni = Integer.parseInt(txtDni.getText());
     	int numero = Integer.parseInt(txtNumero.getText());
     	String calle = this.txtCalle.getText().toLowerCase();
     	String barrio = this.txtBarrio.getText().toLowerCase();
     	int telefono=Integer.parseInt(txtTelefono.getText());
     	String tipo = slipTipoCliente.getText().toLowerCase();
-    	String comoLlego = slipComoLlego.getText().toLowerCase();
     	String rubro = txtRubro.getText().toLowerCase();
     	
+    	int dni = 0;
+		try {
+			dni = new ObtenerDatos().obtenerMayorDni() + 1;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    	
     	Direccion direccion = new Direccion(calle, numero, barrio, 0);
-    	return new Cliente(dni, nombre, apellido, telefono, "", direccion, tipo, comoLlego, rubro);
+    	return new Cliente(dni, nombre, apellido, telefono, "", direccion, tipo, "Desconocido", rubro);
     }
     
     @FXML
@@ -174,7 +175,6 @@ public class AgregarCliente {
     	
     	List<TextField> productosAValidar = new ArrayList<>();
     	productosAValidar.add(txtNombre);
-    	productosAValidar.add(txtDni);
     	productosAValidar.add(txtRubro);
     	
     	return productosAValidar;
@@ -183,7 +183,6 @@ public class AgregarCliente {
     public List<TextField> generarListNumericos() {
     	
     	List<TextField> productosAValidar = new ArrayList<>();
-    	productosAValidar.add(txtDni);
     	productosAValidar.add(txtNumero);
     	productosAValidar.add(txtTelefono);
     	
@@ -223,16 +222,6 @@ public class AgregarCliente {
     	txtRubro.setText("");
     	lblRubro.setVisible(true);
 		txtRubro.setVisible(true);
-    }
-    
-    @FXML
-    void onPorInstagram(ActionEvent event) {
-    	this.slipComoLlego.setText("Por Instagram");
-    }
-
-    @FXML
-    void onPorOtraPersona(ActionEvent event) {
-    	this.slipComoLlego.setText("Por Otra Persona");
     }
 
     

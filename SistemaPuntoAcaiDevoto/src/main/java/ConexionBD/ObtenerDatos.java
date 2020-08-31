@@ -100,6 +100,21 @@ public class ObtenerDatos extends ConexionBd{
 		
 	}
 	
+	public int obtenerMayorDni() throws SQLException{	
+		ResultSet rs;
+		Statement unStmt = null;
+		int dni = -1;
+		
+		sql="SELECT MAX(clie_dni) FROM CLIENTE";
+		rs=ejecutarQuery(sql, unStmt);
+		while(rs.next()) {
+			dni = rs.getInt(1);
+	
+		}
+		return dni;
+		
+	}
+	
 	public List<VentasPorMes> obtenerVentasPorMes() throws SQLException{
 		List<VentasPorMes> ventasPorMes = new ArrayList<VentasPorMes>();
 		ResultSet rs;

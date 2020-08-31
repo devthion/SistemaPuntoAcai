@@ -27,9 +27,6 @@ import javafx.stage.Stage;
 public class VerClientesConsumidoresFinales implements Initializable {
 
     @FXML
-    private TableColumn<Cliente, Integer> colDni;
-
-    @FXML
     private TableColumn<Cliente, String> colBarrio;
 
     @FXML
@@ -142,7 +139,6 @@ public class VerClientesConsumidoresFinales implements Initializable {
 		
 		this.colNombre.setCellValueFactory(new PropertyValueFactory<Cliente, String>("nombre"));
 		this.colApellido.setCellValueFactory(new PropertyValueFactory<Cliente, String>("apellido"));
-		this.colDni.setCellValueFactory(new PropertyValueFactory<Cliente, Integer>("dni"));
 		this.colTelefono.setCellValueFactory(new PropertyValueFactory<Cliente, Integer>("telefono"));
 		this.colCalle.setCellValueFactory(new PropertyValueFactory<Cliente, String>("calle"));
 		this.colNumero.setCellValueFactory(new PropertyValueFactory<Cliente, Integer>("numero"));

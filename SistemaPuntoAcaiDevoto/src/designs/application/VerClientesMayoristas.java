@@ -22,13 +22,9 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 public class VerClientesMayoristas implements Initializable {
-
-	@FXML
-    private TableColumn<Cliente, Integer> colDni;
 
     @FXML
     private TableColumn<Cliente, String> colBarrio;
@@ -147,7 +143,6 @@ public class VerClientesMayoristas implements Initializable {
 		
 		this.colNombre.setCellValueFactory(new PropertyValueFactory<Cliente, String>("nombre"));
 		this.colApellido.setCellValueFactory(new PropertyValueFactory<Cliente, String>("apellido"));
-		this.colDni.setCellValueFactory(new PropertyValueFactory<Cliente, Integer>("dni"));
 		this.colTelefono.setCellValueFactory(new PropertyValueFactory<Cliente, Integer>("telefono"));
 		this.colCalle.setCellValueFactory(new PropertyValueFactory<Cliente, String>("calle"));
 		this.colNumero.setCellValueFactory(new PropertyValueFactory<Cliente, Integer>("numero"));

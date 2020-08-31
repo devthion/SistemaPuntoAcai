@@ -18,9 +18,6 @@ public class VerEstadisticas {
     private Button btnBarrios;
 
     @FXML
-    private Button btnClientes;
-
-    @FXML
     private Button btnVentas;
 
     @FXML
@@ -63,25 +60,25 @@ public class VerEstadisticas {
     	stage.close();
     }
 
-    @FXML
-    void onClientesClick(ActionEvent event) {
-    	try {
-			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(getClass().getResource("GraficoComoLlegaron.fxml"));
-			AnchorPane root = (AnchorPane) loader.load();
-			Scene scene = new Scene(root,1300,650);
-			Stage stage = new Stage();
-			stage.setScene(scene);
-			stage.resizableProperty().setValue(Boolean.FALSE);
-			stage.setResizable(false);
-			stage.setTitle("Estadisticas");
-			stage.show();
-		} catch(Exception e) {
-			e.printStackTrace();
-		}
-    	Stage stage = (Stage) btnClientes.getScene().getWindow();
-    	stage.close();
-    }
+//    @FXML
+//    void onClientesClick(ActionEvent event) {
+//    	try {
+//			FXMLLoader loader = new FXMLLoader();
+//			loader.setLocation(getClass().getResource("GraficoComoLlegaron.fxml"));
+//			AnchorPane root = (AnchorPane) loader.load();
+//			Scene scene = new Scene(root,1300,650);
+//			Stage stage = new Stage();
+//			stage.setScene(scene);
+//			stage.resizableProperty().setValue(Boolean.FALSE);
+//			stage.setResizable(false);
+//			stage.setTitle("Estadisticas");
+//			stage.show();
+//		} catch(Exception e) {
+//			e.printStackTrace();
+//		}
+//    	Stage stage = (Stage) btnClientes.getScene().getWindow();
+//    	stage.close();
+//    }
 
     @FXML
     void onBarriosClick(ActionEvent event) {
