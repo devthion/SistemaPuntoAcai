@@ -256,67 +256,69 @@ public class NuevaVentaController implements Initializable {
     @FXML
     void onRealizarVentaClick(ActionEvent event) throws FileNotFoundException, DocumentException {
     	Cliente cliente = this.tblClientes.getSelectionModel().getSelectedItem();
-    	
 
-    	
     	if(Validaciones.validarCajaNumerica(txtPrecioTotal)) {
     		new Alerta().errorAlert("El precio Total Venta ingresado no es un valor Correcto", "Error de Datos");
     	}else {
     		if(cliente==null || itemsAVender.size() == 0) {
 	    		new Alerta().errorAlert("Debe seleccionar un cliente y minimo un producto", "Nueva Venta");
 	    	}else {
-	        	if(!txtDeuda.getText().isEmpty() && !Validaciones.validarCajaNumerica(txtDeuda)){
-	        		cliente.agregarDeuda(Double.parseDouble(txtDeuda.getText().toString()));
-	        	}
-	        	if(menuTipoPago.getText().equalsIgnoreCase("Tipo de Pago")) {
-	        		new Alerta().errorAlert("Debe seleccionar un tipo de Pago", "Nueva Venta");
-	        	}else {
-	        		ventaBorrador.setTipoDePago(menuTipoPago.getText().toString());
-	        	}
-	    		new Alerta().informationAlert("El precio de la venta es de "+(costoEnvio+Double.parseDouble(txtPrecioTotal.getText()))+" $",  "Precio Final");
-	    		Optional<ButtonType> action =  new Alerta().preguntaConfirmacion("Desea confirmar la venta para "+cliente.getNombre()+" ?", "Confirmación");
-	        	if (action.get() == ButtonType.OK) {
-		    		agregarItems(itemsAVender);
-		    		ventaBorrador.setCliente(cliente);
-		        	Venta nuevaVenta = ventaBorrador.crearVenta();
-		        	nuevaVenta.setEnvio(ventaBorrador.getEnvio());
-		        	nuevaVenta.getItems().stream().forEach(unItem -> {
-						try {
-							unItem.getProducto().actualizarStock(-unItem.getCantidad());
-						} catch (SQLException e2) {
-							e2.printStackTrace();
-						}
-					});
-		   
+	        	if(!txtDeuda.getText().isEmpty()){
+	        		if(Validaciones.validarCajaNumerica(txtDeuda)) {
+	        			new Alerta().errorAlert("Ingreso una deuda erronea", "Ingreso erroneo de Datos");
+	        		}else {
+	        			if(menuTipoPago.getText().equalsIgnoreCase("Tipo de Pago")) {
+	    	        		new Alerta().errorAlert("Debe seleccionar un tipo de Pago", "Nueva Venta");
+	    	        	}else {
+	    	        		cliente.agregarDeuda(Double.parseDouble(txtDeuda.getText().toString()));
+	    	        		ventaBorrador.setTipoDePago(menuTipoPago.getText().toString());
+	    	        		new Alerta().informationAlert("El precio de la venta es de "+(costoEnvio+Double.parseDouble(txtPrecioTotal.getText()))+" $",  "Precio Final");
+	    		    		Optional<ButtonType> action =  new Alerta().preguntaConfirmacion("Desea confirmar la venta para "+cliente.getNombre()+" ?", "Confirmación");
+	    		        	if (action.get() == ButtonType.OK) {
+	    			    		agregarItems(itemsAVender);
+	    			    		ventaBorrador.setCliente(cliente);
+	    			        	Venta nuevaVenta = ventaBorrador.crearVenta();
+	    			        	nuevaVenta.setEnvio(ventaBorrador.getEnvio());
+	    			        	nuevaVenta.getItems().stream().forEach(unItem -> {
+	    							try {
+	    								unItem.getProducto().actualizarStock(-unItem.getCantidad());
+	    							} catch (SQLException e2) {
+	    								e2.printStackTrace();
+	    							}
+	    						});
+	    			   
 
-		        	double precioModificado = Double.parseDouble(txtPrecioTotal.getText());
+	    			        	double precioModificado = Double.parseDouble(txtPrecioTotal.getText());
 
-		        		nuevaVenta.setPrecioModificado(precioModificado);
+	    			        		nuevaVenta.setPrecioModificado(precioModificado);
 
-		        	try {
-						nuevaVenta.almacenarVenta();
-					} catch (SQLException e1) {
-						e1.printStackTrace();
-					}
-		        	
-		        	new Alerta().informationAlert("Se ha registrado la venta", "Nueva Venta");
-		        	try {
-		    			FXMLLoader loader = new FXMLLoader();
-		    			loader.setLocation(getClass().getResource("MenuPrincipal.fxml"));
-		    			AnchorPane root = (AnchorPane) loader.load();
-		    			Scene scene = new Scene(root,1300,650);
-		    			Stage stage = new Stage();
-		    			stage.setScene(scene);
-		    			stage.resizableProperty().setValue(Boolean.FALSE);
-		    			stage.setResizable(false);
-		    			stage.setTitle("Menu Principal");
-		    			stage.show();
-		    		} catch(Exception e) {
-		    			e.printStackTrace();
-		    		}
-		        	Stage stage = (Stage) btnRealizarVenta.getScene().getWindow();
-		        	stage.close();
-	        	}
+	    			        	try {
+	    							nuevaVenta.almacenarVenta();
+	    						} catch (SQLException e1) {
+	    							e1.printStackTrace();
+	    						}
+	    			        	
+	    			        	new Alerta().informationAlert("Se ha registrado la venta", "Nueva Venta");
+	    			        	try {
+	    			    			FXMLLoader loader = new FXMLLoader();
+	    			    			loader.setLocation(getClass().getResource("MenuPrincipal.fxml"));
+	    			    			AnchorPane root = (AnchorPane) loader.load();
+	    			    			Scene scene = new Scene(root,1300,650);
+	    			    			Stage stage = new Stage();
+	    			    			stage.setScene(scene);
+	    			    			stage.resizableProperty().setValue(Boolean.FALSE);
+	    			    			stage.setResizable(false);
+	    			    			stage.setTitle("Menu Principal");
+	    			    			stage.show();
+	    			    		} catch(Exception e) {
+	    			    			e.printStackTrace();
+	    			    		}
+	    			        	Stage stage = (Stage) btnRealizarVenta.getScene().getWindow();
+	    			        	stage.close();
+	    		        	}
+	    	        	}
+	        		}        		
+	        	}	        	    		
 	    	}
     	}
 	    	  	
