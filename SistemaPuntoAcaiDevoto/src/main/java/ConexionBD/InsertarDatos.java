@@ -108,8 +108,9 @@ public class InsertarDatos extends ConexionBd{
 				+ "venta_estado_envio,"
 				+ "venta_horario_envio,"
 				+ "venta_fecha_entrega,"
+				+ "venta_tipo_de_pago,"
 				+ "venta_observacion)"
-				+ "values('"+unaVenta.getCliente().getDni()+"','"+unaVenta.getFecha()+"','"+unaVenta.getPrecioTotal()+"','"+unaVenta.getGanancia()+"','"+unaVenta.getEnvioPrecio()+"','"+estado+"','"+unaVenta.getHorario()+"','"+unaVenta.getFechaEntrega()+"','"+unaVenta.getObservacion()+"')";
+				+ "values('"+unaVenta.getCliente().getDni()+"','"+unaVenta.getFecha()+"','"+unaVenta.getPrecioTotal()+"','"+unaVenta.getGanancia()+"','"+unaVenta.getEnvioPrecio()+"','"+estado+"','"+unaVenta.getHorario()+"','"+unaVenta.getFechaEntrega()+"','"+unaVenta.getTipoDePago()+"','"+unaVenta.getObservacion()+"')";
 		ejecutarUpdate(sql, "Venta ingresada");
 		cerrarConexion();
 

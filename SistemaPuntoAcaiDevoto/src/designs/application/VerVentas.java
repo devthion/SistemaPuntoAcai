@@ -1,18 +1,15 @@
 package application;
 
-import java.io.IOException;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
-import com.itextpdf.text.DocumentException;
+
 
 import Alertas.Alerta;
 import ConexionBD.ObtenerDatos;
-import ManejoArchivos.ExportarPdf;
 import ManejoArchivos.Ticket;
 import Ventas.Venta;
 import javafx.collections.FXCollections;
@@ -45,6 +42,9 @@ public class VerVentas implements Initializable {
 
     @FXML
     private TableColumn<Venta, LocalDate> colFechaRealizada;
+    
+    @FXML
+    private TableColumn<Venta, String> colTipoPago;
 
     @FXML
     private Button btnVolver;
@@ -127,6 +127,7 @@ public class VerVentas implements Initializable {
 		this.colHorario.setCellValueFactory(new PropertyValueFactory<Venta, String>("Horario"));
 		this.colDireccion.setCellValueFactory(new PropertyValueFactory<Venta, String>("DireccionCliente"));
 		this.colEnvio.setCellValueFactory(new PropertyValueFactory<Venta, Double>("PrecioEnvio"));
+		this.colTipoPago.setCellValueFactory(new PropertyValueFactory<Venta, String>("TipoDePago"));
 		//this.colPago.setCellValueFactory(new PropertyValueFactory<Venta, String>("estaPagado"));
 		
 		lblItems.setMinWidth(600);

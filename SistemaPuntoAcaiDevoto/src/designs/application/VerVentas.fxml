@@ -20,11 +20,12 @@
          <columns>
             <TableColumn fx:id="colFechaRealizada" maxWidth="1.7976931348623157E308" prefWidth="115.0" text="FECHA REALIZADA" />
             <TableColumn fx:id="colCliente" maxWidth="1.7976931348623157E308" prefWidth="141.0" text="CLIENTE" />
-            <TableColumn fx:id="colFechaEntrega" prefWidth="143.0" text="FECHA ENTREGA" />
-            <TableColumn fx:id="colHorario" prefWidth="120.0" text="HORARIO" />
-            <TableColumn fx:id="colDireccion" maxWidth="495.0" prefWidth="221.0" text="DIRECCION" />
-            <TableColumn fx:id="colMontoTotal" prefWidth="138.0" text="MONTO TOTAL" />
-            <TableColumn fx:id="colEnvio" prefWidth="135.0" text="MONTO ENVIO" />
+            <TableColumn fx:id="colFechaEntrega" prefWidth="90.0" text="ENTREGA" />
+            <TableColumn fx:id="colHorario" prefWidth="92.0" text="HORARIO" />
+            <TableColumn fx:id="colDireccion" maxWidth="495.0" prefWidth="265.0" text="DIRECCION" />
+            <TableColumn fx:id="colTipoPago" prefWidth="100.0" text="TIPO PAGO" />
+            <TableColumn fx:id="colMontoTotal" prefWidth="131.0" text="MONTO TOTAL" />
+            <TableColumn fx:id="colEnvio" prefWidth="96.0" text="ENVIO" />
          </columns>
       </TableView>
       <Button fx:id="btnTerminarVenta" layoutX="126.0" layoutY="553.0" mnemonicParsing="false" onAction="#onTerminarVentaClick" prefHeight="49.0" prefWidth="260.0" text="ENVIO REALIZADO" />
