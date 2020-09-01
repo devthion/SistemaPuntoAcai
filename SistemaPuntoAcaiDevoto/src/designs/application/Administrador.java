@@ -79,6 +79,7 @@ public class Administrador {
 		CrearTabla.crearTablaCajaCerrada();
 		CrearTabla.crearTablaInversion();
 		CrearTabla.crearTablaPropina();
+		CrearTabla.crearTablaDispositivo();
     	new Alerta().informationAlert("Las tablas de la BD han sido creadas con Exito", "Creacion Tablas");
     }
     

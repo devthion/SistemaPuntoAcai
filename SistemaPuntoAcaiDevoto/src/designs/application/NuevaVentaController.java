@@ -3,6 +3,7 @@ package application;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.RandomAccessFile;
 import java.net.URL;
@@ -30,6 +31,8 @@ import Alertas.Validaciones;
 import ConexionBD.ObtenerDatos;
 import ConexionBD.PruebaInsertarMostrarHibernate;
 import ConexionBD.Querys;
+import ManejoArchivos.ConfigurarImpresora;
+import ManejoArchivos.Ticket;
 import ModelosClientes.Cliente;
 import Productos.Producto;
 import Ventas.Item;
@@ -316,71 +319,7 @@ public class NuevaVentaController implements Initializable {
 	    			        	
 	    			        	new Alerta().informationAlert("Se ha registrado la venta", "Nueva Venta");
 	    			        	
-	    			        	//-----------------
 	    			        	
-	    			        	String formatoTitulo ="%-15s %-20s %-15s%n";
-	    			        	String titulo = String.format(formatoTitulo, "", "ACAI MARACAIBO","");
-	    			        	
-	    			        	String listadoItems = "";
-	    			        	String formatoListaItemString = "%-35s %-15s%n";
-	    			        	for(Item item : nuevaVenta.getItems()) {
-	    			        		String detalleProducto =item.getNombreProducto()+" X"+ String.valueOf(item.getCantidad());
-	    			        		listadoItems +=String.format(formatoListaItemString, detalleProducto, item.getPrecioFinal());
-	    			        		
-	    			        	}
-	    			        	String formatStr = "%-30s%n %-20s %-15s%n";
-	    			        	String prueba = String.format(formatStr, nuevaVenta.getDatosCliente(), nuevaVenta.getDireccionCliente(), nuevaVenta.getPrecioTotal());
-	    			        	
-	    			        	String ticket = titulo + listadoItems + prueba;
-	    			        	
-	    			        	byte[] buff = ticket.getBytes();
-	    			        	try {
-	    							RandomAccessFile ref = new RandomAccessFile("prueba.txt", "rw");
-	    							ref.write(buff);
-	    							
-	    						} catch (Exception e) {
-	    							e.printStackTrace();
-	    						}
-	    			        	
-	    			        	
-	    			        	System.out.println("Printing ");
-	    		        		JFrame f=new JFrame();  
-	    		        	  DocFlavor flavor = DocFlavor.INPUT_STREAM.AUTOSENSE ;
-	    		        	  PrintRequestAttributeSet aset = new HashPrintRequestAttributeSet();
-	    		        	  //aset.add(MediaSizeName.NA_LETTER);
-	    		        	  PrintService[] pservices = PrintServiceLookup.lookupPrintServices(
-	    		        	      null, null);
-	    		        	  int i;
-	    		        	  switch(pservices.length) {
-	    		        	  case 0:
-	    		        	    System.out.println(
-	    		        	        "Error: No PrintService Found");
-	    		        	    return;
-	    		        	  case 1:
-	    		        	    i = 1;
-	    		        	    break;
-	    		        	  default:
-	    		        	    i = JOptionPane.showOptionDialog(null,
-	    		        	        "Pick a printer", "Choice",
-	    		        	        JOptionPane.OK_OPTION, JOptionPane.QUESTION_MESSAGE,
-	    		        	        null, pservices, pservices[0]);
-	    		        	    break;
-	    		        	  }
-	    		        	  if (i < 0) {
-	    		        	    return;
-	    		        	  }
-	    		        	  DocPrintJob pj = pservices[i].createPrintJob();
-	    		        	  InputStream contenido = new FileInputStream("prueba.txt");//mi texto generado
-	    		        	  Doc doc = new SimpleDoc(contenido, flavor, null);
-	    		        	  try {
-	    						pj.print(doc, null);
-	    					} catch (PrintException e1) {
-	    						// TODO Auto-generated catch block
-	    						e1.printStackTrace();
-	    					}
-	    		        	  
-	    		        	  System.out.println("impreso!");
-	    		        		//------------
 	    			        	try {
 	    			    			FXMLLoader loader = new FXMLLoader();
 	    			    			loader.setLocation(getClass().getResource("MenuPrincipal.fxml"));

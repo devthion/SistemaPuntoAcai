@@ -13,6 +13,7 @@ import com.itextpdf.text.DocumentException;
 import Alertas.Alerta;
 import ConexionBD.ObtenerDatos;
 import ManejoArchivos.ExportarPdf;
+import ManejoArchivos.Ticket;
 import Ventas.Venta;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -180,22 +181,12 @@ public class VerVentas implements Initializable {
     	if(venta==null) {
     		new Alerta().errorAlert("Debe seleccionar una Venta", "Generar Remito");
     	}else {
-			ExportarPdf exportarPdf = new ExportarPdf();
-			try {
-				exportarPdf.exportar(venta);
-				new Alerta().informationAlert("El Remito ha sido exportado a la carpeta de Remitos", "Generar Remito");
-			} catch (MalformedURLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (DocumentException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-    	}
+			//ExportarPdf exportarPdf = new ExportarPdf();
+			//exportarPdf.exportar(venta);
+			Ticket ticket = new Ticket();
+	        ticket.obtenerTicketVenta(venta);
+			new Alerta().informationAlert("El Ticket ha sido impreso y exportado a la carpeta de Tickets", "Generar Ticket");
+		}
     }
-    
 
 }

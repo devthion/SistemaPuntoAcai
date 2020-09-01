@@ -24,6 +24,14 @@ public class InsertarDatos extends ConexionBd{
 		super();
 	}
 	
+	public void insertarDispositivo(int dispositivoId, int valor) { //para impresora el id es 1...
+		String sql = "INSERT INTO DISPOSITIVO"
+				+ "(dispositivo_id,"
+				+ "dispositivo_valor)"
+				+ "values('"+dispositivoId+"','"+valor+"')";
+		ejecutarUpdate(sql, "Dispositivo Ingresado");
+	}
+	
 	public void insertarPropina(Propina unaPropina) {
 		String sql = "INSERT INTO PROPINA"
 				+ "(propina_fecha,"

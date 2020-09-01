@@ -17,8 +17,27 @@ public class CrearTabla {
 		crearTablaCajaCerrada();
 		crearTablaInversion();
 		crearTablaPropina();
+		crearTablaDispositivo();
 	}
 	
+	public static void crearTablaDispositivo() {
+		try 
+		{
+			Connection con = DriverManager.getConnection("jdbc:h2:"+"./Database/bd", "root", "devthion");
+			Statement stmt= con.createStatement();
+			String sql = "CREATE TABLE IF NOT EXISTS DISPOSITIVO" 
+				+"(dispositivo_id int,"
+				+"dispositivo_valor int,"
+				+"PRIMARY KEY (dispositivo_id))";
+			stmt.executeUpdate(sql);
+			System.out.println("Tabla DISPOSITIVO creada");
+		}
+		catch(Exception e) {
+			System.err.println(e.getMessage());
+		}
+		
+	}
+
 	public static void crearTablaCajaCerrada() {
 		try 
 		{

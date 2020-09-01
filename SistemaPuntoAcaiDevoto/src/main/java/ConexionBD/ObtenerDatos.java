@@ -45,6 +45,21 @@ public class ObtenerDatos extends ConexionBd{
 		super();
 	}
 	
+	public int obtenerDispositivo(int id) throws SQLException{	
+		ResultSet rs;
+		Statement unStmt = null;
+		int dispositivo = 0;
+		
+		sql="SELECT dispositivo_valor FROM DISPOSITIVO WHERE dispositivo_id = "+id+"";
+		rs=ejecutarQuery(sql, unStmt);
+		while(rs.next()) {
+			dispositivo = rs.getInt(1);
+	
+		}
+		return dispositivo;
+		
+	}
+	
 	public ObservableList<Propina> obtenerPropinas() throws SQLException{
 		ObservableList<Propina> propinas = FXCollections.observableArrayList();
 		ResultSet rs;
@@ -390,7 +405,7 @@ public class ObtenerDatos extends ConexionBd{
 		rsUnCliente=ejecutarQuery(sql,unStmt);
 		while(rsUnCliente.next()) {
 			unaDireccion = new Direccion(rsUnCliente.getString(10),rsUnCliente.getInt(9),rsUnCliente.getString(8),rsUnCliente.getInt(7));
-			unaDireccion.setDpto(rs.getString("dire_dpto"));
+			unaDireccion.setDpto(rsUnCliente.getString("dire_dpto"));
 			unCliente = new Cliente(rsUnCliente.getInt(4),rsUnCliente.getString(2),rsUnCliente.getString(3),rsUnCliente.getInt(5),rsUnCliente.getString(6),unaDireccion,rsUnCliente.getString(1),rsUnCliente.getString(11), rsUnCliente.getString(12), rsUnCliente.getDouble("clie_deuda"));
 		}
 		return unCliente;
