@@ -112,9 +112,11 @@ public class Administrador {
     @FXML
     void onAgregarDescripcionClick(ActionEvent event) {
 		try {
-			
-			new ModificarDatos().agregarDpto();
-			new Alerta().informationAlert("Depto Agregado", "EXITO!");
+//			new ModificarDatos().agregarDpto();
+//			new ModificarDatos().agregarDeudaCliente();
+//			new ModificarDatos().inicializarDeudaCliente();
+			new ModificarDatos().agregarTipoDeVenta();
+			new Alerta().informationAlert("Deuda Agrega e inicializada", "EXITO!");
 		} catch (Exception e) {
 			// TODO: handle exception
 			System.out.println("ERROR");

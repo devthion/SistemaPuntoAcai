@@ -47,6 +47,21 @@ public class ModificarDatos extends ConexionBd {
 		ejecutarUpdate(sql, "Columna clie_dpto agregada");
 	}
 	
+	public void agregarDeudaCliente() {
+		String sql = "ALTER TABLE Cliente ADD clie_deuda DOUBLE(10)";
+		ejecutarUpdate(sql, "Columna clie_deuda agregada");
+	}
+	
+	public void inicializarDeudaCliente() {
+		String sql = "UPDATE CLIENTE SET clie_deuda=0 WHERE clie_deuda = null ";
+		ejecutarUpdate(sql, "Valores inicializados");
+	}
+	
+	public void agregarTipoDeVenta() {
+		String sql = "ALTER TABLE Venta ADD venta_tipo_de_pago varchar(255)";
+		ejecutarUpdate(sql, "Columna venta_tipo_de_pago agregada");
+	}
+	
 	
 	public void eliminarCajaCerrada(LocalDate unaFecha) {
 		String sql= "DELETE FROM CAJACERRADA "
@@ -141,6 +156,14 @@ public class ModificarDatos extends ConexionBd {
 				+ "WHERE propina_id = '"+id+"'";
 		ejecutarUpdate(sqlString, "propina eliminated");
 				
+	}
+
+	public void cambiarDeuda(int dni, double deuda) {
+		String sql ="UPDATE CLIENTE SET "
+				+"clie_deuda= '"+deuda+"'"
+				+" WHERE clie_dni= '"+dni+"'";
+		ejecutarUpdate(sql, "Deuda actualizada para: " +dni);
+		
 	}
 
 

@@ -15,12 +15,13 @@
             <Font size="24.0" />
          </font>
       </Button>
-      <Button fx:id="btnVerConsumidores" layoutX="241.0" layoutY="245.0" mnemonicParsing="false" onAction="#onVerConsumidores" prefHeight="80.0" prefWidth="325.0" text="CONSUMIDORES FINALES" />
-      <Button fx:id="btnMayoristas" layoutX="734.0" layoutY="245.0" mnemonicParsing="false" onAction="#onVerMayoristas" prefHeight="80.0" prefWidth="325.0" text="MAYORISTAS" />
+      <Button fx:id="btnVerConsumidores" layoutX="150.0" layoutY="245.0" mnemonicParsing="false" onAction="#onVerConsumidores" prefHeight="80.0" prefWidth="325.0" text="CONSUMIDORES FINALES" />
+      <Button fx:id="btnMayoristas" layoutX="488.0" layoutY="245.0" mnemonicParsing="false" onAction="#onVerMayoristas" prefHeight="80.0" prefWidth="325.0" text="MAYORISTAS" />
       <Button fx:id="btnAgregarPersona" layoutX="480.0" layoutY="586.0" mnemonicParsing="false" onAction="#agregarCliente" prefHeight="49.0" prefWidth="340.0" stylesheets="@../Styles/Style.css" text="AGREGAR NUEVO CLIENTE" textFill="WHITE">
          <font>
             <Font size="24.0" />
          </font>
       </Button>
+      <Button fx:id="btnCLientesDeudores" layoutX="825.0" layoutY="245.0" mnemonicParsing="false" onAction="#onVerClientesDeudores" prefHeight="80.0" prefWidth="325.0" text="CLIENTES DEUDORES" />
    </children>
 </AnchorPane>

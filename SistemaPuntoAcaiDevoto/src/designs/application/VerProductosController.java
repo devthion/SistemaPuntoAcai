@@ -134,14 +134,14 @@ public class VerProductosController implements Initializable {
     			AnchorPane root = (AnchorPane) loader.load();
     			
     			ActualizarPrecio controller = loader.getController();
-    			controller.setProductoActualizar(producto);;
+    			controller.setProductoActualizar(producto);
     			
     			Scene scene = new Scene(root,700,300);
     			Stage stage = new Stage();
     			stage.setScene(scene);
     			stage.resizableProperty().setValue(Boolean.FALSE);
     			stage.setResizable(false);
-    			stage.setTitle("Editar Cliente");
+    			stage.setTitle("Saldar Deuda");
     			stage.showAndWait();
     			
     			ObtenerDatos obtenerDatos = new ObtenerDatos();

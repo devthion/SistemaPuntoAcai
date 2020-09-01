@@ -25,9 +25,10 @@
             <TableColumn fx:id="colNombre" prefWidth="119.0" text="Nombre" />
             <TableColumn fx:id="colApellido" prefWidth="100.0" text="Apellido" />
             <TableColumn fx:id="colTelefono" prefWidth="121.0" text="Telefono" />
-            <TableColumn fx:id="ColTipoCliente" prefWidth="138.0" text="Rubro" />
-            <TableColumn fx:id="colCalle" prefWidth="411.0" text="Calle" />
-            <TableColumn fx:id="colIngresos" prefWidth="226.0" text="Ingresos Generados" />
+            <TableColumn fx:id="ColTipoCliente" prefWidth="132.0" text="Rubro" />
+            <TableColumn fx:id="colCalle" prefWidth="343.0" text="Calle" />
+            <TableColumn fx:id="colIngresos" prefWidth="179.0" text="Ingresos Generados" />
+            <TableColumn fx:id="colDeuda" prefWidth="121.0" text="Deuda" />
          </columns>
       </TableView>
       <TextField fx:id="txtNombreABuscar" alignment="CENTER" layoutX="481.0" layoutY="468.0" prefHeight="49.0" prefWidth="340.0" promptText="NOMBRE A BUSCAR" />

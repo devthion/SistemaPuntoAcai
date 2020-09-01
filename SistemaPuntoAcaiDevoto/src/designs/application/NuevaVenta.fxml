@@ -40,7 +40,7 @@
       </TableView>
       <TextField fx:id="txtPrecioTotal" layoutX="1046.0" layoutY="443.0" />
       <Label layoutX="1088.0" layoutY="413.0" text="TOTAL VENTA" />
-      <Button fx:id="btnRealizarVenta" layoutX="1028.0" layoutY="490.0" mnemonicParsing="false" onAction="#onRealizarVentaClick" prefHeight="49.0" prefWidth="245.0" text="REALIZAR VENTA" />
+      <Button fx:id="btnRealizarVenta" layoutX="1028.0" layoutY="498.0" mnemonicParsing="false" onAction="#onRealizarVentaClick" prefHeight="49.0" prefWidth="245.0" text="REALIZAR VENTA" />
       <Button fx:id="btnVolver" layoutX="1151.0" layoutY="587.0" mnemonicParsing="false" onAction="#onVolverClick" text="VOLVER" />
       <Button fx:id="btnSacarDelCarrito" layoutX="695.0" layoutY="301.0" mnemonicParsing="false" onAction="#onSacarDelCarritoClick" prefHeight="49.0" prefWidth="271.0" text="SACAR DEL CARRITO" />
       <Label layoutX="679.0" layoutY="98.0" text="CARRITO" />
@@ -57,5 +57,13 @@
             <Label layoutX="51.0" layoutY="21.0" text="CANTIDAD" />
          </children>
       </Pane>
+      <TextField fx:id="txtDeuda" layoutX="1035.0" layoutY="301.0" prefHeight="49.0" prefWidth="233.0" promptText="Agregar deuda" />
+      <MenuButton fx:id="menuTipoPago" layoutX="1034.0" layoutY="241.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="233.0" style="-fx-background-color: white;" text="Tipo de Pago">
+        <items>
+          <MenuItem mnemonicParsing="false" onAction="#onEfectivoClick" text="EFECTIVO" />
+          <MenuItem mnemonicParsing="false" onAction="#onTransferenciaClick" text="TRANSFERENCIA" />
+            <MenuItem mnemonicParsing="false" onAction="#onMercadoPagoClick" text="MERCADO PAGO" />
+        </items>
+      </MenuButton>
    </children>
 </AnchorPane>

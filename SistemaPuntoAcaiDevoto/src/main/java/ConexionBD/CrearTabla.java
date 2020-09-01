@@ -146,6 +146,7 @@ public class CrearTabla {
 				+ "venta_estado_envio BOOLEAN NULL,"
 				+ "venta_horario_envio varchar(255) NULL,"
 				+ "venta_fecha_entrega DATE ,"
+				+ "venta_tipo_de_pago varchar(255),"
 				+"PRIMARY KEY (venta_id),"
 				+"FOREIGN KEY (venta_cliente) REFERENCES CLIENTE(clie_dni))";
 			stmt.executeUpdate(sql);
@@ -175,6 +176,7 @@ public class CrearTabla {
 				+"clie_como_llego VARCHAR(40),"
 				+"dire_dpto VARCHAR(30),"
 				+"clie_rubro VARCHAR(40),"
+				+"clie_deuda DOUBLE(10),"
 				+"PRIMARY KEY (clie_dni))";
 			stmt.executeUpdate(sql);
 			System.out.println("Tabla CLIENTE creada");

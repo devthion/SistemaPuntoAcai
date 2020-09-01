@@ -13,8 +13,9 @@
           <TableColumn fx:id="colNombre" prefWidth="133.0" text="Nombre" />
           <TableColumn fx:id="colApellido" prefWidth="134.0" text="Apellido" />
             <TableColumn fx:id="colTelefono" prefWidth="157.0" text="Telefono" />
-            <TableColumn fx:id="colCalle" prefWidth="489.0" text="Calle" />
-            <TableColumn fx:id="colIngresos" prefWidth="202.0" text="Ingresos Generados" />
+            <TableColumn fx:id="colCalle" prefWidth="398.0" text="Calle" />
+            <TableColumn fx:id="colIngresos" prefWidth="174.0" text="Ingresos Generados" />
+            <TableColumn fx:id="colDeuda" minWidth="0.0" prefWidth="119.0" text="Deuda" />
         </columns>
       </TableView>
       <Button fx:id="btnEditarCliente" layoutX="481.0" layoutY="534.0" mnemonicParsing="false" onAction="#editarCliente" prefHeight="51.0" prefWidth="340.0" stylesheets="@../Styles/Style.css" text="EDITAR CLIENTE" textFill="WHITE">

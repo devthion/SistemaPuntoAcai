@@ -28,6 +28,9 @@ public class VerClientesConsumidoresFinales implements Initializable {
 
     @FXML
     private TableColumn<Cliente, String> colBarrio;
+    
+    @FXML
+    private TableColumn<Cliente, Double> colDeuda;
 
     @FXML
     private TableColumn<Cliente, Integer> colNumero;
@@ -142,6 +145,7 @@ public class VerClientesConsumidoresFinales implements Initializable {
 		this.colTelefono.setCellValueFactory(new PropertyValueFactory<Cliente, Integer>("telefono"));
 		this.colCalle.setCellValueFactory(new PropertyValueFactory<Cliente, String>("DireccionCompleta"));
 		this.colIngresos.setCellValueFactory(new PropertyValueFactory<Cliente, Double>("ingresos"));
+		this.colDeuda.setCellValueFactory(new PropertyValueFactory<Cliente, Double>("deuda"));	
 		
 		FilteredList<Cliente> filteredData = new FilteredList<>(clientes, p -> true);
     	tblClientes.setItems(filteredData);

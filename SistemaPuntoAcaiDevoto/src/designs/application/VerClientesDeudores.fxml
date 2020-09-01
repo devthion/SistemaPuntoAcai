@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="650.0" prefWidth="1300.0" stylesheets="@../Styles/Style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.VerClientesDeudores">
+   <children>
+      <TableView fx:id="tblClientes" layoutX="92.0" layoutY="99.0" prefHeight="340.0" prefWidth="1117.0">
+        <columns>
+          <TableColumn fx:id="colNombre" prefWidth="114.0" text="Nombre" />
+          <TableColumn fx:id="colApellido" prefWidth="133.0" text="Apellido" />
+            <TableColumn fx:id="colTelefono" prefWidth="153.0" text="Telefono" />
+            <TableColumn fx:id="colTipo" prefWidth="103.0" text="Tipo" />
+            <TableColumn fx:id="colCalle" prefWidth="322.0" text="Calle" />
+            <TableColumn fx:id="colIngresos" prefWidth="171.0" text="Ingresos Generados" />
+            <TableColumn fx:id="colDeuda" minWidth="0.0" prefWidth="119.0" text="Deuda" />
+        </columns>
+      </TableView>
+      <Button fx:id="btnSaldarDeuda" layoutX="481.0" layoutY="534.0" mnemonicParsing="false" onAction="#onSaldarDeuda" prefHeight="51.0" prefWidth="340.0" stylesheets="@../Styles/Style.css" text="SALDAR DEUDA" textFill="WHITE">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Button>
+      <Button fx:id="btnVolver" layoutX="1148.0" layoutY="585.0" mnemonicParsing="false" onAction="#onVolverClick" prefHeight="51.0" prefWidth="138.0" text="VOLVER" textFill="WHITE">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Button>
+      <Label layoutX="557.0" layoutY="29.0" text="CLIENTES DEUDORES" />
+      <Separator layoutX="150.0" layoutY="71.0" prefWidth="1000.0" />
+      <TextField fx:id="txtNombreABuscar" alignment="CENTER" layoutX="480.0" layoutY="459.0" prefHeight="49.0" prefWidth="340.0" promptText="NOMBRE A BUSCAR" />
+   </children>
+</AnchorPane>

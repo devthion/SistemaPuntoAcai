@@ -173,7 +173,7 @@ public class AgregarCliente {
     	}else {
     		direccion.setDpto("-1");
     	}
-    	return new Cliente(dni, nombre, apellido, telefono, "", direccion, tipo, "Desconocido", rubro);
+    	return new Cliente(dni, nombre, apellido, telefono, "", direccion, tipo, "Desconocido", rubro, 0.0);
     }
     
     public Cliente generarClienteEditable() {
@@ -192,7 +192,7 @@ public class AgregarCliente {
     		String dpto = txtDpto.getText();
     		direccion.setDpto(dpto);
     	}
-    	return new Cliente(nuevoCliente.getDni(), nombre, apellido, telefono, "", direccion, tipo, "Desconocido", rubro);
+    	return new Cliente(nuevoCliente.getDni(), nombre, apellido, telefono, "", direccion, tipo, "Desconocido", rubro, nuevoCliente.getDeuda());
     }
     @FXML
     void onVolverClick(ActionEvent event) {

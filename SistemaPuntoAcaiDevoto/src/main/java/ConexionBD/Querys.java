@@ -15,5 +15,9 @@ public class Querys {
 	public String queryClientes() {
 		return "SELECT * FROM CLIENTE";
 	}
+	
+	public String queryClientesDeudores() {
+		return "SELECT * FROM CLIENTE WHERE clie_deuda > 0";
+	}
 
 }

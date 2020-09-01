@@ -12,14 +12,23 @@ public class VentasBuilder {
 	private ArrayList<Item> items = new ArrayList<>();
 	//private double costoEnvio=0;
 	private Envio unEnvio =null;
+	private String tipoDePago;
 
 
 	public VentasBuilder() {}
 	
 	public Venta crearVenta() {
-		return new Venta(cliente, LocalDate.now(), items);
+		return new Venta(cliente, LocalDate.now(), items, tipoDePago);
 	}
 	
+	public String getTipoDePago() {
+		return tipoDePago;
+	}
+
+	public void setTipoDePago(String tipoDePago) {
+		this.tipoDePago = tipoDePago;
+	}
+
 	public void setNuevoItem(Item item) {
 		items.add(item);
 	}

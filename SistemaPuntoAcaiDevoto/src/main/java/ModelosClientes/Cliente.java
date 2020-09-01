@@ -20,8 +20,9 @@ public class Cliente {
 	private String tipo;
 	private String comoLlego;
 	private String rubro;
+	private double deuda;
 
-	public Cliente(int dni, String nombre, String apellido, int telefono, String email, Direccion direccion, String tipo, String comoLlego, String rubro) {
+	public Cliente(int dni, String nombre, String apellido, int telefono, String email, Direccion direccion, String tipo, String comoLlego, String rubro, Double deuda) {
 		this.dni = dni;
 		this.nombre = nombre;
 		this.apellido = apellido;
@@ -31,6 +32,7 @@ public class Cliente {
 		this.tipo = tipo;
 		this.comoLlego = comoLlego;
 		this.rubro=rubro;
+		this.deuda = deuda;
 	}
 	
 	public void almacenarCliente() throws SQLException {
@@ -43,6 +45,35 @@ public class Cliente {
 		modificarDatos.editarCliente(this.dni, clienteEditado);
 	}
 	
+	
+	public double getDeuda() {
+		return deuda;
+	}
+
+	public void setDeuda(double deuda) {
+		this.deuda = deuda;
+	}
+	
+	public void saldarDeuda(double monto) {
+		this.deuda -=monto;
+		try {
+			new ModificarDatos().cambiarDeuda(dni, deuda);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	public void agregarDeuda(double monto) {
+		this.deuda +=monto;
+		try {
+			new ModificarDatos().cambiarDeuda(dni, deuda);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
 	public String getRubro() {
 		return rubro;
 	}
@@ -50,9 +81,11 @@ public class Cliente {
 	public String getCalle() {
 		return direccion.getCalle();
 	}
+	
 	public int getNumero() {
 		return direccion.getNumero();
 	}
+	
 	public String getBarrio() {
 		return direccion.getBarrio();
 	}

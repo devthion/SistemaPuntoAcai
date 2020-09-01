@@ -20,16 +20,22 @@ public class Venta {
 	//private double venta_envio=0;
 	private double precioModificado=0;
 	private Envio unEnvio = null;
+	private String tipoDePago;
 
-	public Venta(Cliente cliente, LocalDate fecha, List<Item> items) {
+	public Venta(Cliente cliente, LocalDate fecha, List<Item> items, String tipoDePago) {
 		super();
 		this.cliente = cliente;
 		this.fecha = fecha;
 		this.items = items;
+		this.tipoDePago = tipoDePago;
 	}
 
 	public int getVenta_id() {
 		return venta_id;
+	}
+
+	public String getTipoDePago() {
+		return tipoDePago;
 	}
 
 	public String getHorario() {

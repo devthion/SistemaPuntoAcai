@@ -14,7 +14,6 @@ import Alertas.Alerta;
 import Alertas.Validaciones;
 import ConexionBD.ObtenerDatos;
 import ConexionBD.Querys;
-import ManejoArchivos.ExportarPdf;
 import ModelosClientes.Cliente;
 import Productos.Producto;
 import Ventas.Item;
@@ -31,6 +30,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
+import javafx.scene.control.MenuButton;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -42,6 +42,12 @@ public class NuevaVentaController implements Initializable {
 
     @FXML
     private TableColumn<Cliente, String> colClieDireccion;
+    
+    @FXML
+    private MenuButton menuTipoPago;
+    
+    @FXML
+    private TextField txtDeuda;
 
     @FXML
     private Label lblCantidadItem;
@@ -239,8 +245,6 @@ public class NuevaVentaController implements Initializable {
     		contadorCantidad--;
         	lblCantidadItem.setText(""+contadorCantidad);
     	}
-    	
-
     }
 
     @FXML
@@ -253,12 +257,22 @@ public class NuevaVentaController implements Initializable {
     void onRealizarVentaClick(ActionEvent event) throws FileNotFoundException, DocumentException {
     	Cliente cliente = this.tblClientes.getSelectionModel().getSelectedItem();
     	
+
+    	
     	if(Validaciones.validarCajaNumerica(txtPrecioTotal)) {
     		new Alerta().errorAlert("El precio Total Venta ingresado no es un valor Correcto", "Error de Datos");
     	}else {
     		if(cliente==null || itemsAVender.size() == 0) {
 	    		new Alerta().errorAlert("Debe seleccionar un cliente y minimo un producto", "Nueva Venta");
 	    	}else {
+	        	if(!txtDeuda.getText().isEmpty() && !Validaciones.validarCajaNumerica(txtDeuda)){
+	        		cliente.agregarDeuda(Double.parseDouble(txtDeuda.getText().toString()));
+	        	}
+	        	if(menuTipoPago.getText().equalsIgnoreCase("Tipo de Pago")) {
+	        		new Alerta().errorAlert("Debe seleccionar un tipo de Pago", "Nueva Venta");
+	        	}else {
+	        		ventaBorrador.setTipoDePago(menuTipoPago.getText().toString());
+	        	}
 	    		new Alerta().informationAlert("El precio de la venta es de "+(costoEnvio+Double.parseDouble(txtPrecioTotal.getText()))+" $",  "Precio Final");
 	    		Optional<ButtonType> action =  new Alerta().preguntaConfirmacion("Desea confirmar la venta para "+cliente.getNombre()+" ?", "Confirmación");
 	        	if (action.get() == ButtonType.OK) {
@@ -281,7 +295,6 @@ public class NuevaVentaController implements Initializable {
 
 		        	try {
 						nuevaVenta.almacenarVenta();
-						
 					} catch (SQLException e1) {
 						e1.printStackTrace();
 					}
@@ -398,6 +411,21 @@ public class NuevaVentaController implements Initializable {
 			ventaBorrador.setNuevoItem(item);
 		}
 	}
+	
+    @FXML
+    void onEfectivoClick(ActionEvent event) {
+    	menuTipoPago.setText("Efectivo");
+    }
+
+    @FXML
+    void onTransferenciaClick(ActionEvent event) {
+    	menuTipoPago.setText("Transferencia Bancaria");
+    }
+
+    @FXML
+    void onMercadoPagoClick(ActionEvent event) {
+    	menuTipoPago.setText("Mercado Pago");
+    }
 
 
 }
