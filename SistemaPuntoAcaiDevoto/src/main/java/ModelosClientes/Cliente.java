@@ -1,9 +1,6 @@
 package ModelosClientes;
 
 import java.sql.SQLException;
-import java.util.Objects;
-
-import com.itextpdf.text.pdf.PdfStructTreeController.returnType;
 
 import ConexionBD.InsertarDatos;
 import ConexionBD.ModificarDatos;

@@ -7,6 +7,7 @@ import java.time.ZoneId;
 import java.util.Date;
 import java.util.Objects;
 
+import Egresos.Egreso;
 import Gastos.Gasto;
 import Gastos.GastosProductos;
 
@@ -156,6 +157,16 @@ public class InsertarDatos extends ConexionBd{
 				+ "inver_detalle)"
 				+ "values('"+inversion.getFecha()+"','"+inversion.getMonto()+"','"+inversion.getDetalle()+"')";
 		ejecutarUpdate(sql, "Inversion ingresada");
+		
+	}
+
+	public void insertarEgreso(Egreso egreso) {
+		String sql = "insert into EGRESO"
+				+ "(egreso_fecha,"
+				+ "egreso_monto,"
+				+ "egreso_detalle)"
+				+ "values('"+egreso.getFecha()+"','"+egreso.getMonto()+"','"+egreso.getDetalle()+"')";
+		ejecutarUpdate(sql, "Egreso ingresado");
 		
 	}
 	

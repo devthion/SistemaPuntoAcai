@@ -2,17 +2,12 @@ package ConexionBD;
 
 import java.sql.SQLException;
 import java.time.LocalDate;
-import java.time.ZoneId;
-import java.util.Date;
 
+import Egresos.Egreso;
 import Gastos.Gasto;
-import Gastos.GastosDiarios;
-import Gastos.GastosGenerales;
-import Gastos.GastosProductos;
 
 import ModeloInversion.Inversion;
 import ModelosClientes.Cliente;
-import Propina.Propina;
 import Ventas.Venta;
 
 
@@ -151,7 +146,6 @@ public class ModificarDatos extends ConexionBd {
 
 	
 	public void eliminarPropina(int id) {
-	
 		String sqlString = "DELETE FROM PROPINA "
 				+ "WHERE propina_id = '"+id+"'";
 		ejecutarUpdate(sqlString, "propina eliminated");
@@ -163,6 +157,23 @@ public class ModificarDatos extends ConexionBd {
 				+"clie_deuda= '"+deuda+"'"
 				+" WHERE clie_dni= '"+dni+"'";
 		ejecutarUpdate(sql, "Deuda actualizada para: " +dni);
+		
+	}
+
+	public void editarEgreso(int id, Egreso egresoModificado) {
+		String sql = "UPDATE EGRESO SET "
+				+ "egreso_fecha = '"+egresoModificado.getFecha()+"',"
+				+"egreso_monto = '"+egresoModificado.getMonto() +"',"
+				+ "egreso_detalle = '"+egresoModificado.getDetalle()+"'"
+						+ "WHERE egreso_id = '"+id+"'";
+		ejecutarUpdate(sql, "EGRESO EDITADO");
+		
+	}
+
+	public void eliminarEgreso(int id) {
+		String sqlString = "DELETE FROM EGRESO "
+				+ "WHERE egreso_id = '"+id+"'";
+		ejecutarUpdate(sqlString, "egreso eliminated");
 		
 	}
 

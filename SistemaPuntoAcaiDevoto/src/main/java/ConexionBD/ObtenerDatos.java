@@ -15,6 +15,7 @@ import org.omg.CORBA.PUBLIC_MEMBER;
 
 import com.itextpdf.text.pdf.PdfStructTreeController.returnType;
 
+import Egresos.Egreso;
 import Gastos.GastosDiarios;
 import Gastos.GastosGenerales;
 import Gastos.GastosProductos;
@@ -496,6 +497,24 @@ public class ObtenerDatos extends ConexionBd{
 			inversiones.add(unaInversion);
 		}
 		return inversiones;
+	}
+
+	public ObservableList<Egreso> obtenerEgresos() throws SQLException {
+		ResultSet rs;
+		Statement unStmt =null;
+		ObservableList<Egreso> egresos = FXCollections.observableArrayList();	
+		
+		sql="select * from EGRESO";
+		rs=ejecutarQuery(sql,unStmt);
+		while(rs.next()) {
+			int id = rs.getInt(1);
+			LocalDate date = rs.getDate(2).toLocalDate();
+			Egreso unEgreso = new Egreso(rs.getString(4),rs.getDouble(3));
+			unEgreso .setFecha(date);
+			unEgreso.setId(id);
+			egresos.add(unEgreso);
+		}
+		return egresos;
 	}
 	
 	

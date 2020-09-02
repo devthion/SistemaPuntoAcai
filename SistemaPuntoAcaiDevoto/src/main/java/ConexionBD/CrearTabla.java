@@ -18,6 +18,7 @@ public class CrearTabla {
 		crearTablaInversion();
 		crearTablaPropina();
 		crearTablaDispositivo();
+		crearTablaEgreso();
 	}
 	
 	public static void crearTablaDispositivo() {
@@ -88,6 +89,25 @@ public class CrearTabla {
 				+"PRIMARY KEY (gasto_id))";
 			stmt.executeUpdate(sql);
 			System.out.println("Tabla GASTO_GENERAL creada");
+		}
+		catch(Exception e) {
+			System.err.println(e.getMessage());
+		}
+	}
+	
+	public static void crearTablaEgreso() {
+		try 
+		{
+			Connection con = DriverManager.getConnection("jdbc:h2:"+"./Database/bd", "root", "devthion");
+			Statement stmt= con.createStatement();
+			String sql = "CREATE TABLE IF NOT EXISTS EGRESO" 
+				+"(egreso_id INTEGER auto_increment,"
+				+"egreso_fecha DATE,"
+				+"egreso_monto DOUBLE(10),"
+				+"egreso_detalle VARCHAR(255),"
+				+"PRIMARY KEY (egreso_id))";
+			stmt.executeUpdate(sql);
+			System.out.println("Tabla EGRESO creada");
 		}
 		catch(Exception e) {
 			System.err.println(e.getMessage());

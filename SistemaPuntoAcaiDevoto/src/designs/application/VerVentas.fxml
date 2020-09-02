@@ -42,6 +42,6 @@
       </ScrollPane>
       <Label fx:id="lblObservacion" layoutX="160.0" layoutY="480.0" prefHeight="37.0" prefWidth="329.0" />
       <Label layoutX="14.0" layoutY="480.0" prefHeight="37.0" prefWidth="133.0" text="OBSERVACION" />
-      <Button fx:id="btnGenerarRemito" layoutX="433.0" layoutY="553.0" mnemonicParsing="false" onAction="#onGenerarRemitoClick" prefHeight="49.0" prefWidth="260.0" text="GENERAR REMITO" />
+      <Button fx:id="btnGenerarRemito" layoutX="433.0" layoutY="553.0" mnemonicParsing="false" onAction="#onGenerarRemitoClick" prefHeight="49.0" prefWidth="260.0" text="IMPRIMIR TICKET" />
    </children>
 </AnchorPane>
