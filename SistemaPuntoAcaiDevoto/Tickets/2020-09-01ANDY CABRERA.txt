@@ -1,0 +1,23 @@
+              ACAI MARACAIBO CABA               
+
+
+Cliente:  andy cabrera        
+Direccion:  moliere 1167, versailles
+Observacion:                      
+------------------------------------------------ 
+pote original 250.0 cc X1                210.0     
+pote zero 250.0 cc X1                    210.0     
+pote frutilla 250.0 cc X1                210.0     
+pote banana 250.0 cc X1                  210.0     
+pote guarana 250.0 cc X1                 210.0     
+pote zero 500.0 cc X1                    370.0     
+pote original 500.0 cc X1                370.0     
+pote frutilla 500.0 cc X1                370.0     
+pote banana 500.0 cc X1                  370.0     
+pote guarana 500.0 cc X1                 370.0     
+balde original 2000.0 cc X1              1200.0    
+------------------------------------------------ 
+Envio:                                   0.0       
+Total:                                   4100.0    
+
+Tipo de Pago:                            Mercado Pago

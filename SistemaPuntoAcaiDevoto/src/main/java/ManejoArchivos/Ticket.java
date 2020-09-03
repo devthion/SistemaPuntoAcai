@@ -35,7 +35,7 @@ public class Ticket {
 			ObtenerDatos obtenerDatos = new ObtenerDatos();
 			try {
 				String nombreTicketString = generarTicket(unaVenta);
-				//imprimirTicket(nombreTicketString, obtenerDatos.obtenerDispositivo(1));
+				imprimirTicket(nombreTicketString, obtenerDatos.obtenerDispositivo(1));
 				
 			} catch (FileNotFoundException e) {
 				// TODO Auto-generated catch block
