@@ -36,7 +36,7 @@ import Ventas.Venta;
 public class ExportarPdf {
 	
 	public static void main(String[]args) throws SQLException, IOException, DocumentException {
-		//exportar();
+		
 	}
 	
 	public void exportar(Venta unaVenta) throws DocumentException, SQLException, MalformedURLException, IOException {
@@ -49,8 +49,8 @@ public class ExportarPdf {
 		//--------TABLA DE PRODUCTOS
 		PdfPTable table = new PdfPTable(5);
 		table.setWidthPercentage(105);
-		table.setSpacingBefore(11f);
-		table.setSpacingAfter(11f);
+		table.setSpacingBefore(10f);
+	
 		
 		float[] colWidth= {2f,1f,1f,1f,1f};
 		table.setWidths(colWidth);
@@ -63,29 +63,35 @@ public class ExportarPdf {
 		
 		
 		
-		//FILA VALORES
+		
 		agregarProductoATabla(table, unaVenta.getItems());
 
 
-		//------------------------------
-		
-
-		//DETELLA PRODUCTOS
-
-		
-		PdfPTable precioTotal = new PdfPTable(1);
-		precioTotal.setWidthPercentage(100);
-		precioTotal.addCell(getCell("Costo Envio: "+unaVenta.getPrecioEnvio().toString(), PdfPCell.ALIGN_RIGHT));
-		precioTotal.addCell(getCell("Precio Total: "+unaVenta.getVenta_precioTotal(), PdfPCell.ALIGN_RIGHT));
-		precioTotal.addCell(getCell("Tipo de Pago: "+unaVenta.getTipoDePago(), PdfPCell.ALIGN_RIGHT));
-		
-		//------------------
-		
-		//DETALLE VENDEDOR
+	
 		FontSelector selector1 = new FontSelector();
 		Font f1 = FontFactory.getFont(FontFactory.TIMES_ROMAN, 18);
 		f1.setColor(BaseColor.BLACK);
 		selector1.addFont(f1);
+
+		//DETELLE PRODUCTOS
+
+		
+		PdfPTable precioTotal = new PdfPTable(1);
+		precioTotal.setWidthPercentage(100);
+	
+		precioTotal.addCell(getCell("Costo Envio:     "+unaVenta.getPrecioEnvio().toString(), PdfPCell.ALIGN_RIGHT));
+		precioTotal.addCell(getCell("Precio Total:     "+unaVenta.getVenta_precioTotal(), PdfPCell.ALIGN_RIGHT));
+		precioTotal.addCell(getCell("\nTipo de Pago:     "+unaVenta.getTipoDePago(), PdfPCell.ALIGN_RIGHT));
+		
+		
+		precioTotal.addCell(getCell(("PRESUPUESTO"), PdfPCell.ALIGN_LEFT));
+		precioTotal.addCell(getCell(("\nEstos valores no incluyen IVA*"), PdfPCell.ALIGN_LEFT));
+		precioTotal.addCell(getCell(("\ndocumento no valido como factura"), PdfPCell.ALIGN_CENTER));
+		
+		//------------------
+		
+		//DETALLE VENDEDOR
+		
 		
 		Paragraph titulo = new Paragraph(selector1.process("AÇAI MARACAIBO CABA \n"));
 		titulo.setAlignment(Element.ALIGN_CENTER);
@@ -97,7 +103,7 @@ public class ExportarPdf {
 		table2.setHeaderRows(1);
 		// Add header details
 		table2.addCell(getCellConBorde("Remito Nro: "+obtenerDatosBd.obtenerIdUltimaVentaIngresada(), PdfPCell.ALIGN_CENTER));
-		table2.addCell(getCellConBorde("Documento no valido como factura", PdfPCell.ALIGN_CENTER));
+		table2.addCell(getCellConBorde("Fecha: "+unaVenta.getFechaEntrega(), PdfPCell.ALIGN_CENTER));
 
 		// Add the data
 		
@@ -106,8 +112,8 @@ public class ExportarPdf {
 		image1.scaleAbsolute(50,50);
 		table2.addCell(image1);
 		table2.addCell(getCell("\n"+"Gallardo 6600, Versalles, CABA" + "\n" +
-		"Tel: 11 3165-8780" + "\n"+ "maracaibocaba@gmail.com" + "\n\n\n"+ "Fecha: "+unaVenta.getFechaEntrega()
-		+"\n\n\n\n\n" + "X   PRESUPUESTO", PdfPCell.ALIGN_LEFT));
+		"Tel: 11 3165-8780" + "\n"+ "maracaibocaba@gmail.com" + "\n\n\n"+ 
+		"\n\n\n\n\n" +"IVA RESPONSABLE INSCRIPTO", PdfPCell.ALIGN_LEFT));
 		
 		//------------------------
 		
@@ -118,7 +124,10 @@ public class ExportarPdf {
 		tableCliente.setWidthPercentage(100);
 		tableCliente.addCell(getCell("Cliente: " + unaVenta.getDatosCliente().toUpperCase(), PdfPCell.ALIGN_LEFT));
 		tableCliente.addCell(getCell("Contacto: " +unaVenta.getClienteContacto(), PdfPCell.ALIGN_CENTER));
-		tableCliente.addCell(getCell("Direccion: "+unaVenta.getDireccionCliente(), PdfPCell.ALIGN_RIGHT));
+		tableCliente.addCell(getCell("Observacion: "+unaVenta.getObservacion(), PdfPCell.ALIGN_RIGHT));
+		tableCliente.addCell(getCell("", PdfPCell.ALIGN_LEFT));
+		tableCliente.addCell(getCell("Direccion: "+unaVenta.getDireccionCliente(), PdfPCell.ALIGN_CENTER));
+		tableCliente.addCell(getCell("", PdfPCell.ALIGN_RIGHT));
 
 		
 		//--------------
@@ -138,7 +147,7 @@ public class ExportarPdf {
 		PdfPCell tercerCuadro = new PdfPCell(table);
 		tercerCuadro.setFixedHeight(300);
 		PdfPCell cuartoCuadro = new PdfPCell(precioTotal);
-		cuartoCuadro.setFixedHeight(80);
+		cuartoCuadro.setFixedHeight(120);
 		
 		
 
@@ -160,10 +169,15 @@ public class ExportarPdf {
 		writer.close();
 	}
 	
+
+
 	private static void agregarProductoATabla(PdfPTable table, java.util.List<Item> items) {
 		
 		for (Item item : items) {
 
+			table.addCell(getCellConBorde(item.getNombreProducto(), PdfPCell.ALIGN_CENTER));
+			table.addCell(getCellConBorde(""+item.getCantidad(), PdfPCell.ALIGN_CENTER));
+			
 			if(!item.esCompraMayorista()) {
 				table.addCell(getCellConBorde(""+item.getPrecioUnitarioProducto(), PdfPCell.ALIGN_CENTER));
 				table.addCell(getCellConBorde("-", PdfPCell.ALIGN_CENTER));
@@ -171,8 +185,7 @@ public class ExportarPdf {
 				table.addCell(getCellConBorde("-", PdfPCell.ALIGN_CENTER));
 				table.addCell(getCellConBorde(""+item.getPrecioMayoristaProducto(), PdfPCell.ALIGN_CENTER));
 			}
-			table.addCell(getCellConBorde(item.getNombreProducto(), PdfPCell.ALIGN_CENTER));
-			table.addCell(getCellConBorde(""+item.getCantidad(), PdfPCell.ALIGN_CENTER));
+			
 			table.addCell(getCellConBorde(""+item.getPrecioFinal(), PdfPCell.ALIGN_CENTER));
 		}
 
