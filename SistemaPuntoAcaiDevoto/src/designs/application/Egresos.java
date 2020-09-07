@@ -10,7 +10,6 @@ import Alertas.Alerta;
 import Alertas.Validaciones;
 import ConexionBD.ObtenerDatos;
 import Egresos.Egreso;
-import Gastos.GastosGenerales;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -199,19 +198,19 @@ public class Egresos implements Initializable{
     }
 
     @FXML
-    void onEditarGastoClick(ActionEvent event) {
+    void onEditarGastoClick(ActionEvent event) throws SQLException {
     	Egreso egreso = this.tblEgresos.getSelectionModel().getSelectedItem();
     	
     	if(egreso==null) {
-    		new Alerta().errorAlert("Debe seleccionar un Gasto", "Editar Gasto");
+    		new Alerta().errorAlert("Debe seleccionar un Egreso", "Editar Gasto");
     	}else {
     		try {
     			FXMLLoader loader = new FXMLLoader();
-    			loader.setLocation(getClass().getResource("EditarGasto.fxml"));
+    			loader.setLocation(getClass().getResource("EditarEgreso.fxml"));
     			AnchorPane root = (AnchorPane) loader.load();
     			
     			EditarEgreso controller = loader.getController();
-    			controller.initEditarEgresos(egreso);
+    			controller.initEditar(egreso);
     			
     			Scene scene = new Scene(root,1300,650);
     			Stage stage = new Stage();
@@ -272,33 +271,21 @@ public class Egresos implements Initializable{
     void onNuevoGastoClick(ActionEvent event) throws SQLException {
     	try {
     		FXMLLoader loader = new FXMLLoader();
-    		loader.setLocation(getClass().getResource("EgresoNuevo.fxml"));
+    		loader.setLocation(getClass().getResource("NuevoEgreso.fxml"));
     		AnchorPane root = (AnchorPane) loader.load();
-
-    		NuevoEgreso controller = loader.getController();
-    		controller.initGuardarEgreso();
-
-    		Scene scene = new Scene(root,1300,650);
+    		Scene scene = new Scene(root, 1300, 650);
     		Stage stage = new Stage();
     		stage.setScene(scene);
     		stage.resizableProperty().setValue(Boolean.FALSE);
     		stage.setResizable(false);
-    		stage.setTitle("Egresos");
-    		stage.showAndWait();
-
-
-    	} catch(Exception e) {
+    		stage.setTitle("Nuevo Egreso");
+    		stage.show();
+    	} catch (Exception e) {
     		e.printStackTrace();
     	}
-    	ObtenerDatos obtenerDatos = new ObtenerDatos();
-    	obtenerDatos = new ObtenerDatos();
-    	egresos = FXCollections.observableArrayList();
-    	egresos = obtenerDatos.obtenerEgresos();
+    	Stage stage = (Stage) btnNuevoEgreso.getScene().getWindow();
+    	stage.close();
 
-    	this.tblEgresos.setItems(egresos);
-    	this.tblEgresos.refresh();
-    	mostrarEgresosPorMes(LocalDate.now().getMonthValue());
-    	lblGastosTotal.setText(egresos.stream().mapToDouble(unGasto-> unGasto.getMonto()).sum()+" $");
     }
 
 	@Override

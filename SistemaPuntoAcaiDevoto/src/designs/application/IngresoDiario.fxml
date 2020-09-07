@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="650.0" prefWidth="1300.0" stylesheets="@../Styles/Style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.IngresosDiarios">
+   <children>
+      <Button fx:id="btnEliminarIngreso" layoutX="650.0" layoutY="512.0" mnemonicParsing="false" onAction="#onEliminarIngresoClick" text="ELIMINAR INGRESO" />
+      <Button fx:id="btnEditarIngreso" layoutX="395.0" layoutY="512.0" mnemonicParsing="false" onAction="#onEditarIngresoClick" prefHeight="49.0" prefWidth="236.0" text="EDITAR INGRESO" />
+      <Label layoutX="923.0" layoutY="380.0" text="INGRESOS TOTALES:" />
+      <Label layoutX="923.0" layoutY="282.0" text="INGRESOS DEL DIA:" />
+      <TableView fx:id="tblIngreso" layoutX="150.0" layoutY="130.0" prefHeight="334.0" prefWidth="725.0">
+         <columns>
+            <TableColumn fx:id="colDetalle" prefWidth="249.0" text="DETALLE" />
+            <TableColumn fx:id="colCantidad" minWidth="0.0" prefWidth="225.0" text="CANTIDAD" />
+            <TableColumn fx:id="colFecha" prefWidth="249.0" text="FECHA" />
+         </columns>
+      </TableView>
+      <Separator layoutX="150.0" layoutY="71.0" prefWidth="1000.0" />
+      <Label layoutX="569.0" layoutY="25.0" text="INGRESO DIARIOS" />
+      <Button fx:id="btnVolver" layoutX="1148.0" layoutY="585.0" mnemonicParsing="false" onAction="#onVolverClick" prefHeight="51.0" prefWidth="138.0" text="VOLVER" textFill="WHITE">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Button>
+      <DatePicker fx:id="dateGastoDiario" layoutX="923.0" layoutY="185.0" onAction="#onSeleccionarDiaClick" style="-fx-background-color: #FFFFFF;" />
+      <Label fx:id="lblIngresosDiarios" layoutX="1109.0" layoutY="282.0" prefHeight="30.0" prefWidth="131.0" text="Label" />
+      <Label fx:id="lblIngresosTotales" layoutX="1109.0" layoutY="380.0" prefHeight="30.0" prefWidth="131.0" text="Label" />
+      <Button fx:id="btnNuevoIngreso" layoutX="133.0" layoutY="512.0" mnemonicParsing="false" onAction="#onNuevoIngresoClick" prefHeight="49.0" prefWidth="236.0" text="NUEVO INGRESO" />
+   </children>
+</AnchorPane>

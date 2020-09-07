@@ -79,5 +79,11 @@ public class Ingresos {
 		Stage stage = (Stage) btnVolver.getScene().getWindow();
 		stage.close();
 	}
+	
+
+    @FXML
+    void onIngresosDiariosClick(ActionEvent event) {
+
+    }
 
 }

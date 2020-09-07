@@ -69,7 +69,7 @@ public class VerGastosDiarios implements Initializable{
     	GastosDiarios gasto = this.tblGastos.getSelectionModel().getSelectedItem();
     	
     	if(gasto==null) {
-    		new Alerta().errorAlert("Debe seleccionar un Gasto", "Editar Gasto");
+    		new Alerta().errorAlert("Debe seleccionar un Gasto", "Eliminar Gasto");
     	}else {
     		Optional<ButtonType> action =  new Alerta().preguntaConfirmacion("¿Estas seguro que desea eliminar el gasto?", "Confirmación");
         	if (action.get() == ButtonType.OK) {

@@ -80,6 +80,7 @@ public class Administrador {
 		CrearTabla.crearTablaInversion();
 		CrearTabla.crearTablaPropina();
 		CrearTabla.crearTablaDispositivo();
+		CrearTabla.crearTablaEgreso();
     	new Alerta().informationAlert("Las tablas de la BD han sido creadas con Exito", "Creacion Tablas");
     }
     
@@ -116,7 +117,8 @@ public class Administrador {
 //			new ModificarDatos().agregarDpto();
 //			new ModificarDatos().agregarDeudaCliente();
 //			new ModificarDatos().inicializarDeudaCliente();
-			new ModificarDatos().agregarTipoDeVenta();
+			CrearTabla.crearTablaEgreso();
+//			new ModificarDatos().agregarTipoDeVenta();
 			new Alerta().informationAlert("Deuda Agrega e inicializada", "EXITO!");
 		} catch (Exception e) {
 			// TODO: handle exception
