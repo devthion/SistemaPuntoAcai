@@ -68,6 +68,10 @@ public class ExportarExcel {
         Sheet sheet7 = workbook.createSheet("CajasCerradas");
         Sheet sheet8 = workbook.createSheet("Propinas");
         Sheet sheet9 = workbook.createSheet("Inversiones");
+        Sheet sheet10 = workbook.createSheet("IngresoDiario");
+        Sheet sheet11 = workbook.createSheet("Egresos");
+        
+        
         
         
         // Create a Font for styling header cells
@@ -437,7 +441,7 @@ public class ExportarExcel {
 
 
 	public static void insertarDatosEnSheetClientes(Sheet sheet, List<Cliente> clientes,CellStyle headerCellStyle) {
-		String[] columnas = {"clie_dni","clie_nombre","clie_apellido","clie_telefono","clie_email","dire_calle","dire_numero","dire_barrio","dire_codPostal","clie_tipo","clie_como_llego","clie_rubro"};
+		String[] columnas = {"clie_dni","clie_nombre","clie_apellido","clie_telefono","clie_email","dire_calle","dire_numero","dire_barrio","clie_tipo","clie_como_llego","clie_rubro"};
 		Row headerRow = sheet.createRow(0);
 		int rowNum = 1;
         for(Cliente unCliente: clientes) {
@@ -456,28 +460,19 @@ public class ExportarExcel {
             	.setCellValue(unCliente.getTelefono());
             
             row.createCell(4)
-            	.setCellValue(unCliente.getEmail());
-            
-            row.createCell(5)
             	.setCellValue(unCliente.getCalle());
             
-            row.createCell(6)
+            row.createCell(5)
             	.setCellValue(unCliente.getNumero());
             
-            row.createCell(7)
+            row.createCell(6)
             	.setCellValue(unCliente.getBarrio());
-            
-            row.createCell(8)
-            	.setCellValue(unCliente.getCodPostal());
-            
-            row.createCell(9)
+
+            row.createCell(7)
             	.setCellValue(unCliente.getTipo());
             
-            row.createCell(10)
-        	.setCellValue(unCliente.getComoLlego());
-            
-            row.createCell(11)
-        	.setCellValue(unCliente.getRubro());
+            row.createCell(8)
+        		.setCellValue(unCliente.getRubro());
         }
         
         // Resize all columns to fit the content size

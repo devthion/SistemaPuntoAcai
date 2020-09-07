@@ -39,7 +39,7 @@ public class ExportarPdf {
 		//exportar();
 	}
 	
-	public static void exportar(Venta unaVenta) throws DocumentException, SQLException, MalformedURLException, IOException {
+	public void exportar(Venta unaVenta) throws DocumentException, SQLException, MalformedURLException, IOException {
 	
 	Document document = new Document();
 	ObtenerDatos obtenerDatosBd = new ObtenerDatos();
@@ -77,6 +77,7 @@ public class ExportarPdf {
 		precioTotal.setWidthPercentage(100);
 		precioTotal.addCell(getCell("Costo Envio: "+unaVenta.getPrecioEnvio().toString(), PdfPCell.ALIGN_RIGHT));
 		precioTotal.addCell(getCell("Precio Total: "+unaVenta.getVenta_precioTotal(), PdfPCell.ALIGN_RIGHT));
+		precioTotal.addCell(getCell("Tipo de Pago: "+unaVenta.getTipoDePago(), PdfPCell.ALIGN_RIGHT));
 		
 		//------------------
 		
@@ -104,7 +105,9 @@ public class ExportarPdf {
 				.getInstance("acai.jpeg");
 		image1.scaleAbsolute(50,50);
 		table2.addCell(image1);
-		table2.addCell(getCell("Fecha: "+unaVenta.getFechaEntrega(), PdfPCell.ALIGN_CENTER));
+		table2.addCell(getCell("\n"+"Gallardo 6600, Versalles, CABA" + "\n" +
+		"Tel: 11 3165-8780" + "\n"+ "maracaibocaba@gmail.com" + "\n\n\n"+ "Fecha: "+unaVenta.getFechaEntrega()
+		+"\n\n\n\n\n" + "X   PRESUPUESTO", PdfPCell.ALIGN_LEFT));
 		
 		//------------------------
 		

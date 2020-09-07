@@ -189,6 +189,7 @@ public class VerVentas implements Initializable {
     		new Alerta().errorAlert("Debe seleccionar una Venta", "Generar Remito");
     	}else {
 			ExportarPdf exportarPdf = new ExportarPdf();
+			new Alerta().informationAlert("El remito fue guardado en la carpeta remitos", "Remito");
 			try {
 				exportarPdf.exportar(venta);
 			} catch (MalformedURLException e) {
