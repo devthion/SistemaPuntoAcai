@@ -1,5 +1,6 @@
 package application;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -87,6 +88,7 @@ public class AgregarEnvioController{
     	this.txtCalle.setText(""+direccion.getCalle());
     	this.txtDpto.setText(""+direccion.getDpto());
     	this.txtNumero.setText(""+direccion.getNumero());
+    	this.txtFechaEntrega.setValue(LocalDate.now());
     }
     
 	public Envio getEnvio() {
