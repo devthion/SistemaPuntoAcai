@@ -166,7 +166,7 @@ public class AgregarCliente {
 			e.printStackTrace();
 		}
     	
-    	Direccion direccion = new Direccion(calle, numero, barrio, 0);
+    	Direccion direccion = new Direccion(calle, numero, "", barrio);
     	if(!txtDpto.getText().isEmpty()) {
     		String dpto = txtDpto.getText();
     		direccion.setDpto(dpto);
@@ -187,7 +187,7 @@ public class AgregarCliente {
     	String rubro = txtRubro.getText().toLowerCase();
     	
     	
-    	Direccion direccion = new Direccion(calle, numero, barrio, 0);
+    	Direccion direccion = new Direccion(calle, numero, "", barrio);
     	if(!txtDpto.getText().isEmpty()) {
     		String dpto = txtDpto.getText();
     		direccion.setDpto(dpto);

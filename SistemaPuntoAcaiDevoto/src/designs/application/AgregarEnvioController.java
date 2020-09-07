@@ -68,7 +68,7 @@ public class AgregarEnvioController{
         	int numero = Integer.parseInt(txtNumero.getText());
         	String calle = this.txtCalle.getText().toLowerCase();
         	String barrio = this.txtBarrio.getText().toLowerCase();
-        	Direccion direccion = new Direccion(calle, numero, barrio, 0);
+        	Direccion direccion = new Direccion(calle, numero, "" , barrio);
         	if(!txtDpto.getText().isEmpty()) {
         		String dpto = txtDpto.getText();
         		direccion.setDpto(dpto);

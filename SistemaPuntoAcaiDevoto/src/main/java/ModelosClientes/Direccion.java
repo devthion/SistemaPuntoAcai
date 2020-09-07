@@ -10,11 +10,11 @@ public class Direccion {
 	private int codPostal;
 	private String dpto = null;
 	
-	public Direccion(String calle, int numero, String barrio, int codPostal) {
+	public Direccion(String calle, int numero, String dpto, String barrio) {
 		this.calle = calle;
 		this.numero = numero;
 		this.barrio = barrio;
-		this.codPostal = codPostal;
+		this.dpto = dpto;
 	}
 
 	public String getCalle() {

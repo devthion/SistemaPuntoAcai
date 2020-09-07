@@ -188,7 +188,6 @@ public class CrearTabla {
 				+ "venta_fecha_entrega DATE ,"
 				+ "venta_tipo_de_pago varchar(255),"
 				+ "venta_observacion varchar(255),"
-				+ "venta_observacion varchar(255),"
 				+ "venta_envio_calle varchar(255),"
 				+ "venta_envio_numero INTEGER(10),"
 				+ "venta_envio_dpto varchar(40),"
