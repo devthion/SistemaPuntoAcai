@@ -5,7 +5,7 @@ import java.time.LocalDate;
 
 import Egresos.Egreso;
 import Gastos.Gasto;
-
+import ModeloInversion.IngresoDiario;
 import ModeloInversion.Inversion;
 import ModelosClientes.Cliente;
 import Ventas.Venta;
@@ -174,6 +174,23 @@ public class ModificarDatos extends ConexionBd {
 		String sqlString = "DELETE FROM EGRESO "
 				+ "WHERE egreso_id = '"+id+"'";
 		ejecutarUpdate(sqlString, "egreso eliminated");
+		
+	}
+
+	public void editarIngresoDiario(int id, IngresoDiario ingresoModificado) {
+		String sql = "UPDATE INGRESO_DIARIO SET "
+				+ "ingreso_fecha = '"+ingresoModificado.getFecha()+"',"
+				+"ingreso_monto = '"+ingresoModificado.getMonto() +"',"
+				+ "ingreso_detalle = '"+ingresoModificado.getDetalle()+"'"
+						+ "WHERE ingreso_id = '"+id+"'";
+		ejecutarUpdate(sql, "EGRESO EDITADO");
+		
+	}
+
+	public void eliminarIngresoDiario(int id) {
+		String sqlString = "DELETE FROM INGRESO_DIARIO "
+				+ "WHERE ingreso_id = '"+id+"'";
+		ejecutarUpdate(sqlString, "Ingreso Diario eliminated");
 		
 	}
 

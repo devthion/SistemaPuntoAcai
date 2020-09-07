@@ -19,6 +19,7 @@ import Egresos.Egreso;
 import Gastos.GastosDiarios;
 import Gastos.GastosGenerales;
 import Gastos.GastosProductos;
+import ModeloInversion.IngresoDiario;
 import ModeloInversion.Inversion;
 import ModelosClientes.Cliente;
 import ModelosClientes.Direccion;
@@ -515,6 +516,25 @@ public class ObtenerDatos extends ConexionBd{
 			egresos.add(unEgreso);
 		}
 		return egresos;
+	}
+
+	public ObservableList<IngresoDiario> obtenerIngresosDiarios() throws SQLException {
+		ResultSet rs;
+		Statement unStmt =null;
+		ObservableList<IngresoDiario> ingresos = FXCollections.observableArrayList();	
+		
+		sql="select * from INGRESO_DIARIO";
+		rs=ejecutarQuery(sql,unStmt);
+		while(rs.next()) {
+			int id = rs.getInt(1);
+			LocalDate date = rs.getDate(2).toLocalDate();
+			IngresoDiario unIngreso = new IngresoDiario(rs.getString(4),rs.getDouble(3));
+			unIngreso.setFecha(date);
+			unIngreso.setId(id);
+			ingresos.add(unIngreso);
+		}
+		return ingresos;
+
 	}
 	
 	

@@ -18,6 +18,9 @@ public class Ingresos {
 	
     @FXML
     private Button btnPropinas;
+    
+    @FXML
+    private Button btnIngresosDiarios;
 
 	@FXML
 	void onVerIngresosClick(ActionEvent event) {
@@ -83,7 +86,22 @@ public class Ingresos {
 
     @FXML
     void onIngresosDiariosClick(ActionEvent event) {
-
+		try {
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(getClass().getResource("IngresoDiario.fxml"));
+			AnchorPane root = (AnchorPane) loader.load();
+			Scene scene = new Scene(root, 1300, 650);
+			Stage stage = new Stage();
+			stage.setScene(scene);
+			stage.resizableProperty().setValue(Boolean.FALSE);
+			stage.setResizable(false);
+			stage.setTitle("Ingresos Diarios");
+			stage.show();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		Stage stage = (Stage) btnIngresosDiarios.getScene().getWindow();
+		stage.close();
     }
 
 }

@@ -19,6 +19,7 @@ public class CrearTabla {
 		crearTablaPropina();
 		crearTablaDispositivo();
 		crearTablaEgreso();
+		crearTablaIngresoDiario();
 	}
 	
 	public static void crearTablaDispositivo() {
@@ -264,6 +265,25 @@ public class CrearTabla {
 				+ "FOREIGN KEY (item_venta) REFERENCES VENTA(venta_id))";
 			stmt.executeUpdate(sql);
 			System.out.println("Tabla ITEM_VENTA creada");
+		}
+		catch(Exception e) {
+			System.err.println(e.getMessage());
+		}
+	}
+	
+	public static void crearTablaIngresoDiario() {
+		try 
+		{
+			Connection con = DriverManager.getConnection("jdbc:h2:"+"./Database/bd", "root", "devthion");
+			Statement stmt= con.createStatement();
+			String sql = "CREATE TABLE IF NOT EXISTS INGRESO_DIARIO" 
+				+"(ingreso_id INTEGER auto_increment,"
+				+"ingreso_fecha DATE,"
+				+"ingreso_monto DOUBLE(10),"
+				+"ingreso_detalle VARCHAR(255),"
+				+"PRIMARY KEY (ingreso_id))";
+			stmt.executeUpdate(sql);
+			System.out.println("Tabla INGRESO_DIARIO creada");
 		}
 		catch(Exception e) {
 			System.err.println(e.getMessage());

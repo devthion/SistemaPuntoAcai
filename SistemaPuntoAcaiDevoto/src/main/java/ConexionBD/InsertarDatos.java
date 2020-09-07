@@ -10,7 +10,7 @@ import java.util.Objects;
 import Egresos.Egreso;
 import Gastos.Gasto;
 import Gastos.GastosProductos;
-
+import ModeloInversion.IngresoDiario;
 import ModeloInversion.Inversion;
 import ModelosClientes.Cliente;
 import Productos.Producto;
@@ -167,6 +167,16 @@ public class InsertarDatos extends ConexionBd{
 				+ "egreso_detalle)"
 				+ "values('"+egreso.getFecha()+"','"+egreso.getMonto()+"','"+egreso.getDetalle()+"')";
 		ejecutarUpdate(sql, "Egreso ingresado");
+		
+	}
+
+	public void insertarIngresoDiario(IngresoDiario ingresoDiario) {
+		String sql = "insert into INGRESO_DIARIO"
+				+ "(ingreso_fecha,"
+				+ "ingreso_monto,"
+				+ "ingreso_detalle)"
+				+ "values('"+ingresoDiario.getFecha()+"','"+ingresoDiario.getMonto()+"','"+ingresoDiario.getDetalle()+"')";
+		ejecutarUpdate(sql, "Ingreso Diario ingresado");
 		
 	}
 	
