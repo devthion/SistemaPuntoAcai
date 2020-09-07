@@ -15,9 +15,11 @@ import org.omg.CORBA.PUBLIC_MEMBER;
 
 import com.itextpdf.text.pdf.PdfStructTreeController.returnType;
 
+import Egresos.Egreso;
 import Gastos.GastosDiarios;
 import Gastos.GastosGenerales;
 import Gastos.GastosProductos;
+import ModeloInversion.IngresoDiario;
 import ModeloInversion.Inversion;
 import ModelosClientes.Cliente;
 import ModelosClientes.Direccion;
@@ -311,9 +313,9 @@ public class ObtenerDatos extends ConexionBd{
 			boolean estado_entrega = rsUnaVenta.getBoolean(7);
 			String horario_entrega = rsUnaVenta.getString(8);
 			LocalDate fecha_entrega = rsUnaVenta.getDate(9).toLocalDate();
-			String tipo_de_pago = rsUnaVenta.getString("venta_tipo_de_pago");
+			String tipo_de_pago = rsUnaVenta.getString(10);
 			
-			String observacion = rsUnaVenta.getString(10);
+			String observacion = rsUnaVenta.getString(11);
 
 			unaVenta = new Venta(obtenerUnCliente(ventaCliente),date,itemsDeVenta(ventaId), tipo_de_pago);
 			unaVenta.setVenta_ganancia(ganancia);
@@ -345,9 +347,9 @@ public class ObtenerDatos extends ConexionBd{
 			boolean estado_entrega = rsUnaVenta.getBoolean(7);
 			String horario_entrega = rsUnaVenta.getString(8);
 			LocalDate fecha_entrega = rsUnaVenta.getDate(9).toLocalDate();
-			String tipoDePago = rsUnaVenta.getString("venta_tipo_de_pago");
+			String tipoDePago = rsUnaVenta.getString(10);
 			
-			String observacion = rsUnaVenta.getString(10);
+			String observacion = rsUnaVenta.getString(11);
 			
 			unaVenta = new Venta(obtenerUnCliente(ventaCliente),date,itemsDeVenta(ventaId),tipoDePago);
 			unaVenta.setVenta_ganancia(ganancia);
@@ -380,9 +382,9 @@ public class ObtenerDatos extends ConexionBd{
 			boolean estado_entrega = rsUnaVenta.getBoolean(7);
 			String horario_entrega = rsUnaVenta.getString(8);
 			LocalDate fecha_entrega = rsUnaVenta.getDate(9).toLocalDate();
-			String tipoDePago = rsUnaVenta.getString("venta_tipo_de_pago");
+			String tipoDePago = rsUnaVenta.getString(10);
 			
-			String observacion = rsUnaVenta.getString(10);
+			String observacion = rsUnaVenta.getString(11);
 			
 			unaVenta = new Venta(obtenerUnCliente(ventaCliente),date,itemsDeVenta(ventaId),tipoDePago);
 			unaVenta.setVenta_ganancia(ganancia);
@@ -496,6 +498,43 @@ public class ObtenerDatos extends ConexionBd{
 			inversiones.add(unaInversion);
 		}
 		return inversiones;
+	}
+
+	public ObservableList<Egreso> obtenerEgresos() throws SQLException {
+		ResultSet rs;
+		Statement unStmt =null;
+		ObservableList<Egreso> egresos = FXCollections.observableArrayList();	
+		
+		sql="select * from EGRESO";
+		rs=ejecutarQuery(sql,unStmt);
+		while(rs.next()) {
+			int id = rs.getInt(1);
+			LocalDate date = rs.getDate(2).toLocalDate();
+			Egreso unEgreso = new Egreso(rs.getString(4),rs.getDouble(3));
+			unEgreso .setFecha(date);
+			unEgreso.setId(id);
+			egresos.add(unEgreso);
+		}
+		return egresos;
+	}
+
+	public ObservableList<IngresoDiario> obtenerIngresosDiarios() throws SQLException {
+		ResultSet rs;
+		Statement unStmt =null;
+		ObservableList<IngresoDiario> ingresos = FXCollections.observableArrayList();	
+		
+		sql="select * from INGRESO_DIARIO";
+		rs=ejecutarQuery(sql,unStmt);
+		while(rs.next()) {
+			int id = rs.getInt(1);
+			LocalDate date = rs.getDate(2).toLocalDate();
+			IngresoDiario unIngreso = new IngresoDiario(rs.getString(4),rs.getDouble(3));
+			unIngreso.setFecha(date);
+			unIngreso.setId(id);
+			ingresos.add(unIngreso);
+		}
+		return ingresos;
+
 	}
 	
 	

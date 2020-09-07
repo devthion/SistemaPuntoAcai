@@ -7,12 +7,14 @@ import javax.print.PrintServiceLookup;
 import javax.swing.JOptionPane;
 
 import ConexionBD.InsertarDatos;
+import ConexionBD.ObtenerDatos;
 
 public class ConfigurarImpresora {
 	
 	
 	public void  settearImpresora() {
 		try {
+			ObtenerDatos obtenerDatos = new ObtenerDatos();
 			InsertarDatos insertarDatos = new InsertarDatos();
 			
 			PrintService[] pservices = PrintServiceLookup.lookupPrintServices(
@@ -36,8 +38,14 @@ public class ConfigurarImpresora {
 		      	  if (i < 0) {
 		      	    return;
 		      	  }
+		      	  if(obtenerDatos.obtenerDispositivo(1)==0){//le paso el valor de dispositivo que quiero (1=impresora)
+		      		insertarDatos.insertarDispositivo(1, i);
+		      	  }else {
+		      		insertarDatos.actualizarDispositivo(1, i);
+		      	  }
+		      	  //aca me gustaria que haya una query de sql que en caso de clave duplicada, actualice el valor. Pero por ahora	
+		      	  //no me quedo otra que hacer ese if que devuelve 0 si traigo un valor de dispositivo con un id que no existe
 		      	  
-		      	  insertarDatos.insertarDispositivo(1, i);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace(); //TODO TIRAR ALERTA SI NO HAY CONEXION

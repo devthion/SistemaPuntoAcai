@@ -52,11 +52,11 @@ public class Ticket {
 	
 	public String generarTicket(Venta unaVenta) throws IOException {
 		String separador = "------------------------------------------------ \n";
-    	String formatoTitulo ="%-13s %-20s %-13s%n%n%n";
+    	String formatoTitulo ="%-13s %-20s %-13s%n";
     	String titulo = String.format(formatoTitulo, "", "ACAI MARACAIBO CABA","");
     	
     	String listadoItems = "";
-    	String formatoListaItemString = "%-40s %-10s%n";
+    	String formatoListaItemString = "%-40s %-10s%n%n";
     	for(Item item : unaVenta.getItems()) {
     		String detalleProducto =item.getNombreProducto()+" X"+ String.valueOf(item.getCantidad());
     		listadoItems +=String.format(formatoListaItemString, detalleProducto, item.getPrecioFinal());
@@ -65,9 +65,18 @@ public class Ticket {
     	
     	String precioTotalString = String.format(formatoListaItemString, "Total:", String.valueOf(unaVenta.getVenta_precioTotal()));
     	
+    	String formatoPie ="%-8s %-20s %-8s";
+    	String pie = String.format(formatoPie, "", "Documento no valido como factura","");
     	
     	String formatStr = "%-8s %-20s%n";
+    	String format2Str = "%-20s %n";
+    	String DireccionEmpresa = String.format(format2Str,"Gallardo 6600, Versalles, CABA");
+    	String TelEmpresa = String.format(format2Str,"Tel: 11 3165-8780");
+    	String MailEmpresa = String.format(format2Str,"maracaibocaba@gmail.com");
+    	
     	String cliente = String.format(formatStr,"Cliente: ", unaVenta.getDatosCliente());
+    	
+    	String clienteTel = String.format(formatStr,"Tel: ", unaVenta.getClienteContacto());
     	
     	String direccionString = String.format(formatStr, "Direccion: ", unaVenta.getDireccionCliente());
     	
@@ -75,9 +84,17 @@ public class Ticket {
     	
     	String costoEnvioString = String.format(formatoListaItemString, "Envio: ", unaVenta.getEnvioPrecio());
     	
-    	String tipoDePagoString = String.format(formatoListaItemString, "Tipo de Pago: ", unaVenta.getTipoDePago());
+    	String formatoListaItem2String = "%-10s %-35s%n";
+    	String tipoDePagoString = String.format(formatoListaItem2String, "Tipo de Pago: ", unaVenta.getTipoDePago());
     	
-    	String ticket = titulo+ cliente + direccionString + observacionString + separador + listadoItems + separador + costoEnvioString + precioTotalString +"\n"+ tipoDePagoString   ;
+    	
+    	
+    	
+    	
+    	String ticket = titulo+"\n"+DireccionEmpresa+TelEmpresa+MailEmpresa+"\n\n"+separador+ cliente +clienteTel
+    			+ direccionString + observacionString + separador + listadoItems 
+    			+ separador + costoEnvioString + precioTotalString +"\n"+ tipoDePagoString + separador
+    			+"\n\n\n" + pie ;
     	
     	byte[] buff = ticket.getBytes();
     	

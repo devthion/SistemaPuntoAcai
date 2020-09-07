@@ -12,6 +12,7 @@ import Alertas.Validaciones;
 import ConexionBD.ObtenerDatos;
 import Gastos.GastosDiarios;
 import ManejoArchivos.ExportarExcel;
+import ModeloInversion.IngresoDiario;
 import Ventas.CajaCerrada;
 import Ventas.Venta;
 import javafx.collections.FXCollections;
@@ -77,9 +78,23 @@ public class CerrarCaja implements Initializable{
     @FXML
     private TableColumn<GastosDiarios, LocalDate> colFechaGasto;
     
+    @FXML
+    private TableView<IngresoDiario> tblIngresos;
+    
+    @FXML
+    private TableColumn<IngresoDiario, Double> colCantidadIng;
+    
+    @FXML
+    private TableColumn<IngresoDiario, LocalDate> colFechaIng;
+    
+    @FXML
+    private TableColumn<IngresoDiario, String> colDetalleIng;
+    
     private ObservableList<Venta> ventas;
     private ObservableList<GastosDiarios> gastos;
     private ObservableList<GastosDiarios> gastosPorDia;
+    private ObservableList<IngresoDiario> ingresos;
+    private ObservableList<IngresoDiario> ingresosPorDia;
     
     private CajaCerrada cajaDelDia;
     
@@ -148,6 +163,8 @@ public class CerrarCaja implements Initializable{
 			ventas = obtenerDatos.obtenerVentasDeldia(LocalDate.now());
 			gastos = FXCollections.observableArrayList();
 			gastos = obtenerDatos.obtenerGastosDiarios();
+			ingresos = FXCollections.observableArrayList();
+			ingresos = obtenerDatos.obtenerIngresosDiarios();
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -169,9 +186,16 @@ public class CerrarCaja implements Initializable{
 		this.colFechaGasto.setCellValueFactory(new PropertyValueFactory<GastosDiarios, LocalDate>("fecha"));
 		this.colCantidad.setCellValueFactory(new PropertyValueFactory<GastosDiarios, Double>("monto"));
 		
-		txtMontoIdeal.setText(""+(ventas.stream().mapToDouble(unaVenta-> unaVenta.getVenta_precioTotal()).sum() 
-				- gastosPorDia.stream().mapToDouble(unGasto-> unGasto.getMonto()).sum()));
+		ingresosPorDia =ingresos.filtered(unGasto-> unGasto.getFecha().equals(LocalDate.now()));
+        this.tblIngresos.setItems(ingresosPorDia);
 		
+		this.colDetalleIng.setCellValueFactory(new PropertyValueFactory<IngresoDiario, String>("detalle"));
+		this.colFechaIng.setCellValueFactory(new PropertyValueFactory<IngresoDiario, LocalDate>("fecha"));
+		this.colCantidadIng.setCellValueFactory(new PropertyValueFactory<IngresoDiario, Double>("monto"));
+		
+		txtMontoIdeal.setText(""+(ventas.stream().mapToDouble(unaVenta-> unaVenta.getVenta_precioTotal()).sum() 
+				- (gastosPorDia.stream().mapToDouble(unGasto-> unGasto.getMonto()).sum()) + 
+				ingresosPorDia.stream().mapToDouble(unIngreso-> unIngreso.getMonto()).sum()) );
 	}
 	
     @FXML
@@ -194,9 +218,7 @@ public class CerrarCaja implements Initializable{
         		} catch (SQLException e) {
         			// TODO Auto-generated catch block
         			e.printStackTrace();
-        		}
-
-        		
+        		}		
         		this.tblVentas.setItems(ventas);
         	}
     		

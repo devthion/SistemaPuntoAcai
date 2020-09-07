@@ -18,6 +18,8 @@ public class CrearTabla {
 		crearTablaInversion();
 		crearTablaPropina();
 		crearTablaDispositivo();
+		crearTablaEgreso();
+		crearTablaIngresoDiario();
 	}
 	
 	public static void crearTablaDispositivo() {
@@ -88,6 +90,25 @@ public class CrearTabla {
 				+"PRIMARY KEY (gasto_id))";
 			stmt.executeUpdate(sql);
 			System.out.println("Tabla GASTO_GENERAL creada");
+		}
+		catch(Exception e) {
+			System.err.println(e.getMessage());
+		}
+	}
+	
+	public static void crearTablaEgreso() {
+		try 
+		{
+			Connection con = DriverManager.getConnection("jdbc:h2:"+"./Database/bd", "root", "devthion");
+			Statement stmt= con.createStatement();
+			String sql = "CREATE TABLE IF NOT EXISTS EGRESO" 
+				+"(egreso_id INTEGER auto_increment,"
+				+"egreso_fecha DATE,"
+				+"egreso_monto DOUBLE(10),"
+				+"egreso_detalle VARCHAR(255),"
+				+"PRIMARY KEY (egreso_id))";
+			stmt.executeUpdate(sql);
+			System.out.println("Tabla EGRESO creada");
 		}
 		catch(Exception e) {
 			System.err.println(e.getMessage());
@@ -166,6 +187,7 @@ public class CrearTabla {
 				+ "venta_horario_envio varchar(255) NULL,"
 				+ "venta_fecha_entrega DATE ,"
 				+ "venta_tipo_de_pago varchar(255),"
+				+ "venta_observacion varchar(255),"
 				+"PRIMARY KEY (venta_id),"
 				+"FOREIGN KEY (venta_cliente) REFERENCES CLIENTE(clie_dni))";
 			stmt.executeUpdate(sql);
@@ -244,6 +266,25 @@ public class CrearTabla {
 				+ "FOREIGN KEY (item_venta) REFERENCES VENTA(venta_id))";
 			stmt.executeUpdate(sql);
 			System.out.println("Tabla ITEM_VENTA creada");
+		}
+		catch(Exception e) {
+			System.err.println(e.getMessage());
+		}
+	}
+	
+	public static void crearTablaIngresoDiario() {
+		try 
+		{
+			Connection con = DriverManager.getConnection("jdbc:h2:"+"./Database/bd", "root", "devthion");
+			Statement stmt= con.createStatement();
+			String sql = "CREATE TABLE IF NOT EXISTS INGRESO_DIARIO" 
+				+"(ingreso_id INTEGER auto_increment,"
+				+"ingreso_fecha DATE,"
+				+"ingreso_monto DOUBLE(10),"
+				+"ingreso_detalle VARCHAR(255),"
+				+"PRIMARY KEY (ingreso_id))";
+			stmt.executeUpdate(sql);
+			System.out.println("Tabla INGRESO_DIARIO creada");
 		}
 		catch(Exception e) {
 			System.err.println(e.getMessage());

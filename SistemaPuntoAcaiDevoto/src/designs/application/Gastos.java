@@ -24,6 +24,9 @@ public class Gastos {
     private Button btnGastosProductos;
     
     @FXML
+    private Button btnEgresos;
+    
+    @FXML
     void onVolverClick(ActionEvent event) {
     	try {
 			FXMLLoader loader = new FXMLLoader();
@@ -88,6 +91,26 @@ public class Gastos {
     	try {
 			FXMLLoader loader = new FXMLLoader();
 			loader.setLocation(getClass().getResource("GastosProductos.fxml"));
+			AnchorPane root = (AnchorPane) loader.load();
+			Scene scene = new Scene(root,1300,650);
+			Stage stage = new Stage();
+			stage.setScene(scene);
+			stage.resizableProperty().setValue(Boolean.FALSE);
+			stage.setResizable(false);
+			stage.setTitle("Gastos Productos");
+			stage.show();
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+    	Stage stage = (Stage) btnVolver.getScene().getWindow();
+    	stage.close();
+    }
+    
+    @FXML
+    void onEgresosClick(ActionEvent event) {
+    	try {
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(getClass().getResource("Egresos.fxml"));
 			AnchorPane root = (AnchorPane) loader.load();
 			Scene scene = new Scene(root,1300,650);
 			Stage stage = new Stage();

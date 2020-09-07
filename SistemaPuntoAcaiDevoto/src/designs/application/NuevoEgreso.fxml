@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="650.0" prefWidth="1300.0" stylesheets="@../Styles/Style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.NuevoEgreso">
+   <children>
+      <Button fx:id="btnGuardarEgreso" layoutX="525.0" layoutY="475.0" mnemonicParsing="false" onAction="#onGuardarEgresoClick" text="GUARDAR EGRESO" />
+      <Label layoutX="613.0" layoutY="279.0" text="MONTO" />
+      <Label layoutX="554.0" layoutY="154.0" text="DETALLE DEL EGRESO" />
+      <TextField fx:id="txtMonto" layoutX="546.0" layoutY="309.0" />
+      <TextField fx:id="txtDetalle" layoutX="482.0" layoutY="184.0" prefHeight="33.0" prefWidth="337.0" />
+      <Separator layoutX="150.0" layoutY="71.0" prefWidth="1000.0" />
+      <Label layoutX="579.0" layoutY="29.0" text="NUEVO EGRESO" />
+      <Button fx:id="btnVolver" layoutX="1152.0" layoutY="587.0" mnemonicParsing="false" onAction="#onVolverClick" text="VOLVER" />
+   </children>
+</AnchorPane>

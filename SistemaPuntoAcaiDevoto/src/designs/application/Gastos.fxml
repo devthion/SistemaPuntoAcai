@@ -13,10 +13,11 @@
             <Font size="24.0" />
          </font>
       </Button>
-      <Label layoutX="613.0" layoutY="30.0" text="GASTOS" />
+      <Label layoutX="609.0" layoutY="29.0" text="EGRESOS" />
       <Separator layoutX="150.0" layoutY="71.0" prefWidth="1000.0" />
-      <Button fx:id="btnGastosDiarios" layoutX="150.0" layoutY="287.0" mnemonicParsing="false" onAction="#onGastosDiariosClick" prefHeight="76.0" prefWidth="210.0" text="DIARIOS" />
-      <Button fx:id="btnGastosGenerales" layoutX="545.0" layoutY="287.0" mnemonicParsing="false" onAction="#onGastosGeneralesClick" prefHeight="76.0" prefWidth="210.0" text="GENERALES" />
-      <Button fx:id="btnGastosProductos" layoutX="938.0" layoutY="287.0" mnemonicParsing="false" onAction="#onGastosProductosClick" prefHeight="76.0" prefWidth="210.0" text="MERCADERIA" />
+      <Button fx:id="btnGastosDiarios" layoutX="246.0" layoutY="207.0" mnemonicParsing="false" onAction="#onGastosDiariosClick" prefHeight="76.0" prefWidth="295.0" text="GASTOS DIARIOS" />
+      <Button fx:id="btnGastosGenerales" layoutX="760.0" layoutY="207.0" mnemonicParsing="false" onAction="#onGastosGeneralesClick" prefHeight="76.0" prefWidth="295.0" text="GASTOS GENERALES" />
+      <Button fx:id="btnGastosProductos" layoutX="246.0" layoutY="368.0" mnemonicParsing="false" onAction="#onGastosProductosClick" prefHeight="76.0" prefWidth="295.0" text="GASTOS MERCADERIA" />
+      <Button fx:id="btnEgresos" layoutX="760.0" layoutY="368.0" mnemonicParsing="false" onAction="#onEgresosClick" prefHeight="76.0" prefWidth="295.0" text="EGRESOS" />
    </children>
 </AnchorPane>

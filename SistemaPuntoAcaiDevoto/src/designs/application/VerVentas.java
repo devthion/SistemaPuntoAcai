@@ -1,15 +1,18 @@
 package application;
 
+import java.io.IOException;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
-
+import com.itextpdf.text.DocumentException;
 
 import Alertas.Alerta;
 import ConexionBD.ObtenerDatos;
+import ManejoArchivos.ExportarPdf;
 import ManejoArchivos.Ticket;
 import Ventas.Venta;
 import javafx.collections.FXCollections;
@@ -57,6 +60,9 @@ public class VerVentas implements Initializable {
 
     @FXML
     private TableView<Venta> tblVentas;
+    
+    @FXML
+    private Button btnImprimirTicket;
 
     @FXML
     private TableColumn<Venta, String> colCliente;
@@ -182,8 +188,34 @@ public class VerVentas implements Initializable {
     	if(venta==null) {
     		new Alerta().errorAlert("Debe seleccionar una Venta", "Generar Remito");
     	}else {
-			//ExportarPdf exportarPdf = new ExportarPdf();
-			//exportarPdf.exportar(venta);
+			ExportarPdf exportarPdf = new ExportarPdf();
+			try {
+				exportarPdf.exportar(venta);
+			} catch (MalformedURLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (DocumentException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
+		}
+    }
+    
+
+    @FXML
+    void onImprimirTicketClick(ActionEvent event) {
+    	Venta venta = this.tblVentas.getSelectionModel().getSelectedItem();
+    	
+    	if(venta==null) {
+    		new Alerta().errorAlert("Debe seleccionar una Venta", "Generar Remito");
+    	}else {
 			Ticket ticket = new Ticket();
 	        ticket.obtenerTicketVenta(venta);
 			new Alerta().informationAlert("El Ticket ha sido impreso y exportado a la carpeta de Tickets", "Generar Ticket");

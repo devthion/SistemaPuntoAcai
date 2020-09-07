@@ -80,6 +80,8 @@ public class Administrador {
 		CrearTabla.crearTablaInversion();
 		CrearTabla.crearTablaPropina();
 		CrearTabla.crearTablaDispositivo();
+		CrearTabla.crearTablaEgreso();
+		CrearTabla.crearTablaIngresoDiario();
     	new Alerta().informationAlert("Las tablas de la BD han sido creadas con Exito", "Creacion Tablas");
     }
     
@@ -113,10 +115,12 @@ public class Administrador {
     @FXML
     void onAgregarDescripcionClick(ActionEvent event) {
 		try {
-//			new ModificarDatos().agregarDpto();
-//			new ModificarDatos().agregarDeudaCliente();
-//			new ModificarDatos().inicializarDeudaCliente();
+			new ModificarDatos().agregarDpto();
+			new ModificarDatos().agregarDeudaCliente();
+			new ModificarDatos().inicializarDeudaCliente();
+			CrearTabla.crearTablaEgreso();
 			new ModificarDatos().agregarTipoDeVenta();
+			new ModificarDatos().agregarObservacion();
 			new Alerta().informationAlert("Deuda Agrega e inicializada", "EXITO!");
 		} catch (Exception e) {
 			// TODO: handle exception
