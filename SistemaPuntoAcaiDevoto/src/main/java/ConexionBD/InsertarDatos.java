@@ -108,9 +108,9 @@ public class InsertarDatos extends ConexionBd{
 				+ "venta_fecha_entrega,"
 				+ "venta_tipo_de_pago,"
 				+ "venta_observacion,"	
-				+ "venta_envio_calle)"
-				+ "venta_envio_numero)"
-				+ "venta_envio_dpto)"
+				+ "venta_envio_calle,"
+				+ "venta_envio_numero,"
+				+ "venta_envio_dpto,"
 				+ "venta_envio_barrio)"
 				+ "values('"+unaVenta.getCliente().getDni()+"','"+unaVenta.getFecha()+"','"+unaVenta.getPrecioTotal()+"','"+unaVenta.getGanancia()+"','"+unaVenta.getEnvioPrecio()+"','"+estado+"','"+unaVenta.getHorario()+"','"+unaVenta.getFechaEntrega()+"','"+unaVenta.getTipoDePago()
 				+"','"+unaVenta.getObservacion()+"','"+unaVenta.getUnEnvio().getDireccion().getCalle()+"','"+unaVenta.getUnEnvio().getDireccion().getNumero()+"','"+unaVenta.getUnEnvio().getDireccion().getDpto()+"','"+unaVenta.getUnEnvio().getDireccion().getBarrio()+"')";

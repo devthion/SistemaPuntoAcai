@@ -115,12 +115,16 @@ public class Administrador {
     @FXML
     void onAgregarDescripcionClick(ActionEvent event) {
 		try {
-			new ModificarDatos().agregarDpto();
-			new ModificarDatos().agregarDeudaCliente();
-			new ModificarDatos().inicializarDeudaCliente();
-			CrearTabla.crearTablaEgreso();
-			new ModificarDatos().agregarTipoDeVenta();
-			new ModificarDatos().agregarObservacion();
+//			new ModificarDatos().agregarDpto();
+//			new ModificarDatos().agregarDeudaCliente();
+//			new ModificarDatos().inicializarDeudaCliente();
+//			CrearTabla.crearTablaEgreso();
+//			new ModificarDatos().agregarTipoDeVenta();
+//			new ModificarDatos().agregarObservacion();
+			new ModificarDatos().agregarCalleEnvio();
+			new ModificarDatos().agregarNumeroEnvio();
+			new ModificarDatos().agregarDptoEnvio();
+			new ModificarDatos().agregarBarrioEnvio();
 			new Alerta().informationAlert("Deuda Agrega e inicializada", "EXITO!");
 		} catch (Exception e) {
 			// TODO: handle exception

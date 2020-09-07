@@ -172,31 +172,37 @@ public class NuevaVentaController implements Initializable {
 	
     @FXML
     void onAgregarEnvioClick(ActionEvent event) {
-    	try {
-			FXMLLoader loader = new FXMLLoader(getClass().getResource("AgregarEnvio.fxml"));
-			AnchorPane root = (AnchorPane) loader.load();
-			
-			AgregarEnvioController controller = loader.getController();
-			
-			Scene scene = new Scene(root,779,340);
-			Stage stage = new Stage();
-			stage.setScene(scene);
-			stage.resizableProperty().setValue(Boolean.FALSE);
-			stage.setResizable(false);
-			stage.setTitle("Nuevo Cliente");
-			stage.showAndWait();
-			
-			if(Objects.isNull(controller.getEnvio())) {
-				costoEnvio=0.0;
-				lblCostoEnvio.setText("Envio: "+costoEnvio+" $");
-			}else {
-				ventaBorrador.setEnvio(controller.getEnvio());
-				lblCostoEnvio.setText("Envio: "+ventaBorrador.getEnvio().getPrecio()+" $");
-				costoEnvio=ventaBorrador.getEnvio().getPrecio();
-			}
+    	Cliente cliente = this.tblClientes.getSelectionModel().getSelectedItem();
+    	if(cliente==null) {
+			new Alerta().errorAlert("Debe seleccionar un cliente", "Nueva Venta");
+		}else {
+	    	try {
+				FXMLLoader loader = new FXMLLoader(getClass().getResource("AgregarEnvio.fxml"));
+				AnchorPane root = (AnchorPane) loader.load();
 				
-		} catch(Exception e) {
-			e.printStackTrace();
+				AgregarEnvioController controller = loader.getController();
+				controller.initEnvio(cliente.getDireccion());
+				
+				Scene scene = new Scene(root,1059,507);
+				Stage stage = new Stage();
+				stage.setScene(scene);
+				stage.resizableProperty().setValue(Boolean.FALSE);
+				stage.setResizable(false);
+				stage.setTitle("Agregar Envio");
+				stage.showAndWait();
+				
+				if(Objects.isNull(controller.getEnvio())) {
+					costoEnvio=0.0;
+					lblCostoEnvio.setText("Envio: "+costoEnvio+" $");
+				}else {
+					ventaBorrador.setEnvio(controller.getEnvio());
+					lblCostoEnvio.setText("Envio: "+ventaBorrador.getEnvio().getPrecio()+" $");
+					costoEnvio=ventaBorrador.getEnvio().getPrecio();
+				}
+					
+			} catch(Exception e) {
+				e.printStackTrace();
+			}
 		}
     }
 
