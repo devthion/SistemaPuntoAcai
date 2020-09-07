@@ -8,7 +8,7 @@
 
 <AnchorPane prefHeight="650.0" prefWidth="1300.0" stylesheets="@../Styles/Style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.CerrarCaja">
    <children>
-      <TableView fx:id="tblVentas" layoutX="20.0" layoutY="124.0" prefHeight="325.0" prefWidth="891.0">
+      <TableView fx:id="tblVentas" layoutX="20.0" layoutY="124.0" prefHeight="394.0" prefWidth="891.0">
          <columns>
             <TableColumn fx:id="colFecha" maxWidth="1.7976931348623157E308" prefWidth="120.0" text="FECHA" />
             <TableColumn fx:id="colCliente" maxWidth="1.7976931348623157E308" prefWidth="165.0" text="CLIENTE" />
@@ -24,20 +24,28 @@
       </Button>
       <Label layoutX="589.0" layoutY="30.0" text="CERRAR CAJA" />
       <Separator layoutX="160.0" layoutY="71.0" prefWidth="1000.0" />
-      <TextField fx:id="txtMontoReal" layoutX="416.0" layoutY="511.0" />
-      <TextField fx:id="txtMontoIdeal" layoutX="677.0" layoutY="510.0" />
-      <Button fx:id="btnCerrarCaja" layoutX="563.0" layoutY="561.0" mnemonicParsing="false" onAction="#onCerrarCajaClick" text="CERRAR CAJA" />
-      <Label layoutX="458.0" layoutY="481.0" text="MONTO REAL" />
-      <Label layoutX="716.0" layoutY="480.0" text="MONTO IDEAL" />
+      <TextField fx:id="txtMontoReal" layoutX="389.0" layoutY="585.0" />
+      <TextField fx:id="txtMontoIdeal" layoutX="606.0" layoutY="584.0" />
+      <Button fx:id="btnCerrarCaja" layoutX="836.0" layoutY="561.0" mnemonicParsing="false" onAction="#onCerrarCajaClick" text="CERRAR CAJA" />
+      <Label layoutX="431.0" layoutY="555.0" text="MONTO REAL" />
+      <Label layoutX="645.0" layoutY="554.0" text="MONTO IDEAL" />
       <Label layoutX="20.0" layoutY="94.0" text="VENTAS DEL DIA" />
-      <Button fx:id="btnEliminarVenta" layoutX="20.0" layoutY="455.0" mnemonicParsing="false" onAction="#onEliminarVentaClick" prefHeight="30.0" prefWidth="237.0" text="ELIMINAR VENTA" />
-      <TableView fx:id="tblGastos" layoutX="933.0" layoutY="124.0" prefHeight="325.0" prefWidth="344.0">
+      <Button fx:id="btnEliminarVenta" layoutX="20.0" layoutY="529.0" mnemonicParsing="false" onAction="#onEliminarVentaClick" prefHeight="30.0" prefWidth="237.0" text="ELIMINAR VENTA" />
+      <TableView fx:id="tblGastos" layoutX="933.0" layoutY="124.0" prefHeight="182.0" prefWidth="344.0">
         <columns>
-          <TableColumn fx:id="colDetalle" prefWidth="109.0" text="DETALLE" />
-          <TableColumn fx:id="colFechaGasto" prefWidth="109.0" text="FECHA" />
-            <TableColumn fx:id="colCantidad" prefWidth="124.0" text="MONTO" />
+          <TableColumn fx:id="colDetalle" prefWidth="163.0" text="DETALLE" />
+          <TableColumn fx:id="colFechaGasto" prefWidth="86.0" text="FECHA" />
+            <TableColumn fx:id="colCantidad" prefWidth="93.0" text="MONTO" />
         </columns>
       </TableView>
       <Label layoutX="933.0" layoutY="94.0" text="GASTOS DEL DIA" />
+      <TableView fx:id="tblIngresos" layoutX="933.0" layoutY="336.0" prefHeight="182.0" prefWidth="344.0">
+         <columns>
+            <TableColumn fx:id="colDetalleIng" prefWidth="165.0" text="DETALLE" />
+            <TableColumn fx:id="colFechaIng" prefWidth="85.0" text="FECHA" />
+            <TableColumn fx:id="colCantidadIng" prefWidth="92.0" text="MONTO" />
+         </columns>
+      </TableView>
+      <Label layoutX="933.0" layoutY="306.0" text="INGRESOS DEL DIA" />
    </children>
 </AnchorPane>
