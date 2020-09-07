@@ -3,13 +3,10 @@ package ConexionBD;
 
 import java.sql.SQLException;
 import java.time.LocalDate;
-import java.time.ZoneId;
-import java.util.Date;
 import java.util.Objects;
 
 import Egresos.Egreso;
 import Gastos.Gasto;
-import Gastos.GastosProductos;
 import ModeloInversion.IngresoDiario;
 import ModeloInversion.Inversion;
 import ModelosClientes.Cliente;
@@ -110,8 +107,13 @@ public class InsertarDatos extends ConexionBd{
 				+ "venta_horario_envio,"
 				+ "venta_fecha_entrega,"
 				+ "venta_tipo_de_pago,"
-				+ "venta_observacion)"
-				+ "values('"+unaVenta.getCliente().getDni()+"','"+unaVenta.getFecha()+"','"+unaVenta.getPrecioTotal()+"','"+unaVenta.getGanancia()+"','"+unaVenta.getEnvioPrecio()+"','"+estado+"','"+unaVenta.getHorario()+"','"+unaVenta.getFechaEntrega()+"','"+unaVenta.getTipoDePago()+"','"+unaVenta.getObservacion()+"')";
+				+ "venta_observacion,"	
+				+ "venta_envio_calle)"
+				+ "venta_envio_numero)"
+				+ "venta_envio_dpto)"
+				+ "venta_envio_barrio)"
+				+ "values('"+unaVenta.getCliente().getDni()+"','"+unaVenta.getFecha()+"','"+unaVenta.getPrecioTotal()+"','"+unaVenta.getGanancia()+"','"+unaVenta.getEnvioPrecio()+"','"+estado+"','"+unaVenta.getHorario()+"','"+unaVenta.getFechaEntrega()+"','"+unaVenta.getTipoDePago()
+				+"','"+unaVenta.getObservacion()+"','"+unaVenta.getUnEnvio().getDireccion().getCalle()+"','"+unaVenta.getUnEnvio().getDireccion().getNumero()+"','"+unaVenta.getUnEnvio().getDireccion().getDpto()+"','"+unaVenta.getUnEnvio().getDireccion().getBarrio()+"')";
 		ejecutarUpdate(sql, "Venta ingresada");
 		cerrarConexion();
 

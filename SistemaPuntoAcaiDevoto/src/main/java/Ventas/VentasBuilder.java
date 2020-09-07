@@ -64,12 +64,5 @@ public class VentasBuilder {
 	public Envio getEnvio() {
 		return unEnvio;
 	}
-	
-	
 
-	
-	
-	
-	
-	
 }

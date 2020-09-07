@@ -37,6 +37,26 @@ public class ModificarDatos extends ConexionBd {
 	}
 	//---------------------------
 	
+	public void agregarCalleEnvio() {
+		String sql = "ALTER TABLE Venta ADD venta_envio_calle varchar(255)";
+		ejecutarUpdate(sql, "Columna envio venta agregada");
+	}
+	
+	public void agregarNumeroEnvio() {
+		String sql = "ALTER TABLE Venta ADD venta_envio_numero INTEGER(10)";
+		ejecutarUpdate(sql, "Columna envio venta agregada");
+	}
+	
+	public void agregarDptoEnvio() {
+		String sql = "ALTER TABLE Venta ADD venta_envio_dpto varchar(40)";
+		ejecutarUpdate(sql, "Columna envio venta agregada");
+	}
+	
+	public void agregarBarrioEnvio() {
+		String sql = "ALTER TABLE Venta ADD venta_envio_barrio varchar(255)";
+		ejecutarUpdate(sql, "Columna envio venta agregada");
+	}
+	
 	public void agregarDpto() {
 		String sql = "ALTER TABLE Cliente ADD dire_dpto varchar(30)";
 		ejecutarUpdate(sql, "Columna clie_dpto agregada");

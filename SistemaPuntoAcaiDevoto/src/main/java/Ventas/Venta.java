@@ -7,6 +7,7 @@ import java.util.List;
 import ConexionBD.InsertarDatos;
 import ConexionBD.ModificarDatos;
 import ModelosClientes.Cliente;
+import ModelosClientes.Direccion;
 
 public class Venta {
 		
@@ -21,6 +22,7 @@ public class Venta {
 	private double precioModificado=0;
 	private Envio unEnvio = null;
 	private String tipoDePago;
+	
 
 	public Venta(Cliente cliente, LocalDate fecha, List<Item> items, String tipoDePago) {
 		super();
@@ -167,7 +169,7 @@ public class Venta {
 	}
 	
 	public String getDireccionCliente() {
-		return cliente.getDireccionCompleta();
+		return unEnvio.getDireccion().getDireccionCompleta();
 	}
 	
 	public void cancelarVenta() throws SQLException 
@@ -194,9 +196,6 @@ public class Venta {
 		}
 	}
 	
-
-	
-
 	public void setVentaId(int ventaId) {
 		this.venta_id=ventaId;
 	}

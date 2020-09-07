@@ -1,38 +1,20 @@
 package application;
 
 
-import java.io.FileInputStream;
+
 import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.RandomAccessFile;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
-import javax.print.Doc;
-import javax.print.DocFlavor;
-import javax.print.DocPrintJob;
-import javax.print.PrintException;
-import javax.print.PrintService;
-import javax.print.PrintServiceLookup;
-import javax.print.SimpleDoc;
-import javax.print.attribute.HashPrintRequestAttributeSet;
-import javax.print.attribute.PrintRequestAttributeSet;
-import javax.swing.JFrame;
-import javax.swing.JOptionPane;
-
 import com.itextpdf.text.DocumentException;
 
 import Alertas.Alerta;
 import Alertas.Validaciones;
 import ConexionBD.ObtenerDatos;
-import ConexionBD.PruebaInsertarMostrarHibernate;
 import ConexionBD.Querys;
-import ManejoArchivos.ConfigurarImpresora;
-import ManejoArchivos.Ticket;
 import ModelosClientes.Cliente;
 import Productos.Producto;
 import Ventas.Item;
@@ -203,6 +185,7 @@ public class NuevaVentaController implements Initializable {
 			stage.setResizable(false);
 			stage.setTitle("Nuevo Cliente");
 			stage.showAndWait();
+			
 			if(Objects.isNull(controller.getEnvio())) {
 				costoEnvio=0.0;
 				lblCostoEnvio.setText("Envio: "+costoEnvio+" $");
