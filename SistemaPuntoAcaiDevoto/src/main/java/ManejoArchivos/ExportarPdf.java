@@ -111,7 +111,7 @@ public class ExportarPdf {
 				.getInstance("acai.jpeg");
 		image1.scaleAbsolute(50,50);
 		table2.addCell(image1);
-		table2.addCell(getCell("\n"+"Gallardo 6600, Versalles, CABA" + "\n" +
+		table2.addCell(getCell("\n"+"Arregui 6600, Versalles, CABA" + "\n" +
 		"Tel: 11 3165-8780" + "\n"+ "maracaibocaba@gmail.com" + "\n\n\n"+ 
 		"\n\n\n\n\n" +"IVA RESPONSABLE INSCRIPTO", PdfPCell.ALIGN_LEFT));
 		
