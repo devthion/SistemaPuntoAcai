@@ -1,17 +1,9 @@
 package application;
 
-import java.io.IOException;
 import java.sql.SQLException;
-import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Optional;
 
 import Alertas.Alerta;
-import ConexionBD.ObtenerDatos;
-import ManejoArchivos.ExportarExcel;
-import Ventas.CajaCerrada;
-import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -31,6 +23,9 @@ public class MenuPrincipalControler {
     
     @FXML
     private Button btnVerVentas;
+    
+    @FXML
+    private Button btnAjustes;
 
     @FXML
     private Button btnNuevaVenta;
@@ -246,5 +241,10 @@ public class MenuPrincipalControler {
 		}
     	Stage stage = (Stage) btnCostos.getScene().getWindow();
     	stage.close();
+    }
+    
+    @FXML
+    void onAjustesClick(ActionEvent event) {
+
     }
 }

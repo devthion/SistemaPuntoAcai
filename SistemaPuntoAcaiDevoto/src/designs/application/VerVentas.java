@@ -57,6 +57,9 @@ public class VerVentas implements Initializable {
 
     @FXML
     private TableView<Venta> tblVentas;
+    
+    @FXML
+    private Button btnImprimirTicket;
 
     @FXML
     private TableColumn<Venta, String> colCliente;
@@ -188,6 +191,12 @@ public class VerVentas implements Initializable {
 	        ticket.obtenerTicketVenta(venta);
 			new Alerta().informationAlert("El Ticket ha sido impreso y exportado a la carpeta de Tickets", "Generar Ticket");
 		}
+    }
+    
+
+    @FXML
+    void onImprimirTicketClick(ActionEvent event) {
+
     }
 
 }
