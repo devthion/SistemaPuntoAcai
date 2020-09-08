@@ -65,12 +65,11 @@ public class Ticket {
     	
     	String precioTotalString = String.format(formatoListaItemString, "Total:", String.valueOf(unaVenta.getVenta_precioTotal()));
     	
-    	String formatoPie ="%-8s %-20s %-8s";
-    	String pie = String.format(formatoPie, "", "Documento no valido como factura","");
+    	
     	
     	String formatStr = "%-8s %-20s%n";
     	String format2Str = "%-20s %n";
-    	String DireccionEmpresa = String.format(format2Str,"Gallardo 6600, Versalles, CABA");
+    	String DireccionEmpresa = String.format(format2Str,"Arregui 6600, Versalles, CABA");
     	String TelEmpresa = String.format(format2Str,"Tel: 11 3165-8780");
     	String MailEmpresa = String.format(format2Str,"maracaibocaba@gmail.com");
     	
@@ -93,8 +92,7 @@ public class Ticket {
     	
     	String ticket = titulo+"\n"+DireccionEmpresa+TelEmpresa+MailEmpresa+"\n\n"+separador+ cliente +clienteTel
     			+ direccionString + observacionString + separador + listadoItems 
-    			+ separador + costoEnvioString + precioTotalString +"\n"+ tipoDePagoString + separador
-    			+"\n\n\n" + pie ;
+    			+ separador + costoEnvioString + precioTotalString +"\n"+ tipoDePagoString ;
     	
     	byte[] buff = ticket.getBytes();
     	
