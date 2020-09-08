@@ -23,5 +23,11 @@
       <Label layoutX="593.0" layoutY="30.0" text="PRODUCTOS" />
       <Button fx:id="btnVolver" layoutX="1152.0" layoutY="587.0" mnemonicParsing="false" onAction="#onVolverClick" prefHeight="49.0" prefWidth="134.0" text="VOLVER" />
       <Separator layoutX="151.0" layoutY="71.0" prefWidth="1000.0" />
+      <MenuButton layoutX="1156.0" layoutY="118.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="127.0" text="Filtrar">
+        <items>
+          <MenuItem fx:id="btnSoloRegalosClick" mnemonicParsing="false" onAction="#onSinRegalosClick" text="SIN REGALOS" />
+          <MenuItem fx:id="btnTodosClick" mnemonicParsing="false" onAction="#onTodosClick" text="TODOS" />
+        </items>
+      </MenuButton>
    </children>
 </AnchorPane>

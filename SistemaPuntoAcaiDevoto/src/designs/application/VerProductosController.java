@@ -15,6 +15,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -26,6 +27,12 @@ public class VerProductosController implements Initializable {
 
     @FXML
     private Button btnActualizarStock;
+    
+    @FXML
+    private MenuItem btnTodosClick;
+    
+    @FXML
+    private MenuItem btnSoloRegalosClick;
 
     @FXML
     private Button btnAgregarNuevoProducto;
@@ -190,8 +197,9 @@ public class VerProductosController implements Initializable {
 			e.printStackTrace();
 		}
 		
-		
-		this.tblProductos.setItems(productos);
+    	ObservableList<Producto> productosSinRegalos = FXCollections.observableArrayList();
+    	productosSinRegalos = productos.filtered(unProducto -> !unProducto.getNombre().contains("regalo"));
+		this.tblProductos.setItems(productosSinRegalos);
 		
 		this.colNombre.setCellValueFactory(new PropertyValueFactory<Producto, String>("nombreProducto"));
 		this.colCosto.setCellValueFactory(new PropertyValueFactory<Producto, Double>("costo"));
@@ -201,5 +209,17 @@ public class VerProductosController implements Initializable {
 		this.colStock.setCellValueFactory(new PropertyValueFactory<Producto, Integer>("stock"));
 		
 	}
+	
+    @FXML
+    void onSinRegalosClick(ActionEvent event) {
+    	ObservableList<Producto> productosSinRegalos = FXCollections.observableArrayList();
+    	productosSinRegalos = productos.filtered(unProducto -> !unProducto.getNombre().contains("regalo"));
+    	this.tblProductos.setItems(productosSinRegalos);
+    }
+
+    @FXML
+    void onTodosClick(ActionEvent event) {
+    	this.tblProductos.setItems(productos);
+    }
 
 }
