@@ -124,7 +124,7 @@ public class Administrador {
 			new ModificarDatos().agregarDptoEnvio();
 			new ModificarDatos().agregarBarrioEnvio();
 			new ModificarDatos().cambiarNumeroTelefonico();
-			new Alerta().informationAlert("Deuda Agrega e inicializada", "EXITO!");
+			new Alerta().informationAlert("Cambios en BD", "EXITO!");
 		} catch (Exception e) {
 			// TODO: handle exception
 			System.out.println("ERROR");
