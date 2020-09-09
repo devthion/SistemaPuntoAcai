@@ -114,14 +114,14 @@ public class Venta {
 	}
 	
 	public String getClienteContacto() {
-		if(Integer.toString(this.cliente.getTelefono()).isEmpty()) {
+		if(Long.toString(this.cliente.getTelefono()).isEmpty()) {
 			if(this.cliente.getEmail().isEmpty()) {
 				return "sin contacto";
 			}else {
 				return this.cliente.getEmail();
 			}
 		}else {
-			return Integer.toString(this.cliente.getTelefono());
+			return Long.toString(this.cliente.getTelefono());
 		}
 		
 	}

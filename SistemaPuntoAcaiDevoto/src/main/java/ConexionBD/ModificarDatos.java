@@ -78,7 +78,7 @@ public class ModificarDatos extends ConexionBd {
 	}
 	
 	public void cambiarNumeroTelefonico() {
-		String sql = "ALTER TABLE CLIENTE ALTER COLUMN clie_telefono DOUBLE(15) ";
+		String sql = "ALTER TABLE CLIENTE ALTER COLUMN clie_telefono BIGINT(11) ";
 		ejecutarUpdate(sql, "El telefono de la tabla ha sido modificada.");
 	}
 	

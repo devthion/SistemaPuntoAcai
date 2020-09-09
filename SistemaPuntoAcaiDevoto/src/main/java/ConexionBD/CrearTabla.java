@@ -212,7 +212,7 @@ public class CrearTabla {
 				+"clie_nombre VARCHAR(40),"
 				+"clie_apellido VARCHAR(40),"
 				+"clie_dni INTEGER(10) NOT NULL,"
-				+"clie_telefono INTEGER(10),"
+				+"clie_telefono BIGINT(11),"
 				+"clie_email VARCHAR(40),"
 				+"dire_codPostal INTEGER(5),"
 				+"dire_barrio VARCHAR(40),"

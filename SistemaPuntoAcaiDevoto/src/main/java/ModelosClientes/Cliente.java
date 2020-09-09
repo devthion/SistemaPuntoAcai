@@ -12,7 +12,7 @@ public class Cliente {
 	private int dni;
 	private String nombre;
 	private String apellido;
-	private int telefono;
+	private long telefono;
 	private String email;
 	private Direccion direccion;
 	private String tipo;
@@ -20,7 +20,7 @@ public class Cliente {
 	private String rubro;
 	private double deuda;
 
-	public Cliente(int dni, String nombre, String apellido, int telefono, String email, Direccion direccion, String tipo, String comoLlego, String rubro, Double deuda) {
+	public Cliente(int dni, String nombre, String apellido, long telefono, String email, Direccion direccion, String tipo, String comoLlego, String rubro, Double deuda) {
 		this.dni = dni;
 		this.nombre = nombre;
 		this.apellido = apellido;
@@ -130,11 +130,11 @@ public class Cliente {
 		this.apellido = apellio;
 	}
 
-	public int getTelefono() {
+	public long getTelefono() {
 		return telefono;
 	}
 
-	public void setTelefono(int telefono) {
+	public void setTelefono(long telefono) {
 		this.telefono = telefono;
 	}
 

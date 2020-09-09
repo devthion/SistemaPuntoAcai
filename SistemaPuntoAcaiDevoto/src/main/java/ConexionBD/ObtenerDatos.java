@@ -212,7 +212,7 @@ public class ObtenerDatos extends ConexionBd{
 		while(rs.next()) {
 			Direccion unaDireccion= new Direccion(rs.getString(10),rs.getInt(9),rs.getString("dire_dpto"),rs.getString("dire_barrio"));
 			unaDireccion.setDpto(rs.getString("dire_dpto"));
-			Cliente unCliente = new Cliente(rs.getInt(4),rs.getString(2),rs.getString(3),rs.getInt(5),rs.getString(6),unaDireccion,rs.getString(1),rs.getString(11), rs.getString(12), rs.getDouble("clie_deuda"));
+			Cliente unCliente = new Cliente(rs.getInt(4),rs.getString(2),rs.getString(3),rs.getLong(5),rs.getString(6),unaDireccion,rs.getString(1),rs.getString(11), rs.getString(12), rs.getDouble("clie_deuda"));
 			clientes.add(unCliente);
 		}
 		
