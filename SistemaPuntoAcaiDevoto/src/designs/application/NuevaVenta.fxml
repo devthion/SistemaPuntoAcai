@@ -25,7 +25,7 @@
          <columns>
             <TableColumn fx:id="colClieNombre" prefWidth="108.0" text="NOMBRE" />
             <TableColumn fx:id="colClieApellido" prefWidth="110.0" text="APELLIDO" />
-            <TableColumn fx:id="colClieDni" prefWidth="127.0" text="DNI" />
+            <TableColumn fx:id="colClieDeuda" prefWidth="127.0" text="DEUDA" />
             <TableColumn fx:id="colClieDireccion" prefWidth="234.0" text="DIRECCION" />
          </columns>
       </TableView>

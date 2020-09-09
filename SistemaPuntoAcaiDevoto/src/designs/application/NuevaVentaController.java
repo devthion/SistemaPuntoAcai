@@ -84,7 +84,7 @@ public class NuevaVentaController implements Initializable {
     private TableColumn<Item, Integer> colProdVentaCantidad;
 
     @FXML
-    private TableColumn<Cliente, Integer> colClieDni;
+    private TableColumn<Cliente, Double> colClieDeuda;
 
     @FXML
     private TableColumn<Producto, Integer> colProdKilos;
@@ -288,6 +288,7 @@ public class NuevaVentaController implements Initializable {
     					Optional<ButtonType> action =  new Alerta().preguntaConfirmacion("Desea confirmar la venta para "+cliente.getNombre()+" ?", "Confirmación");
     					if (action.get() == ButtonType.OK) {
     						ventaBorrador.setTipoDePago(menuTipoPago.getText().toString());
+    						ventaBorrador.getEnvio().setDireccion(cliente.getDireccion());
     						agregarItems(itemsAVender);
     						ventaBorrador.setCliente(cliente);
     						Venta nuevaVenta = ventaBorrador.crearVenta();
@@ -392,7 +393,7 @@ public class NuevaVentaController implements Initializable {
 		this.tblClientes.setItems(clientes);
 		this.colClieNombre.setCellValueFactory(new PropertyValueFactory<Cliente, String>("nombre"));
 		this.colClieApellido.setCellValueFactory(new PropertyValueFactory<Cliente, String>("apellido"));
-		this.colClieDni.setCellValueFactory(new PropertyValueFactory<Cliente, Integer>("dni"));
+		this.colClieDeuda.setCellValueFactory(new PropertyValueFactory<Cliente, Double>("deuda"));
 		this.colClieDireccion.setCellValueFactory(new PropertyValueFactory<Cliente, String>("direccionCompleta"));
 		
 		this.colProdVentaNombre.setCellValueFactory(new PropertyValueFactory<Item, String>("nombreProducto"));
