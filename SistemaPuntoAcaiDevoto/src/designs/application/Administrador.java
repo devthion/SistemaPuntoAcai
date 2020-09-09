@@ -123,6 +123,7 @@ public class Administrador {
 			new ModificarDatos().agregarNumeroEnvio();
 			new ModificarDatos().agregarDptoEnvio();
 			new ModificarDatos().agregarBarrioEnvio();
+			new ModificarDatos().cambiarNumeroTelefonico();
 			new Alerta().informationAlert("Deuda Agrega e inicializada", "EXITO!");
 		} catch (Exception e) {
 			// TODO: handle exception

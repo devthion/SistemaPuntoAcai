@@ -77,6 +77,11 @@ public class ModificarDatos extends ConexionBd {
 		ejecutarUpdate(sql, "Columna venta_tipo_de_pago agregada");
 	}
 	
+	public void cambiarNumeroTelefonico() {
+		String sql = "ALTER TABLE CLIENTE ALTER COLUMN clie_telefono DOUBLE(15) ";
+		ejecutarUpdate(sql, "El telefono de la tabla ha sido modificada.");
+	}
+	
 	
 	public void eliminarCajaCerrada(LocalDate unaFecha) {
 		String sql= "DELETE FROM CAJACERRADA "
