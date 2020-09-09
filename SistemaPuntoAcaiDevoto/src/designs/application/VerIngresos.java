@@ -38,6 +38,9 @@ public class VerIngresos implements Initializable {
     private Label lblIdealDia;
 
     @FXML
+    private Label lblDineroEnMano;
+
+    @FXML
     private Label lblRealDia;
 
     @FXML
@@ -146,6 +149,8 @@ public class VerIngresos implements Initializable {
     	
     	lblGananciaGeneral.setText(" "+ (Double.parseDouble(lblMercaderia.getText()) - Double.parseDouble(lblGastos.getText())
     			- ventasCostoDouble));
+    	
+    	//Cierres de caja - mercadería - gastos + inversiones + propinas
     
 		
     }

@@ -96,6 +96,8 @@ public class InsertarDatos extends ConexionBd{
 		}else {
 			estado = false;
 		}
+		System.out.println(unaVenta.getTipoDePago());
+		System.out.println(unaVenta.getUnEnvio().getPrecio());
 		
 		String sql = "INSERT INTO VENTA"
 				+ "(venta_cliente,"

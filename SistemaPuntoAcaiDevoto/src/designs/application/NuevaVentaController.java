@@ -5,6 +5,7 @@ package application;
 import java.io.FileNotFoundException;
 import java.net.URL;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.ResourceBundle;
@@ -16,7 +17,9 @@ import Alertas.Validaciones;
 import ConexionBD.ObtenerDatos;
 import ConexionBD.Querys;
 import ModelosClientes.Cliente;
+import ModelosClientes.Direccion;
 import Productos.Producto;
+import Ventas.Envio;
 import Ventas.Item;
 import Ventas.Venta;
 import Ventas.VentasBuilder;
@@ -194,6 +197,7 @@ public class NuevaVentaController implements Initializable {
 				if(Objects.isNull(controller.getEnvio())) {
 					costoEnvio=0.0;
 					lblCostoEnvio.setText("Envio: "+costoEnvio+" $");
+					ventaBorrador.getEnvio().setDireccion(cliente.getDireccion());
 				}else {
 					ventaBorrador.setEnvio(controller.getEnvio());
 					lblCostoEnvio.setText("Envio: "+ventaBorrador.getEnvio().getPrecio()+" $");
@@ -283,7 +287,6 @@ public class NuevaVentaController implements Initializable {
     					new Alerta().informationAlert("El precio de la venta es de "+(costoEnvio+Double.parseDouble(txtPrecioTotal.getText()))+" $",  "Precio Final");
     					Optional<ButtonType> action =  new Alerta().preguntaConfirmacion("Desea confirmar la venta para "+cliente.getNombre()+" ?", "Confirmación");
     					if (action.get() == ButtonType.OK) {
-    						cliente.agregarDeuda(Double.parseDouble(txtDeuda.getText().toString()));
     						ventaBorrador.setTipoDePago(menuTipoPago.getText().toString());
     						agregarItems(itemsAVender);
     						ventaBorrador.setCliente(cliente);
@@ -304,6 +307,7 @@ public class NuevaVentaController implements Initializable {
 
     						try {
     							nuevaVenta.almacenarVenta();
+    							cliente.agregarDeuda(Double.parseDouble(txtDeuda.getText().toString()));
     						} catch (SQLException e1) {
     							e1.printStackTrace();
     						}
@@ -407,6 +411,8 @@ public class NuevaVentaController implements Initializable {
     	        return name.contains(text.toLowerCase());
     	    });
     	});
+    	//cambia estoo.
+    	ventaBorrador.setEnvio(new Envio("", 0.0, LocalDate.now(), "", new Direccion("", 0, "", "")));
 		
 		
 	}

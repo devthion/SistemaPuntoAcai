@@ -33,10 +33,12 @@
       <Label layoutX="708.0" layoutY="325.0" text="GASTOS GRLES:" />
       <Label layoutX="726.0" layoutY="247.0" text="INGRESO GENERAL" />
       <Label layoutX="708.0" layoutY="292.0" text="MERCADERIA:" />
-      <Label fx:id="lblGastos" layoutX="852.0" layoutY="325.0" prefHeight="30.0" prefWidth="119.0" />
-      <Label fx:id="lblMercaderia" layoutX="852.0" layoutY="292.0" prefHeight="30.0" prefWidth="119.0" />
+      <Label fx:id="lblGastos" layoutX="866.0" layoutY="325.0" prefHeight="30.0" prefWidth="119.0" />
+      <Label fx:id="lblMercaderia" layoutX="866.0" layoutY="292.0" prefHeight="30.0" prefWidth="119.0" />
       <Separator layoutX="711.0" layoutY="279.0" prefWidth="200.0" />
-      <Label layoutX="708.0" layoutY="366.0" text="GANANCIA:" />
-      <Label fx:id="lblGananciaGeneral" layoutX="885.0" layoutY="366.0" prefHeight="30.0" prefWidth="119.0" />
+      <Label layoutX="708.0" layoutY="372.0" text="GANANCIA:" />
+      <Label fx:id="lblGananciaGeneral" layoutX="866.0" layoutY="366.0" prefHeight="30.0" prefWidth="119.0" />
+      <Label layoutX="708.0" layoutY="414.0" text="DINERO EN MANO:" />
+      <Label fx:id="lblDineroEnMano" layoutX="911.0" layoutY="414.0" prefHeight="30.0" prefWidth="124.0" />
    </children>
 </AnchorPane>
