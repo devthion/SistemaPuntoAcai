@@ -10,9 +10,12 @@ import java.util.ResourceBundle;
 import Alertas.Alerta;
 import Alertas.Validaciones;
 import ConexionBD.ObtenerDatos;
+import Egresos.Egreso;
 import Gastos.GastosDiarios;
 import Gastos.GastosGenerales;
+import Gastos.GastosProductos;
 import ModeloInversion.Inversion;
+import Propina.Propina;
 import Ventas.CajaCerrada;
 import Ventas.Venta;
 import javafx.collections.FXCollections;
@@ -63,12 +66,15 @@ public class VerIngresos implements Initializable {
     
     @FXML
     private Label lblGananciaGeneral;
-   
 
     @FXML
     private Label lblGastos;
     
     private List<CajaCerrada> cajas = new ArrayList<>();
+    private List<GastosProductos> mercaderia = new ArrayList<>();
+    private List<Propina> propinas = new ArrayList<>();
+    private List<Egreso> egresos = new ArrayList<>();
+    private List<Inversion> inversiones = new ArrayList<>();
     private ObservableList<Venta> ventas;
     private ObservableList<Venta> ventasPorDia;
     private ObservableList<GastosGenerales> gastos;
@@ -111,6 +117,10 @@ public class VerIngresos implements Initializable {
     public void mostrarIngresos() throws SQLException {
 		ObtenerDatos obtenerDatos = new ObtenerDatos();
 		cajas = obtenerDatos.obtenerCajasCerradas();
+		mercaderia = obtenerDatos.obtenerGastosProductos();
+		inversiones = obtenerDatos.obtenerInversiones();
+		egresos = obtenerDatos.obtenerEgresos();
+		
     	
     	int dia=Integer.parseInt(txtDia.getText());
     	int mes=Integer.parseInt(txtMes.getText());
@@ -145,12 +155,19 @@ public class VerIngresos implements Initializable {
     	
     	Double ventasCostoDouble = ventas.stream().mapToDouble(unaVenta -> 
     	unaVenta.getVenta_precioTotal() - unaVenta.getVenta_ganancia()).sum();
+    	Double egresosTotales = egresos.stream().mapToDouble(unEgreso -> unEgreso.getMonto()).sum();
     		
     	
     	lblGananciaGeneral.setText(" "+ (Double.parseDouble(lblMercaderia.getText()) - Double.parseDouble(lblGastos.getText())
-    			- ventasCostoDouble));
+    			- ventasCostoDouble - egresosTotales));
     	
     	//Cierres de caja - mercadería - gastos + inversiones + propinas
+    	Double mercaderiaTotal = mercaderia.stream().mapToDouble(unaMercaderia -> unaMercaderia.getMonto()).sum();
+    	Double inversionesTotales = inversiones.stream().mapToDouble(unaInversion -> unaInversion.getMonto()).sum();
+    	Double propinasTotales = propinas.stream().mapToDouble(unaPropina -> unaPropina.getMonto()).sum();
+    	
+    	lblDineroEnMano.setText(" "+ (Double.parseDouble(lblMercaderia.getText()) - Double.parseDouble(lblGastos.getText())
+    			- mercaderiaTotal + inversionesTotales + propinasTotales - egresosTotales));
     
 		
     }
