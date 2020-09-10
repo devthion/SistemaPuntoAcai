@@ -375,8 +375,12 @@ public class NuevaVentaController implements Initializable {
 		} catch (SQLException e) {
 			
 			e.printStackTrace();
-		}	
-		this.tblProductos.setItems(productos);	
+		}
+		
+    	ObservableList<Producto> productosSinRegalos = FXCollections.observableArrayList();
+    	productosSinRegalos = productos.filtered(unProducto -> !unProducto.getNombre().contains("regalo"));
+		this.tblProductos.setItems(productosSinRegalos);
+		
 		this.colProdNombre.setCellValueFactory(new PropertyValueFactory<Producto, String>("nombreProducto"));
 		this.colProdKilos.setCellValueFactory(new PropertyValueFactory<Producto, Integer>("precioUnitario"));
 		this.colProdStock.setCellValueFactory(new PropertyValueFactory<Producto, Integer>("stock"));
@@ -445,6 +449,18 @@ public class NuevaVentaController implements Initializable {
     @FXML
     void onMercadoPagoClick(ActionEvent event) {
     	menuTipoPago.setText("Mercado Pago");
+    }
+    
+    @FXML
+    void onSinRegaloClick(ActionEvent event) {
+    	ObservableList<Producto> productosSinRegalos = FXCollections.observableArrayList();
+    	productosSinRegalos = productos.filtered(unProducto -> !unProducto.getNombre().contains("regalo"));
+    	this.tblProductos.setItems(productosSinRegalos);
+    }
+
+    @FXML
+    void onTodosClick(ActionEvent event) {
+    	this.tblProductos.setItems(productos);
     }
 
 
