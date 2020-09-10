@@ -38,10 +38,13 @@ public class ConfigurarImpresora {
 		      	  if (i < 0) {
 		      	    return;
 		      	  }
-		      	  if(obtenerDatos.obtenerDispositivo(1)==0){//le paso el valor de dispositivo que quiero (1=impresora)
+		      	  //System.out.println(obtenerDatos.obtenerDispositivo(1));
+		      	  if(obtenerDatos.obtenerDispositivo(1)==-1){//le paso el valor de dispositivo que quiero (1=impresora)
 		      		insertarDatos.insertarDispositivo(1, i);
+		      		System.out.println("SE INSERTO EL DISPOSITIVO" + i);
 		      	  }else {
 		      		insertarDatos.actualizarDispositivo(1, i);
+		      		System.out.println("SE ACTUALIZO EL DISPOSITIVO" + i);
 		      	  }
 		      	  //aca me gustaria que haya una query de sql que en caso de clave duplicada, actualice el valor. Pero por ahora	
 		      	  //no me quedo otra que hacer ese if que devuelve 0 si traigo un valor de dispositivo con un id que no existe

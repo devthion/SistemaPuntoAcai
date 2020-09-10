@@ -50,13 +50,13 @@ public class ObtenerDatos extends ConexionBd{
 	public int obtenerDispositivo(int id) throws SQLException{	
 		ResultSet rs;
 		Statement unStmt = null;
-		int dispositivo = 0;
+		int dispositivo = -1;
 		
 		sql="SELECT dispositivo_valor FROM DISPOSITIVO WHERE dispositivo_id = "+id+"";
 		rs=ejecutarQuery(sql, unStmt);
 		while(rs.next()) {
 			dispositivo = rs.getInt(1);
-	
+			
 		}
 		return dispositivo;
 		
