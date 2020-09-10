@@ -153,7 +153,7 @@ public class AgregarCliente {
     	int numero = Integer.parseInt(txtNumero.getText());
     	String calle = this.txtCalle.getText().toLowerCase();
     	String barrio = this.txtBarrio.getText().toLowerCase();
-    	int telefono=Integer.parseInt(txtTelefono.getText());
+    	long telefono=Long.parseLong(txtTelefono.getText());
     	String tipo = slipTipoCliente.getText().toLowerCase();
     	String rubro = txtRubro.getText().toLowerCase();
     	

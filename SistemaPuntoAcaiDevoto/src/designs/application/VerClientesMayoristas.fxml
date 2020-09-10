@@ -32,5 +32,6 @@
          </columns>
       </TableView>
       <TextField fx:id="txtNombreABuscar" alignment="CENTER" layoutX="481.0" layoutY="468.0" prefHeight="49.0" prefWidth="340.0" promptText="NOMBRE A BUSCAR" />
+      <Label fx:id="lblCantidadClientes" layoutX="92.0" layoutY="478.0" prefHeight="30.0" prefWidth="363.0" text="Label" />
    </children>
 </AnchorPane>
