@@ -17,6 +17,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -31,6 +32,9 @@ public class VerClientesMayoristas implements Initializable {
     
     @FXML
     private TableColumn<Cliente, Double> colDeuda;
+    
+    @FXML
+    private Label lblCantidadClientes;
 
     @FXML
     private TableColumn<Cliente, Integer> colNumero;
@@ -165,6 +169,10 @@ public class VerClientesMayoristas implements Initializable {
     	        return name.contains(text.toLowerCase());
     	    });
     	});
+    	
+    	int cantidad = clientes.size();
+    	System.out.println(cantidad);
+    	lblCantidadClientes.setText("Cantidad de clientes Mayoristas : "+cantidad);
 	}
 }
 
