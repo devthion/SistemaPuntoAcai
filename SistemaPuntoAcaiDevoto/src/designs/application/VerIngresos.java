@@ -156,15 +156,14 @@ public class VerIngresos implements Initializable {
     	Double ventasCostoDouble = ventas.stream().mapToDouble(unaVenta -> 
     	unaVenta.getVenta_precioTotal() - unaVenta.getVenta_ganancia()).sum();
     	Double egresosTotales = egresos.stream().mapToDouble(unEgreso -> unEgreso.getMonto()).sum();
-    		
+    	Double propinasTotales = propinas.stream().mapToDouble(unaPropina -> unaPropina.getMonto()).sum();
     	
     	lblGananciaGeneral.setText(" "+ (Double.parseDouble(lblMercaderia.getText()) - Double.parseDouble(lblGastos.getText())
-    			- ventasCostoDouble - egresosTotales));
+    			- ventasCostoDouble - egresosTotales + propinasTotales));
     	
     	//Cierres de caja - mercadería - gastos + inversiones + propinas
     	Double mercaderiaTotal = mercaderia.stream().mapToDouble(unaMercaderia -> unaMercaderia.getMonto()).sum();
     	Double inversionesTotales = inversiones.stream().mapToDouble(unaInversion -> unaInversion.getMonto()).sum();
-    	Double propinasTotales = propinas.stream().mapToDouble(unaPropina -> unaPropina.getMonto()).sum();
     	
     	lblDineroEnMano.setText(" "+ (Double.parseDouble(lblMercaderia.getText()) - Double.parseDouble(lblGastos.getText())
     			- mercaderiaTotal + inversionesTotales + propinasTotales - egresosTotales));
