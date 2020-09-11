@@ -410,7 +410,7 @@ public class ObtenerDatos extends ConexionBd{
 		while(rsUnCliente.next()) {
 			unaDireccion = new Direccion(rsUnCliente.getString("dire_calle"),rsUnCliente.getInt("dire_numero"),rsUnCliente.getString("dire_dpto"),rsUnCliente.getString("dire_barrio"));
 			unaDireccion.setDpto(rsUnCliente.getString("dire_dpto"));
-			unCliente = new Cliente(rsUnCliente.getInt(4),rsUnCliente.getString(2),rsUnCliente.getString(3),rsUnCliente.getInt(5),rsUnCliente.getString(6),unaDireccion,rsUnCliente.getString(1),rsUnCliente.getString(11), rsUnCliente.getString(12), rsUnCliente.getDouble("clie_deuda"));
+			unCliente = new Cliente(rsUnCliente.getInt(4),rsUnCliente.getString(2),rsUnCliente.getString(3),rsUnCliente.getLong(5),rsUnCliente.getString(6),unaDireccion,rsUnCliente.getString(1),rsUnCliente.getString(11), rsUnCliente.getString(12), rsUnCliente.getDouble("clie_deuda"));
 		}
 		return unCliente;
 	}
