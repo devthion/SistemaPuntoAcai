@@ -120,6 +120,7 @@ public class VerIngresos implements Initializable {
 		mercaderia = obtenerDatos.obtenerGastosProductos();
 		inversiones = obtenerDatos.obtenerInversiones();
 		egresos = obtenerDatos.obtenerEgresos();
+		propinas = obtenerDatos.obtenerPropinas();
 		
     	
     	int dia=Integer.parseInt(txtDia.getText());
