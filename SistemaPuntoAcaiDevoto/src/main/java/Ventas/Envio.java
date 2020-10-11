@@ -19,6 +19,12 @@ public class Envio {
 		this.observacion = observacion;
 		this.direccion = direccion;
 	}
+	
+
+	public void setPrecio(double precio) {
+		this.precio = precio;
+	}
+
 
 	public Direccion getDireccion() {
 		return direccion;

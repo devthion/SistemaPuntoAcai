@@ -159,7 +159,7 @@ public class VerClientesConsumidoresFinales implements Initializable {
     	    filteredData.setPredicate(unCliente -> {
     	        if(text == null || text.isEmpty()) return true;
     	        
-    	        String name = unCliente.getNombre().toLowerCase();  
+    	        String name = unCliente.getApellido().toLowerCase();  
     	        return name.contains(text.toLowerCase());
     	    });
     	});

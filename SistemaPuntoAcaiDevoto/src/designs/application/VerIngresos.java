@@ -168,8 +168,6 @@ public class VerIngresos implements Initializable {
     	
     	lblDineroEnMano.setText(" "+ (Double.parseDouble(lblMercaderia.getText()) - Double.parseDouble(lblGastos.getText())
     			- mercaderiaTotal + inversionesTotales + propinasTotales - egresosTotales));
-    
-		
     }
     
     public List<TextField> generarListNumericos() {

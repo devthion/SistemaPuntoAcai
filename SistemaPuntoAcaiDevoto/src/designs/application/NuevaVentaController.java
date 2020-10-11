@@ -11,6 +11,7 @@ import java.util.Optional;
 import java.util.ResourceBundle;
 
 import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.pdf.PdfStructTreeController.returnType;
 
 import Alertas.Alerta;
 import Alertas.Validaciones;
@@ -49,6 +50,9 @@ public class NuevaVentaController implements Initializable {
     
     @FXML
     private MenuButton menuTipoPago;
+    
+    @FXML
+    private TextField txtDescuento;
     
     @FXML
     private TextField txtDeuda;
@@ -269,8 +273,8 @@ public class NuevaVentaController implements Initializable {
     void onRealizarVentaClick(ActionEvent event) throws FileNotFoundException, DocumentException {
     	Cliente cliente = this.tblClientes.getSelectionModel().getSelectedItem();
 
-    	if(Validaciones.validarCajaNumerica(txtPrecioTotal)) {
-    		new Alerta().errorAlert("El precio Total Venta ingresado no es un valor Correcto", "Error de Datos");
+    	if(Validaciones.validarCajaNumerica(txtPrecioTotal) || Validaciones.validarCajaNumerica(txtDescuento) ) {
+    		new Alerta().errorAlert("El precio Total Venta o el Descuento ingresado no es un valor Correcto", "Error de Datos");
     	}else {
     		if(cliente==null || itemsAVender.size() == 0) {
     			new Alerta().errorAlert("Debe seleccionar un cliente y minimo un producto", "Nueva Venta");
@@ -284,7 +288,7 @@ public class NuevaVentaController implements Initializable {
     				if(menuTipoPago.getText().equalsIgnoreCase("Tipo de Pago")) {
     					new Alerta().errorAlert("Debe seleccionar un tipo de Pago", "Nueva Venta");
     				}else {
-    					new Alerta().informationAlert("El precio de la venta es de "+(costoEnvio+Double.parseDouble(txtPrecioTotal.getText()))+" $",  "Precio Final");
+    					new Alerta().informationAlert("El precio de la venta es de "+(aplicarDescuento(costoEnvio+Double.parseDouble(txtPrecioTotal.getText())))+" $",  "Precio Final");
     					Optional<ButtonType> action =  new Alerta().preguntaConfirmacion("Desea confirmar la venta para "+cliente.getNombre()+" ?", "Confirmación");
     					if (action.get() == ButtonType.OK) {
     						ventaBorrador.setTipoDePago(menuTipoPago.getText().toString());
@@ -304,8 +308,8 @@ public class NuevaVentaController implements Initializable {
 
     						double precioModificado = Double.parseDouble(txtPrecioTotal.getText());
 
-    						nuevaVenta.setPrecioModificado(precioModificado);
-
+    						nuevaVenta.setPrecioModificado(aplicarDescuento(precioModificado));
+    						nuevaVenta.getUnEnvio().setPrecio(aplicarDescuento(nuevaVenta.getEnvioPrecio()));
     						try {
     							nuevaVenta.almacenarVenta();
     							cliente.agregarDeuda(Double.parseDouble(txtDeuda.getText().toString()));
@@ -338,6 +342,14 @@ public class NuevaVentaController implements Initializable {
     		}
     	}
 
+    }
+    
+    public Double aplicarDescuento(double valor) {
+    	if(txtDescuento.getText().isEmpty()) {
+    		return valor;
+    	}else {
+    		return valor - (Double.parseDouble(txtDescuento.getText()) * valor / 100);
+    	}
     }
 
     @FXML
@@ -412,7 +424,7 @@ public class NuevaVentaController implements Initializable {
     	    filteredData.setPredicate(unCliente -> {
     	        if(text == null || text.isEmpty()) return true;
     	        
-    	        String name = unCliente.getNombre().toLowerCase();  
+    	        String name = unCliente.getApellido().toLowerCase();  
     	        return name.contains(text.toLowerCase());
     	    });
     	});
