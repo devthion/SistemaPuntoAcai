@@ -104,5 +104,10 @@ public class Producto {
 		//TIENE QUE RETORNAR LA CONSULTA
 		return cantidadVendidos; //ESTO NO SE TIENE Q BORRAR??
 	}
+
+	public void actualizarNombre(String nombre2) {
+		// TODO Auto-generated method stub
+		
+	}
 	
 }

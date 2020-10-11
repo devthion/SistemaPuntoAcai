@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="300.0" prefWidth="700.0" stylesheets="@../Styles/Style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.EditarNombre">
+   <children>
+      <Label layoutX="275.0" layoutY="14.0" text="EDITAR NOMBRE" />
+      <Label fx:id="lblNombreProd" layoutX="92.0" layoutY="120.0" prefHeight="30.0" prefWidth="199.0" text="NOMBRE PRODUCTO" />
+      <Button fx:id="btnActualizar" layoutX="258.0" layoutY="199.0" mnemonicParsing="false" onAction="#onActualizarClick" text="ACTUALIZAR" />
+      <Separator layoutX="150.0" layoutY="61.0" prefWidth="400.0" />
+      <Button fx:id="btnVolver" layoutX="550.0" layoutY="237.0" mnemonicParsing="false" onAction="#onVolverClick" text="VOLVER" />
+      <TextField fx:id="txtNombre" layoutX="350.0" layoutY="119.0" prefHeight="33.0" prefWidth="284.0" />
+   </children>
+</AnchorPane>

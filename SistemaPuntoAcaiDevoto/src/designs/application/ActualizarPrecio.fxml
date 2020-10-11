@@ -15,7 +15,7 @@
       <Label layoutX="184.0" layoutY="77.0" text="PRECIO UNITARIO" />
       <Label layoutX="368.0" layoutY="77.0" text="PRECIO MAYOR" />
       <Separator layoutX="151.0" layoutY="61.0" prefWidth="400.0" />
-      <Button fx:id="btnActualizarPrecio" layoutX="258.0" layoutY="185.0" mnemonicParsing="false" onAction="#onActualizarPrecioClick" text="ACTUALIZAR" />
+      <Button fx:id="btnActualizarPrecio" layoutX="259.0" layoutY="185.0" mnemonicParsing="false" onAction="#onActualizarPrecioClick" text="ACTUALIZAR" />
       <Button fx:id="btnVolver" layoutX="551.0" layoutY="234.0" mnemonicParsing="false" onAction="#onVolverClick" text="VOLVER" />
       <TextField fx:id="txtCantMayor" layoutX="530.0" layoutY="107.0" prefHeight="33.0" prefWidth="155.0" AnchorPane.rightAnchor="15.0" />
       <Label layoutX="545.0" layoutY="78.0" text="CANT MAYOR" AnchorPane.rightAnchor="29.0" />

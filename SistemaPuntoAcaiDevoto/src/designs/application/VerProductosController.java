@@ -42,6 +42,9 @@ public class VerProductosController implements Initializable {
     
     @FXML
     private Button btnVolver;
+
+    @FXML
+    private Button btnEditarNombre;
     
     @FXML
     private TableView<Producto> tblProductos;
@@ -127,6 +130,41 @@ public class VerProductosController implements Initializable {
     		}
     	}
 
+    }
+    
+    @FXML
+    void onEditarNombreClick(ActionEvent event) {
+    	Producto producto = this.tblProductos.getSelectionModel().getSelectedItem();
+    	
+    	if(producto==null) {
+    		new Alerta().errorAlert("Debe seleccionar un Producto", "Editar Nombre");
+    	}else {
+    		try {
+    			FXMLLoader loader = new FXMLLoader(getClass().getResource("EditarProducto.fxml"));
+    			AnchorPane root = (AnchorPane) loader.load();
+    			
+    			EditarNombre controller = loader.getController();
+    			controller.setProductoActualizar(producto);
+    			
+    			Scene scene = new Scene(root,700,300);
+    			Stage stage = new Stage();
+    			stage.setScene(scene);
+    			stage.resizableProperty().setValue(Boolean.FALSE);
+    			stage.setResizable(false);
+    			stage.setTitle("Productos");
+    			stage.showAndWait();
+    			
+    			ObtenerDatos obtenerDatos = new ObtenerDatos();
+    			productos = FXCollections.observableArrayList();
+    			productos = obtenerDatos.obtenerProductos();
+    			
+    			this.tblProductos.setItems(productos);
+    			this.tblProductos.refresh();
+    			
+    		} catch(Exception e) {
+    			e.printStackTrace();
+    		}
+    	}
     }
     
     @FXML

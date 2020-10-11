@@ -17,9 +17,9 @@
             <TableColumn fx:id="colTotalVendidos" prefWidth="162.0" text="TOTAL VENDIDOS" />
         </columns>
       </TableView>
-      <Button fx:id="btnAgregarNuevoProducto" layoutX="101.0" layoutY="519.0" mnemonicParsing="false" onAction="#onAgregarNuevoProductoClick" prefHeight="49.0" prefWidth="293.0" text="AGREGAR PRODUCTO" />
-      <Button fx:id="btnActualizarStock" layoutX="504.0" layoutY="519.0" mnemonicParsing="false" onAction="#onActualizarStockClick" prefHeight="49.0" prefWidth="293.0" text="ACTUALIZAR STOCK" />
-      <Button fx:id="btnActualizarPrecio" layoutX="908.0" layoutY="519.0" mnemonicParsing="false" onAction="#onActualizarPrecioClick" prefHeight="49.0" prefWidth="293.0" text="ACTUALIZAR PRECIO" />
+      <Button fx:id="btnAgregarNuevoProducto" layoutX="28.0" layoutY="519.0" mnemonicParsing="false" onAction="#onAgregarNuevoProductoClick" prefHeight="49.0" prefWidth="293.0" text="AGREGAR PRODUCTO" />
+      <Button fx:id="btnActualizarStock" layoutX="336.0" layoutY="519.0" mnemonicParsing="false" onAction="#onActualizarStockClick" prefHeight="49.0" prefWidth="293.0" text="ACTUALIZAR STOCK" />
+      <Button fx:id="btnActualizarPrecio" layoutX="652.0" layoutY="519.0" mnemonicParsing="false" onAction="#onActualizarPrecioClick" prefHeight="49.0" prefWidth="293.0" text="ACTUALIZAR PRECIO" />
       <Label layoutX="593.0" layoutY="30.0" text="PRODUCTOS" />
       <Button fx:id="btnVolver" layoutX="1152.0" layoutY="587.0" mnemonicParsing="false" onAction="#onVolverClick" prefHeight="49.0" prefWidth="134.0" text="VOLVER" />
       <Separator layoutX="151.0" layoutY="71.0" prefWidth="1000.0" />
@@ -29,5 +29,6 @@
           <MenuItem fx:id="btnTodosClick" mnemonicParsing="false" onAction="#onTodosClick" text="TODOS" />
         </items>
       </MenuButton>
+      <Button fx:id="btnEditarNombre" layoutX="971.0" layoutY="519.0" mnemonicParsing="false" onAction="#onEditarNombreClick" prefHeight="49.0" prefWidth="293.0" text="EDITAR NOMBRE" />
    </children>
 </AnchorPane>
