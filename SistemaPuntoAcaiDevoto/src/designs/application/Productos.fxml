@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="650.0" prefWidth="1300.0" stylesheets="@../Styles/Style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Productos">
+   <children>
+      <Button fx:id="btnVolver" layoutX="1148.0" layoutY="585.0" mnemonicParsing="false" onAction="#onVolverClick" prefHeight="51.0" prefWidth="138.0" text="VOLVER" textFill="WHITE">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Button>
+      <Label layoutX="593.0" layoutY="27.0" text="PRODUCTOS" />
+      <Separator layoutX="150.0" layoutY="71.0" prefWidth="1000.0" />
+      <Button fx:id="btnProductos" layoutX="246.0" layoutY="287.0" mnemonicParsing="false" onAction="#onProductosClick" prefHeight="76.0" prefWidth="295.0" text="PRODUCTOS" />
+      <Button fx:id="btnCombos" layoutX="760.0" layoutY="287.0" mnemonicParsing="false" onAction="#onCombosClick" prefHeight="76.0" prefWidth="295.0" text="COMBOS" />
+   </children>
+</AnchorPane>
