@@ -52,7 +52,9 @@ public class Direccion {
 		}
 	}
 
-	
+	public String getDireccionMayorista() {
+		return calle +" " + numero +", "+barrio;
+	}
 	
 	
 
