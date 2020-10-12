@@ -45,7 +45,7 @@ public class Direccion {
 	}
 	
 	public String getDireccionCompleta() {
-		if(Objects.isNull(dpto) || dpto.equalsIgnoreCase("null") || dpto == null) {
+		if(Objects.isNull(dpto) || dpto.equalsIgnoreCase("null") || dpto == null|| dpto == "") {
 			return calle +" " + numero +", "+barrio;
 		}else {
 			return calle +" " + numero +", Depto "+dpto+", "+barrio;
