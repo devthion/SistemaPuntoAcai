@@ -140,7 +140,7 @@ public class VerProductosController implements Initializable {
     		new Alerta().errorAlert("Debe seleccionar un Producto", "Editar Nombre");
     	}else {
     		try {
-    			FXMLLoader loader = new FXMLLoader(getClass().getResource("EditarProducto.fxml"));
+    			FXMLLoader loader = new FXMLLoader(getClass().getResource("EditarNombre.fxml"));
     			AnchorPane root = (AnchorPane) loader.load();
     			
     			EditarNombre controller = loader.getController();
