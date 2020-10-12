@@ -214,7 +214,18 @@ public class VerVentas implements Initializable {
     
     @FXML
     void onRealizarTodasClick(ActionEvent event) {
-
+    	Optional<ButtonType> action =  new Alerta().preguntaConfirmacion("Desea concretar todas las ventas ?", "Confirmación");
+    	if (action.get() == ButtonType.OK) {
+	    	ventasPendientes.forEach(unaVenta -> {
+				try {
+					unaVenta.concretarVenta();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			});
+	    	RefrescarTabla();
+    	}
     }
     
 
