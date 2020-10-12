@@ -219,5 +219,13 @@ public class ModificarDatos extends ConexionBd {
 		
 	}
 
+	public void actualizarNombre(int prod_id, String nombre_nuevo) {
+		String sql ="UPDATE PRODUCTO SET "
+				+"prod_nombre= '"+nombre_nuevo+"'"
+				+" WHERE prod_id= '"+prod_id+"'";
+		ejecutarUpdate(sql, "Nombre actualizado para: " +prod_id);
+		
+	}
+
 
 }

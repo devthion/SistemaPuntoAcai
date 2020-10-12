@@ -1,5 +1,7 @@
 package application;
 
+import java.sql.SQLException;
+
 import Alertas.Alerta;
 import Productos.Producto;
 import javafx.event.ActionEvent;
@@ -26,8 +28,8 @@ public class EditarNombre {
     private Producto productoActualizar;
 
     @FXML
-    void onActualizarClick(ActionEvent event) {
-    	productoActualizar.actualizarNombre(productoActualizar.getNombre());
+    void onActualizarClick(ActionEvent event) throws SQLException {
+    	productoActualizar.actualizarNombre(txtNombre.getText());
     	new Alerta().informationAlert("El nombre ha sido actualizado.", "Editar Nombre");
     	Stage stage = (Stage) btnVolver.getScene().getWindow();
     	stage.close();

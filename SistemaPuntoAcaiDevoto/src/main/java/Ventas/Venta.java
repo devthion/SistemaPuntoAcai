@@ -171,6 +171,10 @@ public class Venta {
 	public String getDireccionCliente() {
 		return unEnvio.getDireccion().getDireccionCompleta();
 	}
+	public String getDireccionMayorista() {
+		return unEnvio.getDireccion().getDireccionMayorista();
+	}
+	
 	
 	public void cancelarVenta() throws SQLException 
 	{

@@ -26,6 +26,7 @@ import ModelosClientes.Direccion;
 import ModelosGraficos.ClientesPorBarrio;
 import ModelosGraficos.ComoLlegoUnCliente;
 import ModelosGraficos.VentasPorMes;
+import Productos.Combo;
 import Productos.Producto;
 import Propina.Propina;
 import Ventas.CajaCerrada;
@@ -45,6 +46,21 @@ public class ObtenerDatos extends ConexionBd{
 
 	public ObtenerDatos() throws SQLException {
 		super();
+	}
+	
+	public ObservableList<Combo> obtenerCombos() throws SQLException{
+		ObservableList<Combo> combos = FXCollections.observableArrayList();
+		ResultSet rs;
+		Statement statement = null;
+		sql="SELECT * FROM COMBO";
+		rs=ejecutarQuery(sql, statement);
+		while(rs.next()) {
+			String combo_nombre = rs.getString(1);
+			double combo_precio = rs.getDouble(2);
+			Combo combo = new Combo(combo_nombre, combo_precio);
+			combos.add(combo);
+		}
+		return combos;
 	}
 	
 	public int obtenerDispositivo(int id) throws SQLException{	

@@ -22,6 +22,24 @@ public class CrearTabla {
 		crearTablaIngresoDiario();
 	}
 	
+	public static void crearTablaCombo() {
+		try 
+		{
+			Connection con = DriverManager.getConnection("jdbc:h2:"+"./Database/bd", "root", "devthion");
+			Statement stmt= con.createStatement();
+			String sql = "CREATE TABLE IF NOT EXISTS COMBO" 
+				+"(combo_nombre varchar(255),"
+				+"combo_precio double,"
+				+"PRIMARY KEY (combo_nombre))";
+			stmt.executeUpdate(sql);
+			System.out.println("Tabla COMBO creada");
+		}
+		catch(Exception e) {
+			System.err.println(e.getMessage());
+		}
+		
+	}
+	
 	public static void crearTablaDispositivo() {
 		try 
 		{

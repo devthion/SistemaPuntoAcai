@@ -10,6 +10,7 @@ import Gastos.Gasto;
 import ModeloInversion.IngresoDiario;
 import ModeloInversion.Inversion;
 import ModelosClientes.Cliente;
+import Productos.Combo;
 import Productos.Producto;
 import Propina.Propina;
 import Ventas.CajaCerrada;
@@ -77,6 +78,13 @@ public class InsertarDatos extends ConexionBd{
 		System.out.println(unCliente.getDpto());
 	}
 	
+	public void insertarCombo(Combo combo) {
+		String sql = "insert into COMBO"
+				+ "(combo_nombre,"
+				+ "combo_precio)"
+				+ "values('"+combo.getCombo_nombre()+"','"+combo.getCombo_precio()+"')"; 
+		ejecutarUpdate(sql, "Combo ingresado");	
+	}
 	
 
 	public void insertarProducto(Producto unProducto) {
@@ -191,7 +199,8 @@ public class InsertarDatos extends ConexionBd{
 		ejecutarUpdate(sql,"Dispositivo Actualizado");
 		
 	}
-	
+
+
 	
 
 }

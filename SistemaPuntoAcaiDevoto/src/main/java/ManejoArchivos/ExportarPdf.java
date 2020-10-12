@@ -93,7 +93,7 @@ public class ExportarPdf {
 		//DETALLE VENDEDOR
 		
 		
-		Paragraph titulo = new Paragraph(selector1.process("AÇAI MARACAIBO CABA \n"));
+		Paragraph titulo = new Paragraph(selector1.process("AÇAI CABA \n"));
 		titulo.setAlignment(Element.ALIGN_CENTER);
 		document.add(titulo);
 		
@@ -123,7 +123,7 @@ public class ExportarPdf {
 		tableCliente.setWidthPercentage(100);
 		tableCliente.addCell(getCell("Cliente: " + unaVenta.getDatosCliente().toUpperCase(), PdfPCell.ALIGN_LEFT));
 		tableCliente.addCell(getCell("Contacto: " +unaVenta.getClienteContacto(), PdfPCell.ALIGN_CENTER));
-		tableCliente.addCell(getCell("Direccion: "+unaVenta.getDireccionCliente(), PdfPCell.ALIGN_RIGHT));
+		tableCliente.addCell(getCell("Direccion: "+unaVenta.getDireccionMayorista(), PdfPCell.ALIGN_RIGHT));
 		tableCliente.addCell(getCell("", PdfPCell.ALIGN_LEFT));
 		tableCliente.addCell(getCell("Observacion: "+unaVenta.getObservacion(), PdfPCell.ALIGN_CENTER));
 		tableCliente.addCell(getCell("", PdfPCell.ALIGN_RIGHT));

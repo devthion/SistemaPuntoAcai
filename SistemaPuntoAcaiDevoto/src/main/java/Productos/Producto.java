@@ -105,9 +105,9 @@ public class Producto {
 		return cantidadVendidos; //ESTO NO SE TIENE Q BORRAR??
 	}
 
-	public void actualizarNombre(String nombre2) {
-		// TODO Auto-generated method stub
-		
+	public void actualizarNombre(String nombre_nuevo) throws SQLException {
+		modificarDatos = new ModificarDatos();
+		modificarDatos.actualizarNombre(prod_id,nombre_nuevo);
 	}
 	
 }
