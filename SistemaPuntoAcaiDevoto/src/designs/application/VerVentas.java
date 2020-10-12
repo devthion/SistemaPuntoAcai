@@ -39,6 +39,9 @@ public class VerVentas implements Initializable {
 
     @FXML
     private TableColumn<Venta, String> colHorario;
+    
+    @FXML
+    private Button btnRealizarTodas;
 
     @FXML
     private TableColumn<Venta, String> colDireccion;
@@ -207,6 +210,11 @@ public class VerVentas implements Initializable {
 			}
 
 		}
+    }
+    
+    @FXML
+    void onRealizarTodasClick(ActionEvent event) {
+
     }
     
 
