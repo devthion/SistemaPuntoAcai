@@ -20,6 +20,7 @@ public class CrearTabla {
 		crearTablaDispositivo();
 		crearTablaEgreso();
 		crearTablaIngresoDiario();
+		crearTablaCombo();
 	}
 	
 	public static void crearTablaCombo() {

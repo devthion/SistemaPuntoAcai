@@ -145,7 +145,7 @@ public class VerCombos implements Initializable {
     	}else {
     		Optional<ButtonType> action =  new Alerta().preguntaConfirmacion("¿Estas seguro que desea eliminar el combo?", "Confirmación");
         	if (action.get() == ButtonType.OK) {
-//TODO        		combo.eliminar();
+        		combo.eliminar();
 	    		new Alerta().errorAlert("Combo Eliminado", "Eliminar Combo");
 	    		
 	        	ObtenerDatos obtenerDatos = new ObtenerDatos();

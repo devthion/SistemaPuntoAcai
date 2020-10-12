@@ -8,6 +8,7 @@ import Gastos.Gasto;
 import ModeloInversion.IngresoDiario;
 import ModeloInversion.Inversion;
 import ModelosClientes.Cliente;
+import Productos.Combo;
 import Ventas.Venta;
 
 
@@ -15,6 +16,12 @@ public class ModificarDatos extends ConexionBd {
 	
 	public ModificarDatos() throws SQLException {
 		super();
+	}
+	
+	public void eliminarCombo(Combo combo) {
+		String sql = "DELETE FROM COMBO "
+				+ "WHERE combo_nombre= '"+combo.getCombo_nombre()+"'";
+		ejecutarUpdate(sql, "Combo: "+combo.getCombo_nombre()+", eliminado");
 	}
 	
 	public void actualizarPrecioCombo(double precioActualizado, String combo_nombre) {

@@ -82,6 +82,7 @@ public class Administrador {
 		CrearTabla.crearTablaDispositivo();
 		CrearTabla.crearTablaEgreso();
 		CrearTabla.crearTablaIngresoDiario();
+		CrearTabla.crearTablaCombo();
     	new Alerta().informationAlert("Las tablas de la BD han sido creadas con Exito", "Creacion Tablas");
     }
     

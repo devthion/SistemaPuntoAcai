@@ -39,5 +39,10 @@ public class Combo {
 		modificarDatos.actualizarPrecioCombo(nuevoPrecio, combo_nombre);
 	}
 	
+	public void eliminar() throws SQLException {
+		ModificarDatos modificarDatos = new ModificarDatos();
+		modificarDatos.eliminarCombo(this);
+	}
+	
 	
 }
