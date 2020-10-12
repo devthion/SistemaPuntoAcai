@@ -174,8 +174,8 @@ public class VerCombos implements Initializable {
 
 		this.tblCombos.setItems(combos);
 
-		this.colNombre.setCellValueFactory(new PropertyValueFactory<Combo, String>("nombre"));
-		this.colPrecio.setCellValueFactory(new PropertyValueFactory<Combo, Double>("precio"));
+		this.colNombre.setCellValueFactory(new PropertyValueFactory<Combo, String>("Combo_nombre"));
+		this.colPrecio.setCellValueFactory(new PropertyValueFactory<Combo, Double>("Combo_precio"));
 		
 	}
 
