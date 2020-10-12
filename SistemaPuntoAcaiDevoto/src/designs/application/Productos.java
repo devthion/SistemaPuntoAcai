@@ -63,7 +63,7 @@ public class Productos {
     void onCombosClick(ActionEvent event) {
     	try {
 			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(getClass().getResource("VerCombos.fxml"));
+			loader.setLocation(getClass().getResource("Combos.fxml"));
 			AnchorPane root = (AnchorPane) loader.load();
 			Scene scene = new Scene(root,1300,650);
 			Stage stage = new Stage();
