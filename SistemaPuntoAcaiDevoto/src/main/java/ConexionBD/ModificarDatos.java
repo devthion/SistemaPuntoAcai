@@ -17,6 +17,13 @@ public class ModificarDatos extends ConexionBd {
 		super();
 	}
 	
+	public void actualizarPrecioCombo(double precioActualizado, String combo_nombre) {
+		String sql="UPDATE COMBO SET "
+				+"combo_precio= '"+precioActualizado+"',"
+				+" WHERE combo_nombre= '"+combo_nombre+"'";
+		ejecutarUpdate(sql, "COMBO actualizado");
+	}
+	
 	public void eliminarVenta(Venta unaVenta) {
 		eliminarItemsDeUnaVenta(unaVenta.getVenta_id());
 		String sql = "DELETE FROM VENTA "

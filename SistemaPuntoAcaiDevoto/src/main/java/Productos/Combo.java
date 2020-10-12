@@ -3,6 +3,7 @@ package Productos;
 import java.sql.SQLException;
 
 import ConexionBD.InsertarDatos;
+import ConexionBD.ModificarDatos;
 
 public class Combo {
 
@@ -31,6 +32,11 @@ public class Combo {
 	public void almacenar() throws SQLException {
 		InsertarDatos insertarDatos = new InsertarDatos();
 		insertarDatos.insertarCombo(this);
+	}
+	
+	public void actualizarPrecio(double nuevoPrecio) throws SQLException {
+		ModificarDatos modificarDatos = new ModificarDatos();
+		modificarDatos.actualizarPrecioCombo(nuevoPrecio, combo_nombre);
 	}
 	
 	
