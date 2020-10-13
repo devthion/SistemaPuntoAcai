@@ -316,7 +316,7 @@ public class NuevaVentaController implements Initializable {
     				if(menuTipoPago.getText().equalsIgnoreCase("Tipo de Pago")) {
     					new Alerta().errorAlert("Debe seleccionar un tipo de Pago", "Nueva Venta");
     				}else {
-    					new Alerta().informationAlert("El precio de la venta es de "+(aplicarDescuento(costoEnvio+Double.parseDouble(txtPrecioTotal.getText())))+" $",  "Precio Final");
+    					new Alerta().informationAlert("El precio de la venta es de "+(aplicarDescuento(Double.parseDouble(txtPrecioTotal.getText())+ costoEnvio))+" $",  "Precio Final");
     					Optional<ButtonType> action =  new Alerta().preguntaConfirmacion("Desea confirmar la venta para "+cliente.getNombre()+" ?", "Confirmación");
     					if (action.get() == ButtonType.OK) {
     						ventaBorrador.setTipoDePago(menuTipoPago.getText().toString());
@@ -337,7 +337,7 @@ public class NuevaVentaController implements Initializable {
     						double precioModificado = Double.parseDouble(txtPrecioTotal.getText());
 
     						nuevaVenta.setPrecioModificado(aplicarDescuento(precioModificado));
-    						nuevaVenta.getUnEnvio().setPrecio(aplicarDescuento(nuevaVenta.getEnvioPrecio()));
+    						nuevaVenta.getUnEnvio().setPrecio(nuevaVenta.getEnvioPrecio());
     						try {
     							nuevaVenta.almacenarVenta();
     							cliente.agregarDeuda(Double.parseDouble(txtDeuda.getText().toString()));

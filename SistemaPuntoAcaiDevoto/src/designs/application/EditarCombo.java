@@ -1,5 +1,7 @@
 package application;
 
+import java.sql.SQLException;
+
 import Alertas.Alerta;
 import Alertas.Validaciones;
 import Productos.Combo;
@@ -26,12 +28,12 @@ public class EditarCombo {
     private Combo combo;
 
     @FXML
-    void onEditarComboClick(ActionEvent event) {
+    void onEditarComboClick(ActionEvent event) throws NumberFormatException, SQLException {
     	if(Validaciones.validarCajaNumerica(txtMonto)) {
     		new Alerta().informationAlert("El valor ingresado del combo es incorrecto", "Combo valor");
     	}else {
     		combo = new Combo(txtNombre.getText(), Double.parseDouble(txtMonto.getText()));
-//    		combo.modificar();
+    		combo.actualizarPrecio(Double.parseDouble(txtMonto.getText()));
     		new Alerta().informationAlert("El combo fue almacenado", "Almacenar Combo");
         	Stage stage = (Stage) btnVolver.getScene().getWindow();
         	stage.close();

@@ -26,7 +26,7 @@ public class ModificarDatos extends ConexionBd {
 	
 	public void actualizarPrecioCombo(double precioActualizado, String combo_nombre) {
 		String sql="UPDATE COMBO SET "
-				+"combo_precio= '"+precioActualizado+"',"
+				+"combo_precio= '"+precioActualizado+"'"
 				+" WHERE combo_nombre= '"+combo_nombre+"'";
 		ejecutarUpdate(sql, "COMBO actualizado");
 	}

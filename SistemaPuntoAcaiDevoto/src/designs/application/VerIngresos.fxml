@@ -45,7 +45,7 @@
       <Label fx:id="lblIdealMes" layoutX="611.0" layoutY="308.0" prefHeight="30.0" prefWidth="119.0" text="Label" />
       <Separator layoutX="527.0" layoutY="294.0" prefWidth="200.0" />
       <Label layoutX="528.0" layoutY="422.0" text="GANANCIA" />
-      <Label layoutX="551.0" layoutY="264.0" text="INGRESO DIARIO" />
+      <Label layoutX="551.0" layoutY="264.0" text="INGRESO MENSUAL" />
       <Label layoutX="528.0" layoutY="308.0" text="IDEAL" />
       <Label fx:id="lblGananciaMes" layoutX="635.0" layoutY="422.0" prefHeight="30.0" prefWidth="119.0" text="Label" />
    </children>

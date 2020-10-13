@@ -4,6 +4,7 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.ResourceBundle;
@@ -120,6 +121,7 @@ public class EditarVenta implements Initializable{
 	private ObservableList<Cliente> clientes;
 	private ObservableList<Combo> combos;
 	private ObservableList<Item> itemsAVender;
+	private ArrayList<Item> itemsVendidos = new ArrayList<Item>();
 	private double precioTotal=0;
 
 	private VentasBuilder ventaBorrador;
@@ -129,10 +131,12 @@ public class EditarVenta implements Initializable{
 		ventaBorrador.setCliente(ventaEditable.getCliente());
 		ventaBorrador.setEnvio(ventaEditable.getUnEnvio());
 		lblCostoEnvio.setText("Envio: "+ventaBorrador.getEnvio().getPrecio()+" $");
-		ventaBorrador.setItems((ArrayList<Item>) ventaEditable.getItems());
+		for (int i = 0; i < ventaEditable.getItems().size(); i++) {
+			itemsVendidos.add(new Item(ventaEditable.getItems().get(i).getProducto(), ventaEditable.getItems().get(i).getCantidad()));
+		}
 		itemsAVender= FXCollections.observableArrayList();
-		itemsAVender.setAll(ventaEditable.getItems());
-		tblProductosVenta.setItems(FXCollections.observableArrayList(ventaBorrador.getItems()));
+		itemsAVender.setAll(itemsVendidos);
+		tblProductosVenta.setItems(FXCollections.observableArrayList(itemsAVender));
 		ventaBorrador.setFecha(ventaEditable.getFecha());
 		ventaBorrador.setTipoDePago(ventaEditable.getTipoDePago());
 		menuTipoPago.setText(ventaEditable.getTipoDePago());
@@ -153,7 +157,7 @@ public class EditarVenta implements Initializable{
 				if(menuTipoPago.getText().equalsIgnoreCase("Tipo de Pago")) {
 					new Alerta().errorAlert("Debe seleccionar un tipo de Pago", "Nueva Venta");
 				}else {
-					new Alerta().informationAlert("El precio de la venta es de "+(aplicarDescuento(costoEnvio+Double.parseDouble(txtPrecioTotal.getText())))+" $",  "Precio Final");
+					new Alerta().informationAlert("El precio de la venta es de "+(aplicarDescuento(Double.parseDouble(txtPrecioTotal.getText())+ costoEnvio))+" $",  "Precio Final");
 					Optional<ButtonType> action =  new Alerta().preguntaConfirmacion("Desea confirmar la venta para "+ventaBorrador.getCliente().getNombre()+" ?", "Confirmación");
 					if (action.get() == ButtonType.OK) {
 						ventaBorrador.setTipoDePago(menuTipoPago.getText().toString());
@@ -172,7 +176,7 @@ public class EditarVenta implements Initializable{
 						double precioModificado = Double.parseDouble(txtPrecioTotal.getText());
 
 						nuevaVenta.setPrecioModificado(aplicarDescuento(precioModificado));
-						nuevaVenta.getUnEnvio().setPrecio(aplicarDescuento(nuevaVenta.getEnvioPrecio()));
+						nuevaVenta.getUnEnvio().setPrecio(nuevaVenta.getEnvioPrecio());
 						try {
 							ventaEliminar.cancelarVenta();
 							nuevaVenta.almacenarVenta();
@@ -267,7 +271,7 @@ public class EditarVenta implements Initializable{
 	void onAgregarAlCarritoClick(ActionEvent event) {
 		Producto producto = this.tblProductos.getSelectionModel().getSelectedItem();
 
-		if(itemsAVender.stream().anyMatch(unItem -> unItem.getProducto().equals(producto))) {
+		if(itemsAVender.stream().anyMatch(unItem -> unItem.getProducto().getNombre().equals(producto.getNombre()))) {
 			new Alerta().errorAlert("El producto solicitado ya existe en el carrito", "Error de duplicidad");
 		}else {
 			if(producto==null) {
