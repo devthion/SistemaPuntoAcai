@@ -56,8 +56,6 @@ public class Cliente {
 		this.deuda -=monto;
 		try {
 			new ModificarDatos().cambiarDeuda(dni, deuda);
-			IngresoDiario ingreso = new IngresoDiario("Saldo deuda de "+this.getNombre()+" "+this.getApellido(), monto);
-			ingreso.almacenarIngreso();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

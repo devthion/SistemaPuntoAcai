@@ -32,7 +32,15 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 public class VerIngresos implements Initializable {
-
+	
+    @FXML
+    private Label lblIdealMes;
+    
+    @FXML
+    private Label lblRealMes;
+    
+    @FXML
+    private Label lblGananciaMes;
 
     @FXML
     private Button btnVolver;
@@ -77,8 +85,10 @@ public class VerIngresos implements Initializable {
     private List<Inversion> inversiones = new ArrayList<>();
     private ObservableList<Venta> ventas;
     private ObservableList<Venta> ventasPorDia;
+    private ObservableList<Venta> ventasPorMes;
     private ObservableList<GastosGenerales> gastos;
     private ObservableList<GastosDiarios> gastosDiarios;
+    private ObservableList<GastosDiarios> gastosPorMes;
     private ObservableList<GastosDiarios> gastosPorDia;
 
     @FXML
@@ -144,6 +154,24 @@ public class VerIngresos implements Initializable {
     	
     	Double diferenciaDia = Double.parseDouble(lblRealDia.getText()) - Double.parseDouble(lblIdealDia.getText());
     	lblGananciaDia.setText((ventasPorDia.stream().mapToDouble(unaVenta -> unaVenta.getVenta_ganancia()).sum() + diferenciaDia - gastosPorDia.stream().mapToDouble(unGasto-> unGasto.getMonto()).sum())+" $");
+    	
+    	//MOSTRAR INGRESOS MENSUALES
+    	lblIdealMes.setText(""+cajas.stream().filter(unaCaja ->
+    			unaCaja.getFecha().getMonthValue() == mes && unaCaja.getFecha().getYear() == anio).mapToDouble(unaCaja -> unaCaja.getMonto_ideal()).sum());
+		
+    	lblRealMes.setText(""+cajas.stream().filter(unaCaja ->
+    			unaCaja.getFecha().getMonthValue() == mes && unaCaja.getFecha().getYear() == anio).mapToDouble(unaCaja -> unaCaja.getMonto_real()).sum());
+    	
+    	ventasPorMes = ventas.filtered(unaVenta -> 
+    			unaVenta.getUnEnvio().getFechaEntrega().getMonthValue()==mes
+    			&& unaVenta.getUnEnvio().getFechaEntrega().getYear() ==anio
+    			&& unaVenta.getUnEnvio().getEstado()==true);
+    	
+    	gastosPorMes = gastosDiarios.filtered(unGasto->
+    			unGasto.getFecha().getMonthValue() == mes && unGasto.getFecha().getYear() == anio);
+    	
+    	Double diferenciaMes = Double.parseDouble(lblRealMes.getText()) - Double.parseDouble(lblIdealMes.getText());
+    	lblGananciaMes.setText((ventasPorMes.stream().mapToDouble(unaVenta -> unaVenta.getVenta_ganancia()).sum() + diferenciaDia - gastosPorMes.stream().mapToDouble(unGasto-> unGasto.getMonto()).sum())+" $");
     	
     	//MOSTRAR INGRESOS TOTALES
     	

@@ -12,6 +12,7 @@ import com.itextpdf.text.DocumentException;
 
 import Alertas.Alerta;
 import ConexionBD.ObtenerDatos;
+import ConexionBD.Querys;
 import ManejoArchivos.ExportarPdf;
 import ManejoArchivos.Ticket;
 import Ventas.Venta;
@@ -82,6 +83,9 @@ public class VerVentas implements Initializable {
     @FXML
     private Button btnGenerarRemito;
     
+    @FXML
+    private Button btnEditarVenta;
+    
     private ObservableList<Venta> ventasPendientes;
     
     @FXML
@@ -109,6 +113,38 @@ public class VerVentas implements Initializable {
 		}
     	Stage stage = (Stage) btnVolver.getScene().getWindow();
     	stage.close();
+    }
+    
+
+    @FXML
+    void onEditarVentaClick(ActionEvent event) {
+    	Venta venta = this.tblVentas.getSelectionModel().getSelectedItem();
+    	
+    	if(venta==null) {
+    		new Alerta().errorAlert("Debe seleccionar una Venta", "Editar Venta");
+    	}else {
+    		try {
+    			FXMLLoader loader = new FXMLLoader(getClass().getResource("EditarVenta.fxml"));
+    			AnchorPane root = (AnchorPane) loader.load();
+    			
+    			EditarVenta controller = loader.getController();
+    			controller.initVenta(venta);
+    			
+    			Scene scene = new Scene(root,1300,650);
+    			Stage stage = new Stage();
+    			stage.setScene(scene);
+    			stage.resizableProperty().setValue(Boolean.FALSE);
+    			stage.setResizable(false);
+    			stage.setTitle("Editar Venta");
+    			stage.showAndWait();
+    			
+    			
+    			
+    		} catch(Exception e) {
+    			e.printStackTrace();
+    		}
+    		RefrescarTabla();
+    	}
     }
 
     @FXML

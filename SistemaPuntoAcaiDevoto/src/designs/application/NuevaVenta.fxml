@@ -47,32 +47,42 @@
             <TableColumn fx:id="colProdVentaPrecioTotal" maxWidth="1.7976931348623157E308" minWidth="11.0" prefWidth="95.0" text="TOTAL" />
         </columns>
       </TableView>
-      <TextField fx:id="txtPrecioTotal" layoutX="1046.0" layoutY="409.0" />
-      <Label layoutX="1088.0" layoutY="379.0" text="TOTAL VENTA" />
-      <Button fx:id="btnRealizarVenta" layoutX="1028.0" layoutY="526.0" mnemonicParsing="false" onAction="#onRealizarVentaClick" prefHeight="49.0" prefWidth="245.0" text="REALIZAR VENTA" />
-      <Button fx:id="btnVolver" layoutX="1151.0" layoutY="587.0" mnemonicParsing="false" onAction="#onVolverClick" text="VOLVER" />
-      <Button fx:id="btnSacarDelCarrito" layoutX="695.0" layoutY="301.0" mnemonicParsing="false" onAction="#onSacarDelCarritoClick" prefHeight="49.0" prefWidth="271.0" text="SACAR DEL CARRITO" />
+      <TextField fx:id="txtPrecioTotal" layoutX="1059.0" layoutY="547.0" />
+      <Label layoutX="930.0" layoutY="549.0" text="TOTAL VENTA" />
+      <Button fx:id="btnRealizarVenta" layoutX="912.0" layoutY="591.0" mnemonicParsing="false" onAction="#onRealizarVentaClick" prefHeight="49.0" prefWidth="233.0" style="-fx-background-color: GREEN;" text="REALIZAR VENTA" />
+      <Button fx:id="btnVolver" layoutX="1152.0" layoutY="591.0" mnemonicParsing="false" onAction="#onVolverClick" style="-fx-background-color: red;" text="VOLVER" />
+      <Button fx:id="btnSacarDelCarrito" layoutX="1015.0" layoutY="222.0" mnemonicParsing="false" onAction="#onSacarDelCarritoClick" prefHeight="49.0" prefWidth="271.0" text="SACAR DEL CARRITO" />
       <Label layoutX="679.0" layoutY="98.0" text="CARRITO" />
-      <Button fx:id="btnAgregarEnvio" layoutX="1034.0" layoutY="128.0" mnemonicParsing="false" onAction="#onAgregarEnvioClick" prefHeight="49.0" prefWidth="233.0" text="AGREGAR ENVIO" />
+      <Button fx:id="btnAgregarEnvio" layoutX="1015.0" layoutY="128.0" mnemonicParsing="false" onAction="#onAgregarEnvioClick" prefHeight="49.0" prefWidth="271.0" text="AGREGAR ENVIO" />
       <Label fx:id="lblCostoEnvio" layoutX="1054.0" layoutY="192.0" prefHeight="30.0" prefWidth="194.0" />
-      <Separator layoutX="671.0" layoutY="369.0" prefHeight="3.0" prefWidth="591.0" />
-      <Pane layoutX="627.0" layoutY="423.0" prefHeight="185.0" prefWidth="340.0" style="-fx-background-color: #F8F3F3;">
+      <Separator layoutX="679.0" layoutY="324.0" prefHeight="3.0" prefWidth="591.0" />
+      <Pane layoutX="627.0" layoutY="423.0" prefHeight="185.0" prefWidth="284.0" style="-fx-background-color: #F8F3F3;">
          <children>
-            <Button fx:id="btnAgregarAlCarrito" layoutX="38.0" layoutY="118.0" mnemonicParsing="false" onAction="#onAgregarAlCarritoClick" prefHeight="49.0" prefWidth="264.0" text="AGREGAR " />
-            <Button fx:id="btnMenos" layoutX="231.0" layoutY="57.0" mnemonicParsing="false" onAction="#onMenosClick" prefHeight="50.0" prefWidth="71.0" text="-" />
-            <Button fx:id="btnMas" layoutX="160.0" layoutY="57.0" mnemonicParsing="false" onAction="#onMasClick" prefHeight="50.0" prefWidth="71.0" text="+" />
-            <Label fx:id="lblCantidadItem" alignment="CENTER" layoutX="64.0" layoutY="67.0" prefHeight="30.0" prefWidth="71.0" text="1" textAlignment="CENTER" />
-            <Label layoutX="51.0" layoutY="21.0" text="CANTIDAD" />
+            <Button fx:id="btnAgregarAlCarrito" layoutX="16.0" layoutY="122.0" mnemonicParsing="false" onAction="#onAgregarAlCarritoClick" prefHeight="49.0" prefWidth="264.0" text="AGREGAR " />
+            <Button fx:id="btnMenos" layoutX="196.0" layoutY="57.0" mnemonicParsing="false" onAction="#onMenosClick" prefHeight="50.0" prefWidth="71.0" text="-" />
+            <Button fx:id="btnMas" layoutX="125.0" layoutY="57.0" mnemonicParsing="false" onAction="#onMasClick" prefHeight="50.0" prefWidth="71.0" text="+" />
+            <Label fx:id="lblCantidadItem" alignment="CENTER" layoutX="29.0" layoutY="67.0" prefHeight="30.0" prefWidth="71.0" text="1" textAlignment="CENTER" />
+            <Label layoutX="16.0" layoutY="27.0" text="CANTIDAD" />
          </children>
       </Pane>
-      <TextField fx:id="txtDeuda" layoutX="1035.0" layoutY="301.0" prefHeight="49.0" prefWidth="233.0" promptText="Agregar deuda" />
-      <MenuButton fx:id="menuTipoPago" layoutX="1034.0" layoutY="241.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="233.0" style="-fx-background-color: white;" text="Tipo de Pago">
+      <TextField fx:id="txtDeuda" layoutX="1016.0" layoutY="278.0" prefHeight="33.0" prefWidth="271.0" promptText="Agregar deuda" />
+      <MenuButton fx:id="menuTipoPago" layoutX="679.0" layoutY="338.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="233.0" style="-fx-background-color: white;" text="Tipo de Pago">
         <items>
           <MenuItem mnemonicParsing="false" onAction="#onEfectivoClick" text="EFECTIVO" />
           <MenuItem mnemonicParsing="false" onAction="#onTransferenciaClick" text="TRANSFERENCIA" />
             <MenuItem mnemonicParsing="false" onAction="#onMercadoPagoClick" text="MERCADO PAGO" />
         </items>
       </MenuButton>
-      <TextField fx:id="txtDescuento" layoutX="1035.0" layoutY="452.0" prefHeight="49.0" prefWidth="233.0" promptText="Descuento" />
+      <TextField fx:id="txtDescuento" layoutX="678.0" layoutY="382.0" prefHeight="30.0" prefWidth="233.0" promptText="Descuento" />
+      <TableView fx:id="tblCombo" layoutX="926.0" layoutY="338.0" prefHeight="147.0" prefWidth="335.0">
+        <columns>
+          <TableColumn fx:id="colComboNombre" prefWidth="75.0" text="COMBO" />
+          <TableColumn fx:id="colComboPrecio" prefWidth="75.0" text="PRECIO" />
+        </columns>
+         <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+         </columnResizePolicy>
+      </TableView>
+      <Button fx:id="btnAgregarCombo" layoutX="970.0" layoutY="491.0" mnemonicParsing="false" onAction="#onAgregarComboClick" prefHeight="49.0" prefWidth="247.0" text="AGREGAR COMBO" />
    </children>
 </AnchorPane>

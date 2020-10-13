@@ -1,11 +1,10 @@
 package application;
 
-
-
 import java.io.FileNotFoundException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.ResourceBundle;
@@ -19,6 +18,7 @@ import ConexionBD.ObtenerDatos;
 import ConexionBD.Querys;
 import ModelosClientes.Cliente;
 import ModelosClientes.Direccion;
+import Productos.Combo;
 import Productos.Producto;
 import Ventas.Envio;
 import Ventas.Item;
@@ -50,6 +50,15 @@ public class NuevaVentaController implements Initializable {
     
     @FXML
     private MenuButton menuTipoPago;
+    
+    @FXML
+    private TableColumn<Combo, Double> colComboPrecio;
+    
+    @FXML
+    private TableView<Combo> tblCombo;
+    
+    @FXML
+    private TableColumn<Combo, String> colComboNombre;
     
     @FXML
     private TextField txtDescuento;
@@ -125,17 +134,22 @@ public class NuevaVentaController implements Initializable {
 
     @FXML
     private TextField txtPrecioTotal;
+    
+    @FXML
+    private Button btnAgregarCombo;
 
     @FXML
     private TableColumn<Producto, Integer> colProdStock;
     
     @FXML
     private Button btnSacarDelCarrito;
+    
     private Double costoEnvio=0.0;
     
     private int contadorCantidad;
     private ObservableList<Producto> productos;
     private ObservableList<Cliente> clientes;
+    private ObservableList<Combo> combos;
     private ObservableList<Item> itemsAVender= FXCollections.observableArrayList();
     private double precioTotal=0;
     private VentasBuilder ventaBorrador; 
@@ -268,11 +282,25 @@ public class NuevaVentaController implements Initializable {
     	contadorCantidad++;
     	lblCantidadItem.setText(""+contadorCantidad);
     }
+    
+    @FXML
+    void onAgregarComboClick(ActionEvent event) {
+    	Combo combo = this.tblCombo.getSelectionModel().getSelectedItem();
+
+    	if(combo==null) {
+			new Alerta().errorAlert("Debe seleccionar un combo", "Nueva Venta");
+    	}else {
+    		txtPrecioTotal.setText(""+combo.getCombo_precio());
+    	}
+    	
+    }
 
     @FXML
     void onRealizarVentaClick(ActionEvent event) throws FileNotFoundException, DocumentException {
     	Cliente cliente = this.tblClientes.getSelectionModel().getSelectedItem();
-
+    	if(txtDescuento.getText().isEmpty()) {
+    		txtDescuento.setText(""+0);
+    	}
     	if(Validaciones.validarCajaNumerica(txtPrecioTotal) || Validaciones.validarCajaNumerica(txtDescuento) ) {
     		new Alerta().errorAlert("El precio Total Venta o el Descuento ingresado no es un valor Correcto", "Error de Datos");
     	}else {
@@ -384,6 +412,8 @@ public class NuevaVentaController implements Initializable {
 			obtenerDatos = new ObtenerDatos();
 			productos = FXCollections.observableArrayList();
 			productos = obtenerDatos.obtenerProductos();
+			combos = FXCollections.observableArrayList();
+			combos = obtenerDatos.obtenerCombos();
 		} catch (SQLException e) {
 			
 			e.printStackTrace();
@@ -397,10 +427,16 @@ public class NuevaVentaController implements Initializable {
 		this.colProdKilos.setCellValueFactory(new PropertyValueFactory<Producto, Integer>("precioUnitario"));
 		this.colProdStock.setCellValueFactory(new PropertyValueFactory<Producto, Integer>("stock"));
 		
+		this.tblCombo.setItems(combos);
+		
+		this.colComboNombre.setCellValueFactory(new PropertyValueFactory<Combo, String>("Combo_nombre"));
+		this.colComboPrecio.setCellValueFactory(new PropertyValueFactory<Combo, Double>("Combo_precio"));
+		
 		try {
 			obtenerDatos = new ObtenerDatos();
 			clientes = FXCollections.observableArrayList();
 			clientes = obtenerDatos.obtenerClientes(new Querys().queryClientes());
+			
 		} catch (SQLException e) {
 			
 			e.printStackTrace();
@@ -439,8 +475,10 @@ public class NuevaVentaController implements Initializable {
 		for (Item item : itemsAVender) {
 			precioTotal += item.getPrecioFinal();
 		}
-
-		txtPrecioTotal.setText(""+precioTotal);
+		if(this.tblCombo.getSelectionModel().getSelectedItem() == null) {
+			txtPrecioTotal.setText(""+precioTotal);
+		}
+		
 	}
 	public void agregarItems(ObservableList<Item> itemsAVender2) {
 		for (Item item : itemsAVender2) {
