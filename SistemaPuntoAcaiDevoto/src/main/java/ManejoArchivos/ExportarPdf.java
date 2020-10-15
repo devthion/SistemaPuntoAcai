@@ -93,7 +93,7 @@ public class ExportarPdf {
 		//DETALLE VENDEDOR
 		
 		
-		Paragraph titulo = new Paragraph(selector1.process("AÇAI CABA \n"));
+		Paragraph titulo = new Paragraph(selector1.process("AÇAÍ M CABA \n"));
 		titulo.setAlignment(Element.ALIGN_CENTER);
 		document.add(titulo);
 		
