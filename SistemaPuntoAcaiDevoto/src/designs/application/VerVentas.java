@@ -45,6 +45,9 @@ public class VerVentas implements Initializable {
     private Button btnRealizarTodas;
 
     @FXML
+    private Label lblCantidadVentas;
+    
+    @FXML
     private TableColumn<Venta, String> colDireccion;
 
     @FXML
@@ -195,7 +198,8 @@ public class VerVentas implements Initializable {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		
+		int cantidad = ventasPendientes.size();
+		lblCantidadVentas.setText(""+cantidad);
 		this.tblVentas.setItems(ventasPendientes);
 		
 	}
