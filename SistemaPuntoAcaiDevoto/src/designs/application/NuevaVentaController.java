@@ -471,9 +471,15 @@ public class NuevaVentaController implements Initializable {
 	}
 	
 	public void calcularPrecioFinal(ObservableList<Item> itemsAVender) {
+		Cliente cliente = this.tblClientes.getSelectionModel().getSelectedItem();
 		precioTotal = 0;
 		for (Item item : itemsAVender) {
-			precioTotal += item.getPrecioFinal();
+			System.out.println(cliente.getTipo());
+			if(cliente.getTipo().equalsIgnoreCase("mayorista")) {
+				precioTotal += item.getPrecioMayoristaProducto();
+			}else {
+				precioTotal += item.getPrecioFinal();
+			}
 		}
 		if(this.tblCombo.getSelectionModel().getSelectedItem() == null) {
 			txtPrecioTotal.setText(""+precioTotal);
