@@ -53,7 +53,7 @@ public class Ticket {
 	public String generarTicket(Venta unaVenta) throws IOException {
 		String separador = "------------------------------------------------ \n";
     	String formatoTitulo ="%-13s %-20s %-13s%n";
-    	String titulo = String.format(formatoTitulo, "", "ACAI M CABA","");
+    	String titulo = String.format(formatoTitulo, "", "ACAI CABA","");
     	
     	String listadoItems = "";
     	String formatoListaItemString = "%-40s %-10s%n%n";
