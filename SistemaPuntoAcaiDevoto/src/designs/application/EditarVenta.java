@@ -208,11 +208,7 @@ public class EditarVenta implements Initializable{
 
 	@FXML
 	void onVolverClick(ActionEvent event) {
-		Optional<ButtonType> action =  new Alerta().preguntaConfirmacion("¿Estas seguro que desea cancelar la operación?", "Confirmación");
-		if (action.get() == ButtonType.OK) {
-			Stage stage = (Stage) btnVolver.getScene().getWindow();
-			stage.close();
-		}   	
+		new Alerta().errorAlert("Debe continuar con la venta", "Cancelar Edicion");
 	}
 
 	@FXML
