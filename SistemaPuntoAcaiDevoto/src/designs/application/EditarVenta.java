@@ -120,31 +120,41 @@ public class EditarVenta implements Initializable{
 	private ObservableList<Producto> productos;
 	private ObservableList<Cliente> clientes;
 	private ObservableList<Combo> combos;
-	private ObservableList<Item> itemsAVender;
+	private ObservableList<Item> itemsAVender = FXCollections.observableArrayList();
 	private ArrayList<Item> itemsVendidos = new ArrayList<Item>();
 	private double precioTotal=0;
 
 	private VentasBuilder ventaBorrador;
 	private Venta ventaEliminar;
-	public void initVenta(Venta ventaEditable) {
+	
+	ObtenerDatos obtenerDatos;
+	
+	public void initVenta(Venta ventaEditable) throws SQLException {
 		ventaBorrador = new VentasBuilder();
 		ventaBorrador.setCliente(ventaEditable.getCliente());
 		ventaBorrador.setEnvio(ventaEditable.getUnEnvio());
 		lblCostoEnvio.setText("Envio: "+ventaBorrador.getEnvio().getPrecio()+" $");
 		for (int i = 0; i < ventaEditable.getItems().size(); i++) {
-			itemsVendidos.add(new Item(ventaEditable.getItems().get(i).getProducto(), ventaEditable.getItems().get(i).getCantidad()));
+			itemsAVender.add(new Item(ventaEditable.getItems().get(i).getProducto(), ventaEditable.getItems().get(i).getCantidad()));
 		}
-		itemsAVender= FXCollections.observableArrayList();
-		itemsAVender.setAll(itemsVendidos);
+		itemsAVender.stream().forEach(unitem -> System.out.println(unitem.getNombreProducto()));
+		calcularPrecioFinal(itemsAVender);
 		tblProductosVenta.setItems(FXCollections.observableArrayList(itemsAVender));
 		ventaBorrador.setFecha(ventaEditable.getFecha());
 		ventaBorrador.setTipoDePago(ventaEditable.getTipoDePago());
 		menuTipoPago.setText(ventaEditable.getTipoDePago());
 		ventaEliminar = ventaEditable;
+		ventaEliminar.cancelarVenta();
+		obtenerDatos = new ObtenerDatos();
+		productos = FXCollections.observableArrayList();
+		productos = obtenerDatos.obtenerProductos();
+		ObservableList<Producto> productosSinRegalos = FXCollections.observableArrayList();
+		productosSinRegalos = productos.filtered(unProducto -> !unProducto.getNombre().contains("regalo"));
+		this.tblProductos.setItems(productosSinRegalos);
 	}
 
 	@FXML
-	void onRealizarVentaClick(ActionEvent event) {
+	void onRealizarVentaClick(ActionEvent event) throws SQLException {
 		if(txtDescuento.getText().isEmpty()) {
 			txtDescuento.setText(""+0);
 		}
@@ -164,6 +174,7 @@ public class EditarVenta implements Initializable{
 						agregarItems(itemsAVender);
 						Venta nuevaVenta = ventaBorrador.crearVenta();
 						nuevaVenta.setEnvio(ventaBorrador.getEnvio());
+						
 						nuevaVenta.getItems().stream().forEach(unItem -> {
 							try {
 								unItem.getProducto().actualizarStock(-unItem.getCantidad());
@@ -171,6 +182,7 @@ public class EditarVenta implements Initializable{
 								e2.printStackTrace();
 							}
 						});
+					
 
 
 						double precioModificado = Double.parseDouble(txtPrecioTotal.getText());
@@ -178,14 +190,13 @@ public class EditarVenta implements Initializable{
 						nuevaVenta.setPrecioModificado(aplicarDescuento(precioModificado));
 						nuevaVenta.getUnEnvio().setPrecio(nuevaVenta.getEnvioPrecio());
 						try {
-							ventaEliminar.cancelarVenta();
 							nuevaVenta.almacenarVenta();
+							
 						} catch (SQLException e1) {
 							e1.printStackTrace();
 						}
 						System.out.println(nuevaVenta.getTipoDePago());
 						new Alerta().informationAlert("Se ha registrado la venta", "Nueva Venta");
-
 						Stage stage = (Stage) btnRealizarVenta.getScene().getWindow();
 						stage.close();
 					}
@@ -253,7 +264,11 @@ public class EditarVenta implements Initializable{
 	public void calcularPrecioFinal(ObservableList<Item> itemsAVender) {
 		precioTotal = 0;
 		for (Item item : itemsAVender) {
-			precioTotal += item.getPrecioFinal();
+			if(ventaBorrador.getCliente().getTipo().equalsIgnoreCase("mayorista")) {
+				precioTotal += item.getPrecioMayoristaProducto();
+			}else {
+				precioTotal += item.getPrecioFinal();
+			}
 		}
 		if(this.tblCombo.getSelectionModel().getSelectedItem() == null) {
 			txtPrecioTotal.setText(""+precioTotal);
@@ -355,7 +370,6 @@ public class EditarVenta implements Initializable{
 	public void initialize(URL location, ResourceBundle resources) {
 		contadorCantidad = 1;
 		ventaBorrador = new VentasBuilder();
-		ObtenerDatos obtenerDatos;
 		try {
 			obtenerDatos = new ObtenerDatos();
 			productos = FXCollections.observableArrayList();

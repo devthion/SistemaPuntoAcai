@@ -474,7 +474,6 @@ public class NuevaVentaController implements Initializable {
 		Cliente cliente = this.tblClientes.getSelectionModel().getSelectedItem();
 		precioTotal = 0;
 		for (Item item : itemsAVender) {
-			System.out.println(cliente.getTipo());
 			if(cliente.getTipo().equalsIgnoreCase("mayorista")) {
 				precioTotal += item.getPrecioMayoristaProducto();
 			}else {

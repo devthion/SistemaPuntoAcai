@@ -153,7 +153,7 @@ public class ModificarDatos extends ConexionBd {
 		String sql ="UPDATE PRODUCTO SET "
 				+"prod_stock= '"+cantidad+"'"
 				+" WHERE prod_id= '"+prod_id+"'";
-		ejecutarUpdate(sql, "stock actualizado para: " +prod_id);
+		ejecutarUpdate(sql, "stock actualizado para: " +prod_id+" con cantidad" + cantidad);
 	}
 	
 	
