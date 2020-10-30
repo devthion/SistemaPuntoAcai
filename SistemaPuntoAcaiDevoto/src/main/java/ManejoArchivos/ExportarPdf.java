@@ -93,7 +93,7 @@ public class ExportarPdf {
 		//DETALLE VENDEDOR
 		
 		
-		Paragraph titulo = new Paragraph(selector1.process("AÇAÍ M CABA \n"));
+		Paragraph titulo = new Paragraph(selector1.process("Aï¿½Aï¿½ M CABA \n"));
 		titulo.setAlignment(Element.ALIGN_CENTER);
 		document.add(titulo);
 		
@@ -177,13 +177,9 @@ public class ExportarPdf {
 			table.addCell(getCellConBorde(item.getNombreProducto(), PdfPCell.ALIGN_CENTER));
 			table.addCell(getCellConBorde(""+item.getCantidad(), PdfPCell.ALIGN_CENTER));
 			
-			if(!item.esCompraMayorista()) {
-				table.addCell(getCellConBorde(""+item.getPrecioUnitarioProducto(), PdfPCell.ALIGN_CENTER));
-				table.addCell(getCellConBorde("-", PdfPCell.ALIGN_CENTER));
-			}else {
-				table.addCell(getCellConBorde("-", PdfPCell.ALIGN_CENTER));
-				table.addCell(getCellConBorde(""+item.getPrecioMayoristaProducto(), PdfPCell.ALIGN_CENTER));
-			}
+			table.addCell(getCellConBorde("-", PdfPCell.ALIGN_CENTER));
+			table.addCell(getCellConBorde(""+item.getPrecioMayoristaProducto(), PdfPCell.ALIGN_CENTER));
+			
 			
 			table.addCell(getCellConBorde(""+item.getPrecioFinal(), PdfPCell.ALIGN_CENTER));
 		}
