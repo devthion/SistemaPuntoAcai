@@ -181,7 +181,7 @@ public class ExportarPdf {
 			table.addCell(getCellConBorde(""+item.getPrecioMayoristaProducto(), PdfPCell.ALIGN_CENTER));
 			
 			
-			table.addCell(getCellConBorde(""+item.getPrecioFinal(), PdfPCell.ALIGN_CENTER));
+			table.addCell(getCellConBorde(""+item.getPrecioMayoristaProducto() * item.getCantidad(), PdfPCell.ALIGN_CENTER));
 		}
 
 	}

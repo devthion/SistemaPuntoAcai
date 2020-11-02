@@ -12,6 +12,7 @@ public class Item {
 	private double item_precio;
 	private int item_venta;
 	InsertarDatos insertarDatos;
+	private boolean siempreMayorista = false;
 	
 	public Item(Producto producto, int cantidad) {
 		this.producto = producto;
@@ -39,14 +40,25 @@ public class Item {
 	}
 
 
+	public boolean isSiempreMayorista() {
+		return siempreMayorista;
+	}
+
+
+
+	public void setSiempreMayorista(boolean siempreMayorista) {
+		this.siempreMayorista = siempreMayorista;
+	}
+
+
+
 	public double getPrecioFinal() {
 		//ACA HACER CUENTAS SEGUN SI ES MAYORISTA O CONSUMIDOR FINAL
-		if(esCompraMayorista()) {
+		if(esCompraMayorista() || this.siempreMayorista) {
 			return cantidad*this.getPrecioMayoristaProducto();
 		}else {
 			return cantidad*this.getPrecioUnitarioProducto();
 		}
-	
 	}
 	
 	public boolean esCompraMayorista() {

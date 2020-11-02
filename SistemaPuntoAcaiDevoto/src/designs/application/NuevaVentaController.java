@@ -157,6 +157,7 @@ public class NuevaVentaController implements Initializable {
     @FXML
     void onAgregarAlCarritoClick(ActionEvent event) {
     	Producto producto = this.tblProductos.getSelectionModel().getSelectedItem();
+    	Cliente cliente = this.tblClientes.getSelectionModel().getSelectedItem();
     	
     	if(itemsAVender.stream().anyMatch(unItem -> unItem.getProducto().equals(producto))) {
     		new Alerta().errorAlert("El producto solicitado ya existe en el carrito", "Error de duplicidad");
@@ -165,6 +166,9 @@ public class NuevaVentaController implements Initializable {
 	    		new Alerta().errorAlert("Debe seleccionar un Producto", "Agregar al Carrito");
 	    	}else {
 	    		Item item = new Item(producto, contadorCantidad);
+	    		if(cliente.getTipo().equalsIgnoreCase("mayorista")) {
+	    			item.setSiempreMayorista(true);
+	    		}
 	    		contadorCantidad = 1;
 	    		lblCantidadItem.setText(""+contadorCantidad);
 	    		itemsAVender.add(item);
@@ -251,13 +255,13 @@ public class NuevaVentaController implements Initializable {
 			
 			FilteredList<Cliente> filteredData = new FilteredList<>(clientes, p -> true);
 	    	tblClientes.setItems(filteredData);
-			
-			txtNombreABuscar.setPromptText("Buscar...");
+	    	
+	    	txtNombreABuscar.setPromptText("Buscar...");
 	    	txtNombreABuscar.textProperty().addListener((prop, old, text) -> {
 	    	    filteredData.setPredicate(unCliente -> {
 	    	        if(text == null || text.isEmpty()) return true;
 	    	        
-	    	        String name = unCliente.getNombre().toLowerCase();  
+	    	        String name = unCliente.getApellido().toLowerCase();  
 	    	        return name.contains(text.toLowerCase());
 	    	    });
 	    	});
@@ -475,9 +479,9 @@ public class NuevaVentaController implements Initializable {
 		precioTotal = 0;
 		for (Item item : itemsAVender) {
 			if(cliente.getTipo().equalsIgnoreCase("mayorista")) {
-				precioTotal += item.getPrecioMayoristaProducto();
+				precioTotal += item.getPrecioMayoristaProducto() * item.getCantidad();
 			}else {
-				precioTotal += item.getPrecioFinal();
+				precioTotal += item.getPrecioFinal() * item.getCantidad();
 			}
 		}
 		if(this.tblCombo.getSelectionModel().getSelectedItem() == null) {

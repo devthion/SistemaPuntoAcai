@@ -261,9 +261,9 @@ public class EditarVenta implements Initializable{
 		precioTotal = 0;
 		for (Item item : itemsAVender) {
 			if(ventaBorrador.getCliente().getTipo().equalsIgnoreCase("mayorista")) {
-				precioTotal += item.getPrecioMayoristaProducto();
+				precioTotal += item.getPrecioMayoristaProducto() * item.getCantidad();
 			}else {
-				precioTotal += item.getPrecioFinal();
+				precioTotal += item.getPrecioFinal() * item.getCantidad();
 			}
 		}
 		if(this.tblCombo.getSelectionModel().getSelectedItem() == null) {
