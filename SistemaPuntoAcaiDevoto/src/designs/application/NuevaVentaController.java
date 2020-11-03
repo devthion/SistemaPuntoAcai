@@ -481,7 +481,7 @@ public class NuevaVentaController implements Initializable {
 			if(cliente.getTipo().equalsIgnoreCase("mayorista")) {
 				precioTotal += item.getPrecioMayoristaProducto() * item.getCantidad();
 			}else {
-				precioTotal += item.getPrecioFinal() * item.getCantidad();
+				precioTotal += item.getPrecioFinal();
 			}
 		}
 		if(this.tblCombo.getSelectionModel().getSelectedItem() == null) {

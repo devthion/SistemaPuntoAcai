@@ -263,7 +263,7 @@ public class EditarVenta implements Initializable{
 			if(ventaBorrador.getCliente().getTipo().equalsIgnoreCase("mayorista")) {
 				precioTotal += item.getPrecioMayoristaProducto() * item.getCantidad();
 			}else {
-				precioTotal += item.getPrecioFinal() * item.getCantidad();
+				precioTotal += item.getPrecioFinal();
 			}
 		}
 		if(this.tblCombo.getSelectionModel().getSelectedItem() == null) {
@@ -282,7 +282,8 @@ public class EditarVenta implements Initializable{
 	void onAgregarAlCarritoClick(ActionEvent event) {
 		Producto producto = this.tblProductos.getSelectionModel().getSelectedItem();
 
-		if(itemsAVender.stream().anyMatch(unItem -> unItem.getProducto().getNombre().equals(producto.getNombre()))) {
+		if(itemsAVender.stream().anyMatch(unItem -> unItem.getProducto().getNombre().equals(producto.getNombre()) && 
+				unItem.getProducto().getKilos() == producto.getKilos()  )) {
 			new Alerta().errorAlert("El producto solicitado ya existe en el carrito", "Error de duplicidad");
 		}else {
 			if(producto==null) {
